@@ -1,2 +1,65 @@
-<h1>Admin::Admins#top</h1>
-<p>Find me in app/views/admin/admins/top.html.erb</p>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div>
+                <%= link_to admin_users_path do %>
+                    <div>
+                        <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                    </div>
+                    <div>
+                        <div>
+                            <p>ユーザ＝管理</p>
+                        </div>
+                    </div>
+                <% end %>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div>
+                <%= link_to admin_items_path do %>
+                    <div>
+                        <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
+                    </div>
+                    <div>
+                        <div>
+                            <p>商品管理</p>
+                        </div>
+                    </div>
+                <% end %>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div>
+                <%= link_to admin_stocks_path do %>
+                    <div>
+                        <div>
+                            <span class="glyphicon glyphicon-stats" aria-hidden="true"></span>
+                        </div>
+                    </div>
+                    <div>
+                        <div>
+                            <p>在庫管理</p>
+                        </div>
+                    </div>
+                <% end %>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div>
+                <%= link_to admin_orders_path do %>
+                    <div>
+                        <span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span>
+                    </div>
+                    <div>
+                        <div>
+                            <p>受注管理</p>
+                        </div>
+                    </div>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>
