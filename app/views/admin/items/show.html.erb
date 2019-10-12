@@ -15,11 +15,13 @@
     <% end %>
 </div>
 
-<div>
-    <p>レビュー入力フォーム</p>
-    <%= form_for(@review) do |f| %>
-        <p><span>タイトル</span><%= f.text_field :title %></p>
-        <p><span>本文</span><%= f.text_area :body %></p>
-        <button><%= f.submit "投稿" %></button>
-    <% end %>
-</div>
+<% if current_user.signed_in? %>
+    <div>
+        <p>レビュー入力フォーム</p>
+        <%= form_for(@review) do |f| %>
+            <p><span>タイトル</span><%= f.text_field :title %></p>
+            <p><span>本文</span><%= f.text_area :body %></p>
+            <button><%= f.submit "投稿" %></button>
+        <% end %>
+    </div>
+<% end %>
