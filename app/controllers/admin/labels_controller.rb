@@ -1,4 +1,4 @@
-class Admin::LabelsController < ApplicationController
+class Admin::LabelsController < Admin::AdminApplicationsController
   def new
     @label = Label.new
     @labels = Label.all

@@ -1,4 +1,4 @@
-class Admin::StocksController < ApplicationController
+class Admin::StocksController < Admin::AdminApplicationsController
   def new
   end
 

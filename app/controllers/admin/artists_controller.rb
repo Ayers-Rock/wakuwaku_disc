@@ -1,4 +1,4 @@
-class Admin::ArtistsController < ApplicationController
+class Admin::ArtistsController < Admin::AdminApplicationsController
   def new
     @artist = Artist.new
     @artists = Artist.all
