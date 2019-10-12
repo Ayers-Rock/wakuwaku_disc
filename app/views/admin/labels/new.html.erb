@@ -6,7 +6,8 @@
         <div class="col-md-12">
             <div>
                 <%= form_for([:admin, @label]) do |f| %>
-                    <p><%= f.text_field :label_name %></p>
+                    <p>新規レーベル追加</p>
+                    <p><span>レーベル名</span><%= f.text_field :label_name %></p>
                     <p><%= f.submit "追加" %></p>
                 <% end %>
             </div>
@@ -30,6 +31,7 @@
                         <% end %>
                     </tr>
                 </table>
+                <%= link_to "商品管理へ戻る", admin_items_path %>
             </div>
         </div>
     </div>
