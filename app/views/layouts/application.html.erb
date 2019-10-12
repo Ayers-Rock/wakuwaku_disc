@@ -9,6 +9,46 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
+  <header>
+    <div>
+      <div>
+        <div><span class="glyphicon glyphicon-eye-open" aria-hidden="true">アイコン</span></div>
+        <div>
+          <%= link_to admin_path do %>
+            <p>わくわく管理システム</p>
+          <% end %>
+        </div>
+        <div>ログアウト</div>
+      </div>
+      <div>
+        <nav>
+          <ul>
+            <li>
+              <%= link_to admin_users_path do %>
+                <span class="glyphicon glyphicon-user" aria-hidden="true">ユーザー管理</span>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to admin_items_path do %>
+                <span class="glyphicon glyphicon-lock" aria-hidden="true">商品管理</span>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to admin_stocks_path do %>
+                <span class="glyphicon glyphicon-stats" aria-hidden="true">在庫管理</span>
+              <% end %>
+            </li>
+            <li>
+              <%= link_to admin_orders_path do %>
+                <span class="glyphicon glyphicon-folder-open" aria-hidden="true">受注管理</span>
+              <% end %>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
+
   <body>
     <%= yield %>
   </body>
