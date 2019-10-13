@@ -1,2 +1,27 @@
-<h1>Admin::Items#show</h1>
-<p>Find me in app/views/admin/items/show.html.erb</p>
+<%= @item.jacket_image %>
+<%= @item.title %>
+<%= @item.artists.artist_name %>
+<%= @item.labels.label_name %>
+<%= @item.genres.genre_name %>
+<% @item.each do |track_name| %>
+    <%= track_name.discs.tracks.track.name %>
+<% end %>
+
+<%
+=begin%>
+ この書き方でいいのか？ 
+<%
+=end%>
+<%= @item.price %>
+<%= @item.status>
+# 在庫数も
+
+<%= link_to '在庫追加', new_admin_stock_path %>
+<%= link_to '編集', edit_admin_item_path %>
+<%= link_to '削除', '/admin/items/:id, metod: :delete' %>
+<%
+=begin%>
+ ここ疑問 
+<%
+=end%>
+<%= link_to '戻る', admin_items_path %>

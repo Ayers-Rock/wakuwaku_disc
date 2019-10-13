@@ -1,2 +1,49 @@
-<h1>Admin::Items#new</h1>
-<p>Find me in app/views/admin/items/new.html.erb</p>
+<%= form_for [@item, @disc, @track] do |f| %>
+    <%
+=begin%>
+ <%= f.text_field :artist_name %>> 
+<%
+=end%>
+    <%= f.text_field :title %>>
+    <%
+=begin%>
+ <%= f.text_field :label_name %>> 
+<%
+=end%>
+    <%
+=begin%>
+ <%= f.text_field :ganre_name %>> 
+<%
+=end%>
+    <%
+=begin%>
+ 動的に追加したいフォームの要素をwrapper_tag:で指定するから後でbootstrapように変更
+<%
+=end%>
+    <%
+=begin%>
+ <%= f.nested_fields_for :discs, wrapper_tag: :p do |q| %> 
+<%
+=end%>
+        <%
+=begin%>
+ <%= f.nested_fields_for :tracks, wrapper_tag: :p do |l| %>
+            <%= l.text_field   :track_name,     class: 'form-control' %>
+            <%= l.remove_nested_fields_link '削除', class: 'btn btn-danger', role: 'button' %>
+            <%= l.add_nested_fields_link '曲名の追加', class: 'btn btn-primary', role: 'button' %>
+        <% end %> 
+<%
+=end%>
+        <%
+=begin%>
+ <%= q.add_nested_fields_link :discs, 'Add new', class: 'btn btn-primary', role: 'button' %> 
+<%
+=end%>
+    <%= f.text_field :price %>>
+    <%
+=begin%>
+ <%= f.attachment_field :image %> 
+<%
+=end%>
+    <%= f.submit '登録' %>
+<% end %>

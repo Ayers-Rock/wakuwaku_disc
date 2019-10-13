@@ -77,3 +77,5 @@ gem 'jquery-rails'
 gem 'cocoon'
 
 gem 'paranoia'
+
+gem 'nested_form_fields'

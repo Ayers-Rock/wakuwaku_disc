@@ -14,7 +14,12 @@ Rails.application.routes.draw do
 
     resources :stocks, only: [:new, :index, :edit, :create, :update]
 
-    resources :items
+    resources :items do
+      resources :discs, only: [:create, :destroy, :edit]do
+        resources :tracks, only: [:create, :destroy, :edit]
+      end
+    end
+
 
     resources :users, only: [:index, :edit, :show, :update, :destroy] do
       get :orders, on: :member
