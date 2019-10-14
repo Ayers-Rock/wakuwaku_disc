@@ -2,7 +2,7 @@
 // <p>Find me in app/views/users/show.html.erb</p>
 <%= render '', : @ %>
 <h2>ユーザー情報</h2>
-    <table class="table table-bordered">
+    <table class="table">
         <% @users. each do |user| %>
             <thead>
                 <tr>
@@ -30,22 +30,81 @@
         <p><%= link_to "退会する？", user_path(user.id), method: :delete %></p>
 
 <h2>お気に入りリスト</h2>
+        <% @favorite each do |favorite| %>
+            <div class="container">
+                <div class="col-md-12 col-md-1">
+                </div>
+                <div class="col-md-12 col-md-3">
+                    <%= attachment_image_tag @favorites, :jacket_image_id, format: 'jpeg' size:"60*60" %>
+                    <% end %>
+                </div>
+                <div class="col-md-12 col-md-5">
+                    <p><%= favorite.item.title %></p>
+                    <p><%= favorite.item.artist %></p>
+                    <p><%= favorite.item.price %></p>
+                    <% end %>
+                </div>
+                <div class="col-md-12 col-md-3">
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <td><%= link_to "お気に入り", favorites_path(user.id), class="btn btn-default" %>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div class="btn-group">
+                                        <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                            個数
+                                        <span class="caret"></span>
+                                        </button>
+                                        <ul class="dropdown-menu" role="menu">
+                                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">1</a></li>
+                                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">2</a></li>
+                                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">3</a></li>
+                                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">4</a></li>
+                                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">5</a></li>
+                                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">6</a></li>
+                                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">7</a></li>
+                                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">8</a></li>
+                                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">9</a></li>
+                                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">10</a></li>
+                                        </ul>
+                                    </div>
+                                </td>
+                                <td>
+                                    <%= link_to "カートに入れる", cart_items_path(user.id), class="btn btn-default" %>
+                                </td>
+                            </tr>
+                        <tfoot>
+                            <td><%= link_to 'いいね一覧', favorites_path(user.id) %></td>
 
-        <div class="col-xs-12 col-xs-1">
-        </div>
-        <div class="col-xs-12 col-xs-2">
-            <%= attachment_image_tag item, :jacket_image_id, format: 'jpeg' size:"60*60" %>
-        </div>
-        <div class="col-xs-12 col-xs-5">
-            <p><%= item.title %></p>
-            <p><%= item.artist %></p>
-            <p><%= item.price %></p>
-        </div>
-        <div class="col-xs-12 col-xs-3">
-            <table class="table">
+<h2>購入履歴</h2>
+    <%= @orders each do |order| %>
+        <li><span class="caret"></span>
+            <%= link_to orders.created_at %>
+            <%= link_to '詳細へ', orders_path(user.id) %>
+        </li>
+            <table class ="table">
+                <thead>
+                    <tr>
+                        <th>注文番号</th>
+                        <th>商品</th>
+                        <th>配送先</th>
+                        <th>配送状況</th>
+                        <th>レビューを書く</th>
+                    </tr>
+                </thead>
                 <tbody>
                     <tr>
-                        <td><%= link_to "お気に入り", favorites_path(user.id), class="btn btn-default" %>
+                        <td><%= orders.id %></td>
+                        <td><%= orders.items.title %></td>
+                        <td><%= orders.prefecture+orders.city_address+orders.building %></td>
+                        <td><%= orders.status %></td>
+                        <td><%= link_to 'レビューを書く', item_path(item.id), class:"btn btn-default" %>
                     </tr>
-                    <tr>
-                        <td><%= link_to ""%>
+                </tbody>
+                <tfoot>
+                    <td><%= link_to '購入履歴一覧', orders_path %>
+                </tfoot>
+            </table>
+        <% end %>

@@ -3,9 +3,11 @@ class ItemsController < ApplicationController
   end
 
   def ranking
+    @items = Item.all
   end
 
   def show
+    @item = Item.find(params[:id])
   end
 
   def index
