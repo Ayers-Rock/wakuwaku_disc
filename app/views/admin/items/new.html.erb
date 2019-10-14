@@ -1,2 +1,50 @@
-<h1>Admin::Items#new</h1>
-<p>Find me in app/views/admin/items/new.html.erb</p>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div>
+                <%= form_with(model: @item, local: true) do |s| %>
+                    <div>
+                        <p><%= s.label :"アーティスト名" %></p>
+                        <p><%= s.collection_select :artist_id, Artist.all, :id, :artist_name, :prompt => "選択して下さい" %></p>
+                    </div>
+                    <div>
+                        <p><%= s.label :"シングル/アルバム名" %></p>
+                        <p><%= s.text_field :title %></p>
+                    </div>
+                    <div>
+                        <p><%= s.label :"レーベル名" %></p>
+                        <p><%= s.collection_select :label_id, Label.all, :id, :label_name, :prompt => "選択して下さい" %></p>
+                    </div>
+                    <div>
+                        <p><%= s.label :"ジャンル名" %></p>
+                        <p><%= s.collection_select :genre_id, Genre.all, :id, :genre_name, :prompt => "選択して下さい" %></p>
+                    </div>
+                    <div class="items">
+                        <%= s.fields_for :discs do |t| %>
+                            <%= render "disc_fields", f: t %>
+                        <% end %>
+                        <div class="links">
+                            <%= link_to_add_association "枚数を追加", s, :discs %>
+                        </div>
+                    </div>
+                    <div>
+                        <p><%= s.label :"税抜価格" %></p>
+                        <p><%= s.text_field :price %></p>
+                    </div>
+                    <div>
+                        <p><%= s.label :"ジャケット画像" %></p>
+                        <p><%= s.attachment_field :jacket_image %></p>
+                    </div>
+                    <div>
+                        <span><%= s.label :"販売ステータス" %></span>
+                        <span><%= s.radio_button :status, "0" %></span>
+                        <span><%= s.radio_button :status, "1" %></span>
+                    </div>
+                    <div>
+                        <%= s.submit "保存" %>
+                    </div>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>
