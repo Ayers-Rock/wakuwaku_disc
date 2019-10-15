@@ -2,6 +2,7 @@
 // <p>Find me in app/views/users/show.html.erb</p>
 <%= render '', : @ %>
 <h2>ユーザー情報</h2>
+<<<<<<< HEAD
     <table class="table">
         <% @users. each do |user| %>
             <thead>
@@ -108,3 +109,17 @@
                 </tfoot>
             </table>
         <% end %>
+=======
+　<% @users. each |user| %>
+    <td><%= user.name %></td>
+    <td><%= user.prefecture %>
+        <%= user.city_address %>
+        <%= user.building %></td>
+    <td><%= user.email %></td>
+    <div class="button">
+        <%= link_to "住所一覧", address_index_path %>
+        <%= link_to "住所入力フォーム", address_edit_path %>
+        <%= link_to "ユーザー情報編集", user_edit_path(user.id) %>
+    </div>
+    <%= link_to "退会する？, %>
+>>>>>>> 6c9851350933dab367d3299abdb7f91c75a02347
