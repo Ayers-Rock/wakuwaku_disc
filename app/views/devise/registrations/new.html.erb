@@ -43,22 +43,25 @@
 
   <div class="field">
     <%= f.label :郵便番号 %><br />
-    <div>
-    <!-- ▼郵便番号入力フィールド(3桁+4桁) -->
-    <input type="text" name="zip31" size="4" maxlength="3"> － <input type="text" name="zip32" size="5" maxlength="4" onKeyUp="AjaxZip3.zip2addr('zip31','zip32','pref31','addr31','addr31');"><br>
-    (半角英数) 例100-0101  ※郵便番号がわからない場合は<%= link_to "こちら", "https://www.post.japanpost.jp/smt-zipcode/" %>
-    <!-- ▼住所入力フィールド(都道府県) -->
-    <p>都道府県（任意）</p>
-    <input type="text" name="pref31" size="20">
-    <!-- ▼住所入力フィールド(都道府県以降の住所) -->
-    <p>市区町村　番地（任意）</p>
-    <input type="text" name="addr31" size="40">
-    </div>
+    <%= f.text_field :postal_code, autofocus: true, autocomplete: "postal_code" %>
   </div>
+
   <div class="field">
-    <%= f.label :建物名　部屋番号（任意） %><br />
+    <%= f.label :都道府県（任意） %><br />
+    <%= f.text_field :prefecture, autofocus: true, autocomplete: "prefecture"%>
+  </div>
+
+  <div class="field">
+    <%= f.label :市区町村　番地（任意） %><br />
     <%= f.text_field :city_address, autofocus: true, autocomplete: "city_address" %>
   </div>
+
+  <div class="field">
+    <%= f.label :建物名　部屋番号（任意） %><br />
+    <%= f.text_field :building, autofocus: true, autocomplete: "building" %>
+  </div>
+
+
 
   <div class="actions">
     <%= f.submit "登録する" %>
