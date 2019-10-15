@@ -5,17 +5,10 @@
             <%= cart_item.item.title %>
             <%= cart_item.item.artist.artist_name %>
             <%= cart_item.amount %>
-            <%# item = cart_item.item.price * cart_item.amount * 1.10 %>
-            <%#= item >
+            <% item = cart_item.item.price * cart_item.amount * 1.10 %>
+            <%= item %>
         </div>
     <% end %>
-    <div>
-        <span>送料</span>
-        <span>全国一律500円</span>
-        <span>500円</span>
-    </div>
-    <div>
-        <span>合計</span>
 
-    </div>
-</div>
+
+
