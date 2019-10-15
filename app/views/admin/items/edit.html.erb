@@ -1,2 +1,53 @@
-<h1>Admin::Items#edit</h1>
-<p>Find me in app/views/admin/items/edit.html.erb</p>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div>
+                <%= form_with(model: @item, url: admin_item_path(@item), local: true) do |s| %>
+                    <div>
+                        <p><%= attachment_image_tag @item, :jacket_image, :fill, 300, 300 %></p>
+                        <p><%= s.label :"ジャケット画像" %></p>
+                        <p><%= s.attachment_field :jacket_image %></p>
+                    </div>
+                    <div>
+                        <p><%= s.label :"シングル/アルバム名" %></p>
+                        <p><%= s.text_field :title %></p>
+                    </div>
+                    <div>
+                        <p><%= s.label :"アーティスト名" %></p>
+                        <p><%= s.collection_select :artist_id, Artist.all, :id, :artist_name, :prompt => "選択して下さい" %></p>
+                    </div>
+                    <div>
+                        <p><%= s.label :"レーベル名" %></p>
+                        <p><%= s.collection_select :label_id, Label.all, :id, :label_name, :prompt => "選択して下さい" %></p>
+                    </div>
+                    <div>
+                        <p><%= s.label :"ジャンル名" %></p>
+                        <p><%= s.collection_select :genre_id, Genre.all, :id, :genre_name, :prompt => "選択して下さい" %></p>
+                    </div>
+                    <div id="discs">
+                        <%= s.fields_for :discs do |t| %>
+                            <%= render "disc_fields", f: t %>
+                        <% end %>
+                        <div class="links">
+                            <%= link_to_add_association "ディスクを追加", s, :discs %>
+                        </div>
+                    </div>
+                    <div>
+                        <p><%= s.label :"税抜価格" %></p>
+                        <p><%= s.text_field :price %></p>
+                    </div>
+                    <div>
+                        <span><%= s.label :"販売ステータス" %></span>
+                        <span><%= s.label :"販売中" %></span>
+                        <span><%= s.radio_button :status, "available" %></span>
+                        <span><%= s.label :"販売停止中" %></span>
+                        <span><%= s.radio_button :status, "not_available" %></span>
+                    </div>
+                    <div>
+                        <%= s.submit "更新" %>
+                    </div>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>
