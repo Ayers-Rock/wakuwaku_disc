@@ -78,3 +78,5 @@ gem 'jquery-rails'
 gem 'cocoon'
 
 gem 'paranoia'
+
+gem 'enum_help'
