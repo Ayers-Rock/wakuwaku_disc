@@ -41,8 +41,27 @@
         <div class="col-md-1"></div>
     </div>
     <div class="container">
-        <div class="col-md-10 col-md-offset-1">
-            <h2>商品詳細<>
+                <div class="row">
+                    <div class="col-md-10 col-md-offset-1">
+                        <h2>商品詳細</h2>
+                            <p>ジャンル・レーベル</p>
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <%= item.title %><br>
+                                        <%= item.genre %>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <%= item.disc.disc_number %>
+                                        <%= item.disc.track_name %>
+                                    </div>
+                                </div>
+                    </div>
+                </div>
+    </div>
+
+
 
 
 

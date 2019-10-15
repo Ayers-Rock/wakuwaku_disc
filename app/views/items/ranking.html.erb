@@ -1,2 +1,52 @@
 <h1>Items#ranking</h1>
 <p>Find me in app/views/items/ranking.html.erb</p>
+<h1>ランキング</h1>
+    <div class="container">
+            <div class="col-md-3">
+                <%= render .....%>
+            </div>
+            <div class="col-md-9">
+                <% @items each do |item| %>
+                    <div class="row">
+                        <div class="col-md-2">
+                            <% users.each_with_index do |user, i|
+                                puts "#{i+1}: #{user.name}" end %>
+                        </div>
+                        <div class="col-md-2">
+                            <%= attachment_image_tag @items :jacket_image_id, :format 'jpeg', :size '60*60' %>
+                        </div>
+                        <div class="col-md-4">
+                            <ul>
+                                <li><%= item.title %></li>
+                                <li><%= item.artist %></li>
+                                <li><%= item.price %></li>
+                            <ul>
+                        </div>
+                        <div class="col-md-1">
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                    個数
+                                    <span class="caret"></span>
+                                </button>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">1</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">2</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">3</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">4</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">5</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">6</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">7</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">8</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">9</a></li>
+                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">10</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-md-3">
+                            <button><%= link_to 'お気に入り', favorites_path(user_id) %></button>
+                            <button><%= link_to 'カートに入れる', cart_items_path(user_id) %><button>
+                        </div>
+                    </div>
+                <% end %>
+            </div>
+    </div>
