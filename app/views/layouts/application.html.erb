@@ -11,6 +11,11 @@
     <script type="text/javascript" src="//jpostal-1006.appspot.com/jquery.jpostal.js"></script>
     <script src="https://ajaxzip3.github.io/ajaxzip3.js" charset="UTF-8"></script>
   </head>
+
+  <header>
+    <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+  </header>
+
   <body>
     <dl class="searchbox">
       <%#= search_form_for @search, url: items_path do |f| %>
