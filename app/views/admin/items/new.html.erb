@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-md-12">
             <div>
-                <%= form_with(model: @item, local: true) do |s| %>
+                <%= form_with(model: @item, url: admin_items_path, local: true) do |s| %>
                     <div>
                         <p><%= s.label :"アーティスト名" %></p>
                         <p><%= s.collection_select :artist_id, Artist.all, :id, :artist_name, :prompt => "選択して下さい" %></p>
@@ -19,12 +19,12 @@
                         <p><%= s.label :"ジャンル名" %></p>
                         <p><%= s.collection_select :genre_id, Genre.all, :id, :genre_name, :prompt => "選択して下さい" %></p>
                     </div>
-                    <div class="items">
+                    <div id="discs">
                         <%= s.fields_for :discs do |t| %>
                             <%= render "disc_fields", f: t %>
                         <% end %>
                         <div class="links">
-                            <%= link_to_add_association "枚数を追加", s, :discs %>
+                            <%= link_to_add_association "ディスクを追加", s, :discs %>
                         </div>
                     </div>
                     <div>
@@ -37,8 +37,10 @@
                     </div>
                     <div>
                         <span><%= s.label :"販売ステータス" %></span>
-                        <span><%= s.radio_button :status, "0" %></span>
-                        <span><%= s.radio_button :status, "1" %></span>
+                        <span><%= s.label :"販売中" %></span>
+                        <span><%= s.radio_button :status, "available" %></span>
+                        <span><%= s.label :"販売停止中" %></span>
+                        <span><%= s.radio_button :status, "not_available" %></span>
                     </div>
                     <div>
                         <%= s.submit "保存" %>
