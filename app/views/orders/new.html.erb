@@ -1,2 +1,21 @@
-<h1>Orders#new</h1>
-<p>Find me in app/views/orders/new.html.erb</p>
+<div>
+    <% @cart_items.each do |cart_item| %>
+        <div>
+            <%= attachment_image_tag cart_item.item, :jacket_image, :fill, 60, 60, format: 'jpeg', class: "img-circle pull-left profile-img" %>
+            <%= cart_item.item.title %>
+            <%= cart_item.item.artist.artist_name %>
+            <%= cart_item.amount %>
+            <%# item = cart_item.item.price * cart_item.amount * 1.10 %>
+            <%#= item >
+        </div>
+    <% end %>
+    <div>
+        <span>送料</span>
+        <span>全国一律500円</span>
+        <span>500円</span>
+    </div>
+    <div>
+        <span>合計</span>
+
+    </div>
+</div>
