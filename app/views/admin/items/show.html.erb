@@ -33,9 +33,12 @@
                         <div>
                             <p>曲名</p>
                         </div>
-                        <%= @tracks.each do |track| %>
+                        <% @discs.each do |disc| %>
                             <div>
-                                <p><%= track.track_name %></p>
+                                <p><%= "#{disc.disc_number}枚目" %></p>
+                                <% disc.tracks.each do |track|  %>
+                                    <p><%= track.track_name %></p>
+                                <% end %>
                             </div>
                         <% end %>
                         <div>
@@ -48,7 +51,7 @@
                             <p>ステータス</p>
                         </div>
                         <div>
-                            <p><%= @item.status %></p>
+                            <p><%= @item.status_i18n %></p>
                         </div>
                         <div>
                             <p>在庫数</p>
@@ -58,6 +61,24 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-cd-12">
+            <div>
+                <%= link_to new_admin_stock_path do %>
+                    <button>在庫追加</button>
+                <% end %>
+                <%= link_to edit_admin_item_path(@item.id) do %>
+                    <button>編集</button>
+                <% end %>
+                <%= link_to admin_item_path(@item.id), method: :delete do %>
+                    <button>削除</button>
+                <% end %>
+                <%= link_to admin_items_path do %>
+                    <button>戻る</button>
+                <% end %>
             </div>
         </div>
     </div>
