@@ -1,33 +1,85 @@
 <h1>Admin::Items#show</h1>
 <p>Find me in app/views/admin/items/show.html.erb</p>
 
-<div>
-    <p>投稿レビュー</p>
-    <% @reviews.each do |review| %>
-        <div>
-            <p><%= review.title %></p>
-            <p><%= review.user.last_name %></p>
-                <%# FIXME:last_nameの部分をフルネーム表示にするため、userモデルへメソッドを追加する可能性あり %>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <p>商品詳細</p>
             <div>
-                <p><%= review.body %></p>
+                <div>
+                    <p>
+                        <%= attachment_image_tag @item, :jacket_image, :fill, 300, 300 %>
+                    </p>
+                    <div>
+                        <p><span>タイトル :</span><%= @item.title %></p>
+                        <br><br>
+                        <p><span>アーティスト名 :</span><%= @item.artist.artist_name %></p>
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <div>
+                            <p>レーベル名</p>
+                        </div>
+                        <div>
+                            <p><%= @item.label.label_name %></p>
+                        </div>
+                        <div>
+                            <p>ジャンル</p>
+                        </div>
+                        <div>
+                            <p><%= @item.genre.genre_name %></p>
+                        </div>
+                        <div>
+                            <p>曲名</p>
+                        </div>
+                        <% @discs.each do |disc| %>
+                            <div>
+                                <p><%= "#{disc.disc_number}枚目" %></p>
+                                <% disc.tracks.each do |track|  %>
+                                    <p><%= track.track_name %></p>
+                                <% end %>
+                            </div>
+                        <% end %>
+                        <div>
+                            <p>価格(税別価格)</p>
+                        </div>
+                        <div>
+                            <p><%= "#{@item.price}円" %></p>
+                        </div>
+                        <div>
+                            <p>ステータス</p>
+                        </div>
+                        <div>
+                            <p><%= @item.status_i18n %></p>
+                        </div>
+                        <div>
+                            <p>在庫数</p>
+                        </div>
+                        <div>
+                            <%# <p><%=# item.stocks.arrival_count - item.oreder_items.amount</%#> %>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-    <% end %>
-</div>
-
-<% if current_user.signed_in? %>
-    <div>
-        <p>レビュー入力フォーム</p>
-        <%= form_for[@item, @review] do |f| %>
-            <% if @review.errors.any? %>
-                <%= "#{@review.errors.count}件のエラーがあります。" %>
-                <% @review.errors.full_messages.each do |message| %>
-                    <%= message %>
-                <% end %>
-            <% end %>
-            <p><span>タイトル</span><%= f.text_field :title %></p>
-            <p><span>本文</span><%= f.text_area :body %></p>
-            <button><%= f.submit "投稿" %></button>
-        <% end %>
     </div>
-<% end %>
+    <div class="row">
+        <div class="col-cd-12">
+            <div>
+                <%= link_to new_admin_stock_path do %>
+                    <button>在庫追加</button>
+                <% end %>
+                <%= link_to edit_admin_item_path(@item.id) do %>
+                    <button>編集</button>
+                <% end %>
+                <%= link_to admin_item_path(@item.id), method: :delete do %>
+                    <button>削除</button>
+                <% end %>
+                <%= link_to admin_items_path do %>
+                    <button>戻る</button>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>
