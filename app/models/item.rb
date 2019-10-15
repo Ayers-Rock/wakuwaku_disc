@@ -2,8 +2,7 @@ class Item < ApplicationRecord
     has_many :stocks
 
     has_many :discs
-    accepts_nested_attributes_for :discs
-    # , allow: true
+    accepts_nested_attributes_for :discs, allow_destroy: true
 
     has_many :cart_items
     has_many :reviews
@@ -15,5 +14,5 @@ class Item < ApplicationRecord
     belongs_to :artist
 
     attachment :jacket_image
-    enum status: {"販売中": 0, "販売停止中": 1}
+    enum status: {available: 0, not_available: 1}
 end

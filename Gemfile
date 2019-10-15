@@ -73,8 +73,12 @@ gem 'kaminari', '~> 1.1.1'
 gem 'ransack'
 
 gem 'bootstrap-sass', '~> 3.3.6'
+
+gem 'jp_prefecture'
 gem 'jquery-rails'
 
 gem 'cocoon'
 
 gem 'paranoia'
+
+gem 'enum_help'
