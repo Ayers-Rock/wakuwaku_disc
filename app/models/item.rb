@@ -15,4 +15,7 @@ class Item < ApplicationRecord
 
     attachment :jacket_image
     enum status: {available: 0, not_available: 1}
+
+
+
 end
