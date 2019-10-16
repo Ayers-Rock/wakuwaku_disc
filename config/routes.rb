@@ -18,9 +18,11 @@ Rails.application.routes.draw do
 
     resources :orders, only: [:index, :show]
 
-    resources :stocks, only: [:new, :index, :edit, :create, :update]
+    resources :stocks, only: [:index]
 
-    resources :items
+    resources :items do
+      resources :stocks, only: [:new, :create, :edit, :update]
+    end
 
     resources :users, only: [:index, :edit, :show, :update, :destroy] do
       get :orders, on: :member

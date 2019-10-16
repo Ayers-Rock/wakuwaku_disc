@@ -1,2 +1,39 @@
-<h1>Admin::Stocks#new</h1>
-<p>Find me in app/views/admin/stocks/new.html.erb</p>
+<%= @item.artist.artist_name %>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div>
+                <div>
+                    <p>在庫追加登録</p>
+                    <div>
+                        <p>アーティスト名</p>
+                        <p><%= @item.artist.artist_name %></p>
+                    </div>
+                    <div>
+                        <p>シングル/アルバム名</p>
+                        <p><%= @item.title %></p>
+                    </div>
+                    <div>
+                        <p>現在の在庫数</p>
+                        <%# <p>TODO:在庫数を入力する</%#> %>
+                    </div>
+                    <%= form_with(model: @stock, url: admin_stocks_path, local: true) do |f| %>
+                        <div>
+                            <div>
+                                <p>入荷年月日</p>
+                                <p><%= f.date_field :arrival_date, value: Time.now.strftime("%Y-%m-%d") %></p>
+                            </div>
+                            <div>
+                                <p>入荷数入力</p>
+                                <p><%= f.number_field :arrival_count %></p>
+                                <%= f.hidden_field :id, value: @item.id %>
+                            </div>
+                            <%= f.submit "保存" %>
+                        </div>
+                    <% end %>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
