@@ -13,11 +13,10 @@ class Admin::ItemsController < Admin::AdminApplicationsController
     @disc = @item.discs.build
     # @track = @disc.tracks.build
   end
-
   def show
     @item = Item.find(params[:id])
     @discs = Disc.where(item_id: @item.id)
-    # @tracks = Track.where(disc_id: @discs.id).order(track_number: "DESC")
+    # @tracks = Track.order(track_number: "DESC")
     # TODO:@discsに入ってる複数idを一つずつ渡すか、配列のままviewで渡してviewで処理するのかを調べるところからスタート
   end
 
