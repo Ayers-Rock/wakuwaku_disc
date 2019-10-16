@@ -1,2 +1,80 @@
-<h1>Users#edit</h1>
-<p>Find me in app/views/users/edit.html.erb</p>
+<%# // <h1>Users#edit</h1>
+// <p>Find me in app/views/users/edit.html.erb</p> %>
+<%# <%= render '', : @ %>
+<h2>ユーザー情報編集</h2>
+
+
+        <%= form_for(@user) do |f| %>
+            <div class="field">
+                <div class="row">
+                <div class="col-md-2">
+                    <%= f.label :name, '名前', class:'control-label' %>
+                </div>
+                <div class="col-md-10">
+                    <table class="table">
+                        <tr>
+                            <th>姓</th>
+                            <th>名</th>
+                        </tr>
+                        <tr>
+                            <td><%= f.text_field :last_name, class:'control-label' %></td>
+                            <td><%= f.text_field :first_name, class: 'control-label' %></td>
+                        </tr>
+                        <tr>
+                            <th>姓　(カナ)</th>
+                            <th>名　(カナ)</th>
+                        </tr>
+                        <tr>
+                            <td><%= f.text_field :last_kana_name, class:'control-label' %></td>
+                            <td><%= f.text_field :first_kana_name, class: 'control-label' %></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-2">
+                    <%= f.label :address, '住所', class:'control-label'%>
+                </div>
+                <div class="col-md-10">
+                    <table class="table">
+                        <tr>
+                            <th>〒</th>
+                            <td><%= f.text_field :postal_code, class:'control-label' %></td>
+                        </tr>
+                        <tr>
+                            <th>都道府県</th>
+                            <td><%= f.text_field :prefecture, class:'control-label' %></td>
+                        </tr>
+                        <tr>
+                            <th>市区町村</th>
+                            <td><%= f.text_field :city_address, class:'control-label' %></td>
+                        </tr>
+                        <tr>
+                            <th>マンション</th>
+                            <td><%= f.text_field :building, class:'control-label' %></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-2">
+                    <%= f.label :tel_number, '電話番号', class:'control-label' %>
+                </div>
+                <div class="col-md-10">
+                    <div class="field">
+                        <%= f.label :tel_number, '電話番号' %>
+                        <%= f.telephone_field :tel_number, class:'control-label' %>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2">
+                <%= f.label :email, 'メールアドレス', class:'control-label' %>
+            </div>
+            <div class="col-md-10">
+                <div class=field>
+                    <%= f.label :email, 'アドレス' %>
+                    <%= f.text_field :email, class:'control-label' %>
+                </div>
+            </div>
+            <%= f.submit '更新', class:"btn btn-default" %>
+        <% end %>

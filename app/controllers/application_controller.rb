@@ -1,5 +1,17 @@
 class ApplicationController < ActionController::Base
-    before_action :set_search
+	before_action :set_search
+	protect_from_forgery with: :exception
+
+	helper_method :current_cart
+
+	def current_cart
+		if session[:cart_id]
+			@cart = Cart.find(session[:cart_id])
+		else
+			@cart = Cart.create
+			session[:cart_id] = @cart.id
+		end
+	end
 
     def set_search
       @search = Item.ransack(params[:q])
@@ -9,15 +21,26 @@ class ApplicationController < ActionController::Base
 
 	def after_sign_in_path_for(resource)
 		#ログイン後のパス
-		user_path(resource)
+		case resource
+		when Admin
+		  admin_path
+		when User
+		  user_path(resource)
+		end
 	end
 
 	def after_sign_up_path_for(resource)
 		user_path(resource)
 	end
 
+
 	def after_sign_out_path_for(resource)
-	 	root_path
+		case resource
+		when :admin
+		  new_admin_session_path
+		when :user
+		  root_path
+		end
 	end
 
 	protected

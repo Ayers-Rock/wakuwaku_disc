@@ -21,8 +21,7 @@ class User < ApplicationRecord
   validates :email, format: { with: /\A\S+@\S+\.\S+\z/ }, length: { maximum: 40 },
     presence: true
 #半角アルファベット（大文字小文字数値）
-  validates :password, format: { with: /\A[a-zA-Z0-9]+\z/ },
-    presence: true
+
 
 #postal_codeは、数字３桁＋ハイフン＋数字４桁の形式
   validates :postal_code, presence: false, format: { with: /\A(\d{3}-\d{4}|^$)\z/ }
