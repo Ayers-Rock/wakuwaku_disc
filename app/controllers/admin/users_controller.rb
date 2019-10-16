@@ -6,6 +6,7 @@ class Admin::UsersController < Admin::AdminApplicationsController
   end
 
   def show
+    @user = User.find(params[:id])
   end
 
   def destroy
@@ -17,3 +18,4 @@ class Admin::UsersController < Admin::AdminApplicationsController
   def orders
   end
 end
+
