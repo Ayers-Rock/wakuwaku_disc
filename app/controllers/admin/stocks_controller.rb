@@ -1,5 +1,6 @@
 class Admin::StocksController < Admin::AdminApplicationsController
   def new
+    @stock = Item.find(params[:id])
   end
 
   def index
