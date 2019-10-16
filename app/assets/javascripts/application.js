@@ -16,6 +16,7 @@
 //= require jquery
 //= require bootstrap-sprockets
 //= require_tree .
+//= require cocoon
 
 $(window).ready( function() {
 
@@ -39,4 +40,4 @@ $(window).ready( function() {
       }
   })
 })
-//= require cocoon
+
