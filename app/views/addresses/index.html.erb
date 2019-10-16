@@ -1,19 +1,22 @@
 <h1>Addresses#index</h1>
 <p>Find me in app/views/addresses/index.html.erb</p>
 <h2>登録住所一覧</h2>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>名前</th>
-                <th>住所</th>
-            <tr>
-        </thead>
-        <tbody>
-            <%= @address, each do |address| %>
-            <tr>
-                <td><%= link_to name_path,(params[:id]) %>
-                <td><%= link_to power_address, (params[:id]) %></td>
-                <td><%= link_to '編集', edit_address_path@address %>|<td>
-                <td><%= link_to '削除', address_path@address method: :delete %><td>
-            </tr>
-        </tbody>
+        <table class="table">
+                <thead>
+                    <tr>
+                        <th>名前</th>
+                        <th>住所</th>
+                    <tr>
+                </thead>
+                <tbody>
+                    <% @addresses. each do |address| %>
+                        <tr>
+                            <td><%= address.first_name %></td>
+                            <td><%= address.prefecture %></td>
+                            <td><%= link_to '編集', edit_address_path(address) %>|</td>
+                            <%# <td><%= link_to '削除', address_path(address) method: :delete %>
+                        </tr>
+                        <% end %>
+                </tbody>
+        </table>
+        <%= link_to '追加する', new_address_path %>

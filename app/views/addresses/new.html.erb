@@ -1,17 +1,47 @@
 <h1>Addresses#new</h1>
 <p>Find me in app/views/addresses/new.html.erb</p>
 <h2>住所入力フォーム</h2>
-    <h4>名前(漢字)</h4>
-        姓<%= f.string :first_name %>  名<%= f.string :last_name %>
-    <h4>名前(カタカナ)</h4>
-        姓<%= f.string :first_name %>  名<%= f.string :last_name %>
-    <h4>郵便番号</h4>
-        <%= f.string :postal_code %>
-    <h4>都道府県</h4>
-        <%= f.string :prefecture %>
-    <h4>市区町村　番地</h4>
-        <%= f.string :city_address %>
-    <h4>建物名　部屋番号</h4>
-        <%= f.string :building %>
 
-    <%= f.submit, '登録' class:'btn btn default' %>
+        <%= form_for(@address) do |f| %>
+        <div class="field">
+            <P>名前</p>
+            <%= f.label :姓 %>
+            <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %>
+            <%= f.label :名 %>
+            <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" %>
+        </div>
+
+        <div class="field">
+            <p>名前（カタカナ）</p>
+            <%= f.label :姓 %>
+            <%= f.text_field :last_kana_name, autofocus: true, autocomplete: "last_kana_name" %>
+            <%= f.label :名 %>
+            <%= f.text_field :first_kana_name, autofocus: true, autocomplete: "first_kana_name" %>
+        </div>
+
+        <div class="field">
+            <%= f.label :郵便番号 %><br />
+            <%= f.text_field :postal_code, autofocus: true, autocomplete: "postal_code" %>
+        </div>
+
+        <div class="field">
+            <%= f.label :都道府県（任意） %><br />
+            <%= f.text_field :prefecture, autofocus: true, autocomplete: "prefecture"%>
+        </div>
+
+        <div class="field">
+            <%= f.label :市区町村　番地（任意） %><br />
+            <%= f.text_field :city_address, autofocus: true, autocomplete: "city_address" %>
+        </div>
+
+        <div class="field">
+            <%= f.label :建物名　部屋番号（任意） %><br />
+            <%= f.text_field :building, autofocus: true, autocomplete: "building" %>
+        </div>
+
+
+
+        <div class="actions">
+            <%= f.submit "登録する" %>
+        </div>
+        <% end %>
