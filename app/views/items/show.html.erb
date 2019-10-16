@@ -17,10 +17,10 @@
                     <p><%= item.price *1.1 %>(税込)</p>
             </div>
             <div class="col-md-1">
-                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                <!-- <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                     個数
                         <span class="caret"></span>
-                </button>
+                </button> -->
                 <ul class="dropdown-menu" role="menu">
                     <li role="presentation"><a role="menuitem" tabindex="-1" href="#">1</a></li>
                     <li role="presentation"><a role="menuitem" tabindex="-1" href="#">2</a></li>
@@ -36,7 +36,11 @@
             </div>
             <div class="col-md-5">
                 <button><%= link_to 'お気に入り', favorite_path(user.id) %></button>
-                <button><%=link_to 'カートに入れる', cart_items_path(user.id) %>
+                <%= form_for @cart_item do |f| %>
+                <%= f.number_field :amount %>
+                <%= f.hidden_field :item_id, value: @item.id %>
+                <%= f.submit 'カートに入れる' %>
+                <% end %>
             </div>
         </div>
         <div class="col-md-1"></div>
