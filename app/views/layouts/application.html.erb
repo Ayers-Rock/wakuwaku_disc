@@ -12,11 +12,12 @@
     <script src="https://ajaxzip3.github.io/ajaxzip3.js" charset="UTF-8"></script>
   </head>
 
-  <header>
-    <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-  </header>
+  
 
   <body>
+    <header>
+      <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+    </header>
     <dl class="searchbox">
       <%#= search_form_for @search, url: items_path do |f| %>
         <dt><%#= f.text_field :title_cont ,placeholder: 'アーティスト名やタイトル名など' %></dt>
