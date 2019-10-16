@@ -16,14 +16,5 @@ class ItemsController < ApplicationController
     @items = Item.all
   end
 
-  def create
-    @cart_item = CartItem.new(user_id)
-    @cart_item.user_id = current_user.id
-    if @cart_item.save
-    redirect_to book_path(@book.id)
-    else
-    @books = Book.all
-    render :index
-    end
-  end
+  
 end
