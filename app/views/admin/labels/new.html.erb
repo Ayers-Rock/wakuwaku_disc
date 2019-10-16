@@ -16,17 +16,17 @@
                         <th>id</th>
                         <th>レーベル</th>
                     </tr>
-                    <tr>
-                        <% @labels.each do |label| %>
-                            <td><%= label.id %></td>
-                            <td><%= label.label_name %></td>
-                            <td>
-                                <%= link_to admin_label_path(label.id), method: :delete do %>
-                                    <button>削除</button>
-                                <% end %>
-                            </td>
-                        <% end %>
-                    </tr>
+                    <% @labels.each do |label| %>
+                        <tr>
+                                <td><%= label.id %></td>
+                                <td><%= label.label_name %></td>
+                                <td>
+                                    <%= link_to admin_label_path(label.id), method: :delete do %>
+                                        <button>削除</button>
+                                    <% end %>
+                                </td>
+                        </tr>
+                    <% end %>
                 </table>
                 <%= link_to "商品管理へ戻る", admin_items_path %>
             </div>
