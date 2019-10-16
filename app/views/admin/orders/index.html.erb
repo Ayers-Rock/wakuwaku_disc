@@ -1,2 +1,31 @@
-<h1>Admin::Orders#index</h1>
-<p>Find me in app/views/admin/orders/index.html.erb</p>
+
+<% if notice %>
+<p id="notice"><%= notice %></p>
+<% end %>
+<br>
+<h2>受注履歴</h2>
+<br>
+
+<table>
+	<tr>
+		<th>購入者</th>
+		<th>購入日</th>
+		<th>購入価格総計</th>
+		<th>ステータス</th>
+		<th></th>
+
+	</tr>
+		<% @order_items.each do |order| %>
+		<tr>
+			<td text-align:center;><font size="4"><%= order.title %></font></td>
+			<td text-align:center;><font size="4"><%= order.quantity %></font></td>
+            <td text_align:center;><font size="4"><%= (@orders.total_price).to_i %>円</font></td>
+			<td><%= link_to "注文詳細", order_path(params[:id]) %></td>
+		</tr>
+		<% end %>
+        <%= paginate @orders_items %>
+
+<%# ページャーを入れる %>
+
+</table>
+<br>
