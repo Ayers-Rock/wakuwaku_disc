@@ -1,7 +1,6 @@
 class OrdersController < ApplicationController
   def new
-    @user = current_user
-    @cart_items = @user.cart_items
+    @cart_items = current_user.cart_items
   end
 
   def create
@@ -16,6 +15,7 @@ class OrdersController < ApplicationController
   end
 
   def thanks
+
   end
 
   def index

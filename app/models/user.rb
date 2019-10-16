@@ -32,4 +32,11 @@ class User < ApplicationRecord
 # Include default devise modules. Others available are:
 # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
 
+  def cart_sum
+    sum = 0
+    cart_items.each do |cart_item|
+      sum += cart_item.item.price * cart_item.amount * 1.10
+    end
+    return sum + 500
+  end
 end
