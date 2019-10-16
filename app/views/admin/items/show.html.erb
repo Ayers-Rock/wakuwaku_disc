@@ -37,8 +37,8 @@
                             <div>
                                 <p><%= "#{disc.disc_number}枚目" %></p>
                                 <% disc.tracks.each do |track|  %>
-                                    <% track = track.order_by(track_number: "DESC") %>
-                                    <p><%= track.track_name %></p>
+                                    <%# <% track = track.order_by(track_number: "DESC") %>
+                                    <p><span><%= "#{track.track_number}：" %></span><%= track.track_name %></p>
                                 <% end %>
                             </div>
                         <% end %>
