@@ -9,7 +9,12 @@ class ApplicationController < ActionController::Base
 
 	def after_sign_in_path_for(resource)
 		#ログイン後のパス
-		user_path(resource)
+		case resource
+		when Admin
+		  admin_path
+		when User
+		  user_path(resource)
+		end
 	end
 
 	def after_sign_up_path_for(resource)
@@ -17,7 +22,12 @@ class ApplicationController < ActionController::Base
 	end
 
 	def after_sign_out_path_for(resource)
-	 	root_path
+		case resource
+		when Admin
+		  new_admin_session_path
+		when User
+		  root_path
+		end
 	end
 
 	protected
