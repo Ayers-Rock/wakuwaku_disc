@@ -5,7 +5,7 @@ class CartItemsController < ApplicationController
     if @cart_item.save
     redirect_to cart_items_path
     else
-    #@cart_item = 
+      @items = Item.all
     render 'items/index'
     end
   end

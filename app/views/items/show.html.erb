@@ -35,7 +35,7 @@
                 </ul>
             </div>
             <div class="col-md-5">
-                <button><%= link_to 'お気に入り', favorite_path(user.id) %></button>
+                <button><%= link_to 'お気に入り', item_favorites_path(item.id) %></button>
                 <%= form_for @cart_item do |f| %>
                 <%= f.number_field :amount %>
                 <%= f.hidden_field :item_id, value: @item.id %>

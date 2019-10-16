@@ -4,7 +4,7 @@ class ItemsController < ApplicationController
 
   def ranking
     @items = Item.all
-    @all_ranks = Item.find(favorite.group(:note_id).order('count(item_id)desc').limit(20).plack(item_id)
+    @all_ranks = Item.find(favorite.group(:note_id).order('count(item_id)desc').limit(20).plack(item_id))
   end
 
   def show
@@ -14,6 +14,7 @@ class ItemsController < ApplicationController
 
   def index
     @items = Item.all
+    @cart_item = CartItem.new
   end
 
   

@@ -35,13 +35,14 @@ Rails.application.routes.draw do
     get :ranking, on: :collection
     get :rankings, on: :collection
     resource :reviews, only: [:create]
+    resources :favorites, only: [:create, :destroy, :index]
   end
 
   resources :orders do
     get :thanks, on: :collection
   end
 
-  resources :favorites, only: [:create, :destroy, :index]
+
 
   resources :cart_items, only: [:create, :destroy, :index]
 

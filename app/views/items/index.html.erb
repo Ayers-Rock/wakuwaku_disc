@@ -4,21 +4,21 @@
 <h1>CD一覧</h1>
     <div class="container">
         <div class="col-md-2">
-            <%= render.....%>
+            <%# render.....%>
         </div>
         <div class="row">
             <div class="col-md-9">
-                <% @items each do |item| %>
+                <% @items.each do |item| %>
                 <div class="col-md-3">
                     <%= attachment_image_tag @item, :cd_jacket_image, format:'jpeg', size:'60*60' %>
                 /<div>
                 <div class="col-md-4">
-                    <li><%= items.title %></li>
-                    <li><%= items.artist %></li>
-                    <li><%= items.price %></li>
+                    <li><%= item.title %></li>
+                    <li><%= item.artist %></li>
+                    <li><%= item.price %></li>
                 </div>
                 <div class="col-md-5">
-                    <button><%= link_to 'お気に入り', favorites_path(user.id), class:'btn btn-default' %></button>
+                    <button><%= link_to 'お気に入り', item_favorites_path(item.id), class:'btn btn-default' %></button>
                     <button><button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
                         個数
                         <span class="caret"></span>
@@ -35,7 +35,11 @@
                                 <li role="presentation"><a role="menuitem" tabindex="-1" href="#">9</a></li>
                                 <li role="presentation"><a role="menuitem" tabindex="-1" href="#">10</a></li>
                             </ul>
-                    <button><%= link_to "カートに入れる", cart_items_path(user.id), class="btn btn-default" %></button>
+                    <button><<%= form_for @cart_item do |f| %>
+                <%= f.number_field :amount %>
+                <%= f.hidden_field :item_id, value: item.id %>
+                <%= f.submit 'カートに入れる' %>
+                <% end %>
                 </div>
             </div>
         </div>
