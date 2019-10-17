@@ -1,22 +1,21 @@
-<h1>Addresses#new</h1>
-<p>Find me in app/views/addresses/new.html.erb</p>
+
 <h2>住所入力フォーム</h2>
 
-        <%= form_for(@address) do |f| %>
+    <%= form_for(@address, url: user_addresses_path(current_user.id)) do |f| %>
         <div class="field">
             <P>名前</p>
             <%= f.label :姓 %>
-            <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %>
-            <%= f.label :名 %>
             <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" %>
+            <%= f.label :名 %>
+            <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %>
         </div>
 
         <div class="field">
             <p>名前（カタカナ）</p>
             <%= f.label :姓 %>
-            <%= f.text_field :last_kana_name, autofocus: true, autocomplete: "last_kana_name" %>
-            <%= f.label :名 %>
             <%= f.text_field :first_kana_name, autofocus: true, autocomplete: "first_kana_name" %>
+            <%= f.label :名 %>
+            <%= f.text_field :last_kana_name, autofocus: true, autocomplete: "last_kana_name" %>
         </div>
 
         <div class="field">

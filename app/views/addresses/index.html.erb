@@ -11,12 +11,14 @@
                 <tbody>
                     <% @addresses. each do |address| %>
                         <tr>
-                            <td><%= address.first_name %></td>
-                            <td><%= address.prefecture %></td>
+                            <td><%= address.first_name %><%= address.last_name %>
+                            </td>
+                            <td><%= address.prefecture %><%= address.city_address %><%= address.building %>
+                            </td>
                             <td><%= link_to '編集', edit_user_address_path(address.user.id, address.id) %>|</td>
-                            <%# <td><%= link_to '削除', address_path(address) method: :delete %>
+                            <td><%= link_to '削除', user_address_path(address.user.id,address.id), method: :delete %></td>
                         </tr>
                         <% end %>
                 </tbody>
         </table>
-        <%= link_to '追加する', new_user_address_path %>
+        <%= link_to '追加する', new_user_address_path(current_user.id) %>

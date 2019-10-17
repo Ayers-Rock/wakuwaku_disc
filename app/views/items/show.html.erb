@@ -1,11 +1,6 @@
-<<<<<<< HEAD
-<h1>Items#show</h1>
-<p>Find me in app/views/items/show.html.erb</p>
-=======
 <%# <h1>Items#show</h1>
 <p>Find me in app/views/items/show.html.erb</p> %>
 <h2>CD詳細</h2>
->>>>>>> master
     <div class="container">
         <div class="col-md-10 col-md-offset-1">
             <div class="row">
@@ -22,7 +17,7 @@
                     <p><%= @item.price %>(税込)</p>
             </div>
             <div class="col-md-6">
-                <button><%= link_to 'お気に入り', favorite_path %></button>
+                <%# <button><%= link_to 'お気に入り', favorite_path %>
                 <%= form_for @cart_item do |f| %>
                 <%= f.number_field :amount %>
                 <%= f.hidden_field :item_id, value: @item.id %>

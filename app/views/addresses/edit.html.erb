@@ -2,44 +2,21 @@
 <p>Find me in app/views/addresses/edit.html.erb</p>
 <h2>住所入力フォーム</h2>
 
-<%= form_for(@address) do |f| %>
+    <%= form_for(@address, url: user_address_path(current_user.id, @address.id)) do |f| %>
         <div class="field">
             <P>名前</p>
             <%= f.label :姓 %>
-            <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %>
-            <%= f.label :名 %>
             <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" %>
+            <%= f.label :名 %>
+            <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %>
         </div>
 
         <div class="field">
             <p>名前（カタカナ）</p>
             <%= f.label :姓 %>
-            <%= f.text_field :last_kana_name, autofocus: true, autocomplete: "last_kana_name" %>
-            <%= f.label :名 %>
             <%= f.text_field :first_kana_name, autofocus: true, autocomplete: "first_kana_name" %>
-        </div>
-
-        <div class="field">
-            <%= f.label :電話番号 %><br />
-            <%= f.telephone_field :tel_number, autofocus: true, autocomplete: "tel_number" %>
-        </div>
-
-        <div class="field">
-            <%= f.label :メールアドレス %><br />
-            <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-        </div>
-
-        <div class="field">
-            <%= f.label :パスワード %>
-            <% if @minimum_password_length %>
-            <em>(<%= @minimum_password_length %> 文字以上)</em>
-            <% end %><br />
-            <%= f.password_field :password, autocomplete: "new-password" %>
-        </div>
-
-        <div class="field">
-            <%= f.label :パスワード（確認） %><br />
-            <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+            <%= f.label :名 %>
+            <%= f.text_field :last_kana_name, autofocus: true, autocomplete: "last_kana_name" %>
         </div>
 
         <div class="field">
@@ -65,6 +42,6 @@
 
 
         <div class="actions">
-            <%= f.submit "登録する" %>
+            <%= f.submit "更新する" %>
         </div>
         <% end %>

@@ -53,12 +53,11 @@ Rails.application.routes.draw do
   resources :genres, only: [:show]
 
   resources :artists, only: [:show]
-
+  
   
   resources :users, only: [:show, :edit, :update] do
     resources :addresses, only: [:index, :new, :create, :destroy, :edit, :update]
     
-
   end
 
 
