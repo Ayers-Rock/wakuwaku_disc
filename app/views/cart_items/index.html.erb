@@ -12,13 +12,13 @@
 		<th>削除</th>
 
 	</tr>
-		<% @cart.line_items.each do |item| %>
+		<% @cart_items.each do |item| %>
 		<tr>
 			<td text-align:center;><img height="80" src="<%=h item.good.image_url %>"/></td>
 			<td text-align:center;><font size="4"><%= item.good.title %></font></td>
-			<td text-align:center;><font size="4"><%= (item.good.price).to_i %>円</font></td>
 			<td text-align:center;><font size="4"><%= item.quantity %></font></td>
-			<td text-align:center;><font size="4"><%= (item.total_price).to_i %>円</font></td>
+            <td text-align:center;><font size="4"><%= (item.good.price).to_i %>円</font></td>
+			<td><%= link_to "削除", cart_item_path, method: :delete %></td>
 		</tr>
 		<% end %>
 
