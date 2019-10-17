@@ -15,7 +15,7 @@
 		<th></th>
 
 	</tr>
-		<% @order_items.each do |order| %>
+		<% @orders.each do |order| %>
 		<tr>
 			<td text-align:center;><font size="4"><%= order.title %></font></td>
 			<td text-align:center;><font size="4"><%= order.quantity %></font></td>
@@ -23,7 +23,7 @@
 			<td><%= link_to "注文詳細", order_path(params[:id]) %></td>
 		</tr>
 		<% end %>
-        <%= paginate @orders_items %>
+        <%= paginate @orders %>
 
 <%# ページャーを入れる %>
 
