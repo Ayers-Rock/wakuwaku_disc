@@ -9,7 +9,7 @@ class Admin::StocksController < Admin::AdminApplicationsController
   end
 
   def edit
-    @stock = Stock(params[:id])
+    @stock = Stock.find(params[:id])
   end
 
   def create
@@ -22,7 +22,7 @@ class Admin::StocksController < Admin::AdminApplicationsController
 
   def update
     stock = Stock.find(params[:id])
-    stock.update
+    stock.update(stock_params)
     redirect_to admin_item_path(stock.item.id)
   end
 

@@ -10,7 +10,20 @@
                         <th>入荷数</th>
                         <th></th>
                     </tr>
+                    <% @stocks.each do |stock| %>
+                        <tr>
+                            <td><%= stock.arrival_date %></td>
+                            <td><%= stock.item.title %></td>
+                            <td><%= stock.arrival_count %></td>
+                            <td>
+                                <%= link_to edit_admin_item_stock_path(stock.item.id, stock.id) do %>
+                                    <button>編集</button>
+                                <% end %>
+                            </td>
+                        </tr>
+                    <% end %>
                 </table>
+                <%= paginate @stocks %>
             </div>
         </div>
     </div>
