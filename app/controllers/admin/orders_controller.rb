@@ -1,9 +1,9 @@
-class Admin::OrdersController < Admin::AdminApplicationsControll
+class Admin::OrdersController < Admin::AdminApplicationsController
   
-  PER = 8
+  PER = 10
 
   def index
-    @order_items = Order.page(params[:page]).per(PER)
+    @orders = Order.page(params[:page]).per(PER)
   end
 
   def show
