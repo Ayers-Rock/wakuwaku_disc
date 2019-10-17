@@ -1,41 +1,28 @@
+<<<<<<< HEAD
 <h1>Items#show</h1>
 <p>Find me in app/views/items/show.html.erb</p>
+=======
+<%# <h1>Items#show</h1>
+<p>Find me in app/views/items/show.html.erb</p> %>
+<h2>CD詳細</h2>
+>>>>>>> master
     <div class="container">
         <div class="col-md-10 col-md-offset-1">
             <div class="row">
                 <div class="col-md-4">
-                    <%= attachment_image_tag @item, :cd_jacket_image, format:'jpeg', size:'80*80' %>
+                    <%= attachment_image_tag @item, :jacket_image, :fill, 100, 100, format:'jpeg' %>
                 </div>
                 <div class="col-md-8">
-                    <p><%= item.title %></p>
-                    <p><%= item.artist %></p>
+                    <p><%= @item.title %></p>
+                    <p><%= @item.artist %></p>
                 </div>
             </div>
             <div class="row">
                 <div class="col-md-2 col-md-offset-4">
-                    <p><%= item.price *1.1 %>(税込)</p>
+                    <p><%= @item.price %>(税込)</p>
             </div>
-            <div class="col-md-1">
-                <!-- <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                    個数
-                        <span class="caret"></span>
-                </button> -->
-                <ul class="dropdown-menu" role="menu">
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">1</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">2</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">3</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">4</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">5</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">6</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">7</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">8</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">9</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">10</a></li>
-                </ul>
-            </div>
-            <div class="col-md-5">
-                <button><%= link_to 'お気に入り', favorite_path(user.id) %></button>
-                <button><%= link_to 'カートに入れる', cart_items_path(user.id) %>
+            <div class="col-md-6">
+                <button><%= link_to 'お気に入り', favorite_path %></button>
                 <%= form_for @cart_item do |f| %>
                 <%= f.number_field :amount %>
                 <%= f.hidden_field :item_id, value: @item.id %>
@@ -52,14 +39,14 @@
                             <p>ジャンル・レーベル</p>
                                 <div class="row">
                                     <div class="col-md-2">
-                                        <%= item.title %><br>
-                                        <%= item.genre %>
+                                        <%= @item.title %><br>
+                                        <%= @item.genre %>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-2">
-                                        <%= item.disc.disc_number %>
-                                        <%= item.disc.track_name %>
+                                        <%# <%= item.disc.disc_number %>
+                                        <%# <%= item.disc.track_name %>
                                     </div>
                                 </div>
                     </div>
@@ -73,4 +60,4 @@
 
 
 
-        <p><%= link_to '商品一覧へ戻る' items_path %></p>
+        <%# <p><%= link_to '商品一覧へ戻る' items_path %>
