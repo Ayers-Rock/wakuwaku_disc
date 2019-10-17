@@ -5,10 +5,10 @@ class OrdersController < ApplicationController
 
   def create
     @order = order.new
-    @order.postal_code = params[id]
-    @order.prefecture = params[id]
-    @order.city_address = params[id]
-    @order.building = params[id]
+    @order.postal_code = params[:id]
+    @order.prefecture = params[:id]
+    @order.city_address = params[:id]
+    @order.building = params[:id]
   end
 
   def show
