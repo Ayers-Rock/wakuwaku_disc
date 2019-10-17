@@ -1,25 +1,29 @@
 class Admin::StocksController < Admin::AdminApplicationsController
   def new
     @stock = Stock.new
-    @item = Item.find_by(id: params[:format])
+    @item = Item.find(params[:item_id])
   end
 
   def index
+    @stocks = Stock.page(params[:page]).per(10).reverse_order
   end
 
   def edit
+    @stock = Stock(params[:id])
   end
 
   def create
-    @item = Item.find_by(id: params[:id])
+    item = Item.find(params[:item_id])
     stock = Stock.new(stock_params)
-    binding.pry
-    stock.item_id = @item.id
+    stock.item_id = item.id
     stock.save
-    redirect_to admin_item_path(@stock.item.id)
+    redirect_to admin_item_path(item.id)
   end
 
   def update
+    stock = Stock.find(params[:id])
+    stock.update
+    redirect_to admin_item_path(stock.item.id)
   end
 
   private

@@ -18,7 +18,7 @@
                         <p>現在の在庫数</p>
                         <%# <p>TODO:在庫数を入力する</%#> %>
                     </div>
-                    <%= form_with(model: @stock, url: admin_stocks_path, local: true) do |f| %>
+                    <%= form_with(model: @stock, url: admin_item_stocks_path, local: true) do |f| %>
                         <div>
                             <div>
                                 <p>入荷年月日</p>
@@ -27,7 +27,7 @@
                             <div>
                                 <p>入荷数入力</p>
                                 <p><%= f.number_field :arrival_count %></p>
-                                <%= f.hidden_field :id, value: @item.id %>
+                                <%# <%= f.hidden_field :id, value: @item.id %>
                             </div>
                             <%= f.submit "保存" %>
                         </div>
