@@ -9,7 +9,7 @@ class AddressesController < ApplicationController
   end
 
   def edit
-    @address = Address.find(params[:id])
+    @address = Address.find(params[:address_id])
   end
 
   def destroy
