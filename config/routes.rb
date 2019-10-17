@@ -37,7 +37,7 @@ Rails.application.routes.draw do
     get :ranking, on: :collection
     get :rankings, on: :collection
     resource :reviews, only: [:create]
-    resources :favorites, only: [:create, :destroy, :index]
+    resource :favorites, only: [:create, :destroy]
   end
 
   resources :orders do
@@ -56,7 +56,9 @@ Rails.application.routes.draw do
 
   resources :addresses, only: [:index, :new, :create, :destroy, :edit, :update]
 
-  resources :users, only: [:show, :edit, :update]
+  resources :users, only: [:show, :edit, :update] do
+    resources :favorites, only: [:index]
+  end
 
 
 
