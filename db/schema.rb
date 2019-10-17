@@ -82,7 +82,7 @@ ActiveRecord::Schema.define(version: 2019_10_16_034949) do
     t.integer "label_id", null: false
     t.integer "genre_id", null: false
     t.string "title", null: false
-    t.string "jacket_image_id", null: false
+    t.string "jacket_image_id"
     t.integer "price", null: false
     t.integer "status", null: false
     t.datetime "deleted_at"
