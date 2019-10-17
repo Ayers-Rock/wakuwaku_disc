@@ -1,76 +1,28 @@
-
-<h1>Items#index</h1>
-<p>Find me in app/views/items/index.html.erb</p>
-<h1>CD一覧</h1>
-    <div class="container">
-        <div class="col-md-2">
-            <%# render.....%>
-        </div>
-        <div class="row">
-            <div class="col-md-9">
-                <% @items.each do |item| %>
-                <div class="col-md-3">
-                    <%= attachment_image_tag @item, :cd_jacket_image, format:'jpeg', size:'60*60' %>
-                /<div>
-                <div class="col-md-4">
-                    <li><%= item.title %></li>
-                    <li><%= item.artist %></li>
-                    <li><%= item.price %></li>
+<h2>CD一覧</h2>
+<% @items. each do |item| %>
+        <div class="col-md-10 col-md-offset-1">
+            <div class="row">
+                <div class="col-md-2">
+                    <%= attachment_image_tag item, :jacket_image, :fill, 100, 100, format:'jpeg' %>
                 </div>
-                <div class="col-md-5">
-                    <button><%= link_to 'お気に入り', item_favorites_path(item.id), class:'btn btn-default' %></button>
-                    <button><button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                        個数
-                        <span class="caret"></span>
-                    </button>
-                        <ul class="dropdown-menu" role="menu">
-                            <li role="presentation"><a role="menuitem" tabindex="-1" href="#">1</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">2</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">3</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">4</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">5</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">6</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">7</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">8</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">9</a></li>
-                                <li role="presentation"><a role="menuitem" tabindex="-1" href="#">10</a></li>
-                            </ul>
-                    <button><<%= form_for @cart_item do |f| %>
-                <%= f.number_field :amount %>
-                <%= f.hidden_field :item_id, value: item.id %>
-                <%= f.submit 'カートに入れる' %>
-                <% end %>
+                <div class="col-md-10">
+                    <p><%= link_to "#{item.title}",item_path(item.id) %></p>
+                    <p><%= item.artist %></p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2 col-md-offset-4">
+                    <p><%= item.price %>(税込)</p>
+                </div>
+                <div class="col-md-6">
+                    <button><%= link_to 'お気に入り', favorites_path %></button>
+                                <%= form_for @cart_item do |f| %>
+                                <%= f.number_field :amount %>
+                                <%= f.hidden_field :item_id, value: item.id %>
+                                <%= f.submit 'カートに入れる' %>
+                            <% end %>
                 </div>
             </div>
         </div>
-            <% end %>
-        <div class="col-md-1">
-        </div>
     </div>
-
-<nav>
-	<ul class="pagination">
-		<li>
-			<a href="#" aria-label="前のページへ">
-				<span aria-hidden="true">«</span>
-			</a>
-		</li>
-		<li><a href="#">1</a></li>
-		<li><a href="#">2</a></li>
-		<li><a href="#">3</a></li>
-		<li><a href="#">4</a></li>
-		<li><a href="#">5</a></li>
-		<li>
-			<a href="#" aria-label="次のページへ">
-				<span aria-hidden="true">»</span>
-			</a>
-		</li>
-	</ul>
-</nav>
-
-<% @search_items.each do |item| %>
-    <%= attachment_image_tag item, :jacket_image, :fill, 60, 60, format: 'jpeg', class: "img-circle pull-left profile-img", fallback: "no_image.jpg" %>
-    <p><%= item.title %></p>
-    <p><%= item.artist.artist_name %></p>
-    <p>¥<%= item.price *1.1 %>(税込)</p>
-<% end %>
+    <% end %>
