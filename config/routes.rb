@@ -51,9 +51,12 @@ Rails.application.routes.draw do
 
   resources :artists, only: [:show]
 
-  resources :addresses, only: [:index, :new, :create, :destroy, :edit, :update]
+  
+  resources :users, only: [:show, :edit, :update] do
+    resources :addresses, only: [:index, :new, :create, :destroy, :edit, :update]
+    
 
-  resources :users, only: [:show, :edit, :update]
+  end
 
 
   #root 'home#index'

@@ -1,24 +1,24 @@
 class Address < ApplicationRecord
     belongs_to :user
-    before_save { self.email = email.downcase }
+    # before_save { self.email = email.downcase }
   # nameの文字数は、1文字から10文字まで
   #全角ひらがな、漢字
-  validates :first_name, format: { with: /\A[一-龥ぁ-ん]+\z/ }, length: { minimum: 1, maximum: 10 },
-    presence: true
-  validates :last_name, format: { with: /\A^[一-龥ぁ-ん]+\z/ }, length: { minimum: 1, maximum: 10 },
-    presence: true
-#全角カタカナ
-  validates :first_kana_name, format: { with: /\A^([ァ-ン]|ー)+$\z/ }, length: { minimum: 1, maximum: 10 },
-    presence: true
-  validates :last_kana_name, format: { with: /\A^([ァ-ン]|ー)+$\z/ }, length: { minimum: 1, maximum: 10 },
-    presence: true
+#   validates :first_name, format: { with: /\A[一-龥ぁ-ん]+\z/ }, length: { minimum: 1, maximum: 10 },
+#     presence: true
+#   validates :last_name, format: { with: /\A^[一-龥ぁ-ん]+\z/ }, length: { minimum: 1, maximum: 10 },
+#     presence: true
+# #全角カタカナ
+#   validates :first_kana_name, format: { with: /\A^([ァ-ン]|ー)+$\z/ }, length: { minimum: 1, maximum: 10 },
+#     presence: true
+#   validates :last_kana_name, format: { with: /\A^([ァ-ン]|ー)+$\z/ }, length: { minimum: 1, maximum: 10 },
+#     presence: true
 
 #tel_numberは、ハイフンなしの数字11桁
-  validates :tel_number, format: { with: /\A\d{11}\z/ },
-    presence: true
+  # validates :tel_number, format: { with: /\A\d{11}\z/ },
+  #   presence: true
 #emailは、30文字まで
-  validates :email, format: { with: /\A\S+@\S+\.\S+\z/ }, length: { maximum: 40 },
-    presence: true
+  # validates :email, format: { with: /\A\S+@\S+\.\S+\z/ }, length: { maximum: 40 },
+  #   presence: true
 #半角アルファベット（大文字小文字数値）
 
 

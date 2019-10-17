@@ -13,10 +13,10 @@
                         <tr>
                             <td><%= address.first_name %></td>
                             <td><%= address.prefecture %></td>
-                            <td><%= link_to '編集', edit_address_path(address) %>|</td>
+                            <td><%= link_to '編集', edit_user_address_path(address) %>|</td>
                             <%# <td><%= link_to '削除', address_path(address) method: :delete %>
                         </tr>
                         <% end %>
                 </tbody>
         </table>
-        <%= link_to '追加する', new_address_path %>
+        <%= link_to '追加する', new_user_address_path %>

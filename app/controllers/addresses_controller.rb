@@ -16,9 +16,10 @@ class AddressesController < ApplicationController
   end
 
   def create
-    @address = Address.find(params[:id])
-    if @address.create(address_params)
-      redirect_to address_path(@user.id)
+    @address = Address.new(address_params)
+    @address.user_id = User.find(params[:user_id])
+    if @address.save
+      redirect_to address_path(@address.user.id)
     end
   end
 
@@ -29,7 +30,7 @@ class AddressesController < ApplicationController
   def update
     @address = Address.find(params[:id])
     if @address.update(address_params)
-      redirect_to address_path(@user.id)
+      redirect_to address_path(@address.user.id)
     end
   end
 
@@ -43,6 +44,6 @@ class AddressesController < ApplicationController
 
   private
   def address_params
-    params.require(:address).permit(:first_name, :last_name, :first_kana_name, :last_kana_name, :prefecture, :city_address, :building)
+    params.require(:address).permit(:first_name, :last_name, :first_kana_name, :last_kana_name, :prefecture, :city_address, :building, :postal_code)
   end
 end
