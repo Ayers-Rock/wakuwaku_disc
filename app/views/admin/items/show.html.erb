@@ -1,5 +1,3 @@
-<h1>Admin::Items#show</h1>
-<p>Find me in app/views/admin/items/show.html.erb</p>
 
 <div class="container">
     <div class="row">
@@ -68,7 +66,7 @@
     <div class="row">
         <div class="col-cd-12">
             <div>
-                <%= link_to new_admin_stock_path do %>
+                <%= link_to new_admin_item_stock_path(@item.id) do %>
                     <button>在庫追加</button>
                 <% end %>
                 <%= link_to edit_admin_item_path(@item.id) do %>
