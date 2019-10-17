@@ -18,9 +18,11 @@ Rails.application.routes.draw do
 
     resources :orders, only: [:index, :show]
 
-    resources :stocks, only: [:new, :index, :edit, :create, :update]
+    resources :stocks, only: [:index]
 
-    resources :items
+    resources :items do
+      resources :stocks, only: [:new, :create, :edit, :update]
+    end
 
     resources :users, only: [:index, :edit, :show, :update, :destroy] do
       get :orders, on: :member
@@ -35,13 +37,14 @@ Rails.application.routes.draw do
     get :ranking, on: :collection
     get :rankings, on: :collection
     resource :reviews, only: [:create]
+    resources :favorites, only: [:create, :destroy, :index]
   end
 
   resources :orders do
     get :thanks, on: :collection
   end
 
-  resources :favorites, only: [:create, :destroy, :index]
+
 
   resources :cart_items, only: [:create, :destroy, :index]
 
@@ -59,13 +62,7 @@ Rails.application.routes.draw do
   end
 
 
-  #root 'home#index'
 
-  resources :carts, only: [:show]
-
-  post '/add_item' => 'carts#add_item'
-  post '/update_item' => 'carts#update_item'
-  delete '/delete_item' => 'carts#delete_item'
 
 
 
