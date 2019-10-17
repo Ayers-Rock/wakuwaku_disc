@@ -5,7 +5,7 @@ class FavoritesController < ApplicationController
     favorite.save
 
     @items=Item.all
-    @item = favorite.item_id
+    @item = favorite.item
     @favorites = Favorite.where(user_id: current_user.id)
     @cart_item = CartItem.new
   end
