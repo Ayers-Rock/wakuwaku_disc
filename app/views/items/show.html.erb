@@ -17,7 +17,10 @@
                     <p><%= @item.price %>(税込)</p>
             </div>
             <div class="col-md-6">
-                <button><%= link_to 'お気に入り', favorite_path %></button>
+            <div>
+                <%= render 'favorites/favorite', item: @item %>
+            </div>
+                <%# <button><%= link_to 'お気に入り', favorite_path %>
                 <%= form_for @cart_item do |f| %>
                 <%= f.number_field :amount %>
                 <%= f.hidden_field :item_id, value: @item.id %>
