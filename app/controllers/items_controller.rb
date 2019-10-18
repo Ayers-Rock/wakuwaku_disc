@@ -11,6 +11,9 @@ class ItemsController < ApplicationController
     @item = Item.find(params[:id])
     # @user = User.find(params[:id])
     @cart_item = CartItem.new
+    @reviews = Review.where(item_id: @item.id)
+    # binding.pry
+    @review = Review.new
   end
 
   def index

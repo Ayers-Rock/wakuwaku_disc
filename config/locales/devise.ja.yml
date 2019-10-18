@@ -1,4 +1,3 @@
- ja.activerecord.errors.models.user.attributes.email.blank
 ja:
   activerecord:
     attributes:
