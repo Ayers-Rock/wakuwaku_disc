@@ -38,7 +38,7 @@ Rails.application.routes.draw do
   end
 
   resources :orders do
-    get :thanks, on: :collection
+    get :thanks, on: :member
   end
 
   resources :favorites, only: [:create, :destroy, :index]

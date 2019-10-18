@@ -3,12 +3,13 @@
 <table border="1">
   <tr>
   <tr>
+    <%= @orders.each do |order| %>
     <th>ご注文</th><th><%= link_to "(詳細へ)" ,order_path(:id) %></th>
   </tr>
-    <th>注文番号</th><th>商品</th><th>配送先</th><th>配送状況</th><th>レビューを書く</th>
+    <th>商品</th><th>配送先</th><th>配送状況</th><th>レビューを書く</th>
   </tr>
   <tr>
-    <td></td><td>酸っぱい</td>
+    <td></td><td></td><td></td><td></td>
   </tr>
 </table>
 <%

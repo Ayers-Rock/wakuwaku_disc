@@ -7,7 +7,6 @@ class OrdersController < ApplicationController
 
   def create
     order = current_user.orders.build(order_params)
-    @cart_items = CartItem.where(user_id: current_user.id)
     order.save
     @cart_items = CartItem.where(user_id: current_user.id)
     @cart_items.each do |cart_item|
@@ -17,19 +16,21 @@ class OrdersController < ApplicationController
       @order_item.order_id = order.id
       @order_item.purchase_price = cart_item.item.price
       @order_item.save
-      cart_item.destroy
+      # cart_item.destroy
     end
-  　redirect_to thanks_orders_path
+    redirect_to thanks_order_path(order.id)
   end
 
   def show
   end
 
   def thanks
-
+    @order_items = OrderItem.where(order_id: params[:id])
+    @order = Order.find(params[:id])
   end
 
   def index
+    @orders = Order.all
   end
 
   def edit

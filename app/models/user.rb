@@ -40,4 +40,5 @@ class User < ApplicationRecord
     end
     return sum + 500
   end
+
 end

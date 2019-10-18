@@ -16,7 +16,7 @@
     <% if user_signed_in? %>
       <div>
         <div>
-          <p>こんにちは<%= current_user.name %>さん<br>
+          <p>こんにちは<%= current_user.first_name %>さん<br>
           マイページは<%= link_to "こちら", user_path(current_user.id) %></p>
         </div>
         <dl class="searchbox">
@@ -29,11 +29,7 @@
         <li class=""><%= link_to "マイページ", user_path(current_user.id), class:"glyphicon glyphicon-user" %></li>
         <li class=""><%= link_to "カート", cart_items_path, class: "glyphicon glyphicon-shopping-cart" %></li>
       <div>
-      <%
-=begin%>
- アイコンとstyleは後で 
-<%
-=end%>
+
     <% else %>
     <div>
         <div>
@@ -51,6 +47,9 @@
         <li class=""><%= link_to "カート", cart_items_path, class: "glyphicon glyphicon-shopping-cart" %></li>
       <div>
     <% end %>
+
+ TODO:スタイルとアイコン 
+
   </header>
 
     <%= yield %>
