@@ -16,7 +16,7 @@
                     <p><%= item.price %>(税込)</p>
                 </div>
                 <div class="col-md-6">
-                    <div>
+                    <div id="favorite-button-<%=item.id %>">
                         <%= render 'favorites/favorite', item: item %>
                     </div>
                     <div>

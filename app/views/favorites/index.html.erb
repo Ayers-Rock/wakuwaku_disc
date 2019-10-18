@@ -3,16 +3,16 @@
         <div class="col-md-12">
             <div>
                 <h2>お気に入りリスト</h2>
-                <% @favorites.each do |favorite| %>
+                <% @favorites.each do |item| %>
                     <div>
-                        <p><%= link_to "#{favorite.item.title}", item_path(favorite.item.id) %></p>
-                        <p><%= favorite.item.artist.artist_name %></p>
+                        <p><%= link_to "#{item.title}", item_path(item.id) %></p>
+                        <p><%= item.artist.artist_name %></p>
                     </div>
                     <div>
-                        <p><%= favorite.item.price %>(税込)</p>
+                        <p><%= item.price %>(税込)</p>
                     </div>
-                    <div>
-                        <%# <%= render 'favorites/user_favorite', favorite: favorite %>
+                    <div id="favorite-button-<%= item.id %>">
+                        <%= render 'favorites/favorite', item: item %>
                     </div>
                 <% end %>
             </div>

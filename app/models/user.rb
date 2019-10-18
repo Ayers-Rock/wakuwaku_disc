@@ -31,6 +31,7 @@ class User < ApplicationRecord
 # Include default devise modules. Others available are:
 # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
 has_many :favorites, dependent: :destroy
+has_many :favorite_items, through: :favorites, source: :item
 
   def favorited_by(current_user)
     favorites.where(user_id: current_user.id).exitsts?

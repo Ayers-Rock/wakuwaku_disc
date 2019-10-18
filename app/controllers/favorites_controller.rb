@@ -9,6 +9,14 @@ class FavoritesController < ApplicationController
     # @item = favorite.
     @item = item
     @favorites = Favorite.where(user_id: current_user.id)
+
+    # @favorites.each do |favorite|
+    #   @favorite = Favorite.new
+    #   @favorite.user_id = favorite.user.id
+    #   @favorite.item_id = favorite.item.id
+    #   @favorite.save
+    # end
+
     @cart_item = CartItem.new
   end
 
@@ -20,11 +28,19 @@ class FavoritesController < ApplicationController
     @items = Item.all
     @item = item
     @favorites = Favorite.where(user_id: current_user.id)
+
+    # @favorites.each do |favorite|
+    #   @favorite.user_id = favorite.user.id
+    #   @favorite.item_id = favorite.item.id
+    #   @favorite.destroy
+    # end
+
     @cart_item = CartItem.new
   end
 
   def index
-    @favorites = Favorite.where(user_id: current_user.id).reverse_order
+    # @favorites = Favorite.where(user_id: current_user.id).reverse_order
+    @favorites = current_user.favorite_items
     # @cart_items =
   end
 end
