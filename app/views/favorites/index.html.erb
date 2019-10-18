@@ -5,9 +5,6 @@
                 <h2>お気に入りリスト</h2>
                 <% @favorites.each do |favorite| %>
                     <div>
-                        <%= attachment_image_tag favorite.item, :jacket_image, :fill, 100, 100, format:'jpeg' %>
-                    </div>
-                    <div>
                         <p><%= link_to "#{favorite.item.title}", item_path(favorite.item.id) %></p>
                         <p><%= favorite.item.artist.artist_name %></p>
                     </div>
@@ -15,7 +12,7 @@
                         <p><%= favorite.item.price %>(税込)</p>
                     </div>
                     <div>
-                        <%# <button><%= link_to 'お気に入り', user_favorites_path(current_user.id) %>
+                        <%# <%= render 'favorites/user_favorite', favorite: favorite %>
                     </div>
                 <% end %>
             </div>
