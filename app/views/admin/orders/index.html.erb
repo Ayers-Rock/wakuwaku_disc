@@ -15,12 +15,13 @@
 		<th></th>
 
 	</tr>
-		<% @orders.each do |order| %>
+		<% @order.each do |order| %>
 		<tr>
-			<td text-align:center;><font size="4"><%= order.title %></font></td>
-			<td text-align:center;><font size="4"><%= order.quantity %></font></td>
-            <td text_align:center;><font size="4"><%= @orders.total_price.to_i %>円</font></td>
-			<td><%= link_to "注文詳細", order_path(params[:id]) %></td>
+			<td text-align:center;><font size="4"><%= order.user_id %></font></td>
+			<td text-align:center;><font size="4"><%= order.created_at %></font></td>
+            <td text_align:center;><font size="4"><%= order.total_price %>円</font></td>
+			<td text_align:center;><font size="4"><%= order.status %></font></td>
+			<td><%= link_to "注文詳細", admin_order_path(order.id) %></td>
 		</tr>
 		<% end %>
         <%= paginate @orders %>
