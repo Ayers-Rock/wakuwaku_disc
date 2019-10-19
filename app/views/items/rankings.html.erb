@@ -1,2 +1,24 @@
-<h1>Items#rankings</h1>
-<p>Find me in app/views/items/rankings.html.erb</p>
+// <h1>Items#rankings</h1>
+// <p>Find me in app/views/items/rankings.html.erb</p>
+
+
+        <div class="container">
+            <div class="theTarget">
+                <div style="background-image: url(item/1/jacket_image)"></div>
+                <div style="background-image: url(item/2/jacket_image)"></div>
+                <div style="background-image: url(item/3/jacket_image)"></div>
+                <div style="background-image: url(item/4/jacket_image)"></div>
+                <div style="background-image: url(item/5/jacket_image)"></div>
+                <div style="background-image: url(item/6/jacket_image)"></div>
+                <div style="background-image: url(item/7/jacket_image)"></div>
+                <div style="background-image: url(item/8/jacket_image)"></div>
+                <div style="background-image: url(item/9/jacket_image)"></div>
+                <div style="background-image: url(item/10/jacket_image)"></div>
+            </div>
+        </div>
+
+        <h2>月間ランキング</h2>
+            <div class="container">
+                <div class="row">
+                    <% @item_f_ranks. each with_index(1) do |rank_item, i| %>
+                    <>

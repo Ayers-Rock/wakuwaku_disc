@@ -2,50 +2,38 @@
 <p>Find me in app/views/items/ranking.html.erb</p>
 <h1>ランキング</h1>
     <div class="container">
-            <div class="col-md-3">
-                <%= render .....%>
+            <div class="row">
+                <div class="col-md-2">
+                    <div class="ui-tab">
+                        <ul>
+                            <li>週間ランキング</li>
+                            <li>いいねランキング</li>
+                            <li>月間ランキング</li>
+                        <ul>
+                </div>
             </div>
-            <div class="col-md-9">
-                <% @items each do |item| %>@all_ranks.each.with_index(1) do |note, i| %>
-                    <div class="row">
-                        <div class="col-md-2">
-                            <% users.each_with_index do |user, i|
-                                puts "#{i+1}: #{user.name}" end %>
-                        </div>
-                        <div class="col-md-2">
-                            <%= attachment_image_tag @items :jacket_image_id, :format 'jpeg', :size '60*60' %>
-                        </div>
-                        <div class="col-md-4">
-                            <ul>
-                                <li><%= item.title %></li>
-                                <li><%= item.artist %></li>
-                                <li><%= item.price %></li>
-                            <ul>
-                        </div>
-                        <div class="col-md-1">
-                            <div class="btn-group">
-                                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                                    個数
-                                    <span class="caret"></span>
-                                </button>
-                                <ul class="dropdown-menu" role="menu">
-                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">1</a></li>
-                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">2</a></li>
-                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">3</a></li>
-                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">4</a></li>
-                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">5</a></li>
-                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">6</a></li>
-                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">7</a></li>
-                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">8</a></li>
-                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">9</a></li>
-                                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">10</a></li>
-                                </ul>
+            <div class="row">
+                <div class="col-md-10">
+                    <div class="flagment-1">
+                        <div class="row">
+                            <div class="col-md-2">
+                                <% users.each_with_index do |user, i|
+                                    puts "#{i+1}: #{user.name}" end %>
                             </div>
-                        </div>
-                        <div class="col-md-3">
-                            <button><%= link_to 'お気に入り', favorites_path(user_id) %></button>
-                            <button><%= link_to 'カートに入れる', cart_items_path(user_id) %><button>
-                        </div>
+                            <div class="col-md-2">
+                                <%= attachment_image_tag @items :jacket_image_id, :format 'jpeg', :size '60*60' %>
+                            </div>
+                            <div class="col-md-4">
+                                <ul>
+                                    <li><%= item.title %></li>
+                                    <li><%= item.artist %></li>
+                                    <li><%= item.price %></li>
+                                <ul>
+                            </div>
+                            <div class="col-md-4">
+                                <button><%= link_to 'お気に入り', favorites_path(user_id) %></button>
+                                <button><%= link_to 'カートに入れる', cart_items_path(user_id) %><button>
+                            </div>
                     </div>
                 <% end %>
             </div>
