@@ -6,7 +6,7 @@ class Item < ApplicationRecord
 
     has_many :cart_items
     has_many :reviews
-    has_many :favorites
+    has_many :favorites, dependent: :destroy
     has_many :order_items
 
     belongs_to :genre
@@ -16,14 +16,18 @@ class Item < ApplicationRecord
     attachment :jacket_image
     enum status: {available: 0, not_available: 1}
 
-validates :artist_id, presence: true
-validates :label_id, presence: true
-validates :genre_id, presence: true
-validates :title, presence: true
-# validates :jacket_image_id, presence: true, file_content_type: { allow: ['image/jpeg', 'image/png'] }
-validates :price, presence: true
-validates :status, presence: true
+    validates :artist_id, presence: true
+    validates :label_id, presence: true
+    validates :genre_id, presence: true
+    validates :title, presence: true
+    # validates :jacket_image_id, presence: true, file_content_type: { allow: ['image/jpeg', 'image/png'] }
+    validates :price, presence: true
+    validates :status, presence: true
 
     acts_as_paranoid
+
+    def favorited_by?(current_user)
+        favorites.where(user_id: current_user.id).exists?
+    end
 
 end

@@ -1,10 +1,11 @@
 class ReviewsController < ApplicationController
   def create
     review = Review.new(review_params)
-    review.item_id = Item.find(params[:item_id])
-    current_user = review.user_id
+    item = Item.find(params[:item_id])
+    review.item_id = item.id
+    review.user_id = current_user.id
     review.save
-    redirect_to item_path(params[:id])
+    redirect_to item_path(params[:item_id])
   end
 
   private
