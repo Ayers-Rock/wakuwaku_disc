@@ -1,5 +1,5 @@
 <h2>CD一覧</h2>
-<% @items. each do |item| %>
+<% @items.each do |item| %>
     <div class="container">
         <div class="col-md-10 col-md-offset-1">
             <div class="row">
@@ -16,12 +16,16 @@
                     <p><%= item.price %>(税込)</p>
                 </div>
                 <div class="col-md-6">
-                    <%# <button><%= link_to 'お気に入り', favorites_path %>
-                                <%= form_for @cart_item do |f| %>
-                                <%= f.number_field :amount %>
-                                <%= f.hidden_field :item_id, value: item.id %>
-                                <%= f.submit 'カートに入れる' %>
-                            <% end %>
+                    <div id="favorite-button-<%=item.id %>">
+                        <%= render 'favorites/favorite', item: item %>
+                    </div>
+                    <div>
+                        <%= form_for @cart_item do |f| %>
+                            <%= f.number_field :amount %>
+                            <%= f.hidden_field :item_id, value: item.id %>
+                            <%= f.submit 'カートに入れる' %>
+                        <% end %>
+                    </div>
                 </div>
             </div>
         </div>

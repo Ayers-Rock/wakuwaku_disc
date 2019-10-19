@@ -37,11 +37,11 @@ Rails.application.routes.draw do
     get :ranking, on: :collection
     get :rankings, on: :collection
     resource :reviews, only: [:create]
-    resources :favorites, only: [:create, :destroy, :index]
+    resource :favorites, only: [:create, :destroy]
   end
 
   resources :orders do
-    get :thanks, on: :collection
+    get :thanks, on: :member
   end
 
 
@@ -53,11 +53,13 @@ Rails.application.routes.draw do
   resources :genres, only: [:show]
 
   resources :artists, only: [:show]
-  
-  
+
+
+  resources :addresses, only: [:index, :new, :create, :destroy, :edit, :update]
+
   resources :users, only: [:show, :edit, :update] do
     resources :addresses, only: [:index, :new, :create, :destroy, :edit, :update]
-    
+    resources :favorites, only: [:index]
   end
 
 
