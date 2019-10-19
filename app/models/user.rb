@@ -30,6 +30,16 @@ class User < ApplicationRecord
   # validates :building
 # Include default devise modules. Others available are:
 # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  has_many :cart_items
+  has_many :addresses
+  has_many :orders
+  def cart_sum
+    sum = 0
+    cart_items.each do |cart_item|
+      sum += cart_item.item.price * cart_item.amount * 1.10
+    end
+    return sum + 500
+  end
 has_many :favorites, dependent: :destroy
 has_many :favorite_items, through: :favorites, source: :item
 
