@@ -11,19 +11,48 @@
     <script type="text/javascript" src="//jpostal-1006.appspot.com/jquery.jpostal.js"></script>
     <script src="https://ajaxzip3.github.io/ajaxzip3.js" charset="UTF-8"></script>
   </head>
+<body>
+  <header>
+    <% if user_signed_in? %>
+      <div>
+        <div>
+          <p>こんにちは<%= current_user.first_name %>さん<br>
+          マイページは<%= link_to "こちら", user_path(current_user.id) %></p>
+        </div>
+        <dl class="searchbox">
+          <%= search_form_for @search, url: items_path do |f| %>
+            <dt><%= f.text_field :title_cont ,placeholder: 'アーティスト名やタイトル名など' %></dt>
+            <dd><%= f.submit "検索" , class: 'search-btn'%></dd>
+          <% end %>
+        </dl>
+        <li class=""><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"glyphicon glyphicon-log-out" %></li>
+        <li class=""><%= link_to "マイページ", user_path(current_user.id), class:"glyphicon glyphicon-user" %></li>
+        <li class=""><%= link_to "カート", cart_items_path, class: "glyphicon glyphicon-shopping-cart" %></li>
+      <div>
+
+    <% else %>
+    <div>
+        <div>
+          <p>こんにちはゲストさん<br>
+          無料会員登録は<%= link_to "こちら", new_user_registration_path %>すでに会員の方は<%= link_to "ログイン", new_user_session_path %></p>
+        </div>
+        <dl class="searchbox">
+          <%= search_form_for @search, url: items_path do |f| %>
+            <dt><%= f.text_field :title_cont ,placeholder: 'アーティスト名やタイトル名など' %></dt>
+            <dd><%= f.submit ("検索") , class: 'search-btn'%></dd>
+          <% end %>
+        </dl>
+        <li class=""><%= link_to "ログイン", new_user_session_path, class: "glyphicon glyphicon-log-in" %></li>
+        <li class=""><%= link_to "新規会員登録", new_user_registration_path %></li>
+        <li class=""><%= link_to "カート", cart_items_path, class: "glyphicon glyphicon-shopping-cart" %></li>
+      <div>
+    <% end %>
+
+ TODO:スタイルとアイコン 
+
+  </header>
 
 
-
-  <body>
-    <header>
-      <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-    </header>
-    <dl class="searchbox">
-      <%#= search_form_for @search, url: items_path do |f| %>
-        <dt><%#= f.text_field :title_cont ,placeholder: 'アーティスト名やタイトル名など' %></dt>
-        <dd><%#= f.submit ("検索") , class: 'search-btn'%></dd>
-      <%# end %>
-    </dl>
     <%= yield %>
   </body>
 
