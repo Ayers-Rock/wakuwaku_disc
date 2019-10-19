@@ -14,7 +14,7 @@
 	</tr>
 		<% @cart_items.each do |cart_item| %>
 		<tr>
-			<td text-align:center;><%= attachment_image_tag cart_item.item, :jacket_image, :fill, 100, 100, size: '100x100', fallback: 'no_image.jpg' %></td>
+			<td text-align:center;><%= attachment_image_tag cart_item.items, :jacket_image, :fill, 100, 100, size: '100x100', fallback: 'no_image.jpg' %></td>
 			<td text-align:center;><font size="4"><%= cart_item.item.title %></font></td>
 			<td text-align:center;><font size="4"><%= cart_item.amount %></font></td>
             <td text-align:center;><font size="4"><%= cart_item.item.price %>円</font></td>
