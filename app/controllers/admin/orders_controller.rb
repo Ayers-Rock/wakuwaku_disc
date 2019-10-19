@@ -8,5 +8,6 @@ class Admin::OrdersController < Admin::AdminApplicationsController
   end
 
   def show
+    @order = Order.where(user_id: current_user.id)
   end
 end
