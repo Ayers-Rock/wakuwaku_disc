@@ -1,19 +1,35 @@
 <h2>購入履歴</h2>
 
 <table border="1">
+  
   <tr>
-  <tr>
-    <%= @orders.each do |order| %>
-    <th>ご注文</th><th><%= link_to "(詳細へ)" ,order_path(:id) %></th>
+      <th>商品</th>
+      <th>配送状況</th>
+      <th></th>
   </tr>
-    <th>商品</th><th>配送先</th><th>配送状況</th><th>レビューを書く</th>
-  </tr>
-  <tr>
-    <td></td><td></td><td></td><td></td>
-  </tr>
-</table>
-<%
+
+<% @orders.each do |order| %>
+  <%
 =begin%>
- テーブルの中身まだ
+ <% binding.pry %> 
 <%
 =end%>
+    <t-body>
+    <% order.order_items.each do |order_item| %>
+      <tr>
+        <td><%= order_item.item.title %></td>
+        <td><%= order.status %></td>
+        <td><%= %></td>
+          <% if order.status == 0 %>
+            <td></td>
+          <% else %>
+            <td>
+              <%= link_to item_reviews_path(order_item.item_id) do %>
+                <button class="btn-sticky">レビューを書く</button>
+              <% end %>
+            </td>
+          <% end %>
+      </tr>
+    <% end %>
+</table>
+   <% end %>

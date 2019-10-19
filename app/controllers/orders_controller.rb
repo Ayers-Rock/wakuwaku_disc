@@ -30,7 +30,7 @@ class OrdersController < ApplicationController
   end
 
   def index
-    @orders = Order.all
+    @orders = current_user.orders
   end
 
   def edit
@@ -55,8 +55,6 @@ class OrdersController < ApplicationController
       address = current_user.address
     when 1
       address = params[:other_address]
-    else
-      address = ''
     end
     # if params[:address] == "0"
     #   address = current_user.address
