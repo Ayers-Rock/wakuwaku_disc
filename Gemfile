@@ -40,6 +40,7 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'pry-byebug'
+  gem 'pry-rails'
 end
 
 group :development do
@@ -78,3 +79,5 @@ gem 'cocoon'
 gem 'paranoia'
 gem 'enum_help'
 gem 'seed-fu', '~> 2.3'
+gem 'devise-i18n'
+gem 'rails-i18n'

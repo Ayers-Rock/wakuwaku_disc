@@ -23,12 +23,27 @@ class User < ApplicationRecord
 #半角アルファベット（大文字小文字数値）
 
 
-#postal_codeは、数字３桁＋ハイフン＋数字４桁の形式
-  validates :postal_code, presence: false, format: { with: /\A(\d{3}-\d{4}|^$)\z/ }
+#postal_codeは、数字３桁＋ハイフン＋数字４桁の形式　　/\A(\d{7}|^$)\z/
+  validates :postal_code, presence: false, format: { with: /\A(\d{7}|^$)\z/ }
   # validates :prefecture
   # validates :city_address
   # validates :building
 # Include default devise modules. Others available are:
 # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  has_many :cart_items
+  has_many :addresses
+  has_many :orders
+  def cart_sum
+    sum = 0
+    cart_items.each do |cart_item|
+      sum += cart_item.item.price * cart_item.amount * 1.10
+    end
+    return sum + 500
+  end
+has_many :favorites, dependent: :destroy
+has_many :favorite_items, through: :favorites, source: :item
 
+  def favorited_by(current_user)
+    favorites.where(user_id: current_user.id).exitsts?
+  end
 end

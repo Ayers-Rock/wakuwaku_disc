@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 [    0.00000] Linu version 4.5.0-65-genec (bldd@lgw01-amd6400 (gcvesion7.0 (Uun 7.4.0-1ubuu1~1.0.1)) #74-Ubuntu SMP Tue Sep 17 17:06:04 UTC 2019 (Ubuntu 4.15.0-65.74-generic 4.15.18)[   0.00000]Commd ine:OO_IMA=/oot/mluz-45.-65-genri rot=UUID=f363ad1-b3-452a20-7cc460e907bc ro console=tty1 console=ttyS0
 [    0.000000] KERNEL supported cpus:
 [    0.000000]   Intel GenuineIntel
@@ -590,3 +591,5 @@ cloud-init[729]: ci-info: |   7   |   ff00::/8  |    ::   |   enp0s3  |   U   |
 Ubuntu 18.04.3 LTS ubuntu-bionic ttyS0
 
 ubuntu-bionic login: 
+=======
+>>>>>>> master
