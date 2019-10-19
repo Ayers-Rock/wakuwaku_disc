@@ -5,9 +5,3 @@ ja:
         available: "販売中"
         not_available: "販売停止中"
 
-ja:
-  activerecord:
-    models:
-      user:
-        attributes:
-          tel_number: "電話番号"
