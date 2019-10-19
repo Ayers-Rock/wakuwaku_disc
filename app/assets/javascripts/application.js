@@ -19,6 +19,7 @@
 //= require cocoon
 
 $(window).ready( function() {
+  // console.log("test")
 
   $("#user_postal_code").jpostal({
       // # 郵便番号の入力欄が１つの場合

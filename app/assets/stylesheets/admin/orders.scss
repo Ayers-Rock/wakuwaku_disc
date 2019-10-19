@@ -3,10 +3,14 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 table {
     border-collapse: collapse;
-    width: 500px;
-   }
-    
-   th,td {
+    width: 1000px;
+}
+
+th,td {
     border: solid 1px #ccc;
     padding: 5px;
-   }
+}
+
+.total_price{
+    text-align: right;
+}
