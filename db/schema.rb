@@ -110,6 +110,11 @@ ActiveRecord::Schema.define(version: 2019_10_13_103303) do
     t.integer "payment", null: false
     t.integer "status", null: false
     t.integer "postage", null: false
+    t.string "delivery_first_name"
+    t.string "delivery_last_name"
+    t.string "delivery_first_kana_name"
+    t.string "delivery_last_kana_name"
+    t.string "order_number"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -154,7 +159,6 @@ ActiveRecord::Schema.define(version: 2019_10_13_103303) do
     t.string "introduction"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "address"
     t.string "postal_code"
     t.string "prefecture"
     t.string "city_address"
