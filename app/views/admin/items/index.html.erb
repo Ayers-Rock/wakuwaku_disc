@@ -46,7 +46,8 @@
                     <% end %>
                         <td><%= item.genre.genre_name %></td>
                         <td><%= item.label.label_name %></td>
-                        <%# <td><%= item.stocks.arrival_count - item.oreder_items.amount %><td></td>
+                        <td><%= stock_total(item) %></td>
+                        <%# <td><%= item.stocks.arrival_count - item.oreder_items.amount<td></td> %>
                         <%# TODO: stockの新規追加が可能になったらもう一度試す %>
                         <%# 入荷数-受注数 %>
                         <%# item.stocks.arival_count - item.oreder_items.amount %>
