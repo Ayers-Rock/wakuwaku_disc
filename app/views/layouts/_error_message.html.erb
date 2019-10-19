@@ -1,0 +1,10 @@
+<div>
+    <% if form.errors.any? %>
+        <%= "#{form.errors.count}件のエラーがあります" %>
+        <% form.errors.full_message.each do |message| %>
+            <ul>
+                <li><%= message %></li>
+            </ul>
+        <% end %>
+    <% end %>
+</div>

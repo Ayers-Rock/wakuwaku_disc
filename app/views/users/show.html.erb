@@ -23,8 +23,8 @@
         <% end %>
     </table>
     <div class="btn-group">
-            <button><%= link_to "住所一覧", addresses_path %></button>
-            <button><%= link_to "住所入力フォーム", new_address_path %></button>
+            <%# <button><%= link_to "住所一覧", user_addresses_path(@user.id) %>
+            <button><%= link_to "住所入力フォーム", new_user_address_path(@user.id) %></button>
             <button><%= link_to "ユーザー情報編集", edit_user_path(@user.id) %></button>
     </div>
         <p><%= link_to "退会する？", user_path(@user.id), method: :delete %></p>
