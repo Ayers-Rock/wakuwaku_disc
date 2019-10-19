@@ -4,7 +4,7 @@ class Address < ApplicationRecord
     def connected_address
         self.postal_code + " " + self.prefecture + " "  + self.city_address + " " + self.building
     end
-end
+
     # before_save { self.email = email.downcase }
   # nameの文字数は、1文字から10文字まで
   #全角ひらがな、漢字
