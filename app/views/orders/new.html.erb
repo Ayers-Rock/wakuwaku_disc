@@ -9,6 +9,41 @@
             <%= item %>
         </div>
     <% end %>
+    <div>
+        <span>送料</span>
+        <span>全国一律500円</span>
+        <span>500円</span>
+    </div>
+    <div>
+        <span>合計 <%= current_user.cart_sum %>円　(税込) </span>
+    </div>
+</div>
+<div>
+  <%= form_tag orders_path do %>
+  <div>
+    <%= radio_button_tag "address", 0, checked: 'checked' %>
+    <%= label_tag "自分の住所を登録する" %>
+    <%= radio_button_tag "address", 1 %>
+    <%= select_tag("other_address", options_for_select(current_user.addresses.map(&:connected_address)), prompt: '登録住所を選択') %>
+  </div>
+  <div>
+    <%= radio_button_tag "payment", 0, checked: 'checked' %>
+    <%= label_tag "商品代引き" %>
+    <%= radio_button_tag "payment", 1 %>
+    <%= label_tag "振込" %>
+    <%= radio_button_tag "payment", 2 %>
+    <%= label_tag "クレジットカード決済" %>
+  </div>
+  <%= submit_tag '購入を確定する' %>
+  <%
+=begin%>
+ 登録した住所から選ばれたら一時的にother_addressに情報を入れてコントローラへ
+<%
+=end%>
+
+<% end %>
+
+ <%= link_to "カートに戻る", cart_items_path %>
 
 
 
