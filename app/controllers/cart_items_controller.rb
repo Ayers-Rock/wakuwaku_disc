@@ -11,14 +11,16 @@ class CartItemsController < ApplicationController
   end
 
   def destroy
-    @cart_item = CartItem.find(params[:id])
-    cart_item.destroy
-    redirect_to cart_items_path
+    @item = CartItem.find(params[:id])
+      @item.destroy
+      redirect_to cart_items_path
   end
 
   def index
     @cart_items = CartItem.where(user_id: current_user.id)
-    # s@cart_items = current_user.cart_items
+    if @cart_items.empty?
+      redirect_to root_path
+    end
   end
 
   private

@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   def rankings
-    binding.pry
+    #binding.pry
 
   end
 
@@ -14,7 +14,6 @@ class ItemsController < ApplicationController
     # @user = User.find(params[:id])
     @cart_item = CartItem.new
     @reviews = Review.where(item_id: @item.id)
-    # binding.pry
     @review = Review.new
   end
 
