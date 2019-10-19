@@ -5,10 +5,6 @@ class CartItemsController < ApplicationController
     if @cart_item.save
     redirect_to cart_items_path
     else
-<<<<<<< HEAD
-=======
-      @items = Item.all
->>>>>>> master
     render 'items/index'
     end
   end
