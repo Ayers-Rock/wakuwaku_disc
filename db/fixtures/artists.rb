@@ -38,3 +38,4 @@ Artist.seed do |s|
     s.id = 10
     s.artist_name = "ロイヤルミルクティー"
 end
+

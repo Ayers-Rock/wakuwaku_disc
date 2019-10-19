@@ -1,7 +1,5 @@
 class ItemsController < ApplicationController
   def rankings
-    binding.pry
-
   end
 
   def ranking
