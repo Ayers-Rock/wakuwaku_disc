@@ -1,5 +1,6 @@
 class Admin::UsersController < Admin::AdminApplicationsController
   def index
+    # binding.pry
     @users = User.all
   end
 
@@ -9,17 +10,20 @@ class Admin::UsersController < Admin::AdminApplicationsController
 
   def show
     @user = User.find(params[:id])
+    @address = Address.where(address_id: @address_id)
   end
 
   def destroy
     @user = User.find(params[:id])
     @user.destroy
-    redirect_to admin_user_path
+    redirect_to admin_users_path
   end
 
   def update
     @user = User.find(params[:id])
-    if @user.update
+    # binding.pry
+    if @user.update(user_params)
+      # binding.pry
       redirect_to admin_user_path(@user.id)
     end
   end
@@ -29,7 +33,7 @@ class Admin::UsersController < Admin::AdminApplicationsController
 
   private
 def user_params
-    params.require(:user).permit(:first_name, :last_name, :first_nana_name, :last_kana_name, :tel_number, :prefecture, :city_address, :building, :postal_code, :email, :password)
+    params.require(:user).permit(:first_name, :last_name, :first_kana_name, :last_kana_name, :tel_number, :prefecture, :city_address, :building, :postal_code, :email, :password)
 end
 end
 

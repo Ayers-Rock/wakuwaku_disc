@@ -1,7 +1,7 @@
 <h1>Admin::Users#edit</h1>
 <p>Find me in app/views/admin/users/edit.html.erb</p>
 <h2>ユーザー編集</h2>
-    <%= form_for(@user, url: admin_users_path(current_user.id)) do |f| %>
+    <%= form_for(@user, url: admin_user_path(@user.id)) do |f| %>
         <div class="field">
             <P>名前</p>
             <%= f.label :姓 %>
@@ -24,7 +24,7 @@
 
         <div class="field">
             <%= f.label :パスワード %>
-            <%= f.string :password, autofocus: true, autocomplete: "password" %>
+            <%= f.text_field :password, autofocus: true, autocomplete: "password" %>
 
         <div class="field">
             <%= f.label :郵便番号 %><br />

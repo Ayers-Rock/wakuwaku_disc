@@ -1,6 +1,5 @@
 <h2>ユーザー一覧</h2>
     <table class="table">
-        <% @users. each do |user| %>
             <thead>
                 <tr>
                     <th>名前</th>
@@ -13,15 +12,16 @@
                 </tr>
             </thead>
             <tbody>
+        <% @users. each do |user| %>
                 <tr>
-                    <td><% user.first_name %><% user.last_name %></td>
-                    <td><% user.first_kana_name %><% user.last_kana_name %></td>
-                    <td><% user.postal_code %></td>
-                    <td><% user.prefecture %><% user.city_address %><% user.building %></td>
-                    <td><% user.tel_number %></td>
-                    <td><% user.email %></td>
+                    <td><%= link_to "#{user.last_name+user.first_name}",admin_user_path(user.id) %></td>
+                    <td><%= user.last_kana_name %><%= user.first_kana_name %></td>
+                    <td><%= user.postal_code %></td>
+                    <td><%= user.prefecture %><%= user.city_address %><%= user.building %></td>
+                    <td><%= user.tel_number %></td>
+                    <td><%= user.email %></td>
                     <td><%= link_to '編集', edit_admin_user_path(user.id) %></td>
-                <tr>
-            </tbody>
+                </tr>
         <% end %>
+            </tbody>
     </table>
