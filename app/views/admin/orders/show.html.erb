@@ -5,56 +5,68 @@
         <% if notice %>
         <p id="notice"><%= notice %></p>
         <% end %>
-        <div class="col-lg-3">
+        <div class="">
         <h2>注文詳細</h2>
-        <table calss="table1">
+        <table calss="table2">
             <tr>
                 <th>注文番号</th>
+                <td text-align:center;><font size="4"><%= @order.user_id %></font></td> <%#注文番号カラムあってる？？%>
+</tr>
+<tr>
                 <th>注文日時</th>
-                <th>お届け先名前（漢字）</th>
+                <td text-align:center;><font size="4"><%= @order.created_at %></font></td>
+                </tr>
+                <tr>
+                  <th>お届け先名前（漢字）</th>
+                  <td text_align:center;>
+                    <font size="4">
+                      <%= @order.user.last_name + @order.user.first_name %>
+                    </font>
+                  </td>
+                </tr>
+                <tr>
                 <th>お届け先</th>
+                <td text_align:center;><font size="4"><%= @order.prefecture + @order.city_address + @order.building %></font></td>
+
+                </tr>
+                <tr>
                 <th>配送状況</th>
+                <td text-align:center;><font size="4"><%= @order.status %></font></td>
+
+                </tr>
+                <tr>
                 <th>支払方法</th>
-            </tr>
-            <% @order.each do |order| %>
-            <tr>
-                <td text-align:center;><font size="4"><%= order.user_id %></font></td> <%#注文番号カラムあってる？？%>
-                <td text-align:center;><font size="4"><%= order.created_at %></font></td>
-                <td text_align:center;><font size="4"><%= "order.addresses.last_name" + "order.addresses.first_name" %>円</font></td>
-                <td text_align:center;><font size="4"><%= "order.prefecture" + "order.city_address" + "order.building" %></font></td>
-                <td text-align:center;><font size="4"><%= order.status %></font></td>
-                <td text-align:center;><font size="4"><%= order.payment %></font></td>
+                <td text-align:center;><font size="4"><%= @order.payment %></font></td>
+
             </tr>
         </table>
 
-        <div class="col-lg-3">
+        <div class="">
+           <div>▼配送セット</div>
+
         <table class="table1">
             <tr>
-                <th>▼配送セット</th>
                 <th>商品</th>
                 <th>単価（税込）</th>
                 <th>個数</th>
                 <th>小計</th>
             </tr>
-                <% @order.each do |order| %>
+                <% @order.order_items.each do |order_item| %>
                 <tr>
-                    <td text-align:center;><font size="4"><%= order.order_items.order_id %></font></td>
-                    <td text-align:center;><font size="4"><%= order.order_items.order_id %></font></td>
-                    <td text-align:center;><font size="4"><%= order.order_items.order_id %></font></td>
-                    <td text-align:center;><font size="4"><%= order.order_items.order_id %></font></td>
-                </tr>
-                <tr>
-                    <th>送料（税込）→</th>
-                </tr>
-                <tr>
-                    <td text-align:center;><font size="4"><%= order.postage %>円</font></td>
+                    <td text-align:center;><font size="4"><%= order_item.order_id %></font></td>
+                    <td text-align:center;><font size="4"><%= order_item.order_id %></font></td>
+                    <td text-align:center;><font size="4"><%= order_item.order_id %></font></td>
+                    <td text-align:center;><font size="4"><%= order_item.order_id %></font></td>
                 </tr>
                 <% end %>
-                <%= paginate @orders %>
+                <tr>
+                    <td colspan="3">送料（税込）→</td>
+                <td text-align:center;><font size="4"><%= @order.postage %>円</font></td>
+                </tr>
+
         </table>
         </div>
         </div>
     </div>
 </div>
-        </>
-        <%#編集途中　byしん%>
+        </tr>
