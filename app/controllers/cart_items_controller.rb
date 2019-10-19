@@ -1,11 +1,14 @@
 class CartItemsController < ApplicationController
   def create
-    @cart_item = CartItem.new(user_id)
+    @cart_item = CartItem.new
     @cart_item.user_id = current_user.id
+    @cart_item.amount = params[:cart_item][:amount].to_i
+    @cart_item.item_id = params[:cart_item][:item_id].to_i
     if @cart_item.save
     redirect_to cart_items_path
     else
-    render 'items/index'
+      @items = Item.page(params[:page]).per(10).reverse_order
+      render 'items/index'
     end
   end
 
