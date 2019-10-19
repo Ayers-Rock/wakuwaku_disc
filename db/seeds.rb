@@ -7,3 +7,4 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 #何のテーブル　何のカラムに何の値が入るか書いておく
+cart_item = CartItem.create({user_id: 1 ,item_id: 4 ,amount: 4 })
