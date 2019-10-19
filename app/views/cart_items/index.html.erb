@@ -10,15 +10,15 @@
 		<th>個数</th>
 		<th>金額（税込）</th>
 		<th>削除</th>
-
 	</tr>
+
 		<% @cart_items.each do |item| %>
 		<tr>
 			<td text-align:center;><%= attachment_image_tag item.item, :jacket_image_id, :fill, 100, 100, size: '100x100', fallback: 'no_image.jpg' %></td>
 			<td text-align:center;><font size="4"><%= item.item.title %></font></td>
 			<td text-align:center;><font size="4"><%= item.amount %></font></td>
-            <td text-align:center;><font size="4"><%= item.items.price %>円</font></td>
-			<td><%= link_to "削除", cart_item_path(cart_item.id), method: :delete %></td>
+            <td text-align:center;><font size="4"><%= item.item.price %>円</font></td>
+			<td><%= link_to "削除", cart_item_path(item.id), method: :delete %></td>
 		</tr>
 		<% end %>
 
