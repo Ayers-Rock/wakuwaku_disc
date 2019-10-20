@@ -82,8 +82,16 @@
 <h2>購入履歴</h2>
     <%= @orders. each do |order| %>
         <li><span class="caret"></span>
-            <%= link_to orders.created_at %>
-            <%= link_to '詳細へ', orders_path(user.id) %>
+            <%
+=begin%>
+ <%= link_to orders.created_at %> 
+<%
+=end%>
+            <%
+=begin%>
+ <%= link_to '詳細へ', orders_path(user.id) %> 
+<%
+=end%>
         </li>
             <table class ="table">
                 <thead>
