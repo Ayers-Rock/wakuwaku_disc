@@ -1,8 +1,7 @@
 class UsersController < ApplicationController
   def show
-    @users = User.all
     @user = User.find(params[:id])
-    @favorites = Favorite.all
+    @favorites = @user.favorites
     # @favorites = Favorite.limit(5).favorite('id')
     @orders = Order.limit(3).order('id')
   end
