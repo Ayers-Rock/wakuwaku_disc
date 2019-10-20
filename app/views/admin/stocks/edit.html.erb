@@ -25,7 +25,7 @@
                             </div>
                             <div>
                                 <p>入荷数入力</p>
-                                <p><%= f.number_field :arrival_count %></p>
+                                <p><%= f.number_field :arrival_count, min: "1" %></p>
                                 <%# <%= f.hidden_field :id, value: @item.id %>
                             </div>
                             <%= f.submit "更新" %>
