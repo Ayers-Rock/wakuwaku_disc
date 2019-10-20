@@ -1,7 +1,11 @@
 <h2>購入履歴</h2>
 
-<table border="1">
+<% @orders.each do |order| %>
+<table>
   <thead>
+    <tr>
+      <%= link_to '(詳細へ)', order_path(order.id) %>
+    </tr>
     <tr>
         <th>商品</th>
         <th>配送状況</th>
@@ -9,19 +13,17 @@
     </tr>
   </thead>
   <tbody>
-<% @orders.each do |order| %>
-  <%
-=begin%>
- <% binding.pry %> 
-<%
-=end%>
-    <t-body>
     <% order.order_items.each do |order_item| %>
       <tr>
         <td><%= order_item.item.title %></td>
-        <td><%= order.status %></td>
+        <td><%= order_item.order.status %></td>
         <td><%= %></td>
-          <% if order.status == 0 %>
+          <% if order_item.order.status == "preparing" %>
+          <%
+=begin%>
+ status == 0だとダメだった　databaseだと０で保存されてるけどviewに持ってくるときには文字列になってる・・？ 
+<%
+=end%>
             <td></td>
           <% else %>
             <td>
@@ -34,4 +36,4 @@
     <% end %>
   </tbody>
 </table>
-   <% end %>
+<% end %>
