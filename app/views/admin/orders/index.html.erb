@@ -14,17 +14,17 @@
 				<th>ステータス</th>
 				<th></th>
 			</tr>
-				<% @orders.each do |order| %>
-				<tr>
-					<td text-align:center;><font size="4"><%= order.user.last_name + order.user.first_name %></font></td>
-					<td text-align:center;><font size="4"><%= order.created_at %></font></td>
-					<td text_align:center;><font size="4"><%= order.total_price.round(0) %>円</font></td>
-					<td text_align:center;><font size="4"><%= order.status %></font></td>
-					<td><%= link_to "注文詳細", admin_order_path(order.id) %></td>
-				</tr>
-				<% end %>
-				<%= paginate @orders %>
+			<% @orders.each do |order| %>
+			<tr>
+				<td text-align:center;><font size="4"><%= order.user.last_name + order.user.first_name %></font></td>
+				<td text-align:center;><font size="4"><%= order.created_at %></font></td>
+				<td text_align:center;><font size="4"><%= order.total_price.round(0) %>円</font></td>
+				<td text_align:center;><font size="4"><%= order.status_i18n %></font></td>
+				<td><%= link_to "注文詳細", admin_order_path(order.id), class: "btn btn-default" %></td>
+			</tr>
+			<% end %>
 		</table>
+		<%= paginate @orders %>
 	</div>
 	</div>
 </div>
