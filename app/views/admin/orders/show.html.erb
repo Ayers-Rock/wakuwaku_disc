@@ -68,8 +68,8 @@
                 <% @order.order_items.each do |order_item| %>
                 <tr>
                     <td text-align:center;><font size="4"><%= order_item.order_id %></font></td>
-                    <td text-align:center;><font size="4"><%= order_item.order_id %></font></td>
-                    <td text-align:center;><font size="4"><%= order_item.order_id %></font></td>
+                    <td text-align:center;><font size="4"><%= order_item.purchase_price %></font></td>
+                    <td text-align:center;><font size="4"><%= order_item.amount %></font></td>
                     <td text-align:center;><font size="4"><%= order_item.order_id %></font></td>
                 </tr>
                 <% end %>
