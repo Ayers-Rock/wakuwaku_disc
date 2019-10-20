@@ -14,7 +14,26 @@
         <div class="image10"></div>
     </div>
 </div>
-<h2>月間ランキング</h2>
-    <div class="container">
-        <div class="row">
-            <%= %>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-9">
+            <h2>月間ランキング</h2>
+                <%= %>
+                <%= link_to '月間ランキングへ', ranking_items_path %>
+
+            <h2>いいねランキング</h2>
+                <%= %>
+                <%= link_to 'いいねランキングへ', ranking_items_path %>
+
+            <h2>新着CD</h2>
+                <%= %>
+                <%= link_to '商品一覧へ', items_path %>
+        </div>
+        <div class="col-md-3">
+            <div>週間ランキング</div>
+                <%= %>
+            </div>
+        </div>
+    </div>
+</div>
