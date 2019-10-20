@@ -1,2 +1,135 @@
-<h1>注文詳細</h1>
-<p>Find me in app/views/admin/orders/show.html.erb</p>
+
+<div class="body">
+<div class="container">
+    <div calss="row">
+        <% if notice %>
+        <p id="notice"><%= notice %></p>
+        <% end %>
+        <div class="col-lg-8">
+            <h2>注文詳細</h2>
+            <table calss="table2">
+                <tr>
+                    <th>注文番号</th>
+                    <td text-align:center;>
+                        <font size="4">
+                            <%= @order.user_id %>
+                        </font>
+                    </td> <%#注文番号カラム違う%>
+                </tr>
+                <tr>
+                    <th>注文日時</th>
+                    <td text-align:center;>
+                        <font size="4">
+                            <%= @order.created_at %>
+                        </font>
+                    </td>
+                </tr>
+                <tr>
+                    <th>お届け先名前（漢字）</th>
+                    <td text_align:center;>
+                        <font size="4">
+                            <%= @order.user.last_name + @order.user.first_name %>
+                        </font>
+                    </td>
+                </tr>
+                <tr>
+                    <th>お届け先</th>
+                    <td text_align:center;>
+                        <font size="4">
+                            <%= @order.prefecture + @order.city_address + @order.building %>
+                        </font>
+                    </td>
+                </tr>
+                <tr>
+                    <th>配送状況</th>
+                    <td text-align:center;>
+                        <font size="4">
+                            <%= @order.status %>
+                        </font>
+                    </td>
+                </tr>
+                <tr>
+                    <th>支払方法</th>
+                    <td text-align:center;>
+                        <font size="4">
+                            <%= @order.payment %>
+                        </font>
+                    </td>
+                </tr>
+            </table>
+            <div>▼配送セット</div>
+            <table class="table1">
+                <tr>
+                    <th>商品</th>
+                    <th>単価（税込）</th>
+                    <th>個数</th>
+                    <th>小計</th>
+                </tr>
+                <% @order.order_items.each do |order_item| %>
+                <tr>
+                    <td text-align:center;><font size="4"><%= order_item.order_id %></font></td>
+                    <td text-align:center;><font size="4"><%= order_item.order_id %></font></td>
+                    <td text-align:center;><font size="4"><%= order_item.order_id %></font></td>
+                    <td text-align:center;><font size="4"><%= order_item.order_id %></font></td>
+                </tr>
+                <% end %>
+                <tr>
+                    <td colspan="3">送料（税込）→</td>
+                    <td text-align:center;><font size="4"><%= @order.postage %>円</font></td>
+                </tr>
+            </table>
+            <bt>
+            <br>
+            <p class="total_price">
+                <strong>お支払い合計　¥ </strong>
+                <%= @order.total_price %>
+            </p>
+            <div>注文者情報</div>
+                <table class="table3">
+                    <tr>
+                        <th>名前（漢字）</th>
+                        <td text-align:center;>
+                            <font size="4">
+                                <%= @order.user.first_name + @order.user.last_name %>
+                            </font>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>名前（カタカナ）</th>
+                        <td text-align:center;>
+                            <font size="4">
+                                <%= @order.user.first_kana_name + @order.user.last_kana_name %>
+                            </font>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>住所</tr>
+                        <td text-align:center;>
+                            <font size="4">
+                                <%= @order.user.prefecture + @order.user.city_address + @order.user.building %>
+                            </font>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>電話番号</th>
+                        <td text-align:center;>
+                            <font size="4">
+                                <%= @order.user.tel_number %>
+                            </font>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>メールアドレス</th>
+                        <td text-align:center;>
+                            <font size="4">
+                                <%= @order.user.email %>
+                            </font>
+                        </td>
+                    </tr>
+                </table>
+                <br>
+                <%= link_to "注文管理画面へ戻る", admin_orders_path %>
+        </div>
+    </div>
+</div>
+</div>
