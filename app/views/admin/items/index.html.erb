@@ -41,12 +41,13 @@
                 <% @items.each do |item| %>
                     <tr>
                     <%= link_to admin_item_path(item.id) do %>
-                        <td><%= link_to "#{item.title}", admin_item_path(item.id) %></td>
                         <td><%= link_to "#{item.artist.artist_name}", admin_item_path(item.id) %></td>
+                        <td><%= link_to "#{item.title}", admin_item_path(item.id) %></td>
                     <% end %>
                         <td><%= item.genre.genre_name %></td>
                         <td><%= item.label.label_name %></td>
-                        <%# <td><%= item.stocks.arrival_count - item.oreder_items.amount %><td></td>
+                        <td><%= (Stock.where(item_id: item.id).sum(:arrival_count)) - (OrderItem.where(item_id: item.id).sum(:amount)) %></td>
+                        <%# <td><%= item.stocks.arrival_count - item.oreder_items.amount<td></td> %>
                         <%# TODO: stockの新規追加が可能になったらもう一度試す %>
                         <%# 入荷数-受注数 %>
                         <%# item.stocks.arival_count - item.oreder_items.amount %>

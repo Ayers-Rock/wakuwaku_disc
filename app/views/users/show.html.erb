@@ -82,8 +82,16 @@
 <h2>購入履歴</h2>
     <%= @orders. each do |order| %>
         <li><span class="caret"></span>
-            <%= link_to orders.created_at %>
-            <%= link_to '詳細へ', orders_path(user.id) %>
+            <%
+=begin%>
+ <%= link_to orders.created_at %> 
+<%
+=end%>
+            <%
+=begin%>
+ <%= link_to '詳細へ', orders_path(user.id) %> 
+<%
+=end%>
         </li>
             <table class ="table">
                 <thead>
@@ -97,10 +105,10 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td><%= orders.id %></td>
-                        <td><%= orders.items.title %></td>
-                        <td><%= orders.prefecture+orders.city_address+orders.building %></td>
-                        <td><%= orders.status %></td>
+                        <td><%= @order.user_id %></td>
+                        <td><%= @order.items.title %></td>
+                        <td><%= @order.prefecture+orders.city_address+orders.building %></td>
+                        <td><%= @order.status %></td>
                         <td><%= link_to 'レビューを書く', item_path(item.id), class:"btn btn-default" %>
                     </tr>
                 </tbody>

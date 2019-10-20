@@ -67,22 +67,26 @@
                 </tr>
                 <% @order.order_items.each do |order_item| %>
                 <tr>
-                    <td text-align:center;><font size="4"><%= order_item.order_id %></font></td>
-                    <td text-align:center;><font size="4"><%= order_item.purchase_price %></font></td>
+                    <td text-align:center;><font size="4"><%= order_item.item.title %></font></td>
+                    <%# tax_includeは税込価格 %>
+                    <% tax_include = order_item.purchase_price * 1.10 %>
+                    <td text-align:center;><font size="4">¥<%= tax_include.round(0) %></font></td>
                     <td text-align:center;><font size="4"><%= order_item.amount %></font></td>
-                    <td text-align:center;><font size="4"><%= order_item.order_id %></font></td>
+                    <% subtotal = tax_include * order_item.amount %>
+                    <%# .floorは小数点を切り捨て/.round(0)は小数点切り上げ %>
+                    <td text-align:center;><font size="4">¥<%= subtotal.round(0) %></font></td>
                 </tr>
                 <% end %>
                 <tr>
                     <td colspan="3">送料（税込）→</td>
-                    <td text-align:center;><font size="4"><%= @order.postage %>円</font></td>
+                    <td text-align:center;><font size="4">¥<%= @order.postage %></font></td>
                 </tr>
             </table>
             <bt>
             <br>
             <p class="total_price">
                 <strong>お支払い合計　¥ </strong>
-                <%= @order.total_price %>
+                <%= @order.total_price.round(0) %>
             </p>
             <div>注文者情報</div>
                 <table class="table3">
@@ -90,7 +94,7 @@
                         <th>名前（漢字）</th>
                         <td text-align:center;>
                             <font size="4">
-                                <%= @order.user.first_name + @order.user.last_name %>
+                                <%= @order.user.last_name + @order.user.first_name %>
                             </font>
                         </td>
                     </tr>
@@ -98,12 +102,12 @@
                         <th>名前（カタカナ）</th>
                         <td text-align:center;>
                             <font size="4">
-                                <%= @order.user.first_kana_name + @order.user.last_kana_name %>
+                                <%= @order.user.last_kana_name + @order.user.first_kana_name %>
                             </font>
                         </td>
                     </tr>
                     <tr>
-                        <th>住所</tr>
+                        <th>住所</th>
                         <td text-align:center;>
                             <font size="4">
                                 <%= @order.user.prefecture + @order.user.city_address + @order.user.building %>

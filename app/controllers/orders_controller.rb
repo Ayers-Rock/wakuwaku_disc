@@ -16,12 +16,14 @@ class OrdersController < ApplicationController
       @order_item.order_id = order.id
       @order_item.purchase_price = cart_item.item.price
       @order_item.save
-      # cart_item.destroy
+       cart_item.destroy
     end
     redirect_to thanks_order_path(order.id)
   end
 
   def show
+    @order = Order.find(params[:id])
+    @order_items = @order.order_items
   end
 
   def thanks
@@ -52,9 +54,10 @@ class OrdersController < ApplicationController
   def order_params
     case params[:address].to_i
     when 0
-      address = current_user.postal_code + ' ' + current_user.prefecture + ' ' + current_user.city_address + ' ' + current_user.building
+      address_data = { postal_code: current_user.postal_code, prefecture: current_user.prefecture, city_address: current_user.city_address, building: current_user.building}
     when 1
       address = params[:other_address]
+      address_data = split_address(address)
     end
     # if params[:address] == "0"
     #   address = current_user.address
@@ -62,8 +65,8 @@ class OrdersController < ApplicationController
     #   address =
     # else
     #   address = ''
-      address_data = split_address(address)
-      payment_data = {payment: params[:payment], total_price: current_user.cart_sum, postage: 500, status: 0}
+      
+      payment_data = {payment: params[:payment].to_i, total_price: current_user.cart_sum, postage: 500, status: 0}
       address_data.merge(payment_data)
 
 
