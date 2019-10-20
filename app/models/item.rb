@@ -1,7 +1,7 @@
 class Item < ApplicationRecord
     has_many :stocks
 
-    has_many :discs
+    has_many :discs, dependent: :destroy
     accepts_nested_attributes_for :discs, allow_destroy: true
 
     has_many :cart_items
@@ -16,9 +16,6 @@ class Item < ApplicationRecord
     attachment :jacket_image
     enum status: {available: 0, not_available: 1}
 
-    validates :artist_id, presence: true
-    validates :label_id, presence: true
-    validates :genre_id, presence: true
     validates :title, presence: true
     # validates :jacket_image_id, presence: true, file_content_type: { allow: ['image/jpeg', 'image/png'] }
     validates :price, presence: true
