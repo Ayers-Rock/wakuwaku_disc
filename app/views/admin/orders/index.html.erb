@@ -1,28 +1,31 @@
-<h1>受注履歴</h1>
-<% if notice %>
-<p id="notice"><%= notice %></p>
-<% end %>
-<br>
-
-<table>
-	<tr>
-		<th>購入者</th>
-		<th>購入日</th>
-		<th>個数</th>
-		<th>金額（税込）</th>
-		<th>削除</th>
-
-	</tr>
-		<% @cart_items.each do |item| %>
-		<tr>
-			<td text-align:center;><img height="80" src="<%=h item.good.image_url %>"/></td>
-			<td text-align:center;><font size="4"><%= item.good.title %></font></td>
-			<td text-align:center;><font size="4"><%= item.quantity %></font></td>
-            <td text-align:center;><font size="4"><%= (item.good.price).to_i %>円</font></td>
-			<td><%= link_to "削除", cart_item_path, method: :delete %></td>
-		</tr>
+<div class="body">
+<div class="container">
+	<div class="row">
+		<% if notice %>
+		<p id="notice"><%= notice %></p>
 		<% end %>
-
-</table>
-<br>
-<span>　　</span><%= link_to '商品一覧へ戻る', items_path, :class => 'btn' %><span>
+	<div class="col-lg-6">
+		<h2>受注履歴</h2>
+		<table>
+			<tr>
+				<th>購入者</th>
+				<th>購入日</th>
+				<th>購入価格総計</th>
+				<th>ステータス</th>
+				<th></th>
+			</tr>
+				<% @orders.each do |order| %>
+				<tr>
+					<td text-align:center;><font size="4"><%= order.user_id %></font></td>
+					<td text-align:center;><font size="4"><%= order.created_at %></font></td>
+					<td text_align:center;><font size="4"><%= order.total_price %>円</font></td>
+					<td text_align:center;><font size="4"><%= order.status %></font></td>
+					<td><%= link_to "注文詳細", admin_order_path(order.id) %></td>
+				</tr>
+				<% end %>
+				<%= paginate @orders %>
+		</table>
+	</div>
+	</div>
+</div>
+</div>

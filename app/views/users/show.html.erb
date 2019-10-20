@@ -3,24 +3,22 @@
 <%# <%= render '', : @ %>
 <h2>ユーザー情報</h2>
     <table class="table">
-        <% @users. each do |user| %>
             <thead>
                 <tr>
-                    <td><%= user.last_name %><%= user.first_name %></td>
+                    <td><%= @user.last_name %><%= @user.first_name %></td>
                 </tr>
             <tbody>
                 <tr>
-                    <td><%= user.prefecture %>
-                    <%= user.city_address %>
-                    <%= user.building %></td>
+                    <td><%= @user.prefecture %>
+                    <%= @user.city_address %>
+                    <%= @user.building %></td>
                 </tr>
             </tbody>
             <tfoot>
                 <tr>
-                    <td><%= user.email %></td>
+                    <td><%= @user.email %></td>
                 </tr>
             </tfoot>
-        <% end %>
     </table>
     <div class="btn-group">
             <%# <button><%= link_to "住所一覧", user_addresses_path(@user.id) %>
@@ -35,7 +33,7 @@
                 <div class="col-md-12 col-md-1">
                 </div>
                 <div class="col-md-12 col-md-3">
-                    <%= attachment_image_tag @favorites, :jacket_image_id, format: 'jpeg', size:"60*60" %>
+                    <%= attachment_image_tag favorite.item, :jacket_image, format: 'jpeg', size:"60*60" %>
                 </div>
                 <div class="col-md-12 col-md-5">
                     <p><%= favorite.item.title %></p>
