@@ -1,10 +1,7 @@
 class ItemsController < ApplicationController
   def rankings
-<<<<<<< HEAD
-=======
 
 
->>>>>>> master
   end
 
   def ranking
