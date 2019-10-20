@@ -1,38 +1,21 @@
-<h1>Items#ranking</h1>
-<p>Find me in app/views/items/ranking.html.erb</p>
 <h1>ランキング</h1>
-    <div class="container">
-        <div class="col-md-3">
-            <ul id="ranking-tab" class="nav nav-tabs">
-                <li><a href="#sampleContentA">週間ランキング</a></li>
-                <li class="active"><a href="#sampleContentB"></a>月間ランキング</a></li>
-                <li><a href="#sampleContentC">いいねランキング</a></li>
+        <div class="col-md-1">
+            <ul id="rankingTab" class="nav nav-tabs">
+                <li class="active"><a href="#weekly_rank">週間ランキング</a></li>
+                <li><a href="#monthly_rank">月間ランキング</a></li>
+                <li><a href="#favorite_rank">いいねランキング</a></li>
             </ul>
         </div>
-            <div class="col-md-9">
-                <ul class="content">
-                    <li>
-                        <% @items each do |item| %>@all_ranks.each.with_index(1) do |note, i| %>
-                            <div class="row">
-                                <div class="col-md-2">
-                                    <% users.each_with_index do |user, i|
-                                        puts "#{i+1}: #{user.name}" end %>
-                                </div>
-                                <div class="col-md-2">
-                                    <%= attachment_image_tag @items :jacket_image_id, :format 'jpeg', :size '60*60' %>
-                                </div>
-                                <div class="col-md-4">
-                                    <ul>
-                                        <li><%= item.title %></li>
-                                        <li><%= item.artist %></li>
-                                        <li><%= item.price %></li>
-                                    <ul>
-                                </div>
-                                <div class="col-md-4">
-                                    <button><%= link_to 'お気に入り', favorites_path(user_id) %></button>
-                                    <button><%= link_to 'カートに入れる', cart_items_path(user_id) %><button>
-                                </div>
-                            </div>
-                        <% end %>
-                    </div>
+        <div class="col-md-9">
+            <div class="tab-content">
+                <div class="tab-pane active" id="weekly_rank">
+                    <p>週間予定a</p>
+                </div>
+                <div class="tab-pane" id="monthly_rank">
+                    <p>月間予定b</p>
+                </div>
+                <div class="tab-pane" id="favorite_rank">
+                    <p>いいね予定c</p>
+                </div>
             </div>
+        </div>
