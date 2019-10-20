@@ -56,7 +56,7 @@
                             <p>在庫数</p>
                         </div>
                         <div>
-                            <%# <p><%=# item.stocks.arrival_count - item.oreder_items.amount</%#> %>
+                            <%= (Stock.where(item_id: @item.id).sum(:arrival_count)) - (OrderItem.where(item_id: @item.id).sum(:amount)) %>
                         </div>
                     </div>
                 </div>

@@ -1,3 +1,22 @@
 // Place all the styles related to the admin/admin_applications controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.admin-header-main-box {
+    border-radius:20px;
+    border: solid 1px black;
+    margin: 10px;
+}
+// .admin-header-top-box {
+//     background-color: orange;
+// }
+
+.list-small-box {
+    display: flex;
+    // text-align: center;
+    // mergin: 0 auto;
+}
+.list-style {
+    display: inline;
+    margin: 0px 10px;
+}

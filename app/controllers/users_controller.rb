@@ -12,7 +12,6 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    # binding.pry
     if @user.update(user_params)
       redirect_to user_path(@user.id)
     else

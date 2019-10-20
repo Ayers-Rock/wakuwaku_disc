@@ -4,7 +4,6 @@ class Address < ApplicationRecord
     def connected_address
         self.postal_code + " " + self.prefecture + " "  + self.city_address + " " + self.building
     end
-
     # before_save { self.email = email.downcase }
   # nameの文字数は、1文字から10文字まで
   #全角ひらがな、漢字
@@ -21,11 +20,11 @@ class Address < ApplicationRecord
 
 
 
-#postal_codeは、数字３桁＋ハイフン＋数字４桁の形式
-  validates :postal_code, presence: false, format: { with: /\A(\d{3}-\d{4}|^$)\z/ }
-  # validates :prefecture
-  # validates :city_address
-  # validates :building
-# Include default devise modules. Others available are:
-# :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  #postal_codeは、数字３桁＋数字４桁の形式
+    validates :postal_code, presence: false, format: { with: /\A(\d{7}|^$)\z/ }
+    # validates :prefecture
+    # validates :city_address
+    # validates :building
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
 end

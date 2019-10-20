@@ -10,6 +10,11 @@ class CreateOrders < ActiveRecord::Migration[5.2]
       t.integer :payment, null: false
       t.integer :status, null: false
       t.integer :postage, null: false
+      t.string  :delivery_first_name
+      t.string  :delivery_last_name
+      t.string  :delivery_first_kana_name
+      t.string  :delivery_last_kana_name
+      t.string  :order_number
 
       t.timestamps
     end
