@@ -20,7 +20,7 @@ class Address < ApplicationRecord
 
 
 
-  #postal_codeは、数字３桁＋ハイフン＋数字４桁の形式
+  #postal_codeは、数字３桁＋数字４桁の形式
     validates :postal_code, presence: false, format: { with: /\A(\d{7}|^$)\z/ }
     # validates :prefecture
     # validates :city_address
