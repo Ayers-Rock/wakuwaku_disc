@@ -10,7 +10,7 @@ ja:
         in_delivery: "配送中"
         delivered: "配送完了"
       payment:
-        cod: "クレジットカード"
-        transfar: "代引き"
-        credit_card: "振込"
+        cod: "代引き"
+        transfer: "振込み"
+        credit_card: "クレジットカード"
 #orderの中にstatusとpaymentがあって、paymentの上にorder:を付けると上書きされてしまい、statusが機能されなくなってしまう
