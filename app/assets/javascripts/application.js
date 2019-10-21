@@ -40,6 +40,10 @@ $(window).ready( function() {
         "#user_building": "%6%7" // # 大口事務所の番地と名称が入力される
       }
   })
+  $('#rankingTab a').click(function (e) {
+    e.preventDefault();
+    $(this).tab('show');
+  });
 })
 
 $(document).ready(function () {
@@ -65,9 +69,4 @@ $(document).ready(function () {
     // 一枚目のスライド表示時に戻る矢印を表示するかどうか(falseで非表示)
     hidePrevious : false
   });
-});
-
-$('#rankingTab a').click(function (e) {
-	e.preventDefault();
-	$(this).tab('show');
 });

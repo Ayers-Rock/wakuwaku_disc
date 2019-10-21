@@ -1,11 +1,17 @@
 class ItemsController < ApplicationController
   def rankings
-  
+    @items = Item.all
+    @favorite_ranks = Item.find(Favorite.group(:item_id).order('count(item_id) desc').limit(3).pluck(:item_id))
+    @monthly_ranks = Item.where(created_at: 1.months.ago.beginning_of_day..Time.zone.now.end_of_day).find(OrderItem.group(:item_id).order('sum(amount) desc').limit(3).pluck(:item_id))
+    @weekly_ranks = Item.where(created_at: 1.weeks.ago.beginning_of_day..Time.zone.now.end_of_day).find(OrderItem.group(:item_id).order('sum(amount) desc').limit(5).pluck(:item_id))
+    @new_cd =Item.limit(5).order(" created_at DESC ")
   end
 
   def ranking
-    @items = Item.all
-    # @all_ranks = Item.find(favorite.group(:item_id).order('count(item_id)desc').limit(20).plack(item_id)
+    @favorite_ranks = Item.find(Favorite.group(:item_id).order('count(item_id) desc').limit(20).pluck(:item_id))
+    @monthly_ranks = Item.where(created_at: 1.months.ago.beginning_of_day..Time.zone.now.end_of_day).find(OrderItem.group(:item_id).order('sum(amount) desc').limit(20).pluck(:item_id))
+    @weekly_ranks = Item.where(created_at: 1.weeks.ago.beginning_of_day..Time.zone.now.end_of_day).find(OrderItem.group(:item_id).order('sum(amount) desc').limit(20).pluck(:item_id))
+    @cart_item = CartItem.new
   end
 
   def show
@@ -13,7 +19,6 @@ class ItemsController < ApplicationController
     # @user = User.find(params[:id])
     @cart_item = CartItem.new
     @reviews = Review.where(item_id: @item.id)
-    # binding.pry
     @review = Review.new
   end
 
@@ -21,6 +26,5 @@ class ItemsController < ApplicationController
     @items = Item.all
     @cart_item = CartItem.new
   end
-
 
 end
