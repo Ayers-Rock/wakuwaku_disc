@@ -12,36 +12,37 @@
   <header>
     <div　class="admin-header-main-box">
       <div class="admin-header-top-box">
-        <div><span class="glyphicon glyphicon-eye-open" aria-hidden="true">アイコン</span></div>
-        <div>
+        <div class="logo-box">
+          <div admin-logo-icon-box><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></div>
           <%= link_to admin_path do %>
             <p>わくわく管理システム</p>
           <% end %>
         </div>
-        <div>ログアウト</div>
-      <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+        <div class="logout-box">
+          <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+        </div>
       </div>
       <div class="list-big-box">
         <nav>
           <ul class="list-small-box">
             <li class="list-style">
               <%= link_to admin_users_path do %>
-                <span class="glyphicon glyphicon-user" aria-hidden="true">ユーザー管理</span>
+                <span class="glyphicon glyphicon-user admin-list-icon" aria-hidden="true"></span><span class="admin-header-menu">ユーザー管理</span>
               <% end %>
             </li>
             <li class="list-style">
               <%= link_to admin_items_path do %>
-                <span class="glyphicon glyphicon-lock" aria-hidden="true">商品管理</span>
+                <span class="glyphicon glyphicon-lock admin-list-icon" aria-hidden="true"></span><span　class="admin-header-menu">商品管理</span>
               <% end %>
             </li>
             <li class="list-style">
               <%= link_to admin_stocks_path do %>
-                <span class="glyphicon glyphicon-stats" aria-hidden="true">在庫管理</span>
+                <span class="glyphicon glyphicon-stats admin-list-icon" aria-hidden="true"></span><span　class="admin-header-menu">在庫管理</span>
               <% end %>
             </li>
             <li class="list-style">
               <%= link_to admin_orders_path do %>
-                <span class="glyphicon glyphicon-folder-open" aria-hidden="true">受注管理</span>
+                <span class="glyphicon glyphicon-folder-open admin-list-icon" aria-hidden="true"></span><span class="admin-header-menu">受注管理</span>
               <% end %>
             </li>
           </ul>
