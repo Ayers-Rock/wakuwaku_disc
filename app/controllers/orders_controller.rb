@@ -16,7 +16,7 @@ class OrdersController < ApplicationController
       @order_item.order_id = order.id
       @order_item.purchase_price = cart_item.item.price
       @order_item.save
-       cart_item.destroy
+      cart_item.destroy
     end
     redirect_to thanks_order_path(order.id)
   end
@@ -65,7 +65,7 @@ class OrdersController < ApplicationController
     #   address =
     # else
     #   address = ''
-      
+
       payment_data = {payment: params[:payment].to_i, total_price: current_user.cart_sum, postage: 500, status: 0}
       address_data.merge(payment_data)
 
