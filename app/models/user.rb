@@ -46,7 +46,6 @@ has_many :favorite_items, through: :favorites, source: :item
   def favorited_by(current_user)
     favorites.where(user_id: current_user.id).exitsts?
   end
-  def connected_address
-    self.postal_code + " " + self.prefecture + " "  + self.city_address + " " + self.building
-  end
+
+  
 end
