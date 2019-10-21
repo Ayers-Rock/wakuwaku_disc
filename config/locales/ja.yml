@@ -4,4 +4,13 @@ ja:
       status:
         available: "販売中"
         not_available: "販売停止中"
-
+    order:
+      status:
+        preparing: "配送準備中"
+        in_delivery: "配送中"
+        delivered: "配送完了"
+      payment:
+        cod: "クレジットカード"
+        transfar: "代引き"
+        credit_card: "振込"
+#orderの中にstatusとpaymentがあって、paymentの上にorder:を付けると上書きされてしまい、statusが機能されなくなってしまう
