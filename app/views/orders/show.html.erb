@@ -1,6 +1,7 @@
 
 <h1>購入履歴・配送状況詳細</h1>
 
+<%= @order.order_number %>
 <table>
     <thead>
         <th>商品</th>
@@ -12,12 +13,11 @@
     <% @order_items.each do |order_item| %>
         <tbody>
             <td><%= order_item.item.title %></td>
-            <td>¥<%= order_item.purchase_price %></td>
             <% tax_included = order_item.purchase_price * 1.10 %>
-            <td><%= tax_included %></td>
+            <td><%= tax_included.round(0) %></td>
             <td><%= order_item.amount %></td>
             <% subtotal = tax_included * order_item.amount %>
-            <td>￥<%= subtotal %></td>
+            <td><%= subtotal.round(0) %></td>
         </tbody>
     <% end %>
 
@@ -31,20 +31,41 @@
     </tfoot>
 </table>
 <P>*配送状況はあくまで目安です。</p>
-<p>お支払い合計　　￥<%= @order.total_price %></p>
+<p>お支払い合計　　￥<%= @order.total_price.floor %></p>
 
 <p>注文者情報</p>
 <table>
     <tbody>
         <tr>
-            <th></th>
-            <td></td>
+            <th>名前(漢字)</th>
+            <td><%= @order.user.last_name %><%= @order.user.first_name %></td>
+        </tr>
+        <tr>
+            <th>名前(カタカナ)</th>
+            <td><%= @order.user.last_kana_name %><%= @order.user.first_kana_name %></td>
+        </tr>
+        <tr>
+            <th>住所</th>
+        
+
+        <td><%= @order.connected_address %></td> 
+
+
+        </tr>
+        <tr>
+            <th>電話番号</th>
+            <td><%= @order.user.tel_number %></td>
+        </tr>
+        <tr>
+            <th>メールアドレス</th>
+            <td><%= @order.user.email %></td>
         </tr>
     </tbody>
-<table>
+</table>
 
 <p>配送先</p>
 <p>[変更する]ボタンがない場合はすでに出荷準備に入ってるため配送先住所を変更できません。</p>
+<%= link_to"変更する", edit_order_path(@order.id) %>
 <table>
     <tbody>
         <tr>
@@ -60,6 +81,7 @@
 
 <p>お支払い方法</p>
 <%= @order.payment %>
+<br>
 
 
 

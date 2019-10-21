@@ -16,7 +16,7 @@ Rails.application.routes.draw do
 
     resources :artists, only: [:new, :create, :destroy]
 
-    resources :orders, only: [:index, :show]
+    # resources :orders, only: [:index, :show]
 
     resources :stocks, only: [:index]
 
@@ -40,9 +40,10 @@ Rails.application.routes.draw do
     resource :favorites, only: [:create, :destroy]
   end
 
-  resources :orders do
+  resources :orders, except: [:create] do
     get :thanks, on: :member
   end
+  post 'orders/new' => 'orders#create', as: 'new_orders'
 
 
 
