@@ -29,7 +29,7 @@
                         <th>お届け先名前（漢字）</th>
                         <td text_align:center;>
                             <font size="2">
-                                <%= @order.user.last_name + @order.user.first_name %>
+                                <%= @order.user.delivery_last_name + @order.user.delivery_first_name %>
                             </font>
                         </td>
                     </tr>
@@ -144,3 +144,6 @@
         </div>
     </div>
 </div>
+<br>
+<br>
+<br>
