@@ -4,4 +4,9 @@ ja:
       status:
         available: "販売中"
         not_available: "販売停止中"
+    # order:
+    #   payment:
+    #     cod: "代金引換"
+    #     transfar: "振込"
+    #     credit_card: "クレジットカード払い"
 
