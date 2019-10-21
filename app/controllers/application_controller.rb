@@ -14,8 +14,8 @@ class ApplicationController < ActionController::Base
 	end
 
     def set_search
-      @search = Item.ransack(params[:q])
-      @search_items = @search.result.page(params[:page])
+    	@search = Item.ransack(params[:q])
+    	@search_items = @search.result.page(params[:page])
     end
     before_action :configure_permitted_parameters, if: :devise_controller?
 
@@ -23,23 +23,23 @@ class ApplicationController < ActionController::Base
 		#ログイン後のパス
 		case resource
 		when Admin
-		  admin_path
+			admin_path
 		when User
-		  user_path(resource)
+			user_path(resource)
 		end
 	end
 
 	def after_sign_up_path_for(resource)
-		user_path(resource)
+			user_path(resource)
 	end
 
 
 	def after_sign_out_path_for(resource)
 		case resource
 		when :admin
-		  new_admin_session_path
+			new_admin_session_path
 		when :user
-		  root_path
+			root_path
 		end
 	end
 
