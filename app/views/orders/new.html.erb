@@ -1,3 +1,15 @@
+<% if flash[:notice] %>
+  <div class="flash">
+    <%= flash[:notice] %>
+  </div>
+<% end %>
+<%= form_for(@order) do |f| %>
+    <% if @order.errors.any? %>
+       <h2>エラー！</h2>
+      <h3> 登録住所を選択してください</h3>
+    <% end %>
+<% end %>
+
 <div>
     <% @cart_items.each do |cart_item| %>
         <div>
@@ -5,8 +17,8 @@
             <%= cart_item.item.title %>
             <%= cart_item.item.artist.artist_name %>
             <%= cart_item.amount %>
-            <% item = cart_item.item.price * cart_item.amount * 1.10 %>
-            <%= item %>
+            <% subtotal = cart_item.item.price * cart_item.amount * 1.10.floor %>
+            <%= subtotal %>
         </div>
     <% end %>
     <div>
@@ -15,16 +27,17 @@
         <span>500円</span>
     </div>
     <div>
-        <span>合計 <%= current_user.cart_sum %>円　(税込) </span>
+        <span>合計 <%= current_user.cart_sum.floor %>円　(税込) </span>
     </div>
 </div>
 <div>
-  <%= form_tag orders_path do %>
+  <%= form_tag new_orders_path do %>
   <div>
-    <%= radio_button_tag "address", 0, checked: 'checked' %>
-    <%= label_tag "自分の住所を登録する" %>
+    <%= radio_button_tag "address", 0, checked: "checked" %>
+    <%= label_tag "自分の住所を選択する" %>
     <%= radio_button_tag "address", 1 %>
-    <%= select_tag("other_address", options_for_select(current_user.addresses.map(&:connected_address)), prompt: '登録住所を選択') %>
+    <%= select_tag("other_address", options_for_select(current_user.addresses.map(&:delivery_destination)), prompt: '登録住所を選択') %>
+    <span>住所をまだ登録していない方、別の配送先住所を指定したい方は<%= link_to"住所登録フォーム", new_address_path %>へ</span>
   </div>
   <div>
     <%= radio_button_tag "payment", 0, checked: 'checked' %>
@@ -35,15 +48,10 @@
     <%= label_tag "クレジットカード決済" %>
   </div>
   <%= submit_tag '購入を確定する' %>
-  <%
-=begin%>
- 登録した住所から選ばれたら一時的にother_addressに情報を入れてコントローラへ
-<%
-=end%>
 
 <% end %>
 
- <%= link_to "カートに戻る", cart_items_path %>
+<%= link_to "カートに戻る", cart_items_path %>
 
 
 

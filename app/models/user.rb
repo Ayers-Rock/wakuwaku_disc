@@ -23,7 +23,7 @@ class User < ApplicationRecord
 #半角アルファベット（大文字小文字数値）
 
 
-#postal_codeは、数字３桁＋ハイフン＋数字４桁の形式　　/\A(\d{7}|^$)\z/
+#postal_codeは、数字３桁＋数字４桁の形式　　/\A(\d{7}|^$)\z/
   validates :postal_code, presence: false, format: { with: /\A(\d{7}|^$)\z/ }
   # validates :prefecture
   # validates :city_address
@@ -46,4 +46,6 @@ has_many :favorite_items, through: :favorites, source: :item
   def favorited_by(current_user)
     favorites.where(user_id: current_user.id).exitsts?
   end
+
+  
 end

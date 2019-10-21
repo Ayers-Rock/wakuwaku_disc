@@ -1,8 +1,7 @@
 class UsersController < ApplicationController
   def show
-    @users = User.all
     @user = User.find(params[:id])
-    @favorites = Favorite.all
+    @favorites = @user.favorites
     # @favorites = Favorite.limit(5).favorite('id')
     @orders = Order.limit(3).order('id')
   end
@@ -13,7 +12,6 @@ class UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    # binding.pry
     if @user.update(user_params)
       redirect_to user_path(@user.id)
     else
