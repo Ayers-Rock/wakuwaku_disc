@@ -9,14 +9,21 @@ class OrdersController < ApplicationController
     order = current_user.orders.build(order_params)
     order.save
     @cart_items = CartItem.where(user_id: current_user.id)
-    @cart_items.each do |cart_item|
-      @order_item = OrderItem.new
-      @order_item.item_id = cart_item.item.id
-      @order_item.amount = cart_item.amount
-      @order_item.order_id = order.id
-      @order_item.purchase_price = cart_item.item.price
-      @order_item.save
-      cart_item.destroy
+    if @order.save
+      @order.update(order_number: @order.order_number)
+      @cart_items.each do |cart_item|
+        @order_item = OrderItem.new
+        @order_item.item_id = cart_item.item.id
+        @order_item.amount = cart_item.amount
+        @order_item.order_id = @order.id
+        @order_item.purchase_price = cart_item.item.price
+        @order_item.save
+        cart_item.destroy
+      end
+        redirect_to thanks_order_path(@order.id)
+    else
+      @cart_items = CartItem.where(user_id: current_user.id)
+      render 'new'
     end
     redirect_to thanks_order_path(order.id)
   end

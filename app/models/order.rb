@@ -6,6 +6,8 @@ class Order < ApplicationRecord
     enum status: { preparing: 0, in_delivery: 1, delivered: 2 }
     enum payment: { cod: 0, transfar: 1, credit_card: 2 }
 
+    validates :postal_code, presence: true
+
     def total_price
         sum = 0
         order_items.each do |order_item|
