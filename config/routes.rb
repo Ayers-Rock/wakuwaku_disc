@@ -40,9 +40,10 @@ Rails.application.routes.draw do
     resource :favorites, only: [:create, :destroy]
   end
 
-  resources :orders do
+  resources :orders, except: [:create] do
     get :thanks, on: :member
   end
+  post 'orders/new' => 'orders#create', as: 'new_orders'
 
 
 

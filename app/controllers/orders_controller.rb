@@ -6,8 +6,7 @@ class OrdersController < ApplicationController
   end
 
   def create
-    order = current_user.orders.build(order_params)
-    order.save
+    @order = current_user.orders.build(order_params)
     @cart_items = CartItem.where(user_id: current_user.id)
     if @order.save
       @order.update(order_number: @order.order_number)
@@ -25,12 +24,12 @@ class OrdersController < ApplicationController
       @cart_items = CartItem.where(user_id: current_user.id)
       render 'new'
     end
-    redirect_to thanks_order_path(order.id)
   end
 
   def show
     @order = Order.find(params[:id])
     @order_items = @order.order_items
+    render :show
   end
 
   def thanks
@@ -40,6 +39,7 @@ class OrdersController < ApplicationController
 
   def index
     @orders = current_user.orders
+    render :index
   end
 
   def edit
@@ -54,30 +54,20 @@ class OrdersController < ApplicationController
   private
   def split_address(address)
     array = address.split
-    { postal_code: array[0], prefecture: array[1], city_address: array[2], building: array[3]}
+    { delivery_last_name: array[0], delivery_first_name: array[1], postal_code: array[2], prefecture: array[3], city_address: array[4], building: array[5]}
     # splitメソッドで区切って配列にする、デフォでスペースで区切ってくれるので今回引数はなし
   end
 
   def order_params
     case params[:address].to_i
     when 0
-      address_data = { postal_code: current_user.postal_code, prefecture: current_user.prefecture, city_address: current_user.city_address, building: current_user.building}
+      address_data = { delivery_last_name: current_user.last_name, delivery_first_name: current_user.first_name, postal_code: current_user.postal_code, prefecture: current_user.prefecture, city_address: current_user.city_address, building: current_user.building}
     when 1
       address = params[:other_address]
       address_data = split_address(address)
     end
-    # if params[:address] == "0"
-    #   address = current_user.address
-    # elsif params[:address] == "1"
-    #   address =
-    # else
-    #   address = ''
 
-      payment_data = {payment: params[:payment].to_i, total_price: current_user.cart_sum, postage: 500, status: 0}
+      payment_data = {delivery_first_kana_name: current_user.first_kana_name, delivery_last_kana_name: current_user.last_kana_name, payment: params[:payment].to_i, total_price: current_user.cart_sum, postage: 500, status: 0}
       address_data.merge(payment_data)
-
-
   end
-
-
 end
