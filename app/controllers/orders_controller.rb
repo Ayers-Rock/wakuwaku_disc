@@ -21,7 +21,6 @@ class OrdersController < ApplicationController
       end
         redirect_to thanks_order_path(@order.id)
     else
-      @cart_items = CartItem.where(user_id: current_user.id)
       render 'new'
     end
   end
@@ -43,9 +42,18 @@ class OrdersController < ApplicationController
   end
 
   def edit
+    @order = Order.find(params[:id])
   end
 
   def update
+    order = Order.find(params[:id])
+    order.user_id = current_user.id
+    if order.update(order_update_params)
+      redirect_to order_path(order.id)
+    else
+      @order = order
+      render :edit
+    end
   end
 
   def destroy
@@ -69,5 +77,9 @@ class OrdersController < ApplicationController
 
       payment_data = {delivery_first_kana_name: current_user.first_kana_name, delivery_last_kana_name: current_user.last_kana_name, payment: params[:payment].to_i, total_price: current_user.cart_sum, postage: 500, status: 0}
       address_data.merge(payment_data)
+  end
+
+  def order_update_params
+    params.require(:order).permit(:delivery_last_name, :delivery_first_name, :delivery_last_kana_name, :delivery_first_kana_name, :postal_code, :city_address, :prefecture, :building)
   end
 end

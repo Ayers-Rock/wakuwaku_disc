@@ -1,10 +1,13 @@
 class ItemsController < ApplicationController
   def rankings
+<<<<<<< HEAD
+=======
     @items = Item.all
     @favorite_ranks = Item.find(Favorite.group(:item_id).order('count(item_id) desc').limit(3).pluck(:item_id))
     @monthly_ranks = Item.where(created_at: 1.months.ago.beginning_of_day..Time.zone.now.end_of_day).find(OrderItem.group(:item_id).order('sum(amount) desc').limit(3).pluck(:item_id))
     @weekly_ranks = Item.where(created_at: 1.weeks.ago.beginning_of_day..Time.zone.now.end_of_day).find(OrderItem.group(:item_id).order('sum(amount) desc').limit(5).pluck(:item_id))
     @new_cd =Item.limit(5).order(" created_at DESC ")
+>>>>>>> master
   end
 
   def ranking
@@ -23,8 +26,22 @@ class ItemsController < ApplicationController
   end
 
   def index
-    @items = Item.all
+    unless params[:search].blank?
+      @artist = Item.joins(:artist).where("artist_name LIKE ?", "%#{params[:search]}%")
+      @track =  Item.joins(discs: :tracks).where("track_name LIKE ?", "%#{params[:search]}%")
+      @title = Item.where("title LIKE ?", "%#{params[:search]}%")
+      @merged_result = @artist | @title
+      @items = @merged_result | @track
+    else
+      @items = Item.all
+    end
     @cart_item = CartItem.new
   end
 
+<<<<<<< HEAD
+
 end
+    
+=======
+end
+>>>>>>> master
