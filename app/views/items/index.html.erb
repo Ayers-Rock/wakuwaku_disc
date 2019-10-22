@@ -6,6 +6,7 @@
                     <li>bbb</li>
                 </ul>
             </div>
+<<<<<<< HEAD
             <div class="col-md-9">
                 <div class="row">
                     <h2>CD一覧</h2>
@@ -33,3 +34,32 @@
             </div>
         </div>
     </div>
+=======
+            <div class="row">
+                <div class="col-md-2 col-md-offset-4">
+                    <p><%= item.price %>(税込)</p>
+                </div>
+                <div class="row">
+                    <div class="col-md-2 col-md-offset-4">
+                        <p><%= item.price %>(税込)</p>
+                    </div>
+                    <div class="col-md-6">
+                        <div id="favorite-button-<%=item.id %>">
+                            <%= render 'favorites/favorite', item: item %>
+                        </div>
+                        <div>
+                            <%= form_for @cart_item do |f| %>
+                                <%= f.number_field :amount %>
+                                <%= f.hidden_field :item_id, value: item.id %>
+                                <%= f.submit 'カートに入れる' %>
+                            <% end %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <% end %>
+
+
+
+>>>>>>> master
