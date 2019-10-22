@@ -17,7 +17,7 @@
                     <tr>
                         <td width="30%", style="text-align:center;"><font size="2"><%= stock.arrival_date %></td>
                         <td width="40%", style="text-align:center;"><font size="2"><%= stock.item.title %></td>
-                        <td width="10%", style="text-align:center;"><font size="2"><%= stock.arrival_count %></td>
+                        <td width="10%", style="text-align:center;"><font size="2"><%= stock.arrival_count %>個</td>
                         <td width="20%", style="text-align:center;"><font size="2">
                         <%= link_to "編集", edit_admin_item_stock_path(stock.item.id, stock.id), class: "btn btn-default col-xs-12" %>
                         </td>
