@@ -46,4 +46,12 @@ th,td {
 .total_price strong{
     padding-bottom: 5px;
     border-bottom: 1px solid #ffff00;
+    font-size: 15px;
+}
+
+.tableindex th{
+    background: #e6e6e6;
+    font-weight: normal;
+    white-space: nowrap;
+    text-align: center;
 }
