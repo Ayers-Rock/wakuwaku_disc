@@ -3,3 +3,43 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
+.label-box {
+    font-size: 16px;
+    .form-box {
+        border: solid 1px black;
+        text-align: center;
+        width: 50%;
+        border-radius: 10px;
+        margin: 20px auto;
+    }
+        h2 {
+            padding: 10px;
+        }
+        .btn {
+            padding-bottom: 5px;
+        }
+        .btn-success {
+            width: 60%;
+        }
+        input[type="text"] {
+            width: 60%;
+            height: 40px;
+        }
+        p   {
+            padding: 5px;
+        }
+    .table-condensed {
+        width: 60%;
+        margin: 0 auto;
+        th {
+            text-align: center;
+        }
+        td {
+            text-align: center;
+        }
+    }
+    .back-text-box {
+        text-align: center;
+        padding: 20px;
+    }
+}

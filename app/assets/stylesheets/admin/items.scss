@@ -1,3 +1,28 @@
 // Place all the styles related to the admin/items controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.item-index-box {
+    font-size: 16px;
+
+    .add-box {
+        display: flex;
+        justify-content: flex-end;
+        padding-bottom: 15px;
+
+        span {
+            font-size: 20px;
+            font-weight: bold;
+            margin-right: 30%;
+        }
+    }
+
+    .table-condensed {
+        th {
+            text-align: center;
+        }
+        td {
+            text-align: center;
+        }
+    }
+}
