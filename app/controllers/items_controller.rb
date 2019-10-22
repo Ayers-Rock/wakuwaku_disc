@@ -13,17 +13,17 @@ class ItemsController < ApplicationController
     # @user = User.find(params[:id])
     @cart_item = CartItem.new
     @reviews = Review.where(item_id: @item.id)
-    # binding.pry
     @review = Review.new
   end
 
   def index
-    @items = Item.all
+    unless params[:search].blank?
+      @items = Item.where("title LIKE ?", "%#{params[:search]}%")
+    else
+      @items = Item.all
+    end
     @cart_item = CartItem.new
   end
 
-  def search_params
-    -    params.require(:q).permit!
-    +    params.require(:q).permit(:name_cont)
-    end
+
 end
