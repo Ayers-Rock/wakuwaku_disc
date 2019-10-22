@@ -34,4 +34,38 @@
     }
     #container{
     height: 300px;
+    width: 90%;
+    margin: 100px;
+    }
+    .weekly {
+        text-align: center;
+        display: block;
+        margin: 0 auto;
+        // padding: 20px;
+        margin: 30px;
+        border: 1px solid rgb(122, 122, 122);
+    }
+    .monthly {
+        text-align: center;
+        display: block;
+        margin: 0 auto;
+        padding: 20px;
+        margin: 30px;
+        border: 1px solid rgb(122, 122, 122);
+    }
+    .favorite {
+        text-align: center;
+        display: block;
+        margin: 0 auto;
+        padding: 20px;
+        margin: 30px;
+        border: 1px solid rgb(122, 122, 122);
+    }
+    .newcd {
+        text-align: center;
+        display: block;
+        margin: 0 auto;
+        padding: 20px;
+        margin: 30px;
+        border: 1px solid rgb(122, 122, 122);
     }
