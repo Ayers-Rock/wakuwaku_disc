@@ -16,7 +16,7 @@ Rails.application.routes.draw do
 
     resources :artists, only: [:new, :create, :destroy]
 
-    # resources :orders, only: [:index, :show]
+    resources :orders, only: [:index, :show]
 
     resources :stocks, only: [:index]
 

@@ -10,7 +10,9 @@ class Admin::UsersController < Admin::AdminApplicationsController
 
   def show
     @user = User.find(params[:id])
-    @address = Address.where(address_id: @address_id)
+    # @address = Address.where(address_id: @address_id)
+    @addresses = Address.all
+    # @orders = current_user.orders
   end
 
   def destroy
