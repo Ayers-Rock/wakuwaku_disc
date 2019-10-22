@@ -1,30 +1,30 @@
 <div class="container">
     <div class="row">
-        <div class="col-md-12">
-            <div>
-                <p>入荷履歴一覧</p>
-                <table>
+        <% if notice %>
+			<p id="notice"><%= notice %></p>
+		<% end %>
+        <div class="col-lg-10 col-lg-offset-1">
+            <h2>入荷履歴一覧</h2>
+            <br>
+            <table class="tableindex table-condensed width="100%">
+                <tr>
+                    <th>入荷日時</th>
+                    <th>入荷商品</th>
+                    <th>入荷数</th>
+                    <th></th>
+                </tr>
+                <% @stocks.each do |stock| %>
                     <tr>
-                        <th>入荷日時</th>
-                        <th>入荷商品</th>
-                        <th>入荷数</th>
-                        <th></th>
+                        <td width="30%", style="text-align:center;"><font size="2"><%= stock.arrival_date %></td>
+                        <td width="40%", style="text-align:center;"><font size="2"><%= stock.item.title %></td>
+                        <td width="10%", style="text-align:center;"><font size="2"><%= stock.arrival_count %></td>
+                        <td width="20%", style="text-align:center;"><font size="2">
+                        <%= link_to "編集", edit_admin_item_stock_path(stock.item.id, stock.id), class: "btn btn-default col-xs-12" %>
+                        </td>
                     </tr>
-                    <% @stocks.each do |stock| %>
-                        <tr>
-                            <td><%= stock.arrival_date %></td>
-                            <td><%= stock.item.title %></td>
-                            <td><%= stock.arrival_count %></td>
-                            <td>
-                                <%= link_to edit_admin_item_stock_path(stock.item.id, stock.id) do %>
-                                    <button>編集</button>
-                                <% end %>
-                            </td>
-                        </tr>
-                    <% end %>
-                </table>
-                <%= paginate @stocks %>
-            </div>
+                <% end %>
+            </table>
+            <%= paginate @stocks %>
         </div>
     </div>
 </div>
