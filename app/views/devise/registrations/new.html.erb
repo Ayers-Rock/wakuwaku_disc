@@ -1,70 +1,104 @@
-<h2>新規登録</h2>
+<div class="container">
+  <div class="row">
+    <% if notice %>
+			<p id="notice"><%= notice %></p>
+		<% end %>
+    <div class="col-lg-10 col-lg-offset-1">
+      <div style="padding: 10px; margin-bottom: 10px; border: 1px solid #333333;">
+        <div class="row">
+          <div class="col-lg-6 col-lg-offset-3">
+            <br>
+            <h2>新規登録</h2>
+            <br>
+            <br>
+            <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+            <%= render "devise/shared/error_messages", resource: resource %>
+            <div class="field">
+              <p>名前<span style="color:red">※</span></p>              <div class="field1">
+              <%= f.label :姓 %>
+              <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name", :size => "25*25" %>
+              <%= f.label :名 %>
+              <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", :size => "25*25" %>
+            </div>
+            <br>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
-  <div class="field">
-    <P>名前</p>
-    <%= f.label :姓 %>
-    <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %>
-    <%= f.label :名 %>
-    <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" %>
+            <div class="field">
+              <p>名前（カタカナ）<span style="color:red">※</span></p>
+              <%= f.label :姓 %>
+              <%= f.text_field :last_kana_name, autofocus: true, autocomplete: "last_kana_name", :size => "25*25" %>
+              <%= f.label :名 %>
+              <%= f.text_field :first_kana_name, autofocus: true, autocomplete: "first_kana_name", :size => "25*25" %>
+            </div>
+            <br>
+
+            <div class="field">
+              <%= f.label :電話番号 %><span style="color:red">※</span><br />
+              <%= f.telephone_field :tel_number, autofocus: true, autocomplete: "tel_number", :size => "60*60" %>
+            </div>
+            <br>
+
+            <div class="field">
+              <%= f.label :メールアドレス %><span style="color:red">※</span><br />
+              <%= f.email_field :email, autofocus: true, autocomplete: "email", :size => "60*60" %>
+            </div>
+            <br>
+
+            <div class="field">
+              <%= f.label :パスワード %>
+              <% if @minimum_password_length %>
+              <em>(<%= @minimum_password_length %> 文字以上)</em>
+              <% end %><span style="color:red">※</span><br />
+              <%= f.password_field :password, autocomplete: "new-password", :size => "60*60" %>
+            </div>
+            <br>
+
+            <div class="field">
+              <%= f.label :パスワード（確認） %><span style="color:red">※</span><br />
+              <%= f.password_field :password_confirmation, autocomplete: "new-password", :size => "60*60" %>
+            </div>
+            <br>
+
+            <div class="field">
+              <%= f.label :郵便番号（任意） %><br />
+              <%= f.text_field :postal_code, autofocus: true, autocomplete: "postal_code", :size => "30*30" %>
+              <p>(半角英数) 例1000101  ※郵便番号がわからない場合は
+              <%=link_to "こちら", "https://www.post.japanpost.jp/smt-zipcode/" %>
+              </p>
+            </div>
+            <br>
+
+            <div class="field">
+              <%= f.label :都道府県（任意） %><br />
+              <%= f.text_field :prefecture, autofocus: true, autocomplete: "prefecture", :size => "60*60" %>
+            </div>
+            <br>
+
+            <div class="field">
+              <%= f.label :市区町村　番地（任意） %><br />
+              <%= f.text_field :city_address, autofocus: true, autocomplete: "city_address", :size => "60*60" %>
+            </div>
+            <br>
+
+            <div class="field">
+              <%= f.label :建物名　部屋番号（任意） %><br />
+              <%= f.text_field :building, autofocus: true, autocomplete: "building", :size => "60*60" %>
+            </div>
+            <br>
+            <br>
+            <br>
+            <div class="actions">
+              <%= f.submit "登録する", :class => "btn btn-info" %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+        <br>
+        <br>
+        <br>
+      </div>
+    </div>
   </div>
-
-  <div class="field">
-    <p>名前（カタカナ）</p>
-    <%= f.label :姓 %>
-    <%= f.text_field :last_kana_name, autofocus: true, autocomplete: "last_kana_name" %>
-    <%= f.label :名 %>
-    <%= f.text_field :first_kana_name, autofocus: true, autocomplete: "first_kana_name" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :電話番号 %><br />
-    <%= f.telephone_field :tel_number, autofocus: true, autocomplete: "tel_number" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :メールアドレス %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :パスワード %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> 文字以上)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :パスワード（確認） %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :郵便番号 %><br />
-    <%= f.text_field :postal_code, autofocus: true, autocomplete: "postal_code" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :都道府県（任意） %><br />
-    <%= f.text_field :prefecture, autofocus: true, autocomplete: "prefecture"%>
-  </div>
-
-  <div class="field">
-    <%= f.label :市区町村　番地（任意） %><br />
-    <%= f.text_field :city_address, autofocus: true, autocomplete: "city_address" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :建物名　部屋番号（任意） %><br />
-    <%= f.text_field :building, autofocus: true, autocomplete: "building" %>
-  </div>
-
-
-
-  <div class="actions">
-    <%= f.submit "登録する" %>
-  </div>
-<% end %>
+</div>
+<br>
+<br>
 
