@@ -4,11 +4,16 @@
 <table>
   <thead>
     <tr>
-      <%= link_to '(詳細へ)', order_path(order.id) %>
+      <th>
+        <%= order.created_at.strftime('%Y/%m/%d') %>ご注文
+        <%= link_to '(詳細へ)', order_path(order.id) %>
+      </th>
     </tr>
     <tr>
+        <th>ご注文番号</th>
         <th>商品</th>
-        <th>配送状況</th>
+        <th>配送先</th>
+        <th>配送状況</th>status
         <th></th>
     </tr>
   </thead>
@@ -16,14 +21,10 @@
     <% order.order_items.each do |order_item| %>
       <tr>
         <td><%= order_item.item.title %></td>
-        <td><%= order_item.order.status %></td>
-        <td><%= %></td>
-          <% if order_item.order.status == "preparing" %>
-          <%
-=begin%>
- status == 0だとダメだった　databaseだと０で保存されてるけどviewに持ってくるときには文字列になってる・・？ 
-<%
-=end%>
+        <td><%= order_item.item.title %></td>
+        <td><%= order_item.order.delivery_last_name %><%= order_item.order.delivery_first_name %></td>
+        <td><%= order.payment_i18n %>
+          <% if order.status == "preparing" %>
             <td> </td>
           <% else %>
             <td>
@@ -37,3 +38,6 @@
   </tbody>
 </table>
 <% end %>
+
+<%= link_to "マイページへ戻る", user_path(current_user.id) %>
+<%= link_to "注文キャンセル", order_path(@order.id), method: :delete %>
