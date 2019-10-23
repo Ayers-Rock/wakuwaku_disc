@@ -1,12 +1,14 @@
-<div class="container">
+<div class="container admin-edit-box">
     <div class="row">
-        <div class="col-md-12">
-            <div>
+        <div class="col-lg-10 col-lg-offset-1">
+            <div class="admin-edit-form-box">
                 <%= form_with(model: @item, url: admin_item_path(@item), local: true) do |s| %>
-                    <div>
-                        <p><%= attachment_image_tag @item, :jacket_image, :fill, 300, 300 %></p>
-                        <p><%= s.label :"ジャケット画像" %></p>
-                        <p><%= s.attachment_field :jacket_image %></p>
+                    <div class="jacket-box">
+                        <p class="col-lg-4"><%= attachment_image_tag @item, :jacket_image, :fill, 150, 150, style: "box-shadow: 0 0 10px grey;"%></p>
+                        <div class="col-lg-8 jacket-attachment-field">
+                            <span><%= s.label :"ジャケット画像" %>
+                            <%= s.attachment_field :jacket_image %></span>
+                        </div>
                     </div>
                     <div>
                         <p><%= s.label :"シングル/アルバム名" %></p>
@@ -47,7 +49,7 @@
                         <%= s.submit "更新" %>
                     </div>
                 <% end %>
-            </div>
+            </<div>
         </div>
     </div>
 </div>

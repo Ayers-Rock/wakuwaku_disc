@@ -40,20 +40,51 @@
 .item-new-box {
     font-size: 20px;
     .form-box {
-        border: solid 2px rgba($color: #000000, $alpha: 1.0);
+        border: solid 1px rgba($color: #000000, $alpha: 1.0);
         width: 80%;
         margin: 0 auto;
         display: flex;
         justify-content: center;
+        margin: 30px auto;
+
         input[type="text"], select {
             width: 100%;
             margin: 10px auto;
             border-radius: 10px;
             box-shadow: 0 0 7px grey;
+        }
+        .h2-box {
+            text-align: center;
+        }
+        // div {
+        //     text-align: center;
+        // }
+        h2 {
+            margin: 20px auto;
 
         }
         input[type="number"] {
             width: 20%;
+            box-shadow: 0 0 7px grey;
+        }
+        input[type="file"] {
+            width: 70%;
+        }
+        .radio-box {
+            label {
+                padding-left: 45px;
+                margin: 10px 0;
+            }
+            .label-1 {
+                padding-left: 0;
+            }
+        }
+        .submit-button {
+            text-align: center;
+            margin: 30px auto;
+        }
+        #discs {
+            margin: 20px;
         }
     }
 }
@@ -65,14 +96,28 @@
 
 // _track/new/items
 .track-box {
-    input[type="number"] {
-        width: 20%;
-    }
-    input[id="item_discs_attributes_0_tracks_attributes_1571802931862_track_name"] {
-        width: 40%;
-    }
-    // #item_discs_attributes_0_tracks_attributes_1571802931862_track_name{
+        input[id="item_discs_attributes_0_tracks_attributes_1571802931862_track_name"] {
+            width: 40%;
+        }
+        // #item_discs_attributes_0_tracks_attributes_1571802931862_track_name{
     //     width: 40%;
     // }
+}
 
+// edit/items
+
+.admin-edit-box {
+    padding: 10px;
+
+    .admin-edit-form-box {
+        border: solid 1px black;
+
+        .jacket-box {
+            margin: 30px 30px 0 30px;
+            display: flex;
+            .jacket-attachment-field {
+                padding-top: 100px;
+            }
+        }
+    }
 }
