@@ -2,6 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+// index/items
 .item-index-box {
     font-size: 16px;
 
@@ -35,6 +36,7 @@
     }
 }
 
+// new/items
 .item-new-box {
     font-size: 20px;
     .form-box {
@@ -43,9 +45,34 @@
         margin: 0 auto;
         display: flex;
         justify-content: center;
-        input[type="text"] {
-            width: 60%;
-            margin: 0 auto;
+        input[type="text"], select {
+            width: 100%;
+            margin: 10px auto;
+            border-radius: 10px;
+            box-shadow: 0 0 7px grey;
+
+        }
+        input[type="number"] {
+            width: 20%;
         }
     }
+}
+
+// _desc/new/items
+.disc-box {
+
+}
+
+// _track/new/items
+.track-box {
+    input[type="number"] {
+        width: 20%;
+    }
+    input[id="item_discs_attributes_0_tracks_attributes_1571802931862_track_name"] {
+        width: 40%;
+    }
+    // #item_discs_attributes_0_tracks_attributes_1571802931862_track_name{
+    //     width: 40%;
+    // }
+
 }

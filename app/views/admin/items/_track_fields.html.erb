@@ -1,5 +1,6 @@
-<div class="nested-fields">
+<div class="nested-fields track-box">
   <div class="form-group">
+    <%= f.label :track_number %>
     <%= f.number_field :track_number, min: "1" %>
     <%= f.text_field :track_name %>
     <%= link_to_remove_association "曲を削除", f  %>
