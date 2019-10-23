@@ -113,6 +113,8 @@
         border: solid 1px black;
         width: 85%;
         margin: 0 auto;
+        border-radius: 10px;
+        box-shadow: 0 0 7px grey;
 
         .jacket-box {
             margin: 30px 30px 0 30px;
@@ -136,14 +138,24 @@
             }
             input[type="text"], select {
                 width: 80%;
-                margin: 10px;
+                margin: 20px;
+                box-shadow: 0 0 7px grey;
             }
             input[type="number"] {
                 width: 20%;
+                margin: 20px;
+                box-shadow: 0 0 7px grey;
             }
             input[type="radio"] {
-                margin: 10px;
+                margin: 20px;
+                box-shadow: 0 0 7px grey;
             }
+        }
+        .submit-button {
+            text-align: center;
+            margin: 20px auto;
+        }
+        input[type="submit"] {
         }
     }
 }

@@ -34,7 +34,7 @@
                                 <%= s.fields_for :discs do |t| %>
                                     <%= render "disc_fields", f: t %>
                                 <% end %>
-                                <div class="links">
+                                <div class="links" style="margin-bottom: 20px;">
                                     <%= link_to_add_association "ディスクを追加", s, :discs %>
                                 </div>
                             </td>
@@ -56,8 +56,8 @@
                         </tr>
                     </table>
 
-                    <div>
-                        <%= s.submit "更新" %>
+                    <div class="submit-button">
+                        <%= s.submit "更新", class: "btn btn-lg btn-primary" %>
                     </div>
                 <% end %>
             </<div>
