@@ -9,44 +9,44 @@
             </div>
             <div class="col-md-8">
                 <p><%= @item.title %></p>
-                <p><%= @item.artist %></p>
+                <p><%= @item.artist.artist_name %></p>
             </div>
         </div>
         <div class="row">
             <div class="col-md-2 col-md-offset-4">
                 <p><%= @item.price %>(税込)</p>
-        </div>
-        <div class="col-md-6">
-        <div id="favorite-button-<%=@item.id %>">
-            <%= render 'favorites/favorite', item: @item %>
-        </div>
+            </div>
+            <div class="col-md-6">
+                <div id="favorite-button-<%=@item.id %>">
+                    <%= render 'favorites/favorite', item: @item %>
+            </div>
             <%# <button><%= link_to 'お気に入り', favorite_path %>
-            <%= form_for @cart_item do |f| %>
-            <%= f.number_field :amount %>
-            <%= f.hidden_field :item_id, value: @item.id %>
-            <%= f.submit 'カートに入れる' %>
-            <% end %>
+                <%= form_for @cart_item do |f| %>
+                <%= f.number_field :amount %>
+                <%= f.hidden_field :item_id, value: @item.id %>
+                <%= f.submit 'カートに入れる' %>
+                <% end %>
         </div>
     </div>
     <div class="col-md-1"></div>
-            <div class="row">
-                <div class="col-md-10 col-md-offset-1">
-                    <h2>商品詳細</h2>
-                        <p>ジャンル・レーベル</p>
-                            <div class="row">
-                                <div class="col-md-2">
-                                    <%= @item.title %><br>
-                                    <%= @item.genre %>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-2">
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            <h2>商品詳細</h2>
+                <p>ジャンル・レーベル</p>
+                    <div class="row">
+                        <div class="col-md-2">
+                            <%= @item.title %><br>
+                            <%= @item.genre.genre_name %>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2">
                                     <%# <%= item.disc.disc_number %>
                                     <%# <%= item.disc.track_name %>
-                                </div>
-                            </div>
-                </div>
-            </div>
+                        </div>
+                    </div>
+        </div>
+</div>
     <div>
         <p>投稿レビュー</p>
             <% @reviews.each do |review| %>
