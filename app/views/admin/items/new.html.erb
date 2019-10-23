@@ -1,8 +1,9 @@
-<div class="container">
+<div class="container item-new-box">
     <div class="row">
-        <div class="col-md-12">
-            <div>
+        <div class="col-lg-10 col-lg-offset-1">
+            <div class="form-box">
                 <%= form_with(model: @item, url: admin_items_path, local: true) do |s| %>
+                    <h2>新規商品追加</h2>
                     <div>
                         <p><%= s.label :"アーティスト名" %></p>
                         <p><%= s.collection_select :artist_id, Artist.all, :id, :artist_name, :prompt => "選択して下さい" %></p>

@@ -4,16 +4,16 @@
             <div class="add-box">
                 <span>商品一覧</span>
                 <div>
-                    <%= link_to "新規アーティスト追加", new_admin_artist_path, class: "btn btn-default" %>
+                    <%= link_to "新規アーティスト追加", new_admin_artist_path, class: "btn btn-lg btn-default" %>
                 </div>
                 <div>
-                    <%= link_to "新規レーベル追加", new_admin_label_path, class: "btn btn-default" %>
+                    <%= link_to "新規レーベル追加", new_admin_label_path, class: "btn btn-lg btn-default" %>
                 </div>
                 <div>
-                    <%= link_to "新規ジャンル追加", new_admin_genre_path, class: "btn btn-default" %>
+                    <%= link_to "新規ジャンル追加", new_admin_genre_path, class: "btn btn-lg btn-default" %>
                 </div>
                 <div>
-                    <%= link_to "新規商品追加",  new_admin_item_path, class: "btn btn-default" %>
+                    <%= link_to "新規商品追加",  new_admin_item_path, class: "btn btn-lg btn-default" %>
                 </div>
             </div>
         </div>
@@ -50,7 +50,7 @@
                     </tr>
                 <% end %>
             </table>
-            <%= paginate @items %>
+            <div class="paginate"><%= paginate @items %></div>
         </div>
     </div>
 </div>
