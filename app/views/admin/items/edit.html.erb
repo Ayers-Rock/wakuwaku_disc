@@ -10,41 +10,51 @@
                             <%= s.attachment_field :jacket_image %></span>
                         </div>
                     </div>
+
                     <div>
-                        <p><%= s.label :"シングル/アルバム名" %></p>
-                        <p><%= s.text_field :title %></p>
-                    </div>
-                    <div>
-                        <p><%= s.label :"アーティスト名" %></p>
-                        <p><%= s.collection_select :artist_id, Artist.all, :id, :artist_name, :prompt => "選択して下さい" %></p>
-                    </div>
-                    <div>
-                        <p><%= s.label :"レーベル名" %></p>
-                        <p><%= s.collection_select :label_id, Label.all, :id, :label_name, :prompt => "選択して下さい" %></p>
-                    </div>
-                    <div>
-                        <p><%= s.label :"ジャンル名" %></p>
-                        <p><%= s.collection_select :genre_id, Genre.all, :id, :genre_name, :prompt => "選択して下さい" %></p>
-                    </div>
-                    <div id="discs">
-                        <%= s.fields_for :discs do |t| %>
-                            <%= render "disc_fields", f: t %>
-                        <% end %>
-                        <div class="links">
-                            <%= link_to_add_association "ディスクを追加", s, :discs %>
+                        <div>
+                            <p class="col-lg-4"><%= s.label :"シングル/アルバム名" %></p>
+                            <p class="col-lg-8"><%= s.text_field :title %></p>
+                        </div>
+                        <div>
+                            <p class="col-lg-4"><%= s.label :"アーティスト名" %></p>
+                            <p class="col-lg-8"><%= s.collection_select :artist_id, Artist.all, :id, :artist_name, :prompt => "選択して下さい" %></p>
+                        </div>
+                        <div>
+                            <p class="col-lg-4"><%= s.label :"レーベル名" %></p>
+                            <p class="col-lg-8"><%= s.collection_select :label_id, Label.all, :id, :label_name, :prompt => "選択して下さい" %></p>
+                        </div>
+                        <div>
+                            <p class="col-lg-4"><%= s.label :"ジャンル名" %></p>
+                            <p class="col-lg-8"><%= s.collection_select :genre_id, Genre.all, :id, :genre_name, :prompt => "選択して下さい" %></p>
                         </div>
                     </div>
+
                     <div>
-                        <p><%= s.label :"税抜価格" %></p>
-                        <p><%= s.text_field :price %></p>
+                        <div id="discs">
+                            <%= s.fields_for :discs do |t| %>
+                                <%= render "disc_fields", f: t %>
+                            <% end %>
+                            <div class="links">
+                                <%= link_to_add_association "ディスクを追加", s, :discs %>
+                            </div>
+                        </div>
                     </div>
+
                     <div>
-                        <span><%= s.label :"販売ステータス" %></span>
-                        <span><%= s.label :"販売中" %></span>
-                        <span><%= s.radio_button :status, "available" %></span>
-                        <span><%= s.label :"販売停止中" %></span>
-                        <span><%= s.radio_button :status, "not_available" %></span>
+                        <div>
+                            <p class="col-lg-4"><%= s.label :"税抜価格" %></p>
+                            <p class="col-lg-8"><%= s.text_field :price %></p>
+                        </div>
+                        <div>
+                            <span><%= s.label :"販売ステータス" %></span>
+                            <span><%= s.label :"販売中" %></span>
+                            <span><%= s.radio_button :status, "available" %></span>
+                            <span><%= s.label :"販売停止中" %></span>
+                            <span><%= s.radio_button :status, "not_available" %></span>
+                        </div>
                     </div>
+
                     <div>
                         <%= s.submit "更新" %>
                     </div>

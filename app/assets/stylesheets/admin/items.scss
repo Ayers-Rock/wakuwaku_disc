@@ -119,5 +119,11 @@
                 padding-top: 100px;
             }
         }
+        label {
+            margin-bottom: 0;
+        }
+        .col-lg-4 {
+            border-right: 1px solid rgba($color: #000000, $alpha: 0.5)
+        }
     }
 }
