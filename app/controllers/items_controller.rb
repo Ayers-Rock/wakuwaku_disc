@@ -24,14 +24,15 @@ class ItemsController < ApplicationController
 
   def index
     unless params[:search].blank?
-      @artist = Item.joins(:artist).where("artist_name LIKE ?", "%#{params[:search]}%")
-      @track =  Item.joins(discs: :tracks).where("track_name LIKE ?", "%#{params[:search]}%")
-      @title = Item.where("title LIKE ?", "%#{params[:search]}%")
-      @merged_result = @artist | @title
-      @items = @merged_result | @track
+      artist = Item.joins(:artist).where("artist_name LIKE ?", "%#{params[:search]}%")
+      track =  Item.joins(discs: :tracks).where("track_name LIKE ?", "%#{params[:search]}%")
+      title = Item.where("title LIKE ?", "%#{params[:search]}%")
+      merged_result = artist | title
+      @items = merged_result | track
     else
       @items = Item.all
     end
     @cart_item = CartItem.new
   end
+
 end
