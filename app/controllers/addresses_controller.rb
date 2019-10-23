@@ -6,9 +6,9 @@ class AddressesController < ApplicationController
   end
 
   def index
+    @user = User.find(params[:user_id])
     @addresses = Address.all
     # @address = Address.find(params[:id])
-    @user = User.find(params[:user_id])
   end
 
   def edit
