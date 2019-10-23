@@ -2,13 +2,13 @@
     <div class="form-group">
         <%= f.label :disc_number %>
         <%= f.number_field :disc_number, min: "1" %>
-        <%= link_to_remove_association "ディスクを削除", f %>
+        <p style="margin: 10px;"><%= link_to_remove_association "ディスクを削除", f %></p>
     </div>
     <div id="tracks">
         <%= f.fields_for :tracks do |u| %>
             <%= render "track_fields", f: u %>
         <% end %>
-        <div class="links">
+        <div class="links", style="margin-bottom: 10px;">
             <%= link_to_add_association "曲名を追加", f, :tracks %>
         </div>
     </div>
