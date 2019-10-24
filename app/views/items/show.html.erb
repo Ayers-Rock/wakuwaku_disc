@@ -57,21 +57,6 @@
                 <% end %>
         </div>
 
-        <% if user_signed_in? %>
-            <div>
-                <p>レビュー入力フォーム</p>
-                <%= form_for([@item, @review]) do |f| %>
-                    <% if @review.errors.any? %>
-                        <%= "#{@review.errors.count}件のエラーがあります。" %>
-                        <% @review.errors.full_messages.each do |message| %>
-                            <%= message %>
-                        <% end %>
-                    <% end %>
-                    <p><span>タイトル</span><%= f.text_field :title %></p>
-                    <p><span>本文</span><%= f.text_area :body %></p>
-                    <%= f.submit "投稿" %>
-                <% end %>
-            </div>
-        <% end %>
+    
     </div>
     <%# <p><%= link_to '商品一覧へ戻る' items_path %>
