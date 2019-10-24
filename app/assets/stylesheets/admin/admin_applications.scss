@@ -7,20 +7,30 @@
     border: solid 1px black;
     border-radius: 20px;
     margin: 15px;
-    .admin-header-top-box {
+    display: flex;
+    justify-content: center;
+    font-size: 40px;
+    .logo-box {
+        margin: 0 auto;
+        background-image: image();
+    }
+    .text-box {
         display: flex;
-        .logo-box {
-            margin: 0 auto;
-            background-image: image();
-        }
-        .text-box {
-            display: flex;
-        }
-        p:last-child {
-            padding: 40px 5% 20px 60%;
+    }
+    ul {
+        display: flex;
+        justify-content: center;
+        padding-top: 70px;
+        li {
+            list-style-type: none;
+            padding-left: 40px;
         }
     }
-}
+    // 面白いやーつ
+    // p:last-child {
+    //     padding: 40px 5% 20px 60%;
+    // }
+    }
 
 
 
