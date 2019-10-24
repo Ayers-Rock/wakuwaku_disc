@@ -1,4 +1,7 @@
     <%# <div class="container"> %>
+    <% unless @items.present? %>
+        <h2>検索結果がありません</h2>
+    <% end %>
         <div class="row">
             <div class="col-md-2">
                 <%# <ul>
