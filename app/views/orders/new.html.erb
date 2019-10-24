@@ -73,7 +73,6 @@
         </table>
         <br>
         <br>
-
         <%= submit_tag '購入を確定する', :class => "btn btn-danger col-xs-6 col-xs-offset-3"%>
         <% end %>
         <br>
@@ -83,7 +82,7 @@
         <br>
         <br>
         <div align="center">
-        <%= link_to "カートに戻る", cart_items_path%>
+        <%= link_to "カートに戻る", user_cart_items_path(current_user.id)%>
         </div>
       </>
     </div>
