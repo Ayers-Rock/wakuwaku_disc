@@ -1,84 +1,72 @@
 
-<div class="container">
+<div class="container admin-show-item-box">
     <div class="row">
-        <div class="col-md-12">
-            <p>商品詳細</p>
-            <div>
-                <div>
-                    <p>
-                        <%= attachment_image_tag @item, :jacket_image, :fill, 300, 300 %>
-                    </p>
-                    <div>
-                        <p><span>タイトル :</span><%= @item.title %></p>
-                        <br><br>
-                        <p><span>アーティスト名 :</span><%= @item.artist.artist_name %></p>
+        <div class="col-lg-10 col-lg-offset-1">
+            <div class="admin-edit-form-box">
+                <h2>商品詳細</h2>
+                <div class="jacket-box">
+                    <p class="col-lg-4"><%= attachment_image_tag @item, :jacket_image, :fill, 150, 150, class: "jacket-image-box" %></p>
+                    <div class="col-lg-8 jacket-attachment-field">
+                        <h3>タイトル :</h3>
+                        <p><%= @item.title %></p>
+                        <h3>アーティスト名</h3>
+                        <p><%= @item.artist.artist_name %></p>
                     </div>
                 </div>
-                <div>
-                    <div>
-                        <div>
-                            <p>レーベル名</p>
-                        </div>
-                        <div>
-                            <p><%= @item.label.label_name %></p>
-                        </div>
-                        <div>
-                            <p>ジャンル</p>
-                        </div>
-                        <div>
-                            <p><%= @item.genre.genre_name %></p>
-                        </div>
-                        <div>
-                            <p>曲名</p>
-                        </div>
-                        <% @discs.each do |disc| %>
-                            <div>
-                                <p><%= "#{disc.disc_number}枚目" %></p>
-                                <% disc.tracks.each do |track|  %>
-                                    <%# <% track = track.order_by(track_number: "DESC") %>
-                                    <p><span><%= "#{track.track_number}：" %></span><%= track.track_name %></p>
-                                <% end %>
-                            </div>
-                        <% end %>
-                        <div>
-                            <p>価格(税別価格)</p>
-                        </div>
-                        <div>
-                            <p><%= "#{@item.price}円" %></p>
-                        </div>
-                        <div>
-                            <p>ステータス</p>
-                        </div>
-                        <div>
-                            <p><%= @item.status_i18n %></p>
-                        </div>
-                        <div>
-                            <p>在庫数</p>
-                        </div>
-                        <div>
-                            <%= (Stock.where(item_id: @item.id).sum(:arrival_count)) - (OrderItem.where(item_id: @item.id).sum(:amount)) %>
+
+                <table>
+                    <tr>
+                        <th>レーベル名</th>
+                        <td><%= @item.label.label_name %></td>
+                    </tr>
+                    <tr>
+                        <th>ジャンル</th>
+                        <td><%= @item.genre.genre_name %></td>
+                    </tr>
+
+                    <tr id="discs">
+                        <th><span>曲名</span></th>
+                        <td>
+                            <% @discs.each do |disc| %>
+                                <div>
+                                    <p><%= "#{disc.disc_number}枚目" %></p>
+                                    <% disc.tracks.each do |track|  %>
+                                        <%# <% track = track.order_by(track_number: "DESC") %>
+                                        <p><span><%= "#{track.track_number}：" %></span><%= track.track_name %></p>
+                                    <% end %>
+                                </div>
+                            <% end %>
+                        </td>
+                    </tr>
+
+                    <tr>
+                        <th>価格(税抜価格)</th>
+                        <td><%= "#{@item.price}円" %></td>
+                    </tr>
+
+                    <tr>
+                        <th>ステータス</th>
+                        <td><%= @item.status_i18n %></td>
+                    </tr>
+
+                    <tr>
+                        <th>在庫数</th>
+                        <td><%= (Stock.where(item_id: @item.id).sum(:arrival_count)) - (OrderItem.where(item_id: @item.id).sum(:amount)) %></td>
+                    </tr>
+                </table>
+
+                <div class="row">
+                    <div class="col-cd-12">
+                        <div class="submit-button">
+                            <%= link_to "在庫追加", new_admin_item_stock_path(@item.id), class: "btn btn-primary" %>
+                            <%= link_to "編集", edit_admin_item_path(@item.id), class: "btn btn-success" %>
+                            <%= link_to "削除", admin_item_path(@item.id), method: :delete, class: "btn btn-danger" %>
+                            <%= link_to "戻る", admin_items_path, class: "btn" %>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col-cd-12">
-            <div>
-                <%= link_to new_admin_item_stock_path(@item.id) do %>
-                    <button>在庫追加</button>
-                <% end %>
-                <%= link_to edit_admin_item_path(@item.id) do %>
-                    <button>編集</button>
-                <% end %>
-                <%= link_to admin_item_path(@item.id), method: :delete do %>
-                    <button>削除</button>
-                <% end %>
-                <%= link_to admin_items_path do %>
-                    <button>戻る</button>
-                <% end %>
-            </div>
+
+            </<div>
         </div>
     </div>
 </div>
