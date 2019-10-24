@@ -1,1 +1,1 @@
-$("#favorite-button-<%= @item.id %>").html("<%= j(render partial: 'favorite', locals: {favorites: @favorites, items: @items, item: @item, favorite: @favorite}) %>")
+$("#favorite-button-<%= @item.id %>").html("<%= j(render partial: 'favorite', locals: {favorites: @favorites, items: @items, item: @item, favorite: @favorite, favorite_ranks: @favorite_ranks, monthly_ranks: @monthly_ranks, weekly_ranks: @weekly_ranks, new_cd: @new_cd, cart_item: @cart_item}) %>")

@@ -33,7 +33,7 @@
         </dl>
         <li class=""><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"glyphicon glyphicon-log-out" %></li>
         <li class=""><%= link_to "マイページ", user_path(current_user.id), class:"glyphicon glyphicon-user" %></li>
-        <li class=""><%= link_to "カート", cart_items_path, class: "glyphicon glyphicon-shopping-cart" %></li>
+        <li class=""><%= link_to "カート", user_cart_items_path(current_user.id), class: "glyphicon glyphicon-shopping-cart" %></li>
       <div>
 
     <% else %>
@@ -42,8 +42,11 @@
           <p>こんにちはゲストさん<br>
           無料会員登録は<%= link_to "こちら", new_user_registration_path %>すでに会員の方は<%= link_to "ログイン", new_user_session_path %></p>
         </div>
-       <dl class="searchbox">
-
+        <li class=""><%= link_to "ログイン", new_user_session_path, class: "glyphicon glyphicon-log-in" %></li>
+        <li class=""><%= link_to "新規会員登録", new_user_registration_path %></li>
+        <li class=""><%= link_to "カート", cart_items_path, class: "glyphicon glyphicon-shopping-cart" %></li>
+      <div>
+        <dl class="searchbox">
           <%= form_tag(items_path,method: :get) do %>
             <%= text_field_tag :search %>
             <%= submit_tag 'Search', :name => nil %>
@@ -51,10 +54,6 @@
 
 
         </dl>
-        <li class=""><%= link_to "ログイン", new_user_session_path, class: "glyphicon glyphicon-log-in" %></li>
-        <li class=""><%= link_to "新規会員登録", new_user_registration_path %></li>
-        <li class=""><%= link_to "カート", cart_items_path, class: "glyphicon glyphicon-shopping-cart" %></li>
-      <div>
     <% end %>
 
  TODO:スタイルとアイコン

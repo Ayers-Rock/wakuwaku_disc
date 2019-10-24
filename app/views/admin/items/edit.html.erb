@@ -1,53 +1,66 @@
-<div class="container">
+<div class="container admin-edit-box">
     <div class="row">
-        <div class="col-md-12">
-            <div>
+        <div class="col-lg-10 col-lg-offset-1">
+            <div class="admin-edit-form-box">
                 <%= form_with(model: @item, url: admin_item_path(@item), local: true) do |s| %>
-                    <div>
-                        <p><%= attachment_image_tag @item, :jacket_image, :fill, 300, 300 %></p>
-                        <p><%= s.label :"ジャケット画像" %></p>
-                        <p><%= s.attachment_field :jacket_image %></p>
-                    </div>
-                    <div>
-                        <p><%= s.label :"シングル/アルバム名" %></p>
-                        <p><%= s.text_field :title %></p>
-                    </div>
-                    <div>
-                        <p><%= s.label :"アーティスト名" %></p>
-                        <p><%= s.collection_select :artist_id, Artist.all, :id, :artist_name, :prompt => "選択して下さい" %></p>
-                    </div>
-                    <div>
-                        <p><%= s.label :"レーベル名" %></p>
-                        <p><%= s.collection_select :label_id, Label.all, :id, :label_name, :prompt => "選択して下さい" %></p>
-                    </div>
-                    <div>
-                        <p><%= s.label :"ジャンル名" %></p>
-                        <p><%= s.collection_select :genre_id, Genre.all, :id, :genre_name, :prompt => "選択して下さい" %></p>
-                    </div>
-                    <div id="discs">
-                        <%= s.fields_for :discs do |t| %>
-                            <%= render "disc_fields", f: t %>
-                        <% end %>
-                        <div class="links">
-                            <%= link_to_add_association "ディスクを追加", s, :discs %>
+                    <div class="jacket-box">
+                        <p class="col-lg-4"><%= attachment_image_tag @item, :jacket_image, :fill, 150, 150, style: "box-shadow: 0 0 10px grey;"%></p>
+                        <div class="col-lg-8 jacket-attachment-field">
+                            <span><%= s.label :"ジャケット画像" %>
+                            <%= s.attachment_field :jacket_image %></span>
                         </div>
                     </div>
-                    <div>
-                        <p><%= s.label :"税抜価格" %></p>
-                        <p><%= s.text_field :price %></p>
-                    </div>
-                    <div>
-                        <span><%= s.label :"販売ステータス" %></span>
-                        <span><%= s.label :"販売中" %></span>
-                        <span><%= s.radio_button :status, "available" %></span>
-                        <span><%= s.label :"販売停止中" %></span>
-                        <span><%= s.radio_button :status, "not_available" %></span>
-                    </div>
-                    <div>
-                        <%= s.submit "更新" %>
+
+                    <table>
+                        <tr>
+                            <th><%= s.label :"シングル/アルバム名" %></th>
+                            <td><%= s.text_field :title %></td>
+                        </tr>
+                        <tr>
+                            <th><%= s.label :"アーティスト名" %></th>
+                            <td><%= s.collection_select :artist_id, Artist.all, :id, :artist_name, :prompt => "選択して下さい" %></td>
+                        </tr>
+                        <tr>
+                            <th><%= s.label :"レーベル名" %></th>
+                            <td><%= s.collection_select :label_id, Label.all, :id, :label_name, :prompt => "選択して下さい" %></td>
+                        </tr>                        <tr>
+                            <th><%= s.label :"ジャンル名" %></th>
+                            <td><%= s.collection_select :genre_id, Genre.all, :id, :genre_name, :prompt => "選択して下さい" %></td>
+                        </tr>
+
+                        <tr id="discs">
+                            <th><span>曲名</span></th>
+                            <td>
+                                <%= s.fields_for :discs do |t| %>
+                                    <%= render "disc_fields", f: t %>
+                                <% end %>
+                                <div class="links" style="margin-bottom: 20px;">
+                                    <%= link_to_add_association "ディスクを追加", s, :discs %>
+                                </div>
+                            </td>
+                        </tr>
+
+                        <tr>
+                            <th><%= s.label :"税抜価格" %></th>
+                            <td><%= s.text_field :price %></td>
+                        </tr>
+
+                        <tr>
+                            <th><%= s.label :"販売ステータス" %></th>
+                            <td>
+                                <span><%= s.label :"販売中" %></span>
+                                <span><%= s.radio_button :status, "available" %></span>
+                                <span><%= s.label :"販売停止中" %></span>
+                                <span><%= s.radio_button :status, "not_available" %></span>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <div class="submit-button">
+                        <%= s.submit "更新", class: "btn btn-lg btn-primary" %>
                     </div>
                 <% end %>
-            </div>
+            </<div>
         </div>
     </div>
 </div>
