@@ -1,38 +1,49 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-md-12">
-            <div>
-                <div>
-                    <p>在庫入荷情報編集</p>
-                    <div>
-                        <p>アーティスト名</p>
-                        <p><%= @stock.item.artist.artist_name %></p>
-                    </div>
-                    <div>
-                        <p>シングル/アルバム名</p>
-                        <p><%= @stock.item.title %></p>
-                    </div>
-                    <div>
-                        <p>現在の在庫数</p>
-                        <%# <p>TODO:在庫数を入力する</%#> %>
-                    </div>
-                    <%= form_with(model: @stock, url: admin_item_stock_path, local: true) do |f| %>
-                        <div>
-                            <div>
-                                <p>入荷年月日</p>
-                                <p><%= f.date_field :arrival_date, value: Time.now.strftime("%Y-%m-%d") %></p>
-                            </div>
-                            <div>
-                                <p>入荷数入力</p>
-                                <p><%= f.number_field :arrival_count, min: "1" %></p>
-                                <%# <%= f.hidden_field :id, value: @item.id %>
-                            </div>
-                            <%= f.submit "更新" %>
-                        </div>
-                    <% end %>
+        <% if notice %>
+            <p id="notice"><%= notice %></p>
+        <% end %>
+        <div class="col-lg-6 col-lg-offset-3">
+            <div class="box">
+                <div style="padding: 10px; margin-bottom: 10px; border: 1px solid #333333;">
+                <h2 align="center">在庫入荷情報編集</h2>
+                <br>
+                <br>
+                <h5><font color="#1F9BFD">アーティスト名</font></h5>
+                <br>
+                <p class="box"><%= @stock.item.artist.artist_name %></p>
+                <div class="line">
+                </div>
+                <br>
+                <br>
+                <h5><font color="#1F9BFD">シングル/アルバム名</font></h5>
+                <br>
+                <p class="box"><%= @stock.item.title %></p>
+                <div class="line">
+                </div>
+                <br>
+                <br>
+                <h5 align="center">現在の在庫数</h5>
+                <%# <p>TODO:在庫数を入力する</%#> %>
+                <p class="box"><%= form_with(model: @stock, url: admin_item_stock_path, local: true) do |f| %></p>
+                <br>
+                <h5 align="center">入荷年月日</h5>
+                <p class="box"><%= f.date_field :arrival_date, value: Time.now.strftime("%Y-%m-%d") %></p>
+                <br>
+                <h5 align="center">入荷数入力</h5>
+                <p class="box"><%= f.number_field :arrival_count %></p>
+                <%# <%= f.hidden_field :id, value: @item.id %>
+                <br>
+                <div><%= f.submit :class=>"btn btn-info" %>
+                <% end %>
+                </div>
+                <br>
+                <br>
                 </div>
             </div>
         </div>
     </div>
 </div>
+<br>
+<br>

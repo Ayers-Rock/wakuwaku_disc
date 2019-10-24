@@ -1,2 +1,29 @@
-<h1>Admin::Users#index</h1>
-<p>Find me in app/views/admin/users/index.html.erb</p>
+<h2>ユーザー一覧</h2>
+    <div class="container">
+        <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>名前</th>
+                        <th>名前(カナ)</th>
+                        <th>郵便番号</th>
+                        <th>住所</th>
+                        <th>電話番号</th>
+                        <th>メールアドレス</th>
+                        <th>/</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% @users. each do |user| %>
+                        <tr>
+                            <td><%= link_to "#{user.last_name+user.first_name}",admin_user_path(user.id) %></td>
+                            <td><%= user.last_kana_name %><%= user.first_kana_name %></td>
+                            <td><%= user.postal_code %></td>
+                            <td><%= user.prefecture %><%= user.city_address %><%= user.building %></td>
+                            <td><%= user.tel_number %></td>
+                            <td><%= user.email %></td>
+                            <td><%= link_to '編集', edit_admin_user_path(user.id), class:"btn btn-success" %></td>
+                        </tr>
+                    <% end %>
+                </tbody>
+        </table>
+    </div>
