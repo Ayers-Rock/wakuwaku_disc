@@ -160,6 +160,7 @@ ActiveRecord::Schema.define(version: 2019_10_22_090532) do
     t.string "introduction"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "address"
     t.string "postal_code"
     t.string "prefecture"
     t.string "city_address"
