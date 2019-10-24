@@ -10,7 +10,8 @@
     .admin-header-top-box {
         display: flex;
         .logo-box {
-            margin: 10px 0 30px 10px;
+            margin: 0 auto;
+            background-image: image();
         }
         .text-box {
             display: flex;
