@@ -1,0 +1,112 @@
+<% if category == @artist %>
+    <div class="container label-box">
+        <div class="row">
+            <div class="col-lg-10 col-lg-offset-1">
+                <div class="form-box">
+                    <%= form_for([:admin, category]) do |f| %>
+                        <h2>新規アーティスト追加</h2>
+                        <%= f.text_field :artist_name, placeholder: "アーティスト名を入力して下さい" %></p>
+                        <p><%= f.submit "追加", class: "btn btn-primary" %></p>
+                    <% end %>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-10 col-lg-offset-1">
+                <table class="table-index table-condensed">
+                    <tr>
+                        <th>id</th>
+                        <th>アーティスト</th>
+                        <th></th>
+                    </tr>
+                    <% categories.each do |genre| %>
+                        <tr>
+                            <td><%= genre.id %></td>
+                            <td><%= genre.artist_name %></td>
+                            <td>
+                                <%= link_to "削除", admin_artist_path(genre.id), class: "btn btn-danger", method: :delete %>
+                            </td>
+                        </tr>
+                    <% end %>
+                </table>
+                <div class="back-text-box">
+                    <%= link_to "商品管理へ戻る", admin_items_path %>
+                </div>
+            </div>
+        </div>
+    </div>
+<% elsif category == @genre %>
+    <div class="container label-box">
+        <div class="row">
+            <div class="col-lg-10 col-lg-offset-1">
+                <div class="form-box">
+                    <%= form_for([:admin, category]) do |f| %>
+                        <h2>新規ジャンル追加</h2>
+                        <%= f.text_field :genre_name, placeholder: "ジャンル名を入力して下さい" %></p>
+                        <p><%= f.submit "追加", class: "btn btn-primary" %></p>
+                    <% end %>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-10 col-lg-offset-1">
+                <table class="table-index table-condensed">
+                    <tr>
+                        <th>id</th>
+                        <th>ジャンル</th>
+                        <th></th>
+                    </tr>
+                    <% categories.each do |genre| %>
+                        <tr>
+                            <td><%= genre.id %></td>
+                            <td><%= genre.genre_name %></td>
+                            <td>
+                                <%= link_to "削除", admin_genre_path(genre.id), class: "btn btn-danger", method: :delete %>
+                            </td>
+                        </tr>
+                    <% end %>
+                </table>
+                <div class="back-text-box">
+                    <%= link_to "商品管理へ戻る", admin_items_path %>
+                </div>
+            </div>
+        </div>
+    </div>
+<% else %>
+    <div class="container label-box">
+        <div class="row">
+            <div class="col-lg-10 col-lg-offset-1">
+                <div class="form-box">
+                    <%= form_for([:admin, category]) do |f| %>
+                        <h2>新規レーベル追加</h2>
+                        <%= f.text_field :label_name, placeholder: "レーベル名を入力して下さい" %></p>
+                        <p><%= f.submit "追加", class: "btn btn-primary" %></p>
+                    <% end %>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-10 col-lg-offset-1">
+                <table class="tableindex table-condensed">
+                    <tr>
+                        <th>id</th>
+                        <th>ジャンル</th>
+                        <th></th>
+                    </tr>
+                    <% categories.each do |genre| %>
+                        <tr>
+                            <td><%= genre.id %></td>
+                            <td><%= genre.label_name %></td>
+                            <td>
+                                <%= link_to "削除", admin_label_path(genre.id), class: "btn btn-danger", method: :delete %>
+                            </td>
+                        </tr>
+                    <% end %>
+                </table>
+                <div class="back-text-box">
+                    <%= link_to "商品管理へ戻る", admin_items_path %>
+                </div>
+            </div>
+        </div>
+    </div>
+<% end %>

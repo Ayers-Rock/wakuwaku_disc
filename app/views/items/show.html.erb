@@ -57,15 +57,15 @@
                 <% end %>
         </div>
 
-        <% if user_signed_in? %>
-            <div>
-                <p>レビュー入力フォーム</p>
-                <%= form_for([@item, @review]) do |f| %>
-                    <% if @review.errors.any? %>
-                        <%= "#{@review.errors.count}件のエラーがあります。" %>
-                        <% @review.errors.full_messages.each do |message| %>
-                            <%= message %>
-                        <% end %>
+    <% if user_signed_in? %>
+        <div>
+            <p>レビュー入力フォーム</p>
+            <%= render 'layouts/error_message', form: @item %>
+            <%= form_for([@item, @review]) do |f| %>
+                <% if @review.errors.any? %>
+                    <%= "#{@review.errors.count}件のエラーがあります。" %>
+                    <% @review.errors.full_messages.each do |message| %>
+                        <%= message %>
                     <% end %>
                     <p><span>タイトル</span><%= f.text_field :title %></p>
                     <p><span>本文</span><%= f.text_area :body %></p>
