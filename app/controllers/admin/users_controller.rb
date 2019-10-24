@@ -23,7 +23,7 @@ class Admin::UsersController < Admin::AdminApplicationsController
 
   def update
     @user = User.find(params[:id])
-    # binding.pry
+    binding.pry
     if @user.update(user_params)
       # binding.pry
       redirect_to admin_user_path(@user.id)
