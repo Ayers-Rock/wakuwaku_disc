@@ -34,5 +34,9 @@ class ItemsController < ApplicationController
       @items = Item.all
     end
     @cart_item = CartItem.new
+    # @artists = Artist.all
+    @labels = Label.all
+    @genres = Genre.all
+
   end
 end
