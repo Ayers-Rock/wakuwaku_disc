@@ -35,9 +35,9 @@ class AddressesController < ApplicationController
   end
 
   def update
-    # binding.pry
     @address = Address.find(params[:id])
     if @address.update(address_params)
+      binding.pry
       redirect_to user_addresses_path(@address.user.id)
     end
   end

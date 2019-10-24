@@ -1,6 +1,6 @@
-
+<div class="container">
 <h2>住所入力フォーム</h2>
-
+    <form>
     <%= form_for(@address, url: user_addresses_path(current_user.id)) do |f| %>
         <div class="field">
             <P>名前</p>
@@ -44,3 +44,5 @@
             <%= f.submit "登録する" %>
         </div>
         <% end %>
+        </form>
+</div>
