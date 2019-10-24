@@ -38,6 +38,7 @@ Rails.application.routes.draw do
     get :rankings, on: :collection
     resource :reviews, only: [:create]
     resource :favorites, only: [:create, :destroy]
+    # get 'item/:id/reviews' => 'items#show'
   end
 
   resources :orders, except: [:create] do
@@ -47,7 +48,7 @@ Rails.application.routes.draw do
 
 
 
-  resources :cart_items, only: [:create, :destroy, :index]
+  resources :cart_items, only: [:create, :destroy]
 
   resources :labels, only: [:show]
 
@@ -61,6 +62,7 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :edit, :update] do
     resources :addresses, only: [:index, :new, :create, :destroy, :edit, :update]
     resources :favorites, only: [:index]
+    resource :cart_items, only: [:update, :show]
   end
 
 
