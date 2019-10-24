@@ -1,34 +1,26 @@
-<div class="container">
+<div class="container item-index-box">
     <div class="row">
-        <div class="col-md-12">
-            <div>
-                <p>商品一覧</p>
+        <div class="col-lg-10 col-lg-offset-1">
+            <div class="add-box">
+                <span>商品一覧</span>
                 <div>
-                    <%= link_to new_admin_artist_path do %>
-                        <button>新規アーティスト追加</button>
-                    <% end %>
+                    <%= link_to "新規アーティスト追加", new_admin_artist_path, class: "btn btn-lg btn-default" %>
                 </div>
                 <div>
-                    <%= link_to new_admin_label_path do %>
-                        <button>新規レーベル追加</button>
-                    <% end %>
+                    <%= link_to "新規レーベル追加", new_admin_label_path, class: "btn btn-lg btn-default" %>
                 </div>
                 <div>
-                    <%= link_to new_admin_genre_path do %>
-                        <button>新規ジャンル追加</button>
-                    <% end %>
+                    <%= link_to "新規ジャンル追加", new_admin_genre_path, class: "btn btn-lg btn-default" %>
                 </div>
                 <div>
-                    <%= link_to new_admin_item_path do %>
-                        <button>新規商品追加</button>
-                    <% end %>
+                    <%= link_to "新規商品追加",  new_admin_item_path, class: "btn btn-lg btn-default" %>
                 </div>
             </div>
         </div>
     </div>
     <div class="row">
-        <div class="col-md-12">
-            <table>
+        <div class="col-lg-10 col-lg-offset-1">
+            <table class="tableindex table-condensed">
                 <tr>
                     <th>アーティスト名</th>
                     <th>シングル/アルバム名</th>
@@ -48,22 +40,17 @@
                         <td><%= item.label.label_name %></td>
                         <td><%= (Stock.where(item_id: item.id).sum(:arrival_count)) - (OrderItem.where(item_id: item.id).sum(:amount)) %></td>
                         <%# <td><%= item.stocks.arrival_count - item.oreder_items.amount<td></td> %>
-                        <%# TODO: stockの新規追加が可能になったらもう一度試す %>
                         <%# 入荷数-受注数 %>
                         <%# item.stocks.arival_count - item.oreder_items.amount %>
-                        <%# <td><%= item.status_i18n %>
+                        <td><%= item.status_i18n %></td>
                         <td>
-                            <%= link_to edit_admin_item_path(item.id) do %>
-                                <button>編集</button>
-                            <% end %>
-                            <%= link_to new_admin_item_stock_path(item.id) do %>
-                                <button>在庫追加</button>
-                            <% end %>
+                            <%= link_to "編集", edit_admin_item_path(item.id), class: "btn btn-success" %>
+                            <%= link_to "在庫追加", new_admin_item_stock_path(item.id), class: "btn btn-primary" %>
                         </td>
                     </tr>
                 <% end %>
             </table>
-            <%= paginate @items %>
+            <div class="paginate"><%= paginate @items %></div>
         </div>
     </div>
 </div>

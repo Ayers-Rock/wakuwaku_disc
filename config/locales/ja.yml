@@ -14,3 +14,13 @@ ja:
         transfer: "振込み"
         credit_card: "クレジットカード"
 #orderの中にstatusとpaymentがあって、paymentの上にorder:を付けると上書きされてしまい、statusが機能されなくなってしまう
+  # activerecord:
+  #   models:
+  #     disc:
+  #       attributes:
+  #         disc_number: ディスク No.
+  #     track:
+  #       attributes:
+  #         track_number: 曲 No.
+  # 曲名とディスクナンバーを日本語化したいけどうまくいきませんでした。
+
