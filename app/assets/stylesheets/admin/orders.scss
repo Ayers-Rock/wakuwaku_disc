@@ -4,7 +4,10 @@
 
 table {
     border-collapse: collapse;
-    width: 1000px;
+    width: 100%;
+    table-layout: fixed;
+    word-break: break-all;
+    word-wrap: break-all;
 }
 
 .table1 th{
@@ -54,4 +57,31 @@ th,td {
     font-weight: normal;
     white-space: nowrap;
     text-align: center;
+}
+
+.ordernew th,td{
+    text-align: center;
+    font-weight: normal;
+}
+
+.ordernew2 th{
+    text-align: center;
+    font-weight: normal;
+    padding: 20px;
+}
+
+.ordernew2 td{
+    font-weight: normal;
+    text-align: left;
+    padding: 15px;
+}
+
+.required{
+    background: #D00010;
+    color: #FFF;
+    margin-left: 10px;
+}
+
+.information{
+    margin-left: 60px;
 }
