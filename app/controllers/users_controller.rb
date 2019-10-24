@@ -2,8 +2,8 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     # binding.pry
-    @orders = @user.orders.all
-    @favorites = @user.favorite_items.all
+    @orders = @user.orders.limit(3)
+    @favorites = @user.favorite_items.limit(5)
   end
 
   def edit

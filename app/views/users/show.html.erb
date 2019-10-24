@@ -37,7 +37,7 @@
                 <%= render 'favorites/favorite', item: item %>
         </div>
     <% end %>
-    <p><%= link_to 'お気に入り一覧へ', user_favorites_path(@user_id) %>
+    <p><%= link_to 'お気に入り一覧へ', user_favorites_path(@user.id) %>
 
 <h2>購入履歴</h2>
     <% @orders.each do |order| %>
@@ -68,8 +68,8 @@
                         <td> </td>
                 <% else %>
                         <td>
-                            <%= link_to item_reviews_path(order_item.item_id) do %>
-                                <button class="btn-sticky">レビューを書く</button>
+                            <%= link_to item_path(order_item.item_id) do %>
+                                <button class="btn-sticky">レビューを書く<></button>
                             <% end %>
                         </td>
                 <% end %>
