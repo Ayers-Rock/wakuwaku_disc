@@ -1,9 +1,9 @@
 class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
-    @favorites = @user.favorites
-    # @favorites = Favorite.limit(5).favorite('id')
-    @orders = Order.limit(3).order('id')
+    # binding.pry
+    @orders = @user.orders.all
+    @favorites = @user.favorite_items.all
   end
 
   def edit
@@ -22,4 +22,5 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:first_name, :last_name, :first_kana_name, :last_kana_name, :postal_code, :prefecture, :city_address, :building, :tel_number, :email)
     end
+    
 end
