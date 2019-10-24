@@ -6,6 +6,7 @@ class CartItemsController < ApplicationController
     @cart_item.item_id = params[:cart_item][:item_id].to_i
     if @cart_item.save
       redirect_to user_cart_items_path(current_user.id)
+
     else
       @items = Item.page(params[:page]).per(10).reverse_order
       render 'items/index'
