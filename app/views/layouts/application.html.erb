@@ -24,7 +24,6 @@
           マイページは<%= link_to "こちら", user_path(current_user.id) %></p>
         </div>
         <dl class="searchbox">
-
           <%= form_tag(items_path,method: :get) do %>
             <%= text_field_tag :search %>
             <%= submit_tag 'Search', :name => nil %>

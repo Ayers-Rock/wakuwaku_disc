@@ -69,8 +69,16 @@
 <table>
     <tbody>
         <tr>
-            <th></th>
-            <td></td>
+            <th>お届け先名前（漢字）</th>
+            <td><%= @order.delivery_last_name %><%= @order.delivery_first_name %></td>
+        </tr>
+         <tr>
+            <th>お届け先名前（カタカナ）</th>
+            <td><%= @order.delivery_kana_last_name %><%= @order.delivery_kana_first_name %></td>
+        </tr>
+        <tr>
+            <th>お届け先住所</th>
+            <td><%= @order.connected_address %></td>
         </tr>
     </tbody>
 
@@ -83,6 +91,5 @@
 <%= @order.payment_i18n %>
 <br>
 
-
-<%= link_to "注文をキャンセルする", order_path(@order.id), method: :delete %>
+<%= link_to "注文をキャンセルする", order_path(@order.id), method: :delete, "data-confirm" => "本当にキャンセルしますか？", class:"btn btn-default col-xs-12" %>
 <%= link_to '購入履歴・配送状況一覧に戻る', orders_path %>
