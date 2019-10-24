@@ -38,6 +38,7 @@ Rails.application.routes.draw do
     get :rankings, on: :collection
     resource :reviews, only: [:create]
     resource :favorites, only: [:create, :destroy]
+    # get 'item/:id/reviews' => 'items#show'
   end
 
   resources :orders, except: [:create] do

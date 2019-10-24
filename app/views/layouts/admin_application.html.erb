@@ -11,16 +11,15 @@
   <header class="admin-header-box">
     <div　class="admin-header-main-box">
       <div class="admin-header-top-box">
-        <div><%= image_tag "admin_logo.jpg", size: '150x150', alt:"" %></div>
-        <div>
-          <%= link_to "わくわく管理システム", admin_path, class: "btn btn-default " %>
+        <div class="logo-box"><%= image_tag "admin_logo.jpg", size: '150x150', alt:"" %></div>
+        <div class="text-box">
+          <p><%= link_to "わくわく管理システム", admin_path, class: "btn btn-default " %></p>
             <%# <p>わくわく管理システム</p> %>
           <%# <% end %>
+          <P><%= link_to "ログアウト", destroy_user_session_path, method: :delete %></P>
         </div>
-        <div>ログアウト</div>
-      <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
       </div>
-      <div class="list-big-box">
+      <div class="admin-header-bottom-box">
         <nav>
           <ul class="list-small-box">
             <li class="list-style">

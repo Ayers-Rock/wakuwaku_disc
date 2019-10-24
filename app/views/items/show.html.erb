@@ -63,6 +63,7 @@
     <% if user_signed_in? %>
         <div>
             <p>レビュー入力フォーム</p>
+            <%= render 'layouts/error_message', form: @item %>
             <%= form_for([@item, @review]) do |f| %>
                 <% if @review.errors.any? %>
                     <%= "#{@review.errors.count}件のエラーがあります。" %>
