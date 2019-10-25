@@ -30,7 +30,7 @@
                             <p class="boxes"><%= f.date_field :arrival_date, value: Time.now.strftime("%Y-%m-%d") %></p>
                             <br>
                             <h5 align="center">入荷数入力</h5>
-                            <p class="boxes"><%= f.number_field :arrival_count %></p>
+                            <p class="boxes"><%= f.number_field :arrival_count, min: 1 %></p>
                             <%# <%= f.hidden_field :id, value: @item.id %>
                             <br>
                             <div class="boxes">

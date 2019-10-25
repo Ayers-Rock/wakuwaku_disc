@@ -16,15 +16,27 @@
                 <% @stocks.each do |stock| %>
                     <tr>
                         <td width="30%", style="text-align:center;"><font size="2"><%= stock.arrival_date %></td>
-                        <td width="40%", style="text-align:center;"><font size="2"><%= stock.item.title %></td>
+                        <td width="40%", style="text-align:center;"><font size="2">
+                            <% if stock.item != nil %>
+                                <%= stock.item.title %>
+                            <% else %>
+                                <span>削除済み</span>
+                            <% end %>
+                            </td>
                         <td width="10%", style="text-align:center;"><font size="2"><%= stock.arrival_count %>個</td>
                         <td width="20%", style="text-align:center;"><font size="2">
-                        <%= link_to "編集", edit_admin_item_stock_path(stock.item.id, stock.id), class: "btn btn-default col-xs-12" %>
+                            <% if stock.item != nil %>
+                                <%= link_to "編集", edit_admin_item_stock_path(stock.item.id, stock.id), class: "btn btn-default col-xs-12" %>
+                            <% else %>
+                                <span></span>
+                            <% end %>
                         </td>
                     </tr>
                 <% end %>
             </table>
-            <%= paginate @stocks %>
+            <div style="text-align: center;">
+                <%= paginate @stocks %>
+            </div>
         </div>
     </div>
 </div>
