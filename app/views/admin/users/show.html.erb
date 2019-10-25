@@ -43,8 +43,6 @@
                             <tr>
                                 <th>名前</th>
                                 <th>住所</th>
-                                <th>/</th>
-                                <th>/</th>
                             <tr>
                         </thead>
                         <tbody>
@@ -54,8 +52,6 @@
                                     </td>
                                     <td><%= address.prefecture %><%= address.city_address %><%= address.building %>
                                     </td>
-                                    <td><%= link_to '編集', edit_user_address_path(address.user.id, address.id), class:"btn btn-success" %></td>
-                                    <td><%= link_to '削除', user_address_path(address.user.id,address.id), method: :delete, class:"btn btn-danger" %></td>
                                 </tr>
                             <% end %>
                         </tbody>
