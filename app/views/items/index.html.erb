@@ -25,7 +25,7 @@
                                     <div id="favorite-button-<%=item.id %>">
                                         <%= render 'favorites/favorite', item: item %>
                                     </div>
-                                    <p></p>
+                                    
                                     <%= form_for @cart_item do |f| %>
                                         <%= f.number_field :amount %>
                                         <%= f.hidden_field :item_id, value: item.id %>
@@ -36,4 +36,4 @@
                     <% end %>
             </div>
         </div>
-    <%# </div> %>
+        </div>

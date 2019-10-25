@@ -17,51 +17,59 @@
   </head>
 <body>
   <header>
-    <% if user_signed_in? %>
-      <div>
-        <div>
-          <p>こんにちは<%= current_user.first_name %>さん<br>
-          マイページは<%= link_to "こちら", user_path(current_user.id) %></p>
+    <div class="header">
+      <% if user_signed_in? %>
+          <div class="flex01"><%= image_tag "waku_logo.jpg" %></div>
+        <div class="flexbox">
+            <div class="header-text">
+              <h1>ワクワクする？</h1>
+            </div>
+
+          <div class="search-box">
+            <%= form_tag(items_path,method: :get) do %>
+              <%= text_field_tag :search, "", placeholder: "気になるアーティストやタイトルで検索" %>
+              <%= submit_tag 'search', :name => nil %>
+            <% end %>
+          </div>
+
         </div>
-        <dl class="searchbox">
-          <%= form_tag(items_path,method: :get) do %>
-            <%= text_field_tag :search %>
-            <%= submit_tag 'Search', :name => nil %>
-          <% end %>
 
-
-        </dl>
-        <li class=""><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"glyphicon glyphicon-log-out" %></li>
-        <li class=""><%= link_to "マイページ", user_path(current_user.id), class:"glyphicon glyphicon-user" %></li>
-        <li class=""><%= link_to "カート", user_cart_items_path(current_user.id), class: "glyphicon glyphicon-shopping-cart" %></li>
-      <div>
-
-    <% else %>
-    <div>
-        <div>
-          <p>こんにちはゲストさん<br>
-          無料会員登録は<%= link_to "こちら", new_user_registration_path %>すでに会員の方は<%= link_to "ログイン", new_user_session_path %></p>
+              <div class="flex02">
+                <p>ようこそ<%= current_user.first_name %>さん<br>
+                  マイページは<%= link_to "こちら", user_path(current_user.id) %>
+                </p>
+              </div>
         </div>
-        <li class=""><%= link_to "ログイン", new_user_session_path, class: "glyphicon glyphicon-log-in" %></li>
-        <li class=""><%= link_to "新規会員登録", new_user_registration_path %></li>
-        <li class=""><%= link_to "カート", cart_items_path, class: "glyphicon glyphicon-shopping-cart" %></li>
+          <ul class="nav nav-pills nav-justified">
+            <li role="presentation" class="active"><%= link_to "カート", user_cart_items_path(current_user.id), class: "glyphicon glyphicon-shopping-cart" %></li>
+            <li role="presentation" class="active"><%= link_to "マイページ", user_path(current_user.id), class:"glyphicon glyphicon-user" %></li>
+            <li role="presentation" class="active"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"glyphicon glyphicon-log-out" %></li>
+          </ul>
+
+
+      <% else %>
       <div>
-        <dl class="searchbox">
-          <%= form_tag(items_path,method: :get) do %>
-            <%= text_field_tag :search %>
-            <%= submit_tag 'Search', :name => nil %>
-          <% end %>
+          <div>
+            <p>こんにちはゲストさん<br>
+            無料会員登録は<%= link_to "こちら", new_user_registration_path %>すでに会員の方は<%= link_to "ログイン", new_user_session_path %></p>
+          </div>
+          <li class=""><%= link_to "ログイン", new_user_session_path, class: "glyphicon glyphicon-log-in" %></li>
+          <li class=""><%= link_to "新規会員登録", new_user_registration_path %></li>
+          <li class=""><%= link_to "カート", cart_items_path, class: "glyphicon glyphicon-shopping-cart" %></li>
+        <div>
+          <dl class="searchbox">
+            <%= form_tag(items_path,method: :get) do %>
+              <%= text_field_tag :search %>
+              <%= submit_tag 'Search', :name => nil %>
+            <% end %>
+          </dl>
+      <% end %>
 
 
-        </dl>
-    <% end %>
-
- TODO:スタイルとアイコン
-
+    </div>
   </header>
 
-
-    <%= yield %>
-  </body>
+  <%= yield %>
+</body>
 
 </html>
