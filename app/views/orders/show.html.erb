@@ -121,7 +121,6 @@
                 </tr>
             </table>
 
-<<<<<<< HEAD
             <p class="user_show">
                 <span style="color:red">◆</span><strong>お支払方法</strong>
             </p>
@@ -140,12 +139,3 @@
         </div>
     </div>
 </div>
-=======
-
-<p>お支払い方法</p>
-<%= @order.payment_i18n %>
-<br>
-
-<%= link_to "注文をキャンセルする", order_path(@order.id), method: :delete, "data-confirm" => "本当にキャンセルしますか？", class:"btn btn-default col-xs-12" %>
-<%= link_to '購入履歴・配送状況一覧に戻る', orders_path %>
->>>>>>> master
