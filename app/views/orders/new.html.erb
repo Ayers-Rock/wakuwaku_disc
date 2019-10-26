@@ -27,7 +27,7 @@
           <% @cart_items.each do |cart_item| %>
           <tr>
             <td width="20%">
-            <%= attachment_image_tag cart_item.item, :jacket_image, :fill, 60, 60, format: 'jpeg', class: "img-circle pull-left profile-img", size: '100x100', fallback: 'no_image.jpg' %>
+            <%= attachment_image_tag cart_item.item, :jacket_image, format: 'jpeg', class: "img-circle pull-left profile-img", size: '100x100', fallback: 'no_image.jpg' %>
             </td>
             <td width="50%"><%= cart_item.item.artist.artist_name %><br>
             <%= cart_item.item.title %></td>
@@ -71,28 +71,19 @@
             <%= label_tag "クレジットカード決済" %></td>
           </tr>
         </table>
-        <br>
-        <br>
 
+        <div class="link_path1">
         <%= submit_tag '購入を確定する', :class => "btn btn-danger col-xs-6 col-xs-offset-3"%>
         <% end %>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <div align="center">
-        <%= link_to "カートに戻る", cart_items_path%>
         </div>
-      </>
+
+        <div class="link_path">
+        <%= link_to "カートに戻る", user_cart_items_path(current_user.id)%>
+        </div>
+      </div>
     </div>
   </div>
 </div>
-<br>
-<br>
-<br>
-<br>
 
 
 

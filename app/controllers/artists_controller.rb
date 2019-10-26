@@ -1,6 +1,8 @@
 class ArtistsController < ApplicationController
   def show
-    @artist = Artist.find(params[:id])
-    @items = Items.where(artist_id: @artist.id)
+    @items = Item.where(artist_id: params[:id])
+    @cart_item = CartItem.new
+    @genres = Genre.all
+    @labels = Label.all
   end
 end

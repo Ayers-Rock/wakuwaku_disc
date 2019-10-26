@@ -27,7 +27,7 @@
           </div>
 
           <div class="search-box">
-            <%= form_tag(items_path,method: :get,class: "test") do %>
+            <%= form_tag(items_path,method: :get) do %>
               <%= text_field_tag :search, "", placeholder: "アーティストやタイトルで検索" %>
               <%= button_tag '<i class="fa fa-search"></i>'.html_safe, type: 'submit', :name => nil %>
             <% end %>
@@ -46,15 +46,12 @@
       <li role="presentation" class="active"><%= link_to "マイページ", user_path(current_user.id), class: "glyphicon glyphicon-user" %></li>
       <li role="presentation" class="active"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"glyphicon glyphicon-log-out" %></li>
     </ul>
-
-
 <% else %>
   <div class="flex01"><%= image_tag "waku_logo.jpg" %></div>
     <div class="flexbox">
       <div class="header-text">
         <h1>ワクワクしちゃう？</h1>
       </div>
-
       <div class="search-box">
         <%= form_tag(items_path,method: :get) do %>
           <%= text_field_tag :search, "", placeholder: "アーティストやタイトルで検索" %>
@@ -69,7 +66,6 @@
         すでに会員の方は<%= link_to "ログイン", new_user_session_path %></p>
       </p>
     </div>
-  </div>
   <ul class="nav nav-pills nav-justified">
     <li role="presentation" class="active"><%= link_to "ログイン", new_user_session_path, class: "glyphicon glyphicon-log-in" %></li>
     <li role="presentation" class="active"><%= link_to "新規会員登録", new_user_registration_path, class: "glyphicon glyphicon-triangle-right" %></li>
@@ -77,12 +73,6 @@
   </ul>
 
 <% end %>
-
-
-
-
-
-    </div>
   </header>
 
   <%= yield %>

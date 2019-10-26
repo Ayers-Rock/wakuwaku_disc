@@ -1,24 +1,26 @@
-<h1>Addresses#index</h1>
-<p>Find me in app/views/addresses/index.html.erb</p>
+<div class="container">
 <h2>登録住所一覧</h2>
-        <table class="table">
+        <table class="table table-bordered" style="table-layout:fixed;">
                 <thead>
                     <tr>
-                        <th>名前</th>
+                        <th style="width:200px;">名前</th>
                         <th>住所</th>
+                        <th style="width:100px;"></th>
+                        <th style="width:100px;"></th>
                     <tr>
                 </thead>
                 <tbody>
                     <% @addresses. each do |address| %>
                         <tr>
-                            <td><%= address.first_name %><%= address.last_name %>
+                            <td style="width:200px;"><%= address.first_name %><%= address.last_name %>
                             </td>
                             <td><%= address.prefecture %><%= address.city_address %><%= address.building %>
                             </td>
-                            <td><%= link_to '編集', edit_user_address_path(address.user.id, address.id) %>|</td>
-                            <td><%= link_to '削除', user_address_path(address.user.id,address.id), method: :delete %></td>
+                            <td style="width:100px;"><%= link_to '編集', edit_user_address_path(address.user.id, address.id) %></td>
+                            <td style="width:100px;"><%= link_to '削除', user_address_path(address.user.id,address.id), method: :delete %></td>
                         </tr>
                         <% end %>
                 </tbody>
         </table>
         <%= link_to '追加する', new_user_address_path(current_user.id) %>
+        </div>
