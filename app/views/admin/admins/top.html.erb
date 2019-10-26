@@ -1,12 +1,14 @@
 <div class="container　admin-top-box">
 
     <div class="parent" style="display: flex; justify-content: space-around;">
-        <%= link_to admin_users_path do %>
-            <div class="child">
-                <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-                <button type="button" class="btn-lg btn-primary">ユーザー管理</button>
-            </div>
-        <% end %>
+        <div class="box">
+            <%= link_to admin_users_path do %>
+                <div class="child">
+                    <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+                    <button type="button" class="btn-lg btn-primary">ユーザー管理</button>
+                </div>
+            <% end %>
+        </div>
 
         <%= link_to admin_items_path do %>
             <div>

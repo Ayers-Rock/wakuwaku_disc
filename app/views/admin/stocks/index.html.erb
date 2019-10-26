@@ -15,7 +15,7 @@
                         <td width="30%", style="text-align:center;"><font size="2"><%= stock.arrival_date %></td>
                         <td width="40%", style="text-align:center;"><font size="2">
                             <% if stock.item != nil %>
-                                <%= stock.item.title %>
+                                <%= link_to "#{stock.item.title}", admin_item_path(stock.item_id) %>
                             <% else %>
                                 <span>削除済み</span>
                             <% end %>
