@@ -5,12 +5,7 @@ class CartItemsController < ApplicationController
       @cart_item = CartItem.find_by(item_id: params[:cart_item][:item_id].to_i)
       amount = params[:cart_item][:amount].to_i + CartItem.find_by(item_id: params[:cart_item][:item_id]).amount
       @cart_item.update(amount: amount)
-<<<<<<< HEAD
       redirect_to user_cart_items_path(current_user.id)
-=======
-      redirect_to user_cart_items_path
-
->>>>>>> master
     else
       @cart_item = CartItem.new
       @cart_item.user_id = current_user.id
