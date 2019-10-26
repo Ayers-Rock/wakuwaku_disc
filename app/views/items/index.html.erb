@@ -34,19 +34,12 @@
                                     <p><%= item.price %>(税込)</p>
                                 </div>
                                 <div class="col-md-3">
-<<<<<<< HEAD
                                     <% if user_signed_in? %>
                                         <div id="favorite-button-<%=item.id %>">
                                             <%= render 'favorites/favorite', item: item %>
                                         </div>
                                     <% end %>
                                     <p></p>
-=======
-                                    <div id="favorite-button-<%=item.id %>">
-                                        <%= render 'favorites/favorite', item: item %>
-                                    </div>
-                                    
->>>>>>> master
                                     <%= form_for @cart_item do |f| %>
                                         <%= f.number_field :amount, min: 1, value: 1 %>
                                         <%= f.hidden_field :item_id, value: item.id %>
