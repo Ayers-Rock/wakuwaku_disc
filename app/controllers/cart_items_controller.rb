@@ -54,7 +54,7 @@ class CartItemsController < ApplicationController
     if @cart_items.empty?
       redirect_to root_path
     end
-    
+
   end
 
 end

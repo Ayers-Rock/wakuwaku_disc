@@ -2,6 +2,17 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+.admin-top-box {
+    .parent {
+        display: flex;
+        .child {
+            border: solid 1px brack;
+            padding: 10px;
+        }
+    }
+}
+
+
 h2{
     text-align: center;
 }

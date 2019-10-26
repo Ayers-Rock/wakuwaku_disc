@@ -16,6 +16,12 @@
  @import "bootstrap-sprockets";  /*ここを追加*/
  @import "bootstrap";            /*ここを追加*/
 
+
+.clearfix::after{
+  content: "";
+  display: block;
+  clear: both;
+}
 /* 検索ボックス */
 dl.searchbox{
     width: 350px;
