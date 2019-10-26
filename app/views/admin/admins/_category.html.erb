@@ -61,7 +61,11 @@
                             <td><%= genre.id %></td>
                             <td><%= genre.genre_name %></td>
                             <td>
+<<<<<<< HEAD
+                                <%= link_to "削除", admin_genre_path(genre.id), class: "btn btn-danger", method: :delete %>
+=======
                                 <%= link_to "削除", admin_genre_path(genre.id), class: "btn btn-danger", method: :delete, "data-confirm" => "本当に削除しますか？" %>
+>>>>>>> master
                             </td>
                         </tr>
                     <% end %>
@@ -99,7 +103,15 @@
                             <td><%= label.id %></td>
                             <td><%= label.label_name %></td>
                             <td>
+<<<<<<< HEAD
                                 <%= link_to "削除", admin_label_path(label.id), class: "btn btn-danger", method: :delete, "data-confirm" => "本当に削除しますか？" %>
+=======
+<<<<<<< HEAD
+                                <%= link_to "削除", admin_label_path(genre.id), class: "btn btn-danger", method: :delete %>
+=======
+                                <%= link_to "削除", admin_label_path(genre.id), class: "btn btn-danger", method: :delete, "data-confirm" => "本当に削除しますか？" %>
+>>>>>>> master
+>>>>>>> master
                             </td>
                         </tr>
                     <% end %>
