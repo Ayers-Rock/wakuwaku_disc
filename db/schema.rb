@@ -99,6 +99,7 @@ ActiveRecord::Schema.define(version: 2019_10_26_103432) do
     t.integer "purchase_price", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
   end
 
   create_table "orders", force: :cascade do |t|
@@ -161,6 +162,7 @@ ActiveRecord::Schema.define(version: 2019_10_26_103432) do
     t.string "introduction"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "address"
     t.string "postal_code"
     t.string "prefecture"
     t.string "city_address"
