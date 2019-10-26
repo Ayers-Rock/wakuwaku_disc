@@ -1,91 +1,146 @@
 
-<h1>購入履歴・配送状況詳細</h1>
+<div class="container">
+    <div class="row">
+        <div class="col-xs-10 col-xs-offset-1">
+            <h3>購入履歴・配送状況詳細</h3>
 
-<%= @order.order_number %>
-<table>
-    <thead>
-        <th>商品</th>
-        <th>単価（税込み）</th>
-        <th>個数</th>
-        <th>小計</th>
-    </thead>
+            <table class="table1 table-condensed">
+                <tr>
+                    <th>注文番号</th>
+                    <td style="text-align:left;">
+                        <font size="2">
+                            <%= @order.order_number %>
+                        </font>
+                    </td>
+                </tr>
 
-    <% @order_items.each do |order_item| %>
-        <tbody>
-            <td><%= order_item.item.title %></td>
-            <% tax_included = order_item.purchase_price * 1.10 %>
-            <td><%= tax_included.round(0) %></td>
-            <td><%= order_item.amount %></td>
-            <% subtotal = tax_included * order_item.amount %>
-            <td><%= subtotal.round(0) %></td>
-        </tbody>
-    <% end %>
+                <tr>
+                    <th>注文日時</th>
+                    <td style="text-align:left;">
+                        <font size="2">
+                            <%= @order.created_at %>
+                        </font>
+                    </td>
+                </tr>
 
-    <tfoot>
-        <tr>
-            <th></th>
-            <th></th>
-            <th> 送料</th>
-            <th>　500円</th>
-        </tr>
-    </tfoot>
-</table>
-<P>*配送状況はあくまで目安です。</p>
-<p>お支払い合計　　￥<%= @order.total_price.floor %></p>
+                <tr>
+                    <th>配送状況</th>
+                    <td style="text-align:left;">
+                        <font size="2">
+                            <%= @order.status_i18n %>
+                        </font>
+                    </td>
+                </tr>
+            </table>
 
-<p>注文者情報</p>
-<table>
-    <tbody>
-        <tr>
-            <th>名前(漢字)</th>
-            <td><%= @order.user.last_name %><%= @order.user.first_name %></td>
-        </tr>
-        <tr>
-            <th>名前(カタカナ)</th>
-            <td><%= @order.user.last_kana_name %><%= @order.user.first_kana_name %></td>
-        </tr>
-        <tr>
-            <th>住所</th>
-        
+            <table class="table2 table-condensed">
+                <tr class="active">
+                    <th>▼配送セット</th>
+                </tr>
+            </table>
 
-        <td><%= @order.connected_address %></td> 
+            <table class="table3 table-condensed width="100%">
+                <tr>
+                    <th>商品</th>
+                    <th>単価（税込み）</th>
+                    <th>個数</th>
+                    <th>小計</th>
+                </tr>
 
+                <% @order_items.each do |order_item| %>
+                <tr>
+                    <td width="60%", style="text-align:left;"><%= order_item.item.title %></td>
+                    <% tax_included = order_item.purchase_price * 1.10 %>
+                    <td width="15%", style="text-align:center;"><%= tax_included.round(0) %></td>
+                    <td width="10%", style="text-align:center;"><%= order_item.amount %></td>
+                    <% subtotal = tax_included * order_item.amount %>
+                    <td width="15%", style="text-align:center;"><%= subtotal.round(0) %></td>
+                </tr>
+                <% end %>
+                <tr>
+                    <td colspan="3", style="text-align:right;">送料（税込）→</td>
+                    <td style="text-align:center;"><font size="2">¥<%= @order.postage %></font></td>
+                </tr>
+            </table>
+            <br>
+            <p><span style="color:red">※</span>配送状況はあくまで目安です。</p>
+            <p class="total_price", style="text-align:right;">
+                    <strong>お支払い合計　¥
+                    <%= @order.total_price.round(0) %>
+                    </strong>
+            </p>
 
-        </tr>
-        <tr>
-            <th>電話番号</th>
-            <td><%= @order.user.tel_number %></td>
-        </tr>
-        <tr>
-            <th>メールアドレス</th>
-            <td><%= @order.user.email %></td>
-        </tr>
-    </tbody>
-</table>
+            <p class="user_show">
+                    <span style="color:red">◆</span><strong>注文者情報</strong>
+            </p>
 
-<p>配送先</p>
-<p>[変更する]ボタンがない場合はすでに出荷準備に入ってるため配送先住所を変更できません。</p>
-<%= link_to"変更する", edit_order_path(@order.id) %>
-<table>
-    <tbody>
-        <tr>
-            <th>お届け先名前（漢字）</th>
-            <td><%= @order.delivery_last_name %><%= @order.delivery_first_name %></td>
-        </tr>
-         <tr>
-            <th>お届け先名前（カタカナ）</th>
-            <td><%= @order.delivery_kana_last_name %><%= @order.delivery_kana_first_name %></td>
-        </tr>
-        <tr>
-            <th>お届け先住所</th>
-            <td><%= @order.connected_address %></td>
-        </tr>
-    </tbody>
+            <table class="table1 table-condensed">
+                <tr>
+                    <th>名前(漢字)</th>
+                    <td><%= @order.user.last_name %><%= @order.user.first_name %></td>
+                </tr>
+                <tr>
+                    <th>名前(カタカナ)</th>
+                    <td><%= @order.user.last_kana_name %><%= @order.user.first_kana_name %></td>
+                </tr>
+                <tr>
+                    <th>住所</th>
+                    <td><%= @order.connected_address %></td>
+                </tr>
+                <tr>
+                    <th>電話番号</th>
+                    <td><%= @order.user.tel_number %></td>
+                </tr>
+                <tr>
+                    <th>メールアドレス</th>
+                    <td><%= @order.user.email %></td>
+                </tr>
+            </table>
 
-<table>
+            <p class="user_show">
+                <span style="color:red">◆</span><strong>配送先</strong>
+            </p>
+            <p>[変更する]ボタンがない場合はすでに出荷準備に入ってるため配送先住所を変更できません。
+            <span class="information2">
+                <%= link_to"変更する", edit_order_path(@order.id) %>
+            </span>
+            </p>
 
-</table>
+            <table class="table1 table-condensed">
+                <tr>
+                    <th>お届け先名前（漢字）</th>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th>お届け先名前（カタカナ）</th>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th>お届け先住所</th>
+                    <td></td>
+                </tr>
+            </table>
 
+<<<<<<< HEAD
+            <p class="user_show">
+                <span style="color:red">◆</span><strong>お支払方法</strong>
+            </p>
+            <table class="table1 table-condensed">
+                <tr>
+                    <th>お支払方法</th>
+                    <td><%= @order.payment_i18n %></td>
+                </tr>
+            </table>
+            <div class="link_path1">
+            <%= link_to "注文をキャンセルする", order_path(@order.id), method: :delete %>
+            </div>
+            <div class="link_path2">
+            <%= link_to '購入履歴・配送状況一覧に戻る', orders_path %>
+            </div>
+        </div>
+    </div>
+</div>
+=======
 
 <p>お支払い方法</p>
 <%= @order.payment_i18n %>
@@ -93,3 +148,4 @@
 
 <%= link_to "注文をキャンセルする", order_path(@order.id), method: :delete, "data-confirm" => "本当にキャンセルしますか？", class:"btn btn-default col-xs-12" %>
 <%= link_to '購入履歴・配送状況一覧に戻る', orders_path %>
+>>>>>>> master

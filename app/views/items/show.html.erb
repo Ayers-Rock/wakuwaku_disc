@@ -3,72 +3,70 @@
 <div class="container">
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
-            <h2>CD詳細</h2>
-                <div class="row">
-                    <div class="col-md-2">
-                        <%= attachment_image_tag @item, :jacket_image, :fill, 100, 100, format:'jpeg' %>
+            <div class="box">
+                    <div class="item_show">
+                        <%= attachment_image_tag @item, :jacket_image, :fill, 100, 100, format:'jpeg', size: '300x300', fallback: 'no_image.jpg' %>
                     </div>
-                    <div class="col-md-4">
+                    <div class="item_show">
                         <p><%= @item.title %></p>
                         <p><%= @item.artist.artist_name %></p>
                         <p><%= @item.price %>(税込)</p>
                     </div>
-                    <div class="col-md-6">
+                    <div class="item_show">
                         <div id="favorite-button-<%=@item.id %>">
                             <%= render 'favorites/favorite', item: @item %>
                         </div>
-                <%# <button><%= link_to 'お気に入り', favorite_path %>
+                        <%# <button><%= link_to 'お気に入り', favorite_path %>
                         <%= form_for @cart_item do |f| %>
                         <%= f.number_field :amount, min: 1, value: 1 %>
                         <%= f.hidden_field :item_id, value: @item.id %>
-                        <%= f.submit 'カートに入れる' %>
+                        <%= f.submit 'カートに入れる'%>
                         <% end %>
                     </div>
-                </div>
-        <div class="col-md-1"></div>
+            </div>
+        </div>
     </div>
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
-            <h2>商品詳細</h2>
+            <div class="box">
+                <h3>商品詳細</h3>
                 <p>ジャンル・レーベル</p>
-                    <div class="row">
-                        <div class="col-md-2">
-                            <%= @item.title %><br>
-                            <%= @item.genre.genre_name %>
-                        </div>
-                        <div class="row">
-                            <div class="col-md-2">
-                                        <%# <%= item.disc.disc_number %>
-                                        <%# <%= item.disc.track_name %>
+                <%= @item.title %><br>
+                <%= @item.genre.genre_name %>
+                <div class="row">
+                    <div class="col-md-2">
+                        <%# <%= item.disc.disc_number %>
+                        <%# <%= item.disc.track_name %>
+                    </div>
+                </div>
+                <div>
+                <p>投稿レビュー</p>
+                    <% @reviews.each do |review| %>
+                        <div>
+                            <p><%= review.title %></p>
+                            <p><%= "#{review.user.last_name}" + "#{review.user.first_name}" %></p>
+                            <div>
+                                <p><%= review.body %></p>
                             </div>
                         </div>
-            </div>
-    </div>
-        <div>
-            <p>投稿レビュー</p>
-                <% @reviews.each do |review| %>
+                    <% end %>
+                </div>
+
+                <% if user_signed_in? %>
                     <div>
-                        <p><%= review.title %></p>
-                        <p><%= "#{review.user.last_name}" + "#{review.user.first_name}" %></p>
-                        <div>
-                            <p><%= review.body %></p>
-                        </div>
+                        <p>レビュー入力フォーム</p>
+                        <%= render 'layouts/error_message', form: @item %>
+                        <%= form_for([@item, @review]) do |f| %>
+                            <p><span>タイトル</span><%= f.text_field :title %></p>
+                            <p><span>本文</span><%= f.text_area :body %></p>
+                            <%= f.submit "投稿" %>
+                        <% end %>
                     </div>
                 <% end %>
-        </div>
-
-    <% if user_signed_in? %>
-        <div>
-            <p>レビュー入力フォーム</p>
-            <%= render 'layouts/error_message', form: @item %>
-            <%= form_for([@item, @review]) do |f| %>
-
-                    <p><span>タイトル</span><%= f.text_field :title %></p>
-                    <p><span>本文</span><%= f.text_area :body %></p>
-                    <%= f.submit "投稿" %>
-                <% end %>
             </div>
-        <% end %>
+            <div class="link_path">
+                <%= link_to '商品一覧へ戻る', items_path %>
+            </div>
+        </div>
     </div>
-    <p><%= link_to '商品一覧へ戻る', items_path %></p>
-
+</div>
