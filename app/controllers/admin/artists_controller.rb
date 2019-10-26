@@ -5,9 +5,14 @@ class Admin::ArtistsController < Admin::AdminApplicationsController
   end
 
   def create
-    artist = Artist.new(artist_params)
-    artist.save
+    @artist = Artist.new(artist_params)
+    if @artist.save
     redirect_to new_admin_artist_path
+    else
+      # @artist = Artist.new(artist_params)
+      @artists = Artist.all
+      render :new
+    end
   end
 
   def destroy
