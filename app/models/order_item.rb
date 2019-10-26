@@ -4,5 +4,6 @@ class OrderItem < ApplicationRecord
 
     def total_price
 		#good.price * quantity
-	end
+  end
+  acts_as_paranoid
 end
