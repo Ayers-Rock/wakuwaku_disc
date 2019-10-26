@@ -1,12 +1,9 @@
 <div class="container">
     <div class="row">
-        <% if notice %>
-			<p id="notice"><%= notice %></p>
-		<% end %>
         <div class="col-xs-10 col-xs-offset-1">
             <h2>入荷履歴一覧</h2>
             <br>
-            <table class="tableindex table-condensed width="100%">
+            <table class="table_index table-condensed width="100%">
                 <tr>
                     <th>入荷日時</th>
                     <th>入荷商品</th>
@@ -34,8 +31,13 @@
                     </tr>
                 <% end %>
             </table>
+<<<<<<< HEAD
             <div style="text-align: center;">
                 <%= paginate @stocks %>
+=======
+            <div class=link_path>
+            <%= paginate @stocks %>
+>>>>>>> master
             </div>
         </div>
     </div>

@@ -18,7 +18,7 @@
 						<td width="50%", style="text-align:center;"><font size="2"><%= cart_item.item.title %></font></td>
 						<td width="10%", style="text-align:center;"><font size="2"><%= cart_item.amount %></font></td>
 						<td width="20%", style="text-align:center;"><font size="2">¥<%= cart_item.item.price %></font></td>
-						<td width="10%"><%= link_to "削除", cart_item_path(cart_item.id), method: :delete, "data-confirm" => "本当に削除しますか？", class:"btn btn-default col-xs-12" %></td>
+						<td width="10%"><%= link_to "削除", cart_item_path(cart_item.id), method: :delete, "data-confirm" => "本当に削除しますか？", class: "btn btn-default col-xs-12" %></td>
 					</tr>
 					<% end %>
 				</table>
