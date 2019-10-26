@@ -1,3 +1,15 @@
+<% if flash[:notice] %>
+  <div class="flash">
+    <%= flash[:notice] %>
+  </div>
+<% end %>
+<%= form_for(@order) do |f| %>
+    <% if @order.errors.any? %>
+       <h2>エラー！</h2>
+      <h3> 配送先情報を正しく入力してください　</h3>
+    <% end %>
+<% end %>
+
 <h2>購入履歴</h2>
 
 <% @orders.each do |order| %>
