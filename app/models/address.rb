@@ -25,10 +25,10 @@ class Address < ApplicationRecord
 
 
   #postal_codeは、数字３桁＋数字４桁の形式
-    validates :postal_code, presence: false, format: { with: /\A(\d{7}|^$)\z/ }
-    # validates :prefecture
-    # validates :city_address
-    # validates :building
+    validates :postal_code, presence: true, format: { with: /\A(\d{7}|^$)\z/ }
+    validates :prefecture, presence: true
+    validates :city_address, presence: true
+    validates :building, presence: true
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
 end
