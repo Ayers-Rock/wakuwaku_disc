@@ -1,8 +1,11 @@
 
 <div id="container">
     <div id="theTarget">
-        <div class="image1"></div>
-        <div class="image2"></div>
+
+        <% @slide_jachets.each do |item| %>
+        <div class="image1"><%= attachment_image_tag item, :jacket_image %>
+        </div>
+        <%# <div class="image2"></div>
         <div class="image3"></div>
         <div class="image4"></div>
         <div class="image5"></div>
@@ -10,7 +13,8 @@
         <div class="image7"></div>
         <div class="image8"></div>
         <div class="image9"></div>
-        <div class="image10"></div>
+        <div class="image10"></div> %>
+        <% end %>
     </div>
 </div>
 
