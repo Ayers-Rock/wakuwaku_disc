@@ -1,6 +1,5 @@
 class Admin::ItemsController < Admin::AdminApplicationsController
   def index
-    binding.pry
     @items = Item.without_deleted.page(params[:page]).per(10).reverse_order
     # TODO:.orderで表示順序を変える可能性有り
   end
