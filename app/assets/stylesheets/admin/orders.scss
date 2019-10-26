@@ -5,7 +5,7 @@
 table {
     border-collapse: collapse;
     width: 100%;
-    table-layout: fixed;
+    // table-layout: fixed;
     word-break: break-all;
     word-wrap: break-all;
 }
@@ -14,6 +14,10 @@ table {
     background: #e6e6e6;
     font-weight: normal;
     width: 25%;
+}
+
+.table1 td{
+    text-align: left;
 }
 
 .table2 tr{
@@ -52,19 +56,32 @@ th,td {
     font-size: 15px;
 }
 
-.tableindex th{
+.table_index th{
     background: #e6e6e6;
     font-weight: normal;
     white-space: nowrap;
     text-align: center;
 }
 
-.ordernew th,td{
+.table_index td{
+    font-weight: normal;
+    white-space: nowrap;
+    text-align: center;
+}
+
+.ordernew th{
+    background: #e6e6e6;
+    text-align: center;
+    font-weight: normal;
+}
+
+.ordernew td{
     text-align: center;
     font-weight: normal;
 }
 
 .ordernew2 th{
+    background: #e6e6e6;
     text-align: center;
     font-weight: normal;
     padding: 20px;
@@ -84,4 +101,23 @@ th,td {
 
 .information{
     margin-left: 60px;
+}
+
+.link_path{
+    text-align: center;
+    margin: 200px;
+}
+
+.link_path1{
+    text-align: center;
+    margin-top: 60px;
+}
+
+.link_path2{
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.user_show{
+    margin: 30px 0 0 10px;
 }

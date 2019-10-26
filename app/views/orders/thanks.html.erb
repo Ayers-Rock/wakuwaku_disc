@@ -1,4 +1,29 @@
-<p>ご注文番号　<%= @order.order_number %></p>
+<div class="body">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-10 col-xs-offset-1">
+                <div class="box">
+                    <div class="messeage">
+                        <h2>ご注文ありがとうございました。</h2>
+                    </div>
+                    <table class="">
+                        <tr>
+                            <th>ご注文番号</th>
+                            <td><%= @order.order_number %></td>
+                        </tr>
+                        <tr>
+                            <th></th>
+                            <td></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
 <% @order_items.each do |order_item| %>
     <div>
         <%= attachment_image_tag order_item.item, :jacket_image, :fill, 60, 60, format: 'jpeg', class: "img-circle pull-left profile-img" %>
@@ -13,8 +38,7 @@
     <span>送料    500円</span>
     <span>合計 <%= @order.total_price.floor %>円　(税込) </span>
 
-<div>
-    <p>ご注文ありがとうございました</p>
+<div class="link_path">
     <%= link_to 'トップページへ戻る',root_path %>
 </div>
 

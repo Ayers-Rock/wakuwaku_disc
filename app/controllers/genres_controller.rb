@@ -1,6 +1,8 @@
 class GenresController < ApplicationController
   def show
-    @genre = Genre.find(params[:id])
-    @items = Item.where(genre_id: @genre.id)
+    @items = Item.where(genre_id: params[:id])
+    @cart_item = CartItem.new
+    @genres = Genre.all
+    @labels = Label.all
   end
 end
