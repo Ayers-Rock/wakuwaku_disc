@@ -1,15 +1,3 @@
-<<<<<<< HEAD
-
-<h2>住所入力フォーム</h2>
-
-    <%= form_for(@address, url: user_address_path(current_user.id, @address.id)) do |f| %>
-        <div class="field">
-            <P>名前</p>
-            <%= f.label :姓 %>
-            <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name" %>
-            <%= f.label :名 %>
-            <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %>
-=======
 <div class="container">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
@@ -60,6 +48,5 @@
                 <% end %>
                 </form>
             </div>
->>>>>>> master
         </div>
     </div>
