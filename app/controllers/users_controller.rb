@@ -4,6 +4,7 @@ class UsersController < ApplicationController
     # binding.pry
     @orders = @user.orders.limit(3)
     @favorites = @user.favorite_items.limit(5)
+    @cart_item = CartItem.new
   end
 
   def edit
