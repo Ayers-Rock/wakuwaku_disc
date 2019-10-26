@@ -1,9 +1,20 @@
     <%# <div class="container"> %>
         <div class="row">
             <div class="col-md-2">
+                <%# <ul>
+                    <% @artists.each do |artist| %>
+                        <%# <li><%= link_to "#{artist.artist_name}", artist_path(artist.id) %>
+                    <%# <% end %>
+                <%# </ul> %>
                 <ul>
-                    <li>aaa</li>
-                    <li>bbb</li>
+                    <% @genres.each do |genre| %>
+                        <li><%= link_to "#{genre.genre_name}", genre_path(genre.id) %></li>
+                    <% end %>
+                </ul>
+                <ul>
+                    <% @labels.each do |label| %>
+                        <li><%= link_to "#{label.label_name}", label_path(label.id) %></li>
+                    <% end %>
                 </ul>
             </div>
             <div class="col-md-9">
@@ -24,7 +35,7 @@
                                     </div>
                                     <p></p>
                                     <%= form_for @cart_item do |f| %>
-                                        <%= f.number_field :amount %>
+                                        <%= f.number_field :amount, min: 1, value: 1 %>
                                         <%= f.hidden_field :item_id, value: item.id %>
                                         <%= f.submit 'カートに入れる' %>
                                     <% end %>
