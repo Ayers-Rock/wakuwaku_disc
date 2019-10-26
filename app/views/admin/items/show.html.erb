@@ -60,11 +60,7 @@
                         <div class="submit-button">
                             <%= link_to "在庫追加", new_admin_item_stock_path(@item.id), class: "btn btn-lg btn-primary" %>
                             <%= link_to "編集", edit_admin_item_path(@item.id), class: "btn btn-lg btn-success" %>
-<<<<<<< HEAD
-                            <%= link_to "削除", admin_item_path(@item.id), method: :delete, class: "btn btn-lg btn-danger" %>
-=======
                             <%= link_to "削除", admin_item_path(@item.id), method: :delete, class: "btn btn-lg btn-danger", "data-confirm" => "本当に削除しますか？" %>
->>>>>>> master
                             <%= link_to "戻る", admin_items_path, class: "btn btn-lg" %>
                         </div>
                     </div>

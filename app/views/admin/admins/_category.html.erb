@@ -24,11 +24,7 @@
                             <td><%= genre.id %></td>
                             <td><%= genre.artist_name %></td>
                             <td>
-<<<<<<< HEAD
-                                <%= link_to "削除", admin_artist_path(genre.id), class: "btn btn-danger", method: :delete %>
-=======
                                 <%= link_to "削除", admin_artist_path(genre.id), class: "btn btn-danger", method: :delete, "data-confirm" => "本当に削除しますか？"%>
->>>>>>> master
                             </td>
                         </tr>
                     <% end %>

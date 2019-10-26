@@ -44,13 +44,8 @@
                         <%# item.stocks.arival_count - item.oreder_items.amount %>
                         <td><%= item.status_i18n %></td>
                         <td>
-<<<<<<< HEAD
-                            <%= link_to "編集", edit_admin_item_path(item.id), class: "btn btn-success" %>
-                            <%= link_to "在庫追加", new_admin_item_stock_path(item.id), class: "btn btn-primary" %>
-=======
                             <%= link_to "編集", edit_admin_item_path(item.id), class: "btn btn-sm btn-success" %>
                             <%= link_to "在庫追加", new_admin_item_stock_path(item.id), class: "btn btn-sm btn-primary" %>
->>>>>>> master
                         </td>
                     </tr>
                 <% end %>
