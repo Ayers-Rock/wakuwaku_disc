@@ -18,50 +18,50 @@
         <div class="col-md-6 col-xs-offset-2">
                 <h2>月間ランキング</h2>
             <div class="monthly">
-                        <div class="row">
-                                <% @monthly_ranks.each.with_index(1) do |item, i| %>
-                                    <div class="col-md-4">
-                                    <table>
-                                        <%= "第#{i}位" %><br>
-                                        <%= attachment_image_tag item, :jacket_image, :fill, 100, 100, format:'jpeg' %><br>
-                                    <%# </div> %>
-                                    <%# <div class="col-md-10"> %>
-                                        <%= link_to "#{item.title}",item_path(item.id) %><br>
-                                        <%= item.artist.artist_name %>
-                                    </table>
-                                    </div>
-                                <% end %>
+                <div class="row">
+                    <% @monthly_ranks.each.with_index(1) do |item, i| %>
+                        <div class="col-md-4">
+                        <table>
+                            <%= "第#{i}位" %><br>
+                            <%= attachment_image_tag item, :jacket_image, :fill, 100, 100, format:'jpeg' %><br>
+                        <%# </div> %>
+                        <%# <div class="col-md-10"> %>
+                            <%= link_to "#{item.title}",item_path(item.id) %><br>
+                            <%= item.artist.artist_name %>
+                        </table>
                         </div>
+                    <% end %>
+                </div>
             </div>
                 <%= link_to '月間ランキングへ', ranking_items_path %>
 
             <h2>いいねランキング</h2>
-                <div class="favorite">
-                <div class="row">
-                    <% @favorite_ranks.each.with_index(1) do |item, i| %>
-                                        <div class="col-md-4">
-                                        <table>
-                                            <%= "第#{i}位" %><br><%= attachment_image_tag item, :jacket_image, :fill, 100, 100, format:'jpeg' %>
-                                            <p><%= link_to "#{item.title}",item_path(item.id) %></p>
-                                            <p><%= item.artist.artist_name %></p>
-                                        </table>
-                                        </div>
-                                    <% end %>
-                </div>
-                </div>
-                <%= link_to 'いいねランキングへ', ranking_items_path %>
+            <div class="favorite">
+            <div class="row">
+                <% @favorite_ranks.each.with_index(1) do |item, i| %>
+                    <div class="col-md-4">
+                    <table>
+                        <%= "第#{i}位" %><br><%= attachment_image_tag item, :jacket_image, :fill, 100, 100, format:'jpeg' %>
+                        <p><%= link_to "#{item.title}",item_path(item.id) %></p>
+                        <p><%= item.artist.artist_name %></p>
+                    </table>
+                    </div>
+                <% end %>
+            </div>
+            </div>
+            <%= link_to 'いいねランキングへ', ranking_items_path %>
             <h2>新着CD</h2>
                 <div class="newcd">
                 <div class="row">
                     <% @new_cd.each.with_index(1) do |item, i| %>
-                                        <div class="col-md-2">
-                                            <table>
-                                            <%= attachment_image_tag item, :jacket_image, :fill, 100, 100, format:'jpeg' %>
-                                            <p><%= link_to "#{item.title}",item_path(item.id) %></p>
-                                            <p><%= item.artist.artist_name %></p>
-                                            </table>
-                                        </div>
-                                    <% end %>
+                        <div class="col-md-2">
+                            <table>
+                            <%= attachment_image_tag item, :jacket_image, :fill, 100, 100, format:'jpeg' %>
+                            <p><%= link_to "#{item.title}",item_path(item.id) %></p>
+                            <p><%= item.artist.artist_name %></p>
+                            </table>
+                        </div>
+                    <% end %>
                 </div>
                 </div>
                 <%= link_to '商品一覧へ', items_path %>

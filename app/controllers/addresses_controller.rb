@@ -27,6 +27,8 @@ class AddressesController < ApplicationController
     @address.user_id = current_user.id
     if @address.save
       redirect_to user_addresses_path(@address.user.id)
+    else
+      render :new
     end
   end
 

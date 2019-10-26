@@ -13,8 +13,6 @@ ja:
         cod: "代引き"
         transfer: "振込み"
         credit_card: "クレジットカード"
-
-ja:
   date:
     abbr_day_names:
     - 日

@@ -34,9 +34,11 @@
                                     <p><%= item.price %>(税込)</p>
                                 </div>
                                 <div class="col-md-3">
-                                    <div id="favorite-button-<%=item.id %>">
-                                        <%= render 'favorites/favorite', item: item %>
-                                    </div>
+                                    <% if user_signed_in? %>
+                                        <div id="favorite-button-<%=item.id %>">
+                                            <%= render 'favorites/favorite', item: item %>
+                                        </div>
+                                    <% end %>
                                     <p></p>
                                     <%= form_for @cart_item do |f| %>
                                         <%= f.number_field :amount, min: 1, value: 1 %>
