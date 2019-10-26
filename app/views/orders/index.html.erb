@@ -28,7 +28,7 @@
             <td> </td>
           <% else %>
             <td>
-              <%= link_to item_reviews_path(order_item.item_id) do %>
+              <%= link_to item_path(order_item.item_id) do %>
                 <button class="btn-sticky">レビューを書く</button>
               <% end %>
             </td>

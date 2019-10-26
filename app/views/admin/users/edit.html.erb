@@ -3,8 +3,7 @@
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <h2>ユーザー編集</h2>
-                    <form>
-                    <%= form_for(@user, url: admin_user_path(@user.id)) do |f| %>
+                    <%= form_for [:admin, @user] do |f| %>
                         <div class="form-group">
                             <%# <P>名前</p> %>
                             <%= f.label :名前 %><br>
@@ -57,10 +56,9 @@
                         </div>
 
                         <div class="actions_update">
-                            <%= f.submit "更新する", class:"btn-btn btn-success" %>
+                            <%= f.submit "更新する", class:"btn btn-success" %>
                         </div>
                     <% end %>
-                    </form>
             </div>
         </div>
     </div>

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <h2>CD一覧</h2>
 <% @items.each do |item| %>
     <div class="container">
@@ -31,3 +32,52 @@
         </div>
     </div>
     <% end %>
+=======
+    <%# <div class="container"> %>
+        <div class="row">
+            <div class="col-md-2">
+                <%# <ul>
+                    <% @artists.each do |artist| %>
+                        <%# <li><%= link_to "#{artist.artist_name}", artist_path(artist.id) %>
+                    <%# <% end %>
+                <%# </ul> %>
+                <ul>
+                    <% @genres.each do |genre| %>
+                        <li><%= link_to "#{genre.genre_name}", genre_path(genre.id) %></li>
+                    <% end %>
+                </ul>
+                <ul>
+                    <% @labels.each do |label| %>
+                        <li><%= link_to "#{label.label_name}", label_path(label.id) %></li>
+                    <% end %>
+                </ul>
+            </div>
+            <div class="col-md-9">
+                <h2>CD一覧</h2>
+                <% items.each do |item| %>
+                    <div class="row">
+                        <div class="col-md-2 col-md-offset-1">
+                            <%= attachment_image_tag item, :jacket_image, :fill, 100, 100, format:'jpeg', fallback: "no_image.jpg", size: '100x100' %>
+                        </div>
+                        <div class="col-md-3">
+                            <p><%= link_to "#{item.title}",item_path(item.id) %></p>
+                            <p><%= item.artist.artist_name %></p>
+                            <p><%= item.price %>(税込)</p>
+                        </div>
+                        <div class="col-md-3">
+                            <div id="favorite-button-<%=item.id %>">
+                                <%= render 'favorites/favorite', item: item %>
+                            </div>
+                            <p></p>
+                            <%= form_for cart_item do |f| %>
+                                <%= f.number_field :amount, min: 1, value: 1 %>
+                                <%= f.hidden_field :item_id, value: item.id %>
+                                <%= f.submit 'カートに入れる' %>
+                            <% end %>
+                        </div>
+                    </div>
+                <% end %>
+            </div>
+        </div>
+    <%# </div> %>
+>>>>>>> master

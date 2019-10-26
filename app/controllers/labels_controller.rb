@@ -1,6 +1,8 @@
 class LabelsController < ApplicationController
   def show
-    @label = Label.find(params[:id])
-    @items = Item.where(label_id: @label.id)
+    @items = Item.where(label_id: params[:id])
+    @cart_item = CartItem.new
+    @genres = Genre.all
+    @labels = Label.all
   end
 end

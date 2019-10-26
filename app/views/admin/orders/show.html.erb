@@ -2,9 +2,6 @@
 <div class="body">
     <div class="container">
         <div calss="row">
-            <% if notice %>
-            <p id="notice"><%= notice %></p>
-            <% end %>
             <div class="col-xs-10 col-xs-offset-1">
 
                 <h2>注文詳細</h2>
@@ -14,9 +11,9 @@
                         <th>注文番号</th>
                         <td style="text-align:left;">
                             <font size="2">
-                                <%= @order.user_id %>
+                                <%= @order.order_number %>
                             </font>
-                        </td> <%#注文番号カラム違う%>
+                        </td>
                     </tr>
                     <tr>
                         <th>注文日時</th>
@@ -98,61 +95,53 @@
                 <p class="user_show">
                     <span style="color:red">◆</span><strong>注文者情報</strong>
                 </p>
-                    <table class="table4 table-condensed">
-                        <tr>
-                            <th>名前（漢字）</th>
-                            <td style="text-align:left;">
-                                <font size="2">
-                                    <%= @order.user.last_name + @order.user.first_name %>
-                                </font>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>名前（カタカナ）</th>
-                            <td style="text-align:left;">
-                                <font size="2">
-                                    <%= @order.user.last_kana_name + @order.user.first_kana_name %>
-                                </font>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>住所</th>
-                            <td style="text-align:left;">
-                                <font size="2">
-                                    <%= @order.user.prefecture + @order.user.city_address + @order.user.building %>
-                                </font>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>電話番号</th>
-                            <td style="text-align:left;">
-                                <font size="2">
-                                    <%= @order.user.tel_number %>
-                                </font>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th>メールアドレス</th>
-                            <td style="text-align:left;">
-                                <font size="2">
-                                    <%= @order.user.email %>
-                                </font>
-                            </td>
-                        </tr>
-                    </table>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <br>
-                    <div align="center">
+                <table class="table4 table-condensed">
+                    <tr>
+                        <th>名前（漢字）</th>
+                        <td style="text-align:left;">
+                            <font size="2">
+                                <%= @order.user.last_name + @order.user.first_name %>
+                            </font>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>名前（カタカナ）</th>
+                        <td style="text-align:left;">
+                            <font size="2">
+                                <%= @order.user.last_kana_name + @order.user.first_kana_name %>
+                            </font>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>住所</th>
+                        <td style="text-align:left;">
+                            <font size="2">
+                                <%= @order.user.prefecture + @order.user.city_address + @order.user.building %>
+                            </font>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>電話番号</th>
+                        <td style="text-align:left;">
+                            <font size="2">
+                                <%= @order.user.tel_number %>
+                            </font>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>メールアドレス</th>
+                        <td style="text-align:left;">
+                            <font size="2">
+                                <%= @order.user.email %>
+                            </font>
+                        </td>
+                    </tr>
+                </table>
+
+                <div class="link_path">
                     <%= link_to "注文管理画面へ戻る", admin_orders_path %>
-                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
-<br>
-<br>
-<br>
-<br>
