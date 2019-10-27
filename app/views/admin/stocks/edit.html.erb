@@ -27,6 +27,10 @@
                         <h5 align="center">入荷数入力</h5>
                         <p class="boxes"><%= f.number_field :arrival_count, min: 1 %></p>
                             <%# <%= f.hidden_field :id, value: @item.id %>
+                        <h5 align="center">販売状況</h5>
+                        <p class="boxes"><%= radio_button_tag "address", 0, checked: "checked" %>
+                        <%= label_tag "販売中" %><br>
+                        <%= radio_button_tag "address", 1 %></p>
                         <div class="boxes">
                         <%= f.submit :class => "btn btn-info col-xs-10 col-xs-offset-1" %>
                         <% end %>
