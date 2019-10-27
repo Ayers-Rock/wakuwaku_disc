@@ -10,48 +10,80 @@
     <% end %>
 <% end %>
 
-<div>
-    <% @cart_items.each do |cart_item| %>
-        <div>
-            <%= attachment_image_tag cart_item.item, :jacket_image, :fill, 60, 60, format: 'jpeg', class: "img-circle pull-left profile-img" %>
-            <%= cart_item.item.title %>
-            <%= cart_item.item.artist.artist_name %>
-            <%= cart_item.amount %>
-            <% subtotal = cart_item.item.price * cart_item.amount * 1.10.floor %>
-            <%= subtotal %>
+<div class="body">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-10 col-xs-offset-1">
+        <h4>配送セット</h4>
+
+        <table class="ordernew table-condensed width="100%">
+          <tr>
+            <th>商品画像</th>
+            <th>商品</th>
+            <th>個数</th>
+            <th>金額（税込）</th>
+          </tr>
+
+          <% @cart_items.each do |cart_item| %>
+          <tr>
+            <td width="20%">
+            <%= attachment_image_tag cart_item.item, :jacket_image, format: 'jpeg', class: "img-circle pull-left profile-img", size: '100x100', fallback: 'no_image.jpg' %>
+            </td>
+            <td width="50%"><%= cart_item.item.artist.artist_name %><br>
+            <%= cart_item.item.title %></td>
+            <td width="10%"><%= cart_item.amount %></td>
+            <% subtotal = cart_item.item.price * cart_item.amount * 1.10 %>
+            <td width="20%"><%= subtotal.round(0) %>円</td>
+          </tr>
+          <% end %>
+
+          <tr>
+            <td colspan="3", style="text-align:right;">送料・全国一律　</td>
+            <td>500円</td>
+          </tr>
+          <tr>
+            <td colspan="3", style="text-align:right;">合計　</td>
+            <td><%= current_user.cart_sum.round(0) %>円　(税込)</td>
+          </tr>
+        </table>
+        <br>
+        <br>
+
+        <table class="ordernew2">
+          <%= form_tag new_orders_path do %>
+          <tr>
+            <th>商品配送先選択<span class="required">必須</span></th>
+            <td><%= radio_button_tag "address", 0, checked: "checked" %>
+              <%= label_tag "自分の住所を選択する" %><br>
+              <%= radio_button_tag "address", 1 %>
+              <%= select_tag("other_address", options_for_select(current_user.addresses.map(&:delivery_destination)), prompt: '登録住所を選択') %>
+              <span class="information">
+              住所をまだ登録していない方、別の配送先住所を指定したい方は<%= link_to"住所登録フォーム", new_address_path %>へ</span>
+            </td>
+          </tr>
+          <tr>
+            <th>お支払方法</th>
+            <td><%= radio_button_tag "payment", 0, checked: 'checked' %>
+            <%= label_tag "商品代引き" %><br>
+            <%= radio_button_tag "payment", 1 %>
+            <%= label_tag "振込" %><br>
+            <%= radio_button_tag "payment", 2 %>
+            <%= label_tag "クレジットカード決済" %></td>
+          </tr>
+        </table>
+
+        <div class="link_path1">
+        <%= submit_tag '購入を確定する', :class => "btn btn-danger col-xs-6 col-xs-offset-3"%>
+        <% end %>
         </div>
-    <% end %>
-    <div>
-        <span>送料</span>
-        <span>全国一律500円</span>
-        <span>500円</span>
+
+        <div class="link_path">
+          <%= link_to "カートに戻る", user_cart_items_path(current_user.id)%>
+        </div>
+      </div>
     </div>
-    <div>
-        <span>合計 <%= current_user.cart_sum.floor %>円　(税込) </span>
-    </div>
+  </div>
 </div>
-<div>
-  <%= form_tag new_orders_path do %>
-  <div>
-    <%= radio_button_tag "address", 0, checked: "checked" %>
-    <%= label_tag "自分の住所を選択する" %>
-    <%= radio_button_tag "address", 1 %>
-    <%= select_tag("other_address", options_for_select(current_user.addresses.map(&:delivery_destination)), prompt: '登録住所を選択') %>
-    <span>住所をまだ登録していない方、別の配送先住所を指定したい方は<%= link_to"住所登録フォーム", new_address_path %>へ</span>
-  </div>
-  <div>
-    <%= radio_button_tag "payment", 0, checked: 'checked' %>
-    <%= label_tag "商品代引き" %>
-    <%= radio_button_tag "payment", 1 %>
-    <%= label_tag "振込" %>
-    <%= radio_button_tag "payment", 2 %>
-    <%= label_tag "クレジットカード決済" %>
-  </div>
-  <%= submit_tag '購入を確定する' %>
-
-<% end %>
-
-<%= link_to "カートに戻る", cart_items_path %>
 
 
 

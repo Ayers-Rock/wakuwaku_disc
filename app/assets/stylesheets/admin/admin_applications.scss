@@ -2,21 +2,101 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.admin-header-main-box {
-    border-radius:20px;
+// admin　header
+.admin-header-box {
     border: solid 1px black;
-    margin: 10px;
-}
+    border-radius: 20px;
+    margin: 15px;
+    display: flex;
+    justify-content: center;
+    font-size: 40px;
+    .logo-box {
+        margin: 0 auto;
+        background-image: image();
+    }
+    .text-box {
+        display: flex;
+    }
+    ul {
+        display: flex;
+        justify-content: center;
+        padding-top: 70px;
+        li {
+            list-style-type: none;
+            padding-left: 40px;
+        }
+    }
+    // 面白いやーつ
+    // p:last-child {
+    //     padding: 40px 5% 20px 60%;
+    // }
+    }
+
+    // footer
+
+    .admin-footer {
+        padding: 20px 0 40px 0;
+        text-align: center;
+        font-size: 32px;
+        hr {
+            margin-bottom: 20px;
+        }
+    }
+
+
+// header {
+    // border: solid 1px black;
+    // border-radius: 20px;
+    // margin: 15px;
+    // font-size: 30px;
+// }
+// .admin-logo-icon-box {
+//     font-size: 40px;
+// }
+// .admin-header-main-box {
+//     // border-radius: 20px;
+//     // border: solid 1px black;
+//     // margin: 10px;
+// }
 // .admin-header-top-box {
-//     background-color: orange;
+//     display: flex;
+//     // border: solid 1px black;
+
+// }
+// .admin-logo-icon-box {
+//     // padding: 10px 20px 0 0 ;
+// }
+// .logo-box {
+//     text-align: center;
+//     padding: 10px 20px 0 0 ;
+
+// }
+// .logout-box{
+//     margin-left: auto;
+//     text-align: right;
+//     padding: 10px 20px 0 0 ;
+// }
+// // .admin-header-top-box {
+// //     background-color: orange;
+// // }
+// .list-big-box {
+
+// }
+// .list-small-box {
+//     // display: flex;
+//     text-align: center;
+//     // mergin: 0 auto;
+// }
+// .list-style {
+//     display: inline;
+//     margin: 0px 10px;
+//     font-size: 32px;
+// }
+// .admin-header-menu{
+//     padding-left: 20px;
+// }
+// .admin-list-icon {
+//     margin-right: 20px;
 // }
 
-.list-small-box {
-    display: flex;
-    // text-align: center;
-    // mergin: 0 auto;
-}
-.list-style {
-    display: inline;
-    margin: 0px 10px;
-}
+

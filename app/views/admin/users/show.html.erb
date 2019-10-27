@@ -43,8 +43,6 @@
                             <tr>
                                 <th>名前</th>
                                 <th>住所</th>
-                                <th>/</th>
-                                <th>/</th>
                             <tr>
                         </thead>
                         <tbody>
@@ -54,8 +52,6 @@
                                     </td>
                                     <td><%= address.prefecture %><%= address.city_address %><%= address.building %>
                                     </td>
-                                    <td><%= link_to '編集', edit_user_address_path(address.user.id, address.id), class:"btn btn-success" %></td>
-                                    <td><%= link_to '削除', user_address_path(address.user.id,address.id), method: :delete, class:"btn btn-danger" %></td>
                                 </tr>
                             <% end %>
                         </tbody>
@@ -63,5 +59,25 @@
         </div>
     </div>
     <div class="col-md-12">
-        <%= link_to 'ユーザー管理ページへ戻る', admin_user_path %>
+        <h2>購入履歴</h2>
+			<br>
+			<table class="tableindex table-condensed">
+				<tr>
+					<th>購入者</th>
+					<th>購入日</th>
+					<th>購入価格総計</th>
+					<th>ステータス</th>
+				</tr>
+				<% @user.orders.each do |order| %>
+				<tr>
+					<td style="text-align:center;"><font size="2"><%= order.user.last_name + order.user.first_name %></font></td>
+					<td style="text-align:center;"><font size="2"><%= order.created_at %></font></td>
+					<td style="text-align:center;"><font size="2"><%= order.total_price.round(0) %>円</font></td>
+					<td style="text-align:center;"><font size="2"><%= order.status_i18n %></font></td>
+				</tr>
+				<% end %>
+			</table>
+            <div class="text-center">
+                <%= link_to 'ユーザー管理ページへ戻る', admin_users_path %>
+            </div>
 </div>

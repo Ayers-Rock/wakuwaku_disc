@@ -1,80 +1,89 @@
-<%# <h1>Items#show</h1>
-<p>Find me in app/views/items/show.html.erb</p> %>
 <div class="container">
-    <div class="col-md-10 col-md-offset-1">
-<h2>CD詳細</h2>
-        <div class="row">
-            <div class="col-md-4">
-                <%= attachment_image_tag @item, :jacket_image, :fill, 100, 100, format:'jpeg' %>
-            </div>
-            <div class="col-md-8">
-                <p><%= @item.title %></p>
-                <p><%= @item.artist %></p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-2 col-md-offset-4">
-                <p><%= @item.price %>(税込)</p>
-        </div>
-        <div class="col-md-6">
-        <div id="favorite-button-<%=@item.id %>">
-            <%= render 'favorites/favorite', item: @item %>
-        </div>
-            <%# <button><%= link_to 'お気に入り', favorite_path %>
-            <%= form_for @cart_item do |f| %>
-            <%= f.number_field :amount %>
-            <%= f.hidden_field :item_id, value: @item.id %>
-            <%= f.submit 'カートに入れる' %>
-            <% end %>
-        </div>
-    </div>
-    <div class="col-md-1"></div>
-            <div class="row">
-                <div class="col-md-10 col-md-offset-1">
-                    <h2>商品詳細</h2>
-                        <p>ジャンル・レーベル</p>
-                            <div class="row">
-                                <div class="col-md-2">
-                                    <%= @item.title %><br>
-                                    <%= @item.genre %>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-2">
-                                    <%# <%= item.disc.disc_number %>
-                                    <%# <%= item.disc.track_name %>
-                                </div>
-                            </div>
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            <div class="box clearfix">
+                <div class="item_img">
+                    <%= attachment_image_tag @item, :jacket_image, :fill, 100, 100, format:'jpeg', size: '300x300', fallback: 'no_image.jpg' %>
                 </div>
-            </div>
-    <div>
-        <p>投稿レビュー</p>
-            <% @reviews.each do |review| %>
-                <div>
-                    <p><%= review.title %></p>
-                    <p><%= "#{review.user.last_name}" + "#{review.user.first_name}" %></p>
-                    <div>
-                        <p><%= review.body %></p>
+                <div class="item_show">
+                    <p><%= @item.title %></p>
+                    <p><%= @item.artist.artist_name %></p>
+                </div>
+                <div class="item_show1">
+                    <p><%= @item.price %>円(税込)</p>
+                </div>
+                <div class="item_show2">
+                    <div id="favorite-button-<%=@item.id %>">
+                        <%= render 'favorites/favorite', item: @item %>
                     </div>
                 </div>
-            <% end %>
-    </div>
-
-    <% if user_signed_in? %>
-        <div>
-            <p>レビュー入力フォーム</p>
-            <%= form_for([@item, @review]) do |f| %>
-                <% if @review.errors.any? %>
-                    <%= "#{@review.errors.count}件のエラーがあります。" %>
-                    <% @review.errors.full_messages.each do |message| %>
-                        <%= message %>
+                        <%# <button><%= link_to 'お気に入り', favorite_path %>
+                <div class="item_show3">
+                    <%= form_for @cart_item do |f| %>
+                    <%= f.number_field :amount, min: 1, value: 1 %><br>
+                    <%= f.hidden_field :item_id, value: @item.id %><br>
+                    <%= f.submit 'カートに入れる', :class => "btn btn-danger col-xs-12"%>
                     <% end %>
-                <% end %>
-                <p><span>タイトル</span><%= f.text_field :title %></p>
-                <p><span>本文</span><%= f.text_area :body %></p>
-                <%= f.submit "投稿" %>
-            <% end %>
+                </div>
+            </div>
         </div>
-    <% end %>
+    </div>
+    <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+            <div class="box">
+                <h3>商品詳細</h3>
+                <div class="label_g">
+                    ジャンル・レーベル
+                </div>
+                <%= @item.title %><div>
+                <%= @item.genre.genre_name %>
+                <div class="label_g">
+                    曲名
+                </div>
+                <%# <%= item.disc.disc_number %>
+                <%# <%= item.disc.track_name %>
+
+                <div class="line2">
+                </div>
+
+                <h3>投稿レビュー</h3>
+                    <% @reviews.each do |review| %>
+                        <div class="review_box clearfix">
+                            <div class="review_do1">
+                                <h4>タイトル</h4>
+                                <%= review.title %>
+                            </div>
+
+                            <div class="review_do2">
+                                <h4>投稿者</h4>
+                                <%= "#{review.user.last_name}" + "#{review.user.first_name}" %>
+                            </div>
+
+                            <div class="review_do3">
+                            <%= review.body %>
+                            </div>
+                        </div>
+                    <% end %>
+
+                <div class="line2">
+                </div>
+
+                <% if user_signed_in? %>
+                    <h3>レビュー入力フォーム</h3>
+                        <%= render 'layouts/error_message', form: @item %>
+                        <div class="review_do">
+                            <%= form_for([@item, @review]) do |f| %>
+                                <p class="review_form"><span class="review_head">タイトル</span><%= f.text_field :title, :size => "60" %></p>
+                                <p><span class="review_form"><span class="review_head">本文</span><%= f.text_area :body, :size => "110x10" %></p>
+                                <%= f.submit "投稿する", :class => "btn btn-info col-xs-6 col-xs-offset-3" %>
+                            <% end %>
+                        </div>
+                <% end %>
+            </div>
+
+            <div class="link_path1">
+                <%= link_to '商品一覧へ戻る', items_path %>
+            </div>
+        </div>
+    </div>
 </div>
-<%# <p><%= link_to '商品一覧へ戻る' items_path %>

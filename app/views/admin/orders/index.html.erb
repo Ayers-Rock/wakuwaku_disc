@@ -1,40 +1,32 @@
 <div class="body">
-<div class="container">
-	<div class="row">
-		<% if notice %>
-		<p id="notice"><%= notice %></p>
-		<% end %>
-		<div class="col-lg-10 col-lg-offset-1">
-			<h2>受注履歴</h2>
-			<br>
-			<table class="tableindex table-condensed">
-				<tr>
-					<th>購入者</th>
-					<th>購入日</th>
-					<th>購入価格総計</th>
-					<th>ステータス</th>
-					<th></th>
-				</tr>
-				<% @orders.each do |order| %>
-				<tr>
-					<td style="text-align:center;"><font size="2"><%= order.user.last_name + order.user.first_name %></font></td>
-					<td style="text-align:center;"><font size="2"><%= order.created_at %></font></td>
-					<td style="text-align:center;"><font size="2"><%= order.total_price.round(0) %>円</font></td>
-					<td style="text-align:center;"><font size="2"><%= order.status_i18n %></font></td>
-					<td><%= link_to "注文詳細", admin_order_path(order.id), class: "btn btn-default col-xs-12" %></td>
-				</tr>
-				<% end %>
-			</table>
-			<br>
-			<br>
-			<div align="center">
-			<%= paginate @orders %>
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-10 col-xs-offset-1">
+				<h2>受注履歴</h2>
+				<br>
+				<table class="table_index table-condensed">
+					<tr>
+						<th>購入者</th>
+						<th>購入日</th>
+						<th>購入価格総計</th>
+						<th>ステータス</th>
+						<th></th>
+					</tr>
+					<% @orders.each do |order| %>
+					<tr>
+						<td style="text-align:center;"><font size="2"><%= order.user.last_name + order.user.first_name %></font></td>
+						<td style="text-align:center;"><font size="2"><%= order.created_at %></font></td>
+						<td style="text-align:center;"><font size="2"><%= order.total_price.round(0) %>円</font></td>
+						<td style="text-align:center;"><font size="2"><%= order.status_i18n %></font></td>
+						<td><%= link_to "注文詳細", admin_order_path(order.id), class: "btn btn-default col-xs-12" %></td>
+					</tr>
+					<% end %>
+				</table>
+
+				<div class="link_path2">
+				<%= paginate @orders %>
+				</div>
 			</div>
 		</div>
 	</div>
 </div>
-</div>
-<br>
-<br>
-<br>
-<br>

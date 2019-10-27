@@ -1,0 +1,39 @@
+<div class="body">
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-10 col-xs-offset-1">
+				<h2>カートの内容</h2>
+
+				<%= form_for(:number, url: user_cart_items_path(current_user.id), method: :PATCH) do |f| %>
+					<% @cart_items.each_with_index do |cart_item, i| %>
+
+						<table class="table_index table-condensed" width="100%">
+							<tr>
+								<th>商品画像</th>
+								<th>商品</th>
+								<th>個数</th>
+								<th>金額（税込）</th>
+								<th>削除</th>
+							</tr>
+							<tr>
+							<%# <%= fields_for "cart_items[]", item do |fi| %>
+								<td width="20%"><%= attachment_image_tag cart_item.item, :jacket_image, :fill, 100, 100, size: '100x100', fallback: 'no_image.jpg' %></td>
+								<td width="50%"><font size="2"><%= cart_item.item.title %></font></td>
+								<td width="10%"><font size="2"><%= number_field :amount, name=i, value: cart_item.amount, min: "1"%></font></td>
+								<td width="10%"><font size="2"><%= cart_item.item.price %>円</font></td>
+								<td width="10%"><%= link_to "削除", cart_item_path(cart_item.id), method: :delete, "data-confirm" => "本当に削除しますか？", :class => 'btn btn-default' %></td>
+							</tr>
+						</table>
+					<% end %>
+					<div class="link_path1">
+					<%= f.submit "購入画面へ", :class => "btn btn-danger col-xs-6 col-xs-offset-3" %>
+					</div>
+				<% end %>
+
+				<div class="link_path">
+					<%= link_to '商品一覧へ戻る', items_path %>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -9,48 +9,44 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <header>
-    <div　class="admin-header-main-box">
-      <div class="admin-header-top-box">
-        <div><span class="glyphicon glyphicon-eye-open" aria-hidden="true">アイコン</span></div>
-        <div>
-          <%= link_to admin_path do %>
-            <p>わくわく管理システム</p>
+  <header class="admin-header-box">
+    <%= link_to admin_path do %>
+      <span class="logo-box"><%= image_tag "admin_logo.jpg", size: '200x200', alt:"" %></span>
+    <% end %>
+    <%# <P><%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+    <nav>
+      <ul>
+        <li>
+          <%= link_to admin_users_path do %>
+            <span class="glyphicon glyphicon-user" aria-hidden="true">ユーザー管理</span>
           <% end %>
-        </div>
-        <div>ログアウト</div>
-      <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-      </div>
-      <div class="list-big-box">
-        <nav>
-          <ul class="list-small-box">
-            <li class="list-style">
-              <%= link_to admin_users_path do %>
-                <span class="glyphicon glyphicon-user" aria-hidden="true">ユーザー管理</span>
-              <% end %>
-            </li>
-            <li class="list-style">
-              <%= link_to admin_items_path do %>
-                <span class="glyphicon glyphicon-lock" aria-hidden="true">商品管理</span>
-              <% end %>
-            </li>
-            <li class="list-style">
-              <%= link_to admin_stocks_path do %>
-                <span class="glyphicon glyphicon-stats" aria-hidden="true">在庫管理</span>
-              <% end %>
-            </li>
-            <li class="list-style">
-              <%= link_to admin_orders_path do %>
-                <span class="glyphicon glyphicon-folder-open" aria-hidden="true">受注管理</span>
-              <% end %>
-            </li>
-          </ul>
-        </nav>
-      </div>
-    </div>
+        </li>
+        <li>
+          <%= link_to admin_items_path do %>
+            <span class="glyphicon glyphicon-lock" aria-hidden="true">商品管理</span>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to admin_stocks_path do %>
+            <span class="glyphicon glyphicon-stats" aria-hidden="true">在庫管理</span>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to admin_orders_path do %>
+            <span class="glyphicon glyphicon-folder-open" aria-hidden="true">受注管理</span>
+          <% end %>
+        </li>
+      </ul>
+    </nav>
   </header>
 
   <body>
     <%= yield %>
   </body>
+  <footer class="admin-footer">
+    <hr>
+      <%= link_to destroy_user_session_path, method: :delete do %>
+        <span class="glyphicon glyphicon-log-out" aria-hidden="true">ログアウト</span>
+      <% end %>
+  </footer>
 </html>

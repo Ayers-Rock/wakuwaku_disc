@@ -24,6 +24,10 @@ class Admin::UsersController < Admin::AdminApplicationsController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
+<<<<<<< HEAD
+=======
+      binding.pry
+>>>>>>> master
       redirect_to admin_user_path(@user.id)
     end
   end
