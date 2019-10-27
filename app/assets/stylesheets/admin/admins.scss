@@ -3,13 +3,37 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .admin-top-box {
-    .parent {
-        display: flex;
-        .child {
-            border: solid 1px brack;
-            padding: 10px;
+    margin-top: 30px;
+}
+// .row {
+//     margin: 20px;
+// }
+.parent {
+display: flex;
+justify-content: center;
+    .box {
+        padding: 0.5em 1em;
+        margin: 2em 0;
+        color: #5d627b;
+        background: #F4F4F4;
+        border-top: solid 5px #5d627b;
+        box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
+        // border: double 7px rgb(245, 140, 3);
+        width: 300px;
+        height: 150px;
+        .glyphicon.glyphicon-user,
+        .glyphicon.glyphicon-lock,
+        .glyphicon.glyphicon-stats,
+        .glyphicon.glyphicon-folder-open {
+            font-size: 60px;
         }
     }
+}
+.glyphicon.glyphicon-user,
+.glyphicon.glyphicon-lock,
+.glyphicon.glyphicon-stats,
+.glyphicon.glyphicon-folder-open {
+    font-size: 40px;
 }
 
 

@@ -1,9 +1,9 @@
-<% if category == @artist %>
+
     <div class="container label-box">
         <div class="row">
             <div class="col-lg-10 col-lg-offset-1">
                 <div class="form-box">
-                    <%= form_for([:admin, category]) do |f| %>
+                    <%= form_for([:admin, @artist]) do |f| %>
                         <h2>新規アーティスト追加</h2>
                         <%= f.text_field :artist_name, placeholder: "アーティスト名を入力して下さい" %></p>
                         <p><%= f.submit "追加", class: "btn btn-primary" %></p>
@@ -19,12 +19,12 @@
                         <th>アーティスト</th>
                         <th></th>
                     </tr>
-                    <% categories.each do |genre| %>
+                    <% @artists.each do |artist| %>
                         <tr>
-                            <td><%= genre.id %></td>
-                            <td><%= genre.artist_name %></td>
+                            <td><%= artist.id %></td>
+                            <td><%= artist.artist_name %></td>
                             <td>
-                                <%= link_to "削除", admin_artist_path(genre.id), class: "btn btn-danger", method: :delete, "data-confirm" => "本当に削除しますか？"%>
+                                <%= link_to "削除", admin_artist_path(artist.id), class: "btn btn-danger", method: :delete, "data-confirm" => "本当に削除しますか？"%>
                             </td>
                         </tr>
                     <% end %>
@@ -35,12 +35,12 @@
             </div>
         </div>
     </div>
-<% elsif category == @genre %>
+
     <div class="container label-box">
         <div class="row">
             <div class="col-lg-10 col-lg-offset-1">
                 <div class="form-box">
-                    <%= form_for([:admin, category]) do |f| %>
+                    <%= form_for([:admin, @genre]) do |f| %>
                         <h2>新規ジャンル追加</h2>
                         <%= f.text_field :genre_name, placeholder: "ジャンル名を入力して下さい" %></p>
                         <p><%= f.submit "追加", class: "btn btn-primary" %></p>
@@ -56,16 +56,12 @@
                         <th>ジャンル</th>
                         <th></th>
                     </tr>
-                    <% categories.each do |genre| %>
+                    <% @genres.each do |genre| %>
                         <tr>
                             <td><%= genre.id %></td>
                             <td><%= genre.genre_name %></td>
                             <td>
-<<<<<<< HEAD
-                                <%= link_to "削除", admin_genre_path(genre.id), class: "btn btn-danger", method: :delete %>
-=======
                                 <%= link_to "削除", admin_genre_path(genre.id), class: "btn btn-danger", method: :delete, "data-confirm" => "本当に削除しますか？" %>
->>>>>>> master
                             </td>
                         </tr>
                     <% end %>
@@ -76,12 +72,13 @@
             </div>
         </div>
     </div>
-<% else %>
+
+
     <div class="container label-box">
         <div class="row">
             <div class="col-lg-10 col-lg-offset-1">
                 <div class="form-box">
-                    <%= form_for([:admin, category]) do |f| %>
+                    <%= form_for([:admin, @label]) do |f| %>
                         <h2>新規レーベル追加</h2>
                         <%= f.text_field :label_name, placeholder: "レーベル名を入力して下さい" %></p>
                         <p><%= f.submit "追加", class: "btn btn-primary" %></p>
@@ -97,15 +94,19 @@
                         <th>ジャンル</th>
                         <th></th>
                     </tr>
-                    <% categories.each do |genre| %>
+                    <% @labels.each do |label| %>
                         <tr>
-                            <td><%= genre.id %></td>
-                            <td><%= genre.label_name %></td>
+                            <td><%= label.id %></td>
+                            <td><%= label.label_name %></td>
                             <td>
+<<<<<<< HEAD
+                                <%= link_to "削除", admin_label_path(label.id), class: "btn btn-danger", method: :delete, "data-confirm" => "本当に削除しますか？" %>
+=======
 <<<<<<< HEAD
                                 <%= link_to "削除", admin_label_path(genre.id), class: "btn btn-danger", method: :delete %>
 =======
                                 <%= link_to "削除", admin_label_path(genre.id), class: "btn btn-danger", method: :delete, "data-confirm" => "本当に削除しますか？" %>
+>>>>>>> master
 >>>>>>> master
                             </td>
                         </tr>
@@ -117,4 +118,3 @@
             </div>
         </div>
     </div>
-<% end %>
