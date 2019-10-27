@@ -22,8 +22,10 @@ class Order < ApplicationRecord
         end
         return sum + 500
       end
+
       def connected_address
         address = self.postal_code + " " + self.prefecture + " "  + self.city_address + " " + self.building
         return address
-    end
+      end
+
 end
