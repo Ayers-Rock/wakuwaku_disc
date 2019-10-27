@@ -16,10 +16,10 @@ class FavoritesController < ApplicationController
     #   @favorite.item_id = favorite.item.id
     #   @favorite.save
     # end
-    @favorite_ranks = Item.find(Favorite.group(:item_id).order('count(item_id) desc').limit(3).pluck(:item_id))
-    @monthly_ranks = Item.find(OrderItem.where(created_at: 1.months.ago.beginning_of_day..Time.zone.now.end_of_day).group(:item_id).order('sum(amount) desc').limit(3).pluck(:item_id))
-    @weekly_ranks = Item.find(OrderItem.where(created_at: 1.weeks.ago.beginning_of_day..Time.zone.now.end_of_day).group(:item_id).order('sum(amount) desc').limit(5).pluck(:item_id))
-    # FIXME:ランキングでもいいねが出来るようにする
+    @favorite_ranks = Item.find(Favorite.group(:item_id).order('count(item_id) desc').limit(20).pluck(:item_id))
+    @monthly_ranks = Item.find(OrderItem.where(created_at: 1.months.ago.beginning_of_day..Time.zone.now.end_of_day).group(:item_id).order('sum(amount) desc').limit(20).pluck(:item_id))
+    @weekly_ranks = Item.find(OrderItem.where(created_at: 1.weeks.ago.beginning_of_day..Time.zone.now.end_of_day).group(:item_id).order('sum(amount) desc').limit(20).pluck(:item_id))
+
     @cart_item = CartItem.new
   end
 
@@ -38,9 +38,9 @@ class FavoritesController < ApplicationController
     #   @favorite.destroy
     # end
 
-    @favorite_ranks = Item.find(Favorite.group(:item_id).order('count(item_id) desc').limit(3).pluck(:item_id))
-    @monthly_ranks = Item.find(OrderItem.where(created_at: 1.months.ago.beginning_of_day..Time.zone.now.end_of_day).group(:item_id).order('sum(amount) desc').limit(3).pluck(:item_id))
-    @weekly_ranks = Item.find(OrderItem.where(created_at: 1.weeks.ago.beginning_of_day..Time.zone.now.end_of_day).group(:item_id).order('sum(amount) desc').limit(5).pluck(:item_id))
+    @favorite_ranks = Item.find(Favorite.group(:item_id).order('count(item_id) desc').limit(20).pluck(:item_id))
+    @monthly_ranks = Item.find(OrderItem.where(created_at: 1.months.ago.beginning_of_day..Time.zone.now.end_of_day).group(:item_id).order('sum(amount) desc').limit(20).pluck(:item_id))
+    @weekly_ranks = Item.find(OrderItem.where(created_at: 1.weeks.ago.beginning_of_day..Time.zone.now.end_of_day).group(:item_id).order('sum(amount) desc').limit(20).pluck(:item_id))
     # FIXME:いいね機能の復活（ランキング版）
 
     @cart_item = CartItem.new

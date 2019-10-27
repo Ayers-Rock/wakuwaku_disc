@@ -21,17 +21,18 @@
                         </tr>
                         <tr>
                             <th>商品</th>
-                            <th>アーティスト</th>
                             <th>配送先</th>
                             <th>配送状況</th>
+                            <% if order.status == "delivered" %>
+                            <th>レビュー</th>
+                            <% end %>
                         </tr>
                     </thead>
                     <tbody>
-                        <% order.order_items.each do |order_item| %>
+
                             <tr>
-                                <td><%= order_item.item.title %></td>
-                                <td><%= order_item.item.artist.artist_name %></td>
-                                <td><%= order_item.order.delivery_last_name %><%= order_item.order.delivery_first_name %></td>
+                                <td><%= order.order_items.first.item.title %>   <% if order.amount_except_one !=0 %>  他<%= order.amount_except_one %>点...<% end %></td>
+                                <td><%= order.delivery_last_name %><%= order.delivery_first_name %></td>
                                 <td><%= order.status_i18n %>
                                 <% if order.status == "delivered" %>
                                   <td>
@@ -41,7 +42,7 @@
                                   </td>
                                 <% end %>
                             </tr>
-                        <% end %>
+ 
                     </tbody>
                 </table>
             </div>

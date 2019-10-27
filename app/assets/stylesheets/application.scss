@@ -128,7 +128,7 @@
   position: absolute;
   top: 0;
   right: 0;
-  
+
   p{
     font-size: 18px;
     color: white;
@@ -141,7 +141,10 @@
   }
 }
 
-
+// _error_message用
+.field_with_error {
+  color: red;
+}
 
 .header-bottom{
     margin-bottom: 50px;
