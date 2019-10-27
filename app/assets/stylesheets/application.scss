@@ -13,6 +13,7 @@
  *= require_tree .
  *= require_self
  */
+
  @import "bootstrap-sprockets";
  @import "bootstrap";
  @import url('https://fonts.googleapis.com/css?family=M+PLUS+1p');
@@ -36,6 +37,7 @@
       width: 200px;
       height: 200px;
     }
+
   }
 
   .flexbox {
@@ -105,6 +107,7 @@
           display: inline-flex;
           padding-top: 2%;
           box-shadow: 3px 2px 1px #999999;
+          outline: none;
 
           .fa-search{
             font-size: 50px;

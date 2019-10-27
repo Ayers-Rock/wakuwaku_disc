@@ -68,34 +68,32 @@
                     <thead>
                         <tr>
                             <th style="background-color:#CCCCCC">
-                                <%= order.created_at.strftime('%Y/%m/%d') %>ご注文
+                                <%= order.created_at.strftime('%Y/%m/%d') %>
+                                注文番号 <%= order.order_number %>
                                 <%= link_to '(詳細へ)', order_path(order.id) %>
                             </th>
                         </tr>
                         <tr>
-                            <th>ご注文番号</th>
                             <th>商品</th>
+                            <th>アーティスト</th>
                             <th>配送先</th>
                             <th>配送状況</th>
-                            <th></th>
                         </tr>
                     </thead>
                     <tbody>
                         <% order.order_items.each do |order_item| %>
                             <tr>
                                 <td><%= order_item.item.title %></td>
-                                <td><%= order_item.item.title %></td>
+                                <td><%= order_item.item.artist.artist_name %></td>
                                 <td><%= order_item.order.delivery_last_name %><%= order_item.order.delivery_first_name %></td>
-                                <td><%= order.payment_i18n %>
-                                    <% if order.status == "配送準備中" %>
-                                <td> </td>
-                        <% else %>
-                                <td>
+                                <td><%= order.status_i18n %>
+                                <% if order.status != "preparing" %>
+                                　　<td>
                                     <%= link_to item_path(order_item.item_id) do %>
                                         <button class="btn-sticky">レビューを書く<></button>
                                     <% end %>
-                                </td>
-                        <% end %>
+                                　　</td>
+                                <% end %>
                             </tr>
                         <% end %>
                     </tbody>

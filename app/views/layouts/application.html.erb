@@ -19,11 +19,13 @@
 <body>
   <header class="clearfix">
       <div class="header-top">
-        <%
-=begin%>
- <div class="flex01"><%= link_to image_tag ("/assets/images/waku_logo.jpg"), root_path %></div> 
-<%
-=end%>
+
+<div class="flex01">
+  <%= link_to root_path do %>
+    <%= image_tag "waku_logo.jpg" %>
+  <% end %>
+</div>
+
         <div class="flexbox">
           <div class="header-text">
             <h1>ワクワクしちゃう？</h1>
