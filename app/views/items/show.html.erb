@@ -13,7 +13,7 @@
                     <p><%= @item.price %>円(税込)</p>
                 </div>
                 <div class="item_show2">
-                    <div id="favorite-button-<%=@item.id %>">
+                    <div class="favorite-button-<%=@item.id %>">
                         <%= render 'favorites/favorite', item: @item %>
                     </div>
                 </div>
@@ -70,7 +70,9 @@
 
                 <% if user_signed_in? %>
                     <h3>レビュー入力フォーム</h3>
-                        <%= render 'layouts/error_message', form: @item %>
+                    <div>
+                        <%= render 'layouts/error_message', form: @review %>
+                    </div>
                         <div class="review_do">
                             <%= form_for([@item, @review]) do |f| %>
                                 <p class="review_form"><span class="review_head">タイトル</span><%= f.text_field :title, :size => "60" %></p>

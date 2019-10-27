@@ -41,7 +41,7 @@
                                 </div>
                                 <div class="col-md-3">
                                     <% if user_signed_in? %>
-                                        <div id="favorite-button-<%=item.id %>">
+                                        <div class="favorite-button-<%=item.id %>">
                                             <%= render 'favorites/favorite', item: item %>
                                         </div>
                                     <% end %>

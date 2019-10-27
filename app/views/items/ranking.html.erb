@@ -24,7 +24,7 @@
                                             <p><%= item.price %>(税込)</p>
                                         </div>
                                         <div class="col-md-6">
-                                            <div id="favorite-button-<%=item.id %>">
+                                            <div class="favorite-button-<%=item.id %>">
                                                 <%= render 'favorites/favorite', item: item %>
                                             </div>
                                             <div>
@@ -52,8 +52,8 @@
                                             <p><%= item.price %>(税込)</p>
                                         </div>
                                         <div class="col-md-6">
-                                            <% if user_signed_id? %>
-                                                <div id="favorite-button-<%=item.id %>">
+                                            <% if user_signed_in? %>
+                                                <div class="favorite-button-<%=item.id %>">
                                                     <%= render 'favorites/favorite', item: item %>
                                                 </div>
                                             <% end %>
@@ -82,9 +82,11 @@
                                             <p><%= item.price %>(税込)</p>
                                         </div>
                                         <div class="col-md-6">
-                                            <div id="favorite-button-<%=item.id %>">
-                                                <%= render 'favorites/favorite', item: item %>
-                                            </div>
+                                            <% if user_signed_in? %>
+                                                <div class="favorite-button-<%=item.id %>">
+                                                    <%= render 'favorites/favorite', item: item %>
+                                                </div>
+                                            <% end %>
                                             <div>
                                                 <%= form_for @cart_item do |f| %>
                                                     <%= f.number_field :amount %>

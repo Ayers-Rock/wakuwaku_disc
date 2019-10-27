@@ -83,8 +83,8 @@
                     <tbody>
                         <% order.order_items.each do |order_item| %>
                             <tr>
-                                <td><%= order_item.item.title %></td>
-                                <td><%= order_item.item.title %></td>
+                                <td><%= order_item.with_deleted_item.title %></td>
+                                <td><%= order_item.with_deleted_item.title %></td>
                                 <td><%= order_item.order.delivery_last_name %><%= order_item.order.delivery_first_name %></td>
                                 <td><%= order.payment_i18n %>
                                     <% if order.status == "配送準備中" %>

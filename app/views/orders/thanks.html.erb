@@ -26,11 +26,11 @@
 
 <% @order_items.each do |order_item| %>
     <div>
-        <%= attachment_image_tag order_item.item, :jacket_image, :fill, 60, 60, format: 'jpeg', class: "img-circle pull-left profile-img" %>
-        <%= order_item.item.title %>
-        <%= order_item.item.artist.artist_name %>
+        <%= attachment_image_tag order_item.with_deleted_item, :jacket_image, :fill, 60, 60, format: 'jpeg', class: "img-circle pull-left profile-img" %>
+        <%= order_item.with_deleted_item.title %>
+        <%= order_item.with_deleted_item.artist.artist_name %>
         <%= order_item.amount %>
-        <% subtotal = order_item.item.price * order_item.amount * 1.10.floor %>
+        <% subtotal = order_item.with_deleted_item.price * order_item.amount * 1.10.floor %>
         <%= subtotal %>
     </div>
 <% end %>

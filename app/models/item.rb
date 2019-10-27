@@ -4,10 +4,10 @@ class Item < ApplicationRecord
     has_many :discs
     accepts_nested_attributes_for :discs, allow_destroy: true
 
-    has_many :cart_items
-    has_many :reviews
+    has_many :cart_items, dependent: :destroy
+    has_many :reviews, dependent: :destroy
     has_many :favorites, dependent: :destroy
-    has_many :order_items
+    has_many :order_items, dependent: :destroy
 
     belongs_to :genre
     belongs_to :label
@@ -21,7 +21,7 @@ class Item < ApplicationRecord
     validates :price, presence: true
     validates :status, presence: true
 
-    acts_as_paranoid without_default_scope: true
+    acts_as_paranoid
 
     def favorited_by?(current_user)
         favorites.where(user_id: current_user.id).exists?

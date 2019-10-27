@@ -118,7 +118,7 @@ font-family: 'TsukuARdGothic-Regular','ヒラギノ角ゴシック','Hiragino Sa
   position: absolute;
   top: 0;
   right: 0;
-  
+
   p{
     font-size: 18px;
     color: white;
@@ -131,6 +131,9 @@ font-family: 'TsukuARdGothic-Regular','ヒラギノ角ゴシック','Hiragino Sa
   }
 }
 
-
+// _error_message用
+.field_with_error {
+  color: red;
+}
 
 
