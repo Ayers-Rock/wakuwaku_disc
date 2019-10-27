@@ -2,23 +2,29 @@
     <% unless @items.present? %>
         <h2>検索結果がありません</h2>
     <% end %>
-        <div class="row">
+        <div class="row item_index_box">
             <div class="col-md-2">
                 <%# <ul>
                     <% @artists.each do |artist| %>
                         <%# <li><%= link_to "#{artist.artist_name}", artist_path(artist.id) %>
                     <%# <% end %>
                 <%# </ul> %>
-                <ul>
-                    <% @genres.each do |genre| %>
-                        <li><%= link_to "#{genre.genre_name}", genre_path(genre.id) %></li>
-                    <% end %>
-                </ul>
-                <ul>
-                    <% @labels.each do |label| %>
-                        <li><%= link_to "#{label.label_name}", label_path(label.id) %></li>
-                    <% end %>
-                </ul>
+                <div class="box">
+                    <ul>
+                        <% @genres.each do |genre| %>
+                            <li><i class="fas fa-headphones-alt" style="margin-right: 5px;"></i><%= link_to "#{genre.genre_name}", genre_path(genre.id) %></li>
+                        <% end %>
+                    </ul>
+                </div>
+
+                <div class="box">
+                    <ul>
+                        <% @labels.each do |label| %>
+                            <li><i class="fas fa-compact-disc fa-spin"></i><%= link_to "#{label.label_name}", label_path(label.id) %></li>
+                        <% end %>
+                    </ul>
+                </div>
+
             </div>
             <div class="col-md-9">
                     <h2>CD一覧</h2>
