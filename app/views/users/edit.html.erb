@@ -4,8 +4,8 @@
     <div class="container">
         <div class="row">
         <h2>ユーザー情報編集</h2>
-            <form>
                 <%= form_for(@user) do |f| %>
+                    <%= render 'layouts/error_message', form: f.object %>
                     <div class="form-group">
                         <div class="col-md-2">
                             <%= f.label :name, '名前' %>
@@ -80,6 +80,5 @@
                         <%= f.submit '更新', class:"btn btn-success" %>
                     </div>
                 <% end %>
-            </form>
         </div>
     </div>
