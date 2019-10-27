@@ -1,6 +1,12 @@
 <h2>購入履歴</h2>
 
 
+<% if flash[:notice] %>
+  <div class="flash">
+    <%= flash[:notice] %>
+  </div>
+<% end %>
+<div class="container">
 <% @orders.each do |order| %>
 <table>
   <thead>
@@ -36,8 +42,7 @@
           <% end %>
       </tr>
     <% end %>
-  </tbody>
-</table>
-<% end %>
+    <p><%= link_to '購入履歴へ', orders_path(@user_id) %></p>
 
 <%= link_to "マイページへ戻る", user_path(current_user.id) %>
+</div>

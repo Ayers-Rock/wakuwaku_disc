@@ -78,6 +78,7 @@
         padding: 10px;
         margin-bottom: 20px;
         border: 1px solid #333333;
+        padding-bottom: 30px;
     }
 
     .item_img{
@@ -142,6 +143,9 @@
 .review_box{
     width: 100%;
 }
+#review_body{
+    width: 80%;
+}
 
 .review_do1{
     float: left;
@@ -160,4 +164,8 @@
 
 .review_do{
     margin: 30px;
+}
+
+.link_path1{
+    margin-bottom: 60px;
 }

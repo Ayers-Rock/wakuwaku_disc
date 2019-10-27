@@ -1,5 +1,5 @@
 class AddressesController < ApplicationController
-  before_action ::authenticate_user!, only: [:index, :new, :edit, :]
+  before_action :authenticate_user!, only: [:index, :new, :edit]
 
   def new
     # binding.pry
@@ -43,6 +43,8 @@ class AddressesController < ApplicationController
     @address = Address.find(params[:id])
     if @address.update(address_params)
       redirect_to user_addresses_path(@address.user.id)
+      else
+        render :edit
     end
   end
 

@@ -30,7 +30,7 @@
                         <div class="col-md-3">
                             <p><%= link_to "#{item.title}",item_path(item.id) %></p>
                             <p><%= item.artist.artist_name %></p>
-                            <p><%= item.price %>(税込)</p>
+                            <p><%= item.tax_include %>(税込)</p>
                         </div>
                         <div class="col-md-3">
                             <div id="favorite-button-<%=item.id %>">

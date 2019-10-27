@@ -18,7 +18,13 @@
  @import "bootstrap";
  @import url('https://fonts.googleapis.com/css?family=M+PLUS+1p');
 
- .header{
+ .clearfix::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
+ .header-top{
   height: 200px;
   width: 100%;
 
@@ -47,7 +53,8 @@
       height: 50%;
 
       h1{
-font-family: 'TsukuARdGothic-Regular','ヒラギノ角ゴシック','Hiragino Sans','ヒラギノ丸ゴ ProN','Hiragino Maru Gothic ProN','klee','Osaka',sans-serif;        font-size: 54px;
+        font-family: 'TsukuARdGothic-Regular','ヒラギノ角ゴシック','Hiragino Sans','ヒラギノ丸ゴ ProN','Hiragino Maru Gothic ProN','klee','Osaka',sans-serif;
+        font-size: 54px;
         color: white;
         font-weight: bold;
         text-shadow: 3px 2px 1px #946d62;
@@ -78,7 +85,9 @@ font-family: 'TsukuARdGothic-Regular','ヒラギノ角ゴシック','Hiragino Sa
           margin-right: 1%;
           box-shadow: 3px 2px 1px #999999;
           margin-bottom: 5%;
-          opacity: 0.4;
+          opacity: 0.6;
+          font-size: 60px;
+          font-family: 'TsukuARdGothic-Regular','ヒラギノ角ゴシック','Hiragino Sans','ヒラギノ丸ゴ ProN','Hiragino Maru Gothic ProN','klee','Osaka',sans-serif;
 
         }
             input[type="text"]::placeholder {
@@ -98,6 +107,7 @@ font-family: 'TsukuARdGothic-Regular','ヒラギノ角ゴシック','Hiragino Sa
           display: inline-flex;
           padding-top: 2%;
           box-shadow: 3px 2px 1px #999999;
+          outline: none;
 
           .fa-search{
             font-size: 50px;
@@ -136,4 +146,6 @@ font-family: 'TsukuARdGothic-Regular','ヒラギノ角ゴシック','Hiragino Sa
   color: red;
 }
 
-
+.header-bottom{
+    margin-bottom: 50px;
+}

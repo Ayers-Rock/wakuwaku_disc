@@ -2,42 +2,40 @@
     <div class="container">
         <div class="row">
             <div class="col-xs-10 col-xs-offset-1">
+                <div class="messeage">
+                    <h2>ご注文ありがとうございました。</h2>
+                </div>
                 <div class="box">
-                    <div class="messeage">
-                        <h2>ご注文ありがとうございました。</h2>
-                    </div>
                     <table class="">
                         <tr>
                             <th>ご注文番号</th>
                             <td><%= @order.order_number %></td>
                         </tr>
                         <tr>
-                            <th></th>
-                            <td></td>
+                            <th>商品画像</th>
+                            <th>タイトル</th>
+                            <th>アーティスト</th>
+                            <th>数量</th>
+                            <th>小計</th>
                         </tr>
+                        <% @order_items.each do |order_item| %>
+                            <tr>
+                                <td><%= attachment_image_tag order_item.with_deleted_item, :jacket_image, :fill, 60, 60, format: 'jpeg', class: "img-circle pull-left profile-img", fallback: 'no_image.jpg', size: '100x100' %></td>
+                                <td><%= order_item.with_deleted_item.title %></td>
+                                <td><%= order_item.with_deleted_item.artist.artist_name %></td>
+                                <td><%= order_item.amount %></td>
+                                    <% subtotal = order_item.with_deleted_item.price * order_item.amount * 1.10 %>
+                                <td><%= subtotal.round(0) %>円</td>
+                            </tr>
+                        <% end %>
                     </table>
+                    <p>送料    500円</p>
+                    <p>合計 　<%= @order.total_price.floor %>円　(税込) </p>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
-
-
-<% @order_items.each do |order_item| %>
-    <div>
-        <%= attachment_image_tag order_item.with_deleted_item, :jacket_image, :fill, 60, 60, format: 'jpeg', class: "img-circle pull-left profile-img" %>
-        <%= order_item.with_deleted_item.title %>
-        <%= order_item.with_deleted_item.artist.artist_name %>
-        <%= order_item.amount %>
-        <% subtotal = order_item.with_deleted_item.price * order_item.amount * 1.10.floor %>
-        <%= subtotal %>
-    </div>
-<% end %>
-
-    <span>送料    500円</span>
-    <span>合計 <%= @order.total_price.floor %>円　(税込) </span>
-
 <div class="link_path">
     <%= link_to 'トップページへ戻る',root_path %>
 </div>
