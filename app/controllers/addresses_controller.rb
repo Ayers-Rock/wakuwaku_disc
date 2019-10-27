@@ -1,4 +1,6 @@
 class AddressesController < ApplicationController
+  before_action ::authenticate_user!, only: [:index, :new, :edit, :]
+
   def new
     # binding.pry
     @address = Address.new(user_id: params[:user_id])

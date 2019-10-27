@@ -1,4 +1,6 @@
 class Admin::ItemsController < Admin::AdminApplicationsController
+
+
   def index
     @items = Item.page(params[:page]).per(10).reverse_order
     # TODO:.orderで表示順序を変える可能性有り
@@ -16,6 +18,7 @@ class Admin::ItemsController < Admin::AdminApplicationsController
   def show
     @item = Item.find(params[:id])
     @discs = Disc.where(item_id: @item.id)
+    @reviews = Review.where(item_id: @item.id)
     # @tracks = Track.order(track_number: "DESC")
     # TODO:@discsに入ってる複数idを一つずつ渡すか、配列のままviewで渡してviewで処理するのかを調べるところからスタート
   end
