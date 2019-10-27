@@ -49,6 +49,7 @@ class FavoritesController < ApplicationController
   def index
     # @favorites = Favorite.where(user_id: current_user.id).reverse_order
     @favorites = current_user.favorite_items
+    @cart_item = CartItem.new
     # @cart_items =
   end
 end
