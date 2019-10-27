@@ -10,7 +10,7 @@
                     <p><%= @item.artist.artist_name %></p>
                 </div>
                 <div class="item_show1">
-                    <p><%= @item.price %>円(税込)</p>
+                    <p><%= @item.tax_include.round(0) %>円(税込)</p>
                 </div>
                 <div class="item_show2">
                     <div id="favorite-button-<%=@item.id %>">
@@ -81,9 +81,9 @@
                 <% end %>
             </div>
 
+        </div>
             <div class="link_path1">
                 <%= link_to '商品一覧へ戻る', items_path %>
             </div>
-        </div>
     </div>
 </div>

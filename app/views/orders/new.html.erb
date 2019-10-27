@@ -5,8 +5,8 @@
 <% end %>
 <%= form_for(@order) do |f| %>
     <% if @order.errors.any? %>
-      <h2>エラー！</h2>
-      <h3> 登録住所を選択してください</h3>
+      <h2 class="error-message-d">エラー！</h2>
+      <h3 class="error-message-d"> 登録住所を選択してください</h3>
     <% end %>
 <% end %>
 
@@ -57,8 +57,8 @@
               <%= label_tag "自分の住所を選択する" %><br>
               <%= radio_button_tag "address", 1 %>
               <%= select_tag("other_address", options_for_select(current_user.addresses.map(&:delivery_destination)), prompt: '登録住所を選択') %>
-              <span class="information">
-              住所をまだ登録していない方、別の配送先住所を指定したい方は<%= link_to"住所登録フォーム", new_address_path %>へ</span>
+              <p class="information">
+              住所をまだ登録していない方、別の配送先住所を指定したい方は<%= link_to"住所登録フォーム", new_address_path %>へ</p>
             </td>
           </tr>
           <tr>
