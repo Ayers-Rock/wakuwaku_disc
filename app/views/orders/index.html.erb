@@ -1,6 +1,12 @@
 <h2>購入履歴</h2>
 
 
+<% if flash[:notice] %>
+  <div class="flash">
+    <%= flash[:notice] %>
+  </div>
+<% end %>
+
 <% @orders.each do |order| %>
 <table>
   <thead>
