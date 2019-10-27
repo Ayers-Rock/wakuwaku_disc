@@ -3,6 +3,7 @@
             <div class="col-md-8 col-md-offset-2">
                 <h2>住所入力フォーム</h2>
                 <%= form_for(@address, url: user_addresses_path(current_user.id)) do |f| %>
+                <%= render 'layouts/error_message', form: @address %>
                     <div class="form-group">
                         <%= f.label :名前 %><br>
                         <%= f.label :姓 %>
