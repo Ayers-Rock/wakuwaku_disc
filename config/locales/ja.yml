@@ -4,6 +4,7 @@ ja:
       status:
         available: "販売中"
         not_available: "販売停止中"
+        sold_out: "在庫切れ中"
     order:
       status:
         preparing: "配送準備中"
@@ -13,8 +14,6 @@ ja:
         cod: "代引き"
         transfer: "振込み"
         credit_card: "クレジットカード"
-
-ja:
   date:
     abbr_day_names:
     - 日

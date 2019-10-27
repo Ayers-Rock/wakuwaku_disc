@@ -41,7 +41,11 @@
                                     <%= form_for @cart_item do |f| %>
                                         <%= f.number_field :amount, min: 1, value: 1 %>
                                         <%= f.hidden_field :item_id, value: item.id %>
+                                        <% if item.status_before_type_cast == 0%>
                                         <%= f.submit 'カートに入れる' %>
+                                        <% else %>'
+                                        <%= f.submit 'SOLD OUT', disabled: true, class: 'btn btn-danger' %>
+                                        <% end %>
                                     <% end %>
                                 </div>
                             </div>
