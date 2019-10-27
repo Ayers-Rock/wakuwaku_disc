@@ -20,11 +20,11 @@
                         </tr>
                         <% @order_items.each do |order_item| %>
                             <tr>
-                                <td><%= attachment_image_tag order_item.item, :jacket_image, :fill, 60, 60, format: 'jpeg', class: "img-circle pull-left profile-img", fallback: 'no_image.jpg', size: '100x100' %></td>
-                                <td><%= order_item.item.title %></td>
-                                <td><%= order_item.item.artist.artist_name %></td>
+                                <td><%= attachment_image_tag order_item.with_deleted_item, :jacket_image, :fill, 60, 60, format: 'jpeg', class: "img-circle pull-left profile-img", fallback: 'no_image.jpg', size: '100x100' %></td>
+                                <td><%= order_item.with_deleted_item.title %></td>
+                                <td><%= order_item.with_deleted_item.artist.artist_name %></td>
                                 <td><%= order_item.amount %></td>
-                                    <% subtotal = order_item.item.price * order_item.amount * 1.10 %>
+                                    <% subtotal = order_item.with_deleted_item.price * order_item.amount * 1.10 %>
                                 <td><%= subtotal.round(0) %>円</td>
                             </tr>
                         <% end %>
@@ -36,11 +36,6 @@
         </div>
     </div>
 </div>
-
-
-
-
-
 <div class="link_path">
     <%= link_to 'トップページへ戻る',root_path %>
 </div>

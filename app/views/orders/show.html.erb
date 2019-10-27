@@ -49,7 +49,7 @@
 
                 <% @order_items.each do |order_item| %>
                 <tr>
-                    <td width="60%", style="text-align:left;"><%= order_item.item.title %></td>
+                    <td width="60%", style="text-align:left;"><%= order_item.with_deleted_item.title %></td>
                     <% tax_included = order_item.purchase_price * 1.10 %>
                     <td width="15%", style="text-align:center;"><%= tax_included.round(0) %></td>
                     <td width="10%", style="text-align:center;"><%= order_item.amount %></td>

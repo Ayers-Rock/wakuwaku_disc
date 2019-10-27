@@ -5,9 +5,13 @@ class Admin::GenresController < Admin::AdminApplicationsController
   end
 
   def create
-    genre = Genre.new(genre_params)
-    genre.save
+    @genre = Genre.new(genre_params)
+    if @genre.save
     redirect_to new_admin_genre_path
+    else
+      @genres = Genre.all
+      render :new
+    end
     # TODO:バリデーションに伴うエラー表示やフラッシュメッセージが必要な場合は条件分岐などを追記
   end
 

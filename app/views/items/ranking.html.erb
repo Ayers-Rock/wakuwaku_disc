@@ -24,9 +24,11 @@
                                             <p><%= item.tax_include %>円(税込)</p>
                                         </div>
                                         <div class="col-md-6">
-                                            <div id="favorite-button-<%=item.id %>">
-                                                <%= render 'favorites/favorite', item: item %>
-                                            </div>
+                                            <% if user_signed_in? %>
+                                                <div class="favorite-button-<%=item.id %>">
+                                                    <%= render 'favorites/favorite', item: item %>
+                                                </div>
+                                            <% end %>
                                             <div>
                                                 <%= form_for @cart_item do |f| %>
                                                     <%= f.number_field :amount %>
@@ -52,9 +54,11 @@
                                             <p><%= item.tax_include %>(税込)</p>
                                         </div>
                                         <div class="col-md-6">
-                                            <div id="favorite-button-<%=item.id %>">
-                                                <%= render 'favorites/favorite', item: item %>
-                                            </div>
+                                            <% if user_signed_in? %>
+                                                <div class="favorite-button-<%=item.id %>">
+                                                    <%= render 'favorites/favorite', item: item %>
+                                                </div>
+                                            <% end %>
                                             <div>
                                                 <%= form_for @cart_item do |f| %>
                                                     <%= f.number_field :amount %>
@@ -80,9 +84,11 @@
                                             <p><%= item.tax_include %>円(税込)</p>
                                         </div>
                                         <div class="col-md-6">
-                                            <div id="favorite-button-<%=item.id %>">
-                                                <%= render 'favorites/favorite', item: item %>
-                                            </div>
+                                            <% if user_signed_in? %>
+                                                <div class="favorite-button-<%=item.id %>">
+                                                    <%= render 'favorites/favorite', item: item %>
+                                                </div>
+                                            <% end %>
                                             <div>
                                                 <%= form_for @cart_item do |f| %>
                                                     <%= f.number_field :amount %>
