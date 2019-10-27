@@ -33,15 +33,20 @@
                     <% @items.each do |item| %>
                         <div class="row">
                             <div class="item_index">
+<<<<<<< HEAD
                                 <div class="col-md-2">
                                     <%= attachment_image_tag item, :jacket_image, format:'jpeg', fallback: "no_image.jpg", size: "150x150" %>
+=======
+                                <div class="col-md-2 col-md-offset-2">
+                                    <%= attachment_image_tag item, :jacket_image, :fill, 100, 100, format:'jpeg', fallback: "no_image.jpg", size: '100x100' %>
+>>>>>>> master
                                 </div>
                                 <div class="col-md-5">
                                     <p><%= link_to "#{item.title}",item_path(item.id) %></p>
                                     <p><%= item.artist.artist_name %></p>
                                     <p><%= item.tax_include.round(0) %>円(税込)</p>
                                 </div>
-                                <div class="col-md-3">
+                                <div class="col-md-4">
                                     <% if user_signed_in? %>
                                         <div class="favorite-button-<%=item.id %>">
                                             <%= render 'favorites/favorite', item: item %>
@@ -57,6 +62,7 @@
                             </div>
                         </div>
                     <% end %>
+                <%= paginate @items %>
             </div>
         </div>
         </div>
