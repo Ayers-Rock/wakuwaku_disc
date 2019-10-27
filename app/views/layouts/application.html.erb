@@ -17,10 +17,13 @@
     <script src="assets/skippr.js"></script>
   </head>
 <body>
-  <header>
-    <div class="header">
-      <% if user_signed_in? %>
-        <div class="flex01"><%= image_tag "waku_logo.jpg" %></div>
+  <header class="clearfix">
+      <div class="header-top">
+        <%
+=begin%>
+ <div class="flex01"><%= link_to image_tag ("/assets/images/waku_logo.jpg"), root_path %></div> 
+<%
+=end%>
         <div class="flexbox">
           <div class="header-text">
             <h1>ワクワクしちゃう？</h1>
@@ -33,46 +36,41 @@
             <% end %>
           </div>
         </div>
-
+        <% if user_signed_in? %>
         <div class="flex02">
           <p>ようこそ<%= current_user.first_name %>さん<br>
             マイページは<%= link_to "こちら", user_path(current_user.id) %>
           </p>
         </div>
-    </div>
-
+</div>
+<div class="header-bottom">
     <ul class="nav nav-pills nav-justified">
       <li role="presentation" class="active"><%= link_to "カート", user_cart_items_path(current_user.id), class: "glyphicon glyphicon-shopping-cart" %></li>
       <li role="presentation" class="active"><%= link_to "マイページ", user_path(current_user.id), class: "glyphicon glyphicon-user" %></li>
       <li role="presentation" class="active"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"glyphicon glyphicon-log-out" %></li>
     </ul>
+</div>
 <% else %>
-  <div class="flex01"><%= image_tag "waku_logo.jpg" %></div>
-    <div class="flexbox">
-      <div class="header-text">
-        <h1>ワクワクしちゃう？</h1>
-      </div>
-      <div class="search-box">
-        <%= form_tag(items_path,method: :get) do %>
-          <%= text_field_tag :search, "", placeholder: "アーティストやタイトルで検索" %>
-          <%= button_tag '<i class="fa fa-search"></i>'.html_safe, type: 'submit', :name => nil %>
-        <% end %>
-      </div>
-    </div>
-
     <div class="flex02">
       <p>こんにちはゲストさん<br>
         無料会員登録は<%= link_to "こちら", new_user_registration_path %><br>
         すでに会員の方は<%= link_to "ログイン", new_user_session_path %></p>
       </p>
     </div>
+  </div>
+<div class="header-bottom">
   <ul class="nav nav-pills nav-justified">
-    <li role="presentation" class="active"><%= link_to "ログイン", new_user_session_path, class: "glyphicon glyphicon-log-in" %></li>
-    <li role="presentation" class="active"><%= link_to "新規会員登録", new_user_registration_path, class: "glyphicon glyphicon-triangle-right" %></li>
-    <li role="presentation" class="active"><%= link_to "カート", cart_items_path, class: "glyphicon glyphicon-shopping-cart" %></li>
+    <li role="presentation" class="active `**clearfix**`"><%= link_to "ログイン", new_user_session_path, class: "glyphicon glyphicon-log-in" %></li>
+    <li role="presentation" class="active `**clearfix**`"><%= link_to "新規会員登録", new_user_registration_path, class: "glyphicon glyphicon-triangle-right" %></li>
+    <%
+=begin%>
+ <li role="presentation" class="active `**clearfix**`"><%= link_to "カート", user_cart_items_path(current_user.id), class: "glyphicon glyphicon-shopping-cart" %></li> 
+<%
+=end%>
   </ul>
-
+</div>
 <% end %>
+</div>
   </header>
 
   <%= yield %>

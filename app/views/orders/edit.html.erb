@@ -1,14 +1,9 @@
-<% if flash[:notice] %>
-  <div class="flash">
-    <%= flash[:notice] %>
-  </div>
+
+<% if @order.errors.any? %>
+  <h2>エラー！</h2>
+  <h3>配送先情報を正しく入力してください　</h3>
 <% end %>
-<%= form_for(@order) do |f| %>
-    <% if @order.errors.any? %>
-       <h2>エラー！</h2>
-      <h3> 配送先情報を正しく入力してください　</h3>
-    <% end %>
-<% end %>
+
 
 <%= form_for(@order) do |f| %>
   <div class="field">

@@ -59,8 +59,8 @@ class OrdersController < ApplicationController
   def destroy
     order = Order.find(params[:id])
     order.destroy
-    flash[:notice] = "注文のキャンセルを承りました。<br>またのご利用をお待ちしております。"
-    redirect_to order_path(order.id)
+    flash[:notice] = "注文のキャンセルを承りました。またのご利用をお待ちしております。"
+    redirect_to orders_path
   end
 
   private

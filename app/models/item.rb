@@ -27,4 +27,8 @@ class Item < ApplicationRecord
         favorites.where(user_id: current_user.id).exists?
     end
 
+    def tax_include
+        tax_include = self.price * 1.10
+        return tax_include
+    end
 end
