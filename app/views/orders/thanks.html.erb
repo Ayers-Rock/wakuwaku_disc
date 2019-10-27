@@ -8,8 +8,7 @@
                 <div class="box">
                     <table class="">
                         <tr>
-                            <th>ご注文番号</th>
-                            <td><%= @order.order_number %></td>
+                            <th>ご注文番号 <%= @order.order_number %></th>
                         </tr>
                         <tr>
                             <th>商品画像</th>
@@ -20,17 +19,17 @@
                         </tr>
                         <% @order_items.each do |order_item| %>
                             <tr>
-                                <td><%= attachment_image_tag order_item.item, :jacket_image, :fill, 60, 60, format: 'jpeg', class: "img-circle pull-left profile-img", fallback: 'no_image.jpg', size: '100x100' %></td>
-                                <td><%= order_item.item.title %></td>
-                                <td><%= order_item.item.artist.artist_name %></td>
-                                <td><%= order_item.amount %></td>
+                                <td class="thanks-data"><%= attachment_image_tag order_item.item, :jacket_image, :fill, 60, 60, format: 'jpeg', class: "img-circle pull-left profile-img", fallback: 'no_image.jpg', size: '100x100' %></td>
+                                <td class="thanks-data"><%= order_item.item.title %></td>
+                                <td class="thanks-data"><%= order_item.item.artist.artist_name %></td>
+                                <td class="thanks-data"><%= order_item.amount %></td>
                                     <% subtotal = order_item.item.price * order_item.amount * 1.10 %>
-                                <td><%= subtotal.round(0) %>円</td>
+                                <td class="thanks-data"><%= subtotal.round(0) %>円</td>
                             </tr>
                         <% end %>
                     </table>
-                    <p>送料    500円</p>
-                    <p>合計 　<%= @order.total_price.floor %>円　(税込) </p>
+                    <p class="thanks_postage">送料    500円</p>
+                    <p class="thanks_total"><span>合計</span> 　<%= @order.total_price.floor %>円<span>(税込)</span> </p>
                 </div>
             </div>
         </div>

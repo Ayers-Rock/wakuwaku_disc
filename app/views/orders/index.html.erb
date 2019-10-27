@@ -12,7 +12,9 @@
   <thead>
     <tr>
       <th>
-        <%= order.created_at.strftime('%Y/%m/%d') %>ご注文
+        <%= order.created_at.strftime('%Y/%m/%d') %>
+        ご注文番号 <%= order.order_number %>
+
         <%= link_to '(詳細へ)', order_path(order.id) %>
       </th>
     </tr>
@@ -21,7 +23,6 @@
         <th>商品</th>
         <th>配送先</th>
         <th>配送状況</th>
-        <th></th>
     </tr>
   </thead>
   <tbody>
@@ -31,9 +32,7 @@
         <td><%= order_item.item.title %></td>
         <td><%= order_item.order.delivery_last_name %><%= order_item.order.delivery_first_name %></td>
         <td><%= order.status_i18n %>
-          <% if order.status == "preparing" %>
-            <td></td>
-          <% else %>
+          <% if order.status == "delivered" %>
             <td>
               <%= link_to item_path(order_item.item_id) do %>
                 <button class="btn-sticky">レビューを書く</button>
