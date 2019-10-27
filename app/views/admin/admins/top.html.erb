@@ -1,34 +1,51 @@
-<div class="container　admin-top-box">
+<div class="container　admin-top-box" style="margin: 40px 0;">
 
-    <div class="parent" style="display: flex; justify-content: space-around;">
-        <div class="box">
-            <%= link_to admin_users_path do %>
-                <div class="child">
-                    <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-                    <button type="button" class="btn-lg btn-primary">ユーザー管理</button>
-                </div>
-            <% end %>
+    <div class="row" style="margin: 0px;">
+        <div class="parent">
+            <div class="box">
+                <%= link_to admin_users_path do %>
+                    <div class="child">
+                        <p style="text-align: center;"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></p>
+                        <p style="text-align: center;"><button type="button" class="btn-lg btn-primary">ユーザー管理</button></p>
+                    </div>
+                <% end %>
+            </div>
+
+            <div style="width: 100px;"></div>
+
+            <div class="box">
+                <%= link_to admin_items_path do %>
+                    <div>
+                        <p style="text-align: center;"><span class="glyphicon glyphicon-lock" aria-hidden="true"></span></p>
+                        <p style="text-align: center;"><button type="button" class="btn-lg btn-success">商品管理</button></p>
+                    </div>
+                <% end %>
+            </div>
         </div>
-
-        <%= link_to admin_items_path do %>
-            <div>
-                <span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
-                <button type="button" class="btn-lg btn-success">商品管理</button>
-            </div>
-        <% end %>
-
-        <%= link_to admin_stocks_path do %>
-            <div>
-                <span class="glyphicon glyphicon-stats" aria-hidden="true"></span>
-                <button type="button" class="btn-lg btn-warning">在庫管理</button>
-            </div>
-        <% end %>
-
-        <%= link_to admin_orders_path do %>
-            <div>
-                <span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span>
-                <button type="button" class="btn-lg btn-info">受注管理</button>
-            </div>
-        <% end %>
     </div>
+
+    <div class="row" style="margin-top: 0px; ">
+        <div class="parent">
+            <div class="box">
+                <%= link_to admin_stocks_path do %>
+                    <div>
+                        <p style="text-align: center;"><span class="glyphicon glyphicon-stats" aria-hidden="true"></span></p>
+                        <p style="text-align: center;"><button type="button" class="btn-lg btn-warning">在庫管理</button></p>
+                    </div>
+                <% end %>
+            </div>
+
+            <div style="width: 100px;"></div>
+
+            <div class="box">
+                <%= link_to admin_orders_path do %>
+                    <div>
+                        <p style="text-align: center;"><span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span></p>
+                        <p style="text-align: center;"><button type="button" class="btn-lg btn-info">受注管理</button></p>
+                    </div>
+                <% end %>
+            </div>
+        </div>
+    </div>
+
 </div>

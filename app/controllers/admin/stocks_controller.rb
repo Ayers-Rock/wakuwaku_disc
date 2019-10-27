@@ -24,7 +24,14 @@ class Admin::StocksController < Admin::AdminApplicationsController
   def update
     stock = Stock.find(params[:id])
     stock.update(stock_params)
-    redirect_to admin_item_path(stock.item.id)
+    redirect_to admin_item_path(stock.item.id) and return
+    stock.status = params[:stock][:status].to_i
+    if stock.save
+      redirect_to admin_item_path(stock.item.id)
+    else
+      @stock = Stock.find(params[:id])
+      render :edit
+    end
   end
 
   private

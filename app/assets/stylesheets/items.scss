@@ -2,36 +2,37 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-    .image1 {
-    background-image: url(image1.jpg);
+    // index/items
+    .item_index_box {
+        .box {
+            border: none;
+            ul {
+                background: whitesmoke;
+                padding: 0 0.5em;
+                position: relative;
+              }
+
+              ul li {
+                line-height: 1.5;
+                padding: 0.5em 0 0.5em 1.5em;
+                border-bottom: 2px solid white;
+                list-style-type: none!important;
+              }
+
+              ul li:before {
+                // font-family: "Font Awesome 5 free";
+                // content: '\f58f';/*アイコン種類*/
+                position: absolute;
+                left : 0.5em; /*左端からのアイコンまで*/
+                color: #668ad8; /*アイコン色*/
+              }
+
+              ul li:last-of-type {
+                border-bottom: none;/*最後の線だけ消す*/
+              }
+        }
     }
-    .image2 {
-    background-image: url(image2.jpg);
-    }
-    .image3 {
-    background-image: url(image3.jpg);
-    }
-    .image4 {
-    background-image: url(image4.jpg);
-    }
-    .image5 {
-    background-image: url(image5.jpg);
-    }
-    .image6 {
-    background-image: url(image6.jpg);
-    }
-    .image7 {
-    background-image: url(image7.jpg);
-    }
-    .image8 {
-    background-image: url(image8.jpg);
-    }
-    .image9 {
-    background-image: url(image9.jpg);
-    }
-    .image10 {
-    background-image: url(image10.jpg);
-    }
+
     #container{
     height: 300px;
     width: 90%;
@@ -77,6 +78,7 @@
         padding: 10px;
         margin-bottom: 20px;
         border: 1px solid #333333;
+        padding-bottom: 30px;
     }
 
     .item_img{
@@ -141,6 +143,9 @@
 .review_box{
     width: 100%;
 }
+#review_body{
+    width: 80%;
+}
 
 .review_do1{
     float: left;
@@ -159,4 +164,8 @@
 
 .review_do{
     margin: 30px;
+}
+
+.link_path1{
+    margin-bottom: 60px;
 }

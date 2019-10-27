@@ -17,7 +17,7 @@ class OrdersController < ApplicationController
         @order_item.order_id = @order.id
         @order_item.purchase_price = cart_item.item.price
         @order_item.save
-        cart_item.destroy
+        cart_item.really_destroy!
       end
         redirect_to thanks_order_path(@order.id)
     else
@@ -26,7 +26,7 @@ class OrdersController < ApplicationController
   end
 
   def show
-    @order = Order.find(params[:id])
+    @order = Order.with_deleted.find(params[:id])
     @order_items = @order.order_items
     render :show
   end
@@ -59,8 +59,8 @@ class OrdersController < ApplicationController
   def destroy
     order = Order.find(params[:id])
     order.destroy
-    flash[:notice] = "注文のキャンセルを承りました。<br>またのご利用をお待ちしております。"
-    redirect_to order_path(order.id)
+    flash[:notice] = "注文のキャンセルを承りました。またのご利用をお待ちしております。"
+    redirect_to orders_path
   end
 
   private

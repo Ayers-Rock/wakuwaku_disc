@@ -1,5 +1,12 @@
 <h2>購入履歴</h2>
 
+
+<% if flash[:notice] %>
+  <div class="flash">
+    <%= flash[:notice] %>
+  </div>
+<% end %>
+<div class="container">
 <% @orders.each do |order| %>
 <table>
   <thead>
@@ -20,12 +27,12 @@
   <tbody>
     <% order.order_items.each do |order_item| %>
       <tr>
-        <td><%= order_item.item.title %></td>
-        <td><%= order_item.item.title %></td>
+        <td><%= order_item.with_deleted_item.title %></td>
+        <td><%= order_item.with_deleted_item.title %></td>
         <td><%= order_item.order.delivery_last_name %><%= order_item.order.delivery_first_name %></td>
-        <td><%= order.payment_i18n %>
-          <% if order.status == "配送準備中" %>
-            <td> </td>
+        <td><%= order.status_i18n %>
+          <% if order.status == "preparing" %>
+            <td></td>
           <% else %>
             <td>
               <%= link_to item_path(order_item.item_id) do %>
@@ -35,8 +42,7 @@
           <% end %>
       </tr>
     <% end %>
-  </tbody>
-</table>
-<% end %>
+    <p><%= link_to '購入履歴へ', orders_path(@user_id) %></p>
 
 <%= link_to "マイページへ戻る", user_path(current_user.id) %>
+</div>

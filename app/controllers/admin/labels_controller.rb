@@ -5,9 +5,13 @@ class Admin::LabelsController < Admin::AdminApplicationsController
   end
 
   def create
-    label = Label.new(label_params)
-    label.save
-    redirect_to new_admin_label_path
+    @label = Label.new(label_params)
+    if @label.save
+      redirect_to new_admin_label_path
+    else
+      @labels = Label.all
+      render :new
+    end
   end
 
   def destroy
