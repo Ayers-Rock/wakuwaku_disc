@@ -314,7 +314,97 @@
     text-align: center;
     background-image: image-url("background_8.jpg");
     }
-    .rankings-box {
+    // .rankings-box:nth-child(1),
+    // .rankings-box:nth-child(2),
+    // .rankings-box:nth-child(3){
+    //     color: #fff;
+    //     padding: 5%;
+    //     width: 180px;
+    //     height: 180px;
+    //     margin: 0 -15px;
+    //     mix-blend-mode: multiply;
+    // }
+
+    // 月間ランキング/topページ
+    .rankings-box-1,
+    .rankings-box-2,
+    .rankings-box-3 {
+        color: #fff;
+        padding: 5%;
+        width: 180px;
+        height: 180px;
+        margin: 0 -15px;
+        mix-blend-mode: multiply;
+    }
+    .rankings-box-1 {
+        background: #f66;
+        border-radius: 50% 50% 50% 70%/50% 50% 70% 60%;
+    }
+    .rankings-box-2 {
+        background: #f92;
+        border-radius: 80% 30% 50% 50%/50%;
+    }
+    .rankings-box-3 {
+        background: #fc2;
+        border-radius: 40% 40% 50% 40%/30% 50% 50% 50%;
+    }
+
+    // いいねランキング/Topページ
+    .rankings-box1-1,
+    .rankings-box1-2,
+    .rankings-box1-3 {
+        color: #fff;
+        padding: 5%;
+        width: 180px;
+        height: 180px;
+        margin: 0 -15px;
+        mix-blend-mode: multiply;
+    }
+    .rankings-box1-1 {
+        background: rgb(107, 255, 102);
+        border-radius: 40% 40% 50% 40%/30% 50% 50% 50%;
+    }
+    .rankings-box1-2 {
+        background: rgb(34, 240, 255);
+        border-radius: 50% 50% 50% 70%/50% 50% 70% 60%;
+    }
+    .rankings-box1-3 {
+        background: #fd6cfd;
+        border-radius: 80% 30% 50% 50%/50%;
+    }
+
+    // 新着CD/topページ
+    .rankings-new-box {
+        // display: flex;
+        width: 600px;
+    }
+    .rankings-box2-1 {
+        border-radius: 50% 50% 0 50%;
+        background: #000000;
+        width: 300px;
+        display: inline-block;
+      }
+    .rankings-box2-2 {
+        border-radius: 50% 50% 50% 0;
+        background: #000000;
+        width: 300px;
+        display: inline-block;
+      }
+    .rankings-box2-3 {
+        border-radius: 50% 0 50% 50%;
+        background: #000000;
+        width: 300px;
+        display: inline-block;
+      }
+    .rankings-box2-4 {
+        border-radius: 0 50% 50% 50%;
+        background: #000000;
+        width: 300px;
+        display: inline-block;
+      }
+
+
+    .rankings-box{
         width: 180px;
         border: solid 1px black;
         // margin-left: 25px;

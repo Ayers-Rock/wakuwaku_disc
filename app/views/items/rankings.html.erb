@@ -22,10 +22,12 @@
                 <div class="row">
                     <% @monthly_ranks.each.with_index(1) do |item, i| %>
                         <div class="col-md-4 ">
-                            <div class="col-md-10 rankings-box col-md-offset-1">
+                            <div class="col-md-10 rankings-box-<%= i %> col-md-offset-1">
                                 <div>
-                                    <%= "第#{i}位" %><br>
-                                    <%= attachment_image_tag item, :jacket_image, size: "150x150", format:'jpeg' %><br>
+                                    <strong style="text-shadow: 0.0.3px grey;"><%= "第#{i}位" %></strong><br>
+                                    <%= link_to item_path(item.id) do %>
+                                        <%= attachment_image_tag item, :jacket_image, size: "150x150", format:'jpeg' %><br>
+                                    <% end %>
                                 <%# </div> %>
                                 <%# <div class="col-md-10"> %>
                                     <%= link_to "#{item.title}",item_path(item.id) %><br>
@@ -43,9 +45,11 @@
                 <div class="row">
                     <% @favorite_ranks.each.with_index(1) do |item, i| %>
                         <div class="col-md-4">
-                            <div class="col-md-10 rankings-box col-md-offset-1">
+                            <div class="col-md-10 rankings-box1-<%= i %> col-md-offset-1">
                                 <div>
-                                    <%= "第#{i}位" %><br><%= attachment_image_tag item, :jacket_image, size: "150x150", format:'jpeg' %>
+                                    <%= link_to item_path(item.id) do %>
+                                        <%= "第#{i}位" %><br><%= attachment_image_tag item, :jacket_image, size: "150x150", format:'jpeg' %>
+                                    <% end %>
                                     <p><%= link_to "#{item.title}",item_path(item.id) %></p>
                                     <p><%= item.artist.artist_name %></p>
                                 </div>
@@ -60,13 +64,15 @@
             <div class="newcd">
                 <div class="row">
                     <% @new_cd.each.with_index(1) do |item, i| %>
-                        <div class="col-md-4 rankings-box">
-                            <div>
-                                <%= attachment_image_tag item, :jacket_image, size: "100x100", format:'jpeg' %>
-                                <p><%= link_to "#{item.title}",item_path(item.id) %></p>
-                                <p><%= item.artist.artist_name %></p>
+                        <%# <div class="rankings-new-box"> %>
+                            <div class="rankings-box2-<%= i %>">
+                                <%# <div> %>
+                                    <%= attachment_image_tag item, :jacket_image, size: "200x200", format:'jpeg' %>
+                                    <p><%= link_to "#{item.title}",item_path(item.id) %></p>
+                                    <p><%= item.artist.artist_name %></p>
+                                <%# </div> %>
                             </div>
-                        </div>
+                        <%# </div> %>
                     <% end %>
                 </div>
             </div>
