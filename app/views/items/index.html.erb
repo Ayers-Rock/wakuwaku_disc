@@ -26,12 +26,12 @@
                 </div>
 
             </div>
-            <div class="col-md-9">
-                    <h2>CD一覧</h2>
+            <div class="col-md-8">
+                <h2>CD一覧</h2>
                     <% @items.each do |item| %>
                         <div class="row">
                             <div class="item_index">
-                                <div class="col-md-2 col-md-offset-1">
+                                <div class="col-md-2 col-md-offset-2">
                                     <%= attachment_image_tag item, :jacket_image, :fill, 100, 100, format:'jpeg', fallback: "no_image.jpg", size: '100x100' %>
                                 </div>
                                 <div class="col-md-3">
@@ -39,7 +39,7 @@
                                     <p><%= item.artist.artist_name %></p>
                                     <p><%= item.tax_include.round(0) %>円(税込)</p>
                                 </div>
-                                <div class="col-md-3">
+                                <div class="col-md-4">
                                     <% if user_signed_in? %>
                                         <div class="favorite-button-<%=item.id %>">
                                             <%= render 'favorites/favorite', item: item %>
@@ -59,6 +59,7 @@
                             </div>
                         </div>
                     <% end %>
+                <%= paginate @items %>
             </div>
         </div>
     <%# </div> %>
