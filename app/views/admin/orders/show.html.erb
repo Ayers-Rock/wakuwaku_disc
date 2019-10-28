@@ -4,48 +4,46 @@
         <div calss="row">
             <div class="col-xs-10 col-xs-offset-1">
 
-                <h2>注文詳細</h2>
-                <br>
+                <h2 class="title">注文詳細</h2>
                 <table class="table1 table-condensed">
                     <tr>
                         <th>注文番号</th>
-                        <td style="text-align:left;">
-                            <font size="2">
-                                <%= @order.order_number %>
-                            </font>
+                        <td class="date">
+                            <%= @order.order_number %>
                         </td>
                     </tr>
                     <tr>
                         <th>注文日時</th>
-                        <td style="text-align:left;">
-                            <font size="2">
-                                <%= @order.created_at %>
-                            </font>
+                        <td class="date">
+                            <%= @order.created_at %>
                         </td>
                     </tr>
                     <tr>
                         <th>お届け先名前（漢字）</th>
-                        <td style="text-align:left;">
-                            <font size="2">
-                                <%= @order.delivery_last_name + @order.delivery_first_name %>
-                            </font>
+                        <td class="date">
+                            <%= @order.delivery_last_name + @order.delivery_first_name %>
                         </td>
                     </tr>
                     <tr>
                         <th>お届け先</th>
-                        <td style="text-align:left;">
-                            <font size="2">
-                                <%= @order.prefecture + @order.city_address + @order.building %>
-                            </font>
+                        <td class="date">
+                            <%= @order.prefecture + @order.city_address + @order.building %>
                         </td>
                     </tr>
                     <tr>
                         <th>配送状況</th>
-                        <td style="text-align:left;">
-                            <font size="2">
+                        <td class="date">
+                            <p class="date_1">
                                 <%= @order.status_i18n %>
-                            </font>
+                            </p>
+                            <%= form_for @order, url:admin_order_path(@order) do |f| %>
+                                <p class="status_box">
+                                    <%= f.select :status, [['配送準備中',0] ,['配送中',1],['配送完了',2]], {include_blank: '選択してください'} %>
+                                    <%= f.submit "変更する", :class => 'btn btn-success' %>
+                                </p>
+                            <% end %>
                         </td>
+
                     </tr>
                     <tr>
                         <th>支払方法</th>

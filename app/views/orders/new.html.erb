@@ -1,8 +1,4 @@
-<% if flash[:notice] %>
-  <div class="flash">
-    <%= flash[:notice] %>
-  </div>
-<% end %>
+
 <%= form_for(@order) do |f| %>
     <% if @order.errors.any? %>
       <h2 class="error-message-d">エラー！</h2>
@@ -27,7 +23,7 @@
           <% @cart_items.each do |cart_item| %>
           <tr>
             <td width="20%">
-            <%= attachment_image_tag cart_item.item, :jacket_image, format: 'jpeg', class: "img-circle pull-left profile-img", size: '100x100', fallback: 'no_image.jpg' %>
+            <%= attachment_image_tag cart_item.item, :jacket_image, format: 'jpeg', size: '100x100', fallback: 'no_image.jpg' %>
             </td>
             <td width="50%"><%= cart_item.item.artist.artist_name %><br>
             <%= cart_item.item.title %></td>

@@ -86,4 +86,8 @@ class OrdersController < ApplicationController
   def order_update_params
     params.require(:order).permit(:delivery_last_name, :delivery_first_name, :delivery_last_kana_name, :delivery_first_kana_name, :postal_code, :city_address, :prefecture, :building)
   end
+
+  def status
+    
+  end
 end

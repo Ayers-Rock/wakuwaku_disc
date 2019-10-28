@@ -9,4 +9,14 @@ class Admin::OrdersController < Admin::AdminApplicationsController
   def show
     @order = Order.find(params[:id])
   end
+  def update
+    order = Order.find(params[:id])
+    order.status = params[:order][:status].to_i
+    if order.save
+      redirect_to admin_order_path(order.id)
+    else
+      @order = Order.find(params[:id])
+      render :show
+    end
+  end
 end
