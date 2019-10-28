@@ -1,5 +1,9 @@
 <div class="body">
-    <div class="container">
+    <%
+=begin%>
+ <div class="container"> 
+<%
+=end%>
         <div class="row">
             <div class="col-xs-10 col-xs-offset-1">
                 <div class="messeage">
@@ -8,10 +12,9 @@
                 <div class="box">
                     <table class="">
                         <tr>
-                            <th>ご注文番号</th>
-                            <td><%= @order.order_number %></td>
+                            <th style="background-color:#CCCCCC">ご注文番号 <%= @order.order_number %></"background-color:#CCCCCC>
                         </tr>
-                        <tr>
+                        <tr style="background-color:#CCCCCC">
                             <th>商品画像</th>
                             <th>タイトル</th>
                             <th>アーティスト</th>
@@ -20,21 +23,26 @@
                         </tr>
                         <% @order_items.each do |order_item| %>
                             <tr>
-                                <td><%= attachment_image_tag order_item.with_deleted_item, :jacket_image, format: 'jpeg', class: "pull-left profile-img", fallback: 'no_image.jpg', size: '100x100' %></td>
-                                <td><%= order_item.with_deleted_item.title %></td>
-                                <td><%= order_item.with_deleted_item.artist.artist_name %></td>
-                                <td><%= order_item.amount %></td>
+                                <td class="thanks-data"><%= attachment_image_tag order_item.with_deleted_item, :jacket_image, :fill, 60, 60, format: 'jpeg', fallback: 'no_image.jpg', size: '100x100' %></td>
+                                <td class="thanks-data"><%= order_item.with_deleted_item.artist.artist_name %></td>
+                                <td class="thanks-data"><%= order_item.with_deleted_item.title %></td>
+                                <td class="thanks-data"><%= order_item.amount %></td>
                                     <% subtotal = order_item.with_deleted_item.price * order_item.amount * 1.10 %>
-                                <td><%= subtotal.round(0) %>円</td>
+                                <td class="thanks-data"><%= subtotal.round(0) %>円</td>
                             </tr>
                         <% end %>
                     </table>
-                    <p>送料    500円</p>
-                    <p>合計 　<%= @order.total_price.floor %>円　(税込) </p>
+                    <p class="thanks_postage">送料    500円</p>
+                    <p class="thanks_total"><span>合計</span> 　<%= @order.total_price.floor %>円<span>(税込)</span> </p>
                 </div>
+                <a class="button" href="#"><span>Hover</span><span>Button</span></a>
             </div>
         </div>
-    </div>
+    <%
+=begin%>
+ </div> 
+<%
+=end%>
 </div>
 <div class="link_path">
     <%= link_to 'トップページへ戻る',root_path %>

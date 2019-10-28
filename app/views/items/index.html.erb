@@ -68,7 +68,9 @@
                             </div>
                         </div>
                     <% end %>
-                <%= paginate @items %>
+                <% unless @items.present? %>
+                    <%= paginate @items %>
+                <% end %>
             </div>
         </div>
     <%# </div> %>

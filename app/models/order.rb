@@ -21,9 +21,19 @@ class Order < ApplicationRecord
           sum += order_item.purchase_price * order_item.amount * 1.10
         end
         return sum + 500
-      end
+    end
+
       def connected_address
         address = self.postal_code + " " + self.prefecture + " "  + self.city_address + " " + self.building
         return address
-    end
+      end
+
+      def amount_except_one
+        sum = 0
+        order_items.each do |order_item|
+          sum += order_item.amount
+        end
+        return sum - 1
+      end
+
 end
