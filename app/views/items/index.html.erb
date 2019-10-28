@@ -51,7 +51,7 @@
                                         <%= f.hidden_field :item_id, value: item.id %>
                                         <% if item.status_before_type_cast == 0%>
                                         <%= f.submit 'カートに入れる', class: 'btn btn-danger' %>
-                                        <% else %>'
+                                        <% else %>
                                         <%= f.submit 'SOLD OUT', disabled: true, class: 'btn btn-danger col-xs-6' %>
                                         <% end %>
                                     <% end %>
