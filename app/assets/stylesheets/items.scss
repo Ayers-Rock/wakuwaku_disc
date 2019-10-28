@@ -245,6 +245,7 @@
         }
     // }
 
+    // rankingの各グラデーション
     #row1 {
         border-radius: 10px;
         padding: 0.5em 1em;
@@ -282,6 +283,26 @@
         font-size: 24px;
         text-align: center;
         padding: 30px 0;
+    }
+
+    // show/genreのグラデーション
+    #row4 {
+        border-radius: 10px;
+        padding: 0.5em 1em;
+        background: -moz-linear-gradient(#F76B1C, #FAD961);
+        background: -webkit-linear-gradient(#F76B1C, #FAD961);
+        background: linear-gradient(to right, #F76B1C, #FAD961);
+        color: #FFF;
+        margin: 20px;
+    }
+    #row5 {
+        border-radius: 10px;
+        padding: 0.5em 1em;
+        background: -moz-linear-gradient(#3EECAC, #EE74E1);
+        background: -webkit-linear-gradient(#3EECAC, #EE74E1);
+        background: linear-gradient(to right, #3EECAC, #EE74E1);
+        color: #FFF;
+        margin: 20px;
     }
 
 
