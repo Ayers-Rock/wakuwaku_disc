@@ -305,6 +305,7 @@
         margin: 20px;
     }
 
+// rankings/items
 
     #container{
     text-align: center;
@@ -315,13 +316,18 @@
     #theTarget {
     text-align: center;
     }
+
+    .rankings-box {
+        border: solid 1px black;
+    }
+
     .weekly {
         text-align: center;
         display: block;
         margin: 0 auto;
         // padding: 20px;
         margin: 30px;
-        border: 1px solid rgb(122, 122, 122);
+        // border: 1px solid rgb(122, 122, 122);
     }
     .monthly {
         text-align: center;
@@ -329,7 +335,7 @@
         margin: 0 auto;
         padding: 20px;
         margin: 30px;
-        border: 1px solid rgb(122, 122, 122);
+        // border: 1px solid rgb(122, 122, 122);
     }
     .favorite {
         text-align: center;
@@ -337,7 +343,7 @@
         margin: 0 auto;
         padding: 20px;
         margin: 30px;
-        border: 1px solid rgb(122, 122, 122);
+        // border: 1px solid rgb(122, 122, 122);
     }
     .newcd {
         text-align: center;
@@ -345,7 +351,7 @@
         margin: 0 auto;
         padding: 20px;
         margin: 30px;
-        border: 1px solid rgb(122, 122, 122);
+        // border: 1px solid rgb(122, 122, 122);
     }
     .row-index {
         margin: 10px;

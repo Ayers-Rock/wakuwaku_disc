@@ -1,6 +1,6 @@
 
-<div id="container">
-    <%# <div class="row"> %>
+<div class="container">
+    <div class="row" id="container">
         <%# <div class="col-md-6 col-md-offset-3"> %>
             <div id="theTarget">
                 <% @slide_jackets.each do |item| %>
@@ -12,62 +12,65 @@
                 <% end %>
             </div>
         <%# </div> %>
-    <%# </div> %>
-</div>
+    </div>
+
     <div class="row">
         <div class="col-md-6 col-xs-offset-2">
-                <h2>月間ランキング</h2>
+            <h2>月間ランキング</h2>
             <div class="monthly">
                 <div class="row">
                     <% @monthly_ranks.each.with_index(1) do |item, i| %>
-                        <div class="col-md-4">
-                        <table>
-                            <%= "第#{i}位" %><br>
-                            <%= attachment_image_tag item, :jacket_image, size: "100x100", format:'jpeg' %><br>
-                        <%# </div> %>
-                        <%# <div class="col-md-10"> %>
-                            <%= link_to "#{item.title}",item_path(item.id) %><br>
-                            <%= item.artist.artist_name %>
-                        </table>
+                        <div class="col-md-4 rankings-box">
+                            <div>
+                                <%= "第#{i}位" %><br>
+                                <%= attachment_image_tag item, :jacket_image, size: "100x100", format:'jpeg' %><br>
+                            <%# </div> %>
+                            <%# <div class="col-md-10"> %>
+                                <%= link_to "#{item.title}",item_path(item.id) %><br>
+                                <%= item.artist.artist_name %>
+                            </div>
                         </div>
                     <% end %>
                 </div>
             </div>
-                <%# <%= link_to '月間ランキングへ', ranking_items_path %> 
+                <%# <%= link_to '月間ランキングへ', ranking_items_path %>
 
             <h2>いいねランキング</h2>
             <div class="favorite">
-            <div class="row">
-                <% @favorite_ranks.each.with_index(1) do |item, i| %>
-                    <div class="col-md-4">
-                    <table>
-                        <%= "第#{i}位" %><br><%= attachment_image_tag item, :jacket_image, :fill, 100, 100, format:'jpeg' %>
-                        <p><%= link_to "#{item.title}",item_path(item.id) %></p>
-                        <p><%= item.artist.artist_name %></p>
-                    </table>
-                    </div>
-                <% end %>
-            </div>
-            </div>
-            <%= link_to '各ランキングへ', ranking_items_path %>
-            <h2>新着CD</h2>
-                <div class="newcd">
                 <div class="row">
-                    <% @new_cd.each.with_index(1) do |item, i| %>
-                        <div class="col-md-2">
-                            <table>
-                            <%= attachment_image_tag item, :jacket_image, size: "100x100", format:'jpeg' %>
-                            <p><%= link_to "#{item.title}",item_path(item.id) %></p>
-                            <p><%= item.artist.artist_name %></p>
-                            </table>
+                    <% @favorite_ranks.each.with_index(1) do |item, i| %>
+                        <div class="col-md-4 rankings-box">
+                            <div>
+                                <%= "第#{i}位" %><br><%= attachment_image_tag item, :jacket_image, size: "100x100", format:'jpeg' %>
+                                <p><%= link_to "#{item.title}",item_path(item.id) %></p>
+                                <p><%= item.artist.artist_name %></p>
+                            </div>
                         </div>
                     <% end %>
                 </div>
+            </div>
+            <%= link_to '各ランキングへ', ranking_items_path %>
+
+            <h2>新着CD</h2>
+            <div class="newcd">
+                <div class="row">
+                    <% @new_cd.each.with_index(1) do |item, i| %>
+                        <div class="col-md-4 rankings-box">
+                            <div>
+                                <%= attachment_image_tag item, :jacket_image, size: "100x100", format:'jpeg' %>
+                                <p><%= link_to "#{item.title}",item_path(item.id) %></p>
+                                <p><%= item.artist.artist_name %></p>
+                            </div>
+                        </div>
+                    <% end %>
                 </div>
-                <%= link_to '商品一覧へ', items_path %>
-    </div>
-    <div class="row">
-        <div class="col-md-2">
+            </div>
+            <%= link_to '商品一覧へ', items_path %>
+        </div>
+    <%# </div> %>
+
+    <%# <div class="row"> %>
+        <div class="col-md-3">
             <div class="weekly">
                 <h3>週間ランキング</h3>
                     <% @weekly_ranks.each.with_index(1) do |item, i| %>
@@ -79,5 +82,6 @@
                 </div>
             </div>
         </div>
+
     </div>
 </div>
