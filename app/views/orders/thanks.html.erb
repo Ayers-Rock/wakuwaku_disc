@@ -1,14 +1,7 @@
 <div class="body">
-    <%
-=begin%>
- <div class="container"> 
-<%
-=end%>
         <div class="row">
             <div class="col-xs-10 col-xs-offset-1">
-                <div class="messeage">
-                    <h2>ご注文ありがとうございました。</h2>
-                </div>
+        <div class="button" href="#"><span>Thank you for comming to WAKUWAKUDISC </span><span>ご注文ありがとうございました！</span></div>
                 <div class="box">
                     <table class="">
                         <tr>
@@ -33,16 +26,10 @@
                         <% end %>
                     </table>
                     <p class="thanks_postage">送料    500円</p>
-                    <p class="thanks_total"><span>合計</span> 　<%= @order.total_price.floor %>円<span>(税込)</span> </p>
+                    <div class="thanks_total"><span>合計</span> 　<%= @order.total_price.floor %>円<span>(税込)</span> </div>
                 </div>
-                <a class="button" href="#"><span>Hover</span><span>Button</span></a>
             </div>
         </div>
-    <%
-=begin%>
- </div> 
-<%
-=end%>
 </div>
 <div class="link_path">
     <%= link_to 'トップページへ戻る',root_path, data: {"turbolinks" => false} %>
