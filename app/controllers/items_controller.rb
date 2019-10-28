@@ -21,6 +21,7 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
+    @discs = Disc.where(item_id: @item.id)
     # @user = User.find(params[:id])
     @cart_item = CartItem.new
     @reviews = Review.where(item_id: @item.id)
