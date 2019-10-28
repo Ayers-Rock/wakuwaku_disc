@@ -24,6 +24,7 @@
   clear: both;
 }
 
+
  .header-top{
   height: 200px;
   width: 100%;
@@ -148,4 +149,31 @@
 
 .header-bottom{
     margin-bottom: 50px;
+}
+
+#footer{
+  margin-top: 10px;
+  width: 100%;
+  height: 80px;
+  line-height: 70px;
+  background: -moz-linear-gradient(top, #5a5a5a, #232222);
+  background: -webkit-linear-gradient(top, #5a5a5a, #232222);
+  background: linear-gradient(to bottom, #5a5a5a, #232222);
+  font-family: "ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro",Meiryo,"メイリオ",Helvetica,Sans-Serif;
+
+  .copy{
+    width: 100%;
+    color: white;
+    font-size: 30px;
+    text-align: center;
+
+  }
+
+  .toTop {
+    float: right;
+    display: inline-block;
+    // padding: 15px;
+    color: #fff;
+    cursor: pointer;
+  }
 }

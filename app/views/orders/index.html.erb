@@ -23,32 +23,21 @@
                             <th>商品</th>
                             <th>配送先</th>
                             <th>配送状況</th>
-                            <% if order.status == "delivered" %>
-                            <th>レビュー</th>
-                            <% end %>
                         </tr>
                     </thead>
                     <tbody>
 
                             <tr>
-                                <td><%= order.order_items.first.item.title %>   <% if order.amount_except_one !=0 %>  他<%= order.amount_except_one %>点...<% end %></td>
+                                <td><%= order.order_items.first.with_deleted_item.title %>   <% if order.amount_except_one !=0 %>  ほか<%= order.amount_except_one %>点...<% end %></td>
                                 <td><%= order.delivery_last_name %><%= order.delivery_first_name %></td>
                                 <td><%= order.status_i18n %>
-                                <% if order.status == "delivered" %>
-                                  <td>
-                                    <%= link_to item_path(order_item.item_id) do %>
-                                        <button class="btn-sticky">レビューを書く<></button>
-                                    <% end %>
-                                  </td>
-                                <% end %>
                             </tr>
- 
+
                     </tbody>
                 </table>
             </div>
         </div>
     <% end %>
-    <p><%= link_to '購入履歴へ', orders_path(@user_id) %></p>
 
 <%= link_to "マイページへ戻る", user_path(current_user.id) %>
 </div>
