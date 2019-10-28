@@ -1,5 +1,8 @@
 class ItemsController < ApplicationController
+
+  before_action :authenticate_user!, except: [:rankings, :ranking, :index, :show]
   PER = 20
+
   def rankings
     @slide_jackets = Item.all.order(created_at: :desc).limit(10)
     @favorite_ranks = Item.find(Favorite.group(:item_id).order('count(item_id) desc').limit(3).pluck(:item_id))
