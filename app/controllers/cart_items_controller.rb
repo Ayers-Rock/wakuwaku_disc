@@ -50,7 +50,7 @@ class CartItemsController < ApplicationController
     redirect_to new_order_path
   end
 
-  def show
+  def index
     @cart_items = CartItem.where(user_id: current_user.id)
     if @cart_items.empty?
       redirect_to root_path

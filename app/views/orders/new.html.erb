@@ -68,13 +68,18 @@
           </tr>
         </table>
 
-        <div class="link_path1">
-        <%= submit_tag '購入を確定する', :class => "btn btn-danger col-xs-6 col-xs-offset-3"%>
-        <% end %>
-        </div>
+          <div class="link_path1">
+             <div class="row">
+              <%= submit_tag '購入を確定する', :class => "btn btn-danger col-xs-6 col-xs-offset-3"%>
+              <% end %>
+            </div>
+          </div>
 
-        <div class="link_path">
-          <%= link_to "カートに戻る", user_cart_items_path(current_user.id)%>
+            <div class="link_path1">
+              <div class="row">
+              <%= link_to "カートに戻る", user_cart_items_path(current_user.id), :class => "col-xs-6 col-xs-offset-3"%>
+              </div>
+            </div>
         </div>
       </div>
     </div>

@@ -62,7 +62,7 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :edit, :update] do
     resources :addresses, only: [:index, :new, :create, :destroy, :edit, :update]
     resources :favorites, only: [:index]
-    resource :cart_items, only: [:update, :show]
+    resources :cart_items, only: [:update, :index]
   end
 
 

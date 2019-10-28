@@ -286,9 +286,13 @@
 
 
     #container{
+    text-align: center;
     height: 300px;
-    width: 90%;
+    width: 70%;
     margin: 100px;
+    }
+    #theTarget {
+    text-align: center;
     }
     .weekly {
         text-align: center;
@@ -417,4 +421,11 @@
 
 .review_do{
     margin: 30px;
+}
+
+.rank_name {
+    margin-bottom: 30px;
+}
+.image1 {
+    text-align: center;
 }
