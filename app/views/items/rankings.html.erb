@@ -1,24 +1,18 @@
 
 <div id="container">
-    <div id="theTarget">
-
-        <% @slide_jackets.each do |item| %>
-        <div class="image1"><%= attachment_image_tag item, :jacket_image, :fill, 300, 300, format: 'jpeg'  %>
-        <%= link_to "#{item.jacket_image}",item_path(item.id) %>
-        </div>
-        <%# <div class="image2"></div>
-        <div class="image3"></div>
-        <div class="image4"></div>
-        <div class="image5"></div>
-        <div class="image6"></div>
-        <div class="image7"></div>
-        <div class="image8"></div>
-        <div class="image9"></div>
-        <div class="image10"></div> %>
-        <% end %>
-    </div>
+    <%# <div class="row"> %>
+        <%# <div class="col-md-6 col-md-offset-3"> %>
+            <div id="theTarget">
+                <% @slide_jackets.each do |item| %>
+                    <div class="image1">
+                        <%= link_to "#{item.jacket_image}",item_path(item.id) %>
+                        <%= attachment_image_tag item, :jacket_image, :fill, 300, 300, format: 'jpeg'  %>
+                    </div>
+                <% end %>
+            </div>
+        <%# </div> %>
+    <%# </div> %>
 </div>
-
     <div class="row">
         <div class="col-md-6 col-xs-offset-2">
                 <h2>月間ランキング</h2>
