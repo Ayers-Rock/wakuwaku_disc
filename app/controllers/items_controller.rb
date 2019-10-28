@@ -21,6 +21,7 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
+    @discs = Disc.where(item_id: @item.id)
     # @user = User.find(params[:id])
     @cart_item = CartItem.new
     @reviews = Review.where(item_id: @item.id)
@@ -33,7 +34,8 @@ class ItemsController < ApplicationController
       track =  Item.joins(discs: :tracks).where("track_name LIKE ?", "%#{params[:search]}%")
       title = Item.where("title LIKE ?", "%#{params[:search]}%")
       merged_result = artist | title
-      @items = merged_result | track
+      @items = (merged_result | track)
+      @items = Kaminari.paginate_array(@items).page(params[:page]).per(20)
     else
       @items = Item.page(params[:page]).per(PER)
     end
