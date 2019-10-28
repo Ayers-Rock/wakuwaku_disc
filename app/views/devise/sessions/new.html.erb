@@ -1,12 +1,10 @@
 <div class="container">
   <div class="row">
     <div class="col-lg-6 col-lg-offset-3">
-      <div class="box">
+      <div class="box_sign_in">
           <div class="row">
             <div class="col-lg-10 col-lg-offset-1">
-              <h2>ログイン</h2>
-              <br>
-              <br>
+              <h2 class="title">ログイン</h2>
               <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
                 <div class="field">
                   <%= f.label :メールアドレス %><br />
@@ -28,7 +26,8 @@
                 <% end %>
 
                 <div class="actions">
-                  <%= f.submit "ログイン", :class => "btn btn-info" %>
+                  <div class="row">
+                  <%= f.submit "ログイン", :class => "btn btn-info col-xs-6 col-xs-offset-3" %>
                 </div>
               <% end %>
 

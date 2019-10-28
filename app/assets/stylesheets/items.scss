@@ -363,8 +363,21 @@
     .box{
         padding: 10px;
         margin-bottom: 20px;
-        border: 1px solid #333333;
+        // border: 1px solid #333333;
         padding-bottom: 30px;
+        border-radius: 10px;
+        padding: 0.5em 1em;
+        background: -moz-linear-gradient( #00b5fc, #FAD961);
+        background: -webkit-linear-gradient(#00b5fc, #FAD961);
+        background: linear-gradient(to right, #00b5fc, #FAD961);
+        color: #FFF;
+        box-shadow: 0 0 7px grey;
+    }
+
+    .box_admin{
+        margin: 20px;
+        border: 1px solid #333333;
+        border-radius: 10px;
     }
 
     .item_img{
@@ -458,4 +471,8 @@
 }
 .image1 {
     text-align: center;
+}
+
+.favorite_btn{
+    color: #a6ddb0;
 }

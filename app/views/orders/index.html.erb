@@ -28,7 +28,9 @@
                     <tbody>
 
                             <tr>
-                                <td><%= order.order_items.first.with_deleted_item.title %>   <% if order.amount_except_one !=0 %>  ほか<%= order.amount_except_one %>点...<% end %></td>
+                                <td>
+                                <%= order.order_items.first.with_deleted_item.title %>
+                                <% if order.amount_except_one !=0 %>  ほか<%= order.amount_except_one %>点...<% end %></td>
                                 <td><%= order.delivery_last_name %><%= order.delivery_first_name %></td>
                                 <td><%= order.status_i18n %>
                             </tr>

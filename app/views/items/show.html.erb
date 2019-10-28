@@ -13,8 +13,10 @@
                     <p><%= @item.tax_include.round(0) %>円(税込)</p>
                 </div>
                 <div class="item_show2">
-                    <div class="favorite-button-<%=@item.id %>">
-                        <%= render 'favorites/favorite', item: @item %>
+                    <div class="favorite_btn">
+                        <div class="favorite-button-<%=@item.id %>">
+                            <%= render 'favorites/favorite', item: @item %>
+                        </div>
                     </div>
                 </div>
                 <div class="item_show3">
@@ -73,11 +75,13 @@
                         <%= render 'layouts/error_message', form: @review %>
                     </div>
                         <div class="review_do">
+                            <div class="row">
                             <%= form_for([@item, @review]) do |f| %>
                                 <p class="review_form"><span class="review_head">タイトル</span><%= f.text_field :title, :size => "60" %></p>
                                 <p><span class="review_form"><span class="review_head">本文</span><%= f.text_area :body, :size => "110x10" %></p>
                                 <%= f.submit "投稿する", :class => "btn btn-info col-xs-6 col-xs-offset-3" %>
                             <% end %>
+                            </div>
                         </div>
                 <% end %>
             </div>
