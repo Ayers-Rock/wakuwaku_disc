@@ -3,7 +3,7 @@
         <div class="col-md-10 col-md-offset-1">
             <div class="box clearfix">
                 <div class="item_img">
-                    <%= attachment_image_tag @item, :jacket_image, :fill, 100, 100, format:'jpeg', size: '300x300', fallback: 'no_image.jpg' %>
+                    <%= attachment_image_tag @item, :jacket_image, size: '100x100', fallback: 'no_image.jpg' %>
                 </div>
                 <div class="item_show">
                     <p><%= @item.title %></p>
@@ -82,10 +82,9 @@
                         </div>
                 <% end %>
             </div>
-
         </div>
         <div class="link_path1">
-            <%= link_to '商品一覧へ戻る', items_path %>
+                <%= link_to '商品一覧へ戻る', items_path %>
         </div>
     </div>
 </div>

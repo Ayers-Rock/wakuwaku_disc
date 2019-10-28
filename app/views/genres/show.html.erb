@@ -1,1 +1,71 @@
-<%= render 'items/category', items: @items, genres: @genres, labels: @labels, cart_item: @cart_item %>
+<%# <%= render 'items/category', items: @items, genres: @genres, labels: @labels, cart_item: @cart_item %>
+
+        <div class="row item-index-box">
+            <div class="col-md-3">
+                <%# <ul>
+                    <% @artists.each do |artist| %>
+                        <%# <li><%= link_to "#{artist.artist_name}", artist_path(artist.id) %>
+                    <%# <% end %>
+                <%# </ul> %>
+                <div class="box">
+                    <h2>ジャンル</h2>
+                    <ul>
+                        <% @genres.each do |genre| %>
+                            <li><i class="fas fa-headphones-alt" style="margin-right: 20px;"></i><%= link_to "#{genre.genre_name}", genre_path(genre.id) %></li>
+                        <% end %>
+                    </ul>
+                </div>
+
+                <div class="box">
+                    <h2>レーベル</h2>
+                    <ul>
+                        <% @labels.each do |label| %>
+                            <li><i class="fas fa-compact-disc fa-spin" style="margin-right: 20px;"></i><%= link_to "#{label.label_name}", label_path(label.id) %></li>
+                        <% end %>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-md-8">
+                <h2 style="color: #43E9AE;"><%= "#{@item.genre_name}" %></h2>
+                    <% @items.each do |item| %>
+                        <div class="row" id="row5">
+                            <div class="item_index">
+                                <div class="col-md-2">
+                                    <%= link_to item_path(item.id) do %>
+                                        <%= attachment_image_tag item, :jacket_image, format:'jpeg', fallback: "no_image.jpg", size: "150x150", class: "jacket-image" %>
+                                    <% end %>
+                                </div>
+                                <div class="col-md-5">
+                                    <p><%= link_to "#{item.title}",item_path(item.id), class: "link-text" %></p>
+                                    <p><%= link_to "#{item.artist.artist_name}", artist_path(item.artist.id), class: "link-text" %></p>
+                                    <p><%= item.tax_include.round(0) %>円(税込)</p>
+                                </div>
+                                <div class="col-md-4">
+                                    <% if user_signed_in? %>
+                                        <div class="favorite-button-<%=item.id %>", style="text-align: center;">
+                                            <%= render 'favorites/favorite', item: item %>
+                                        </div>
+                                    <% end %>
+                                    <p></p>
+                                    <%= form_for @cart_item do |f| %>
+                                        <%= f.number_field :amount, min: 1, value: 1 %><span style="color: #fff;"> 枚</span>
+                                        <%= f.hidden_field :item_id, value: item.id %>
+                                        <% if item.status_before_type_cast == 0 %>
+                                            <%= button_tag type: "submit", class: "btn btn-primary" do %>
+                                                <i class="fas fa-cart-plus"></i>
+                                                <p>カートに入れる</p>
+                                            <% end %>
+                                        <% else %>
+                                            <%= button_tag type: "submit", disabled: true, class: "btn btn-primary", style: "background-color: pink; border-color: pink; padding-right: 10px;" do %>
+                                                <p style="font-size: 16px; font-style: bold; padding-top: 10px; margin: 0 auto;">SOLD OUT</p>
+                                            <% end %>
+                                        <% end %>
+                                    <% end %>
+                                </div>
+                            </div>
+                        </div>
+                    <% end %>
+                <%= paginate @items %>
+            </div>
+        </div>

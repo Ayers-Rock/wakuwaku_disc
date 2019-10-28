@@ -14,7 +14,7 @@ class Item < ApplicationRecord
     belongs_to :artist
 
     attachment :jacket_image
-    enum status: {available: 0, not_available: 1}
+    enum status: {available: 0, not_available: 1, sold_out: 2}
 
     validates :title, presence: true
     # validates :jacket_image_id, presence: true, file_content_type: { allow: ['image/jpeg', 'image/png'] }
@@ -25,6 +25,10 @@ class Item < ApplicationRecord
 
     def favorited_by?(current_user)
         favorites.where(user_id: current_user.id).exists?
+    end
+
+    def stock
+        (Stock.where(item_id: id).sum(:arrival_count)) - (OrderItem.where(item_id: id).sum(:amount))
     end
 
     def tax_include

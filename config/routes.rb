@@ -16,9 +16,9 @@ Rails.application.routes.draw do
 
     resources :artists, only: [:new, :create, :destroy]
 
-    resources :orders, only: [:index, :show]
+    resources :orders, only: [:index, :show, :update]
 
-    resources :stocks, only: [:index]
+    resources :stocks, only: [:index, :update]
 
     resources :items do
       resources :stocks, only: [:new, :create, :edit, :update]
@@ -33,7 +33,7 @@ Rails.application.routes.draw do
 
   root 'items#rankings'
 
-  resources :items, only: [:show, :index] do
+  resources :items, only: [:show, :index, :update] do
     get :ranking, on: :collection
     get :rankings, on: :collection
     resource :reviews, only: [:create]
@@ -59,7 +59,7 @@ Rails.application.routes.draw do
 
   resources :addresses, only: [:index, :new, :create, :destroy, :edit, :update]
 
-  resources :users, only: [:show, :edit, :update] do
+  resources :users, only: [:show, :edit, :update, :destroy] do
     resources :addresses, only: [:index, :new, :create, :destroy, :edit, :update]
     resources :favorites, only: [:index]
     resource :cart_items, only: [:update, :show]
