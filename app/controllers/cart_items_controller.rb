@@ -1,4 +1,5 @@
 class CartItemsController < ApplicationController
+  before_action :authenticate_user!, only: [:index, :create, :destroy, :update]
   def create
     user_cart_item = current_user.cart_items.where(item_id: params[:cart_item][:item_id].to_i).first
     if user_cart_item

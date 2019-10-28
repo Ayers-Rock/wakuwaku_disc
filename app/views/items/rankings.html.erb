@@ -27,7 +27,7 @@
                         <div class="col-md-4">
                         <table>
                             <%= "第#{i}位" %><br>
-                            <%= attachment_image_tag item, :jacket_image, :fill, 100, 100, format:'jpeg' %><br>
+                            <%= attachment_image_tag item, :jacket_image, size: "100x100", format:'jpeg' %><br>
                         <%# </div> %>
                         <%# <div class="col-md-10"> %>
                             <%= link_to "#{item.title}",item_path(item.id) %><br>
@@ -60,7 +60,7 @@
                     <% @new_cd.each.with_index(1) do |item, i| %>
                         <div class="col-md-2">
                             <table>
-                            <%= attachment_image_tag item, :jacket_image, :fill, 100, 100, format:'jpeg' %>
+                            <%= attachment_image_tag item, :jacket_image, size: "100x100", format:'jpeg' %>
                             <p><%= link_to "#{item.title}",item_path(item.id) %></p>
                             <p><%= item.artist.artist_name %></p>
                             </table>
@@ -75,10 +75,10 @@
             <div class="weekly">
                 <h3>週間ランキング</h3>
                     <% @weekly_ranks.each.with_index(1) do |item, i| %>
-                                            <%= "第#{i}位" %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= attachment_image_tag item, :jacket_image, :fill, 100, 100, format:'jpeg' %>
-                                            <p><%= link_to "#{item.title}",item_path(item.id) %></p>
-                                            <p><%= item.artist.artist_name %></p>
-                                        <%# </div> %>
+                        <%= "第#{i}位" %>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<%= attachment_image_tag item, :jacket_image, size: "80x80", format:'jpeg' %>
+                        <p><%= link_to "#{item.title}",item_path(item.id) %></p>
+                        <p><%= item.artist.artist_name %></p>
+                        <%# </div> %>
                     <% end %>
                 </div>
             </div>

@@ -22,7 +22,7 @@
       <div class="header-top">
 
 <div class="flex01">
-  <%= link_to root_path do %>
+  <%= link_to root_path, data: {"turbolinks" => false} do %>
     <%= image_tag "waku_logo.jpg" %>
   <% end %>
 </div>
@@ -48,8 +48,8 @@
 </div>
 <div class="header-bottom">
     <ul class="nav nav-pills nav-justified">
-      <li role="presentation" class="active"><%= link_to "カート", user_cart_items_path(current_user.id), class: "glyphicon glyphicon-shopping-cart" %></li>
-      <li role="presentation" class="active"><%= link_to "マイページ", user_path(current_user.id), class: "glyphicon glyphicon-user", style: "font-size: 14px;"%></li>
+      <li role="presentation" class="active"><%= link_to "カート", user_cart_items_path(current_user.id), data: {"turbolinks" => false}, class: "glyphicon glyphicon-shopping-cart" %></li>
+      <li role="presentation" class="active"><%= link_to "マイページ", user_path(current_user.id), class: "glyphicon glyphicon-user", style: "font-size: 14px;" %></li>
       <li role="presentation" class="active"><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class:"glyphicon glyphicon-log-out" %></li>
     </ul>
 </div>
@@ -67,7 +67,7 @@
     <li role="presentation" class="active `**clearfix**`"><%= link_to "新規会員登録", new_user_registration_path, class: "glyphicon glyphicon-triangle-right" %></li>
     <%
 =begin%>
- <li role="presentation" class="active `**clearfix**`"><%= link_to "カート", user_cart_items_path(current_user.id), class: "glyphicon glyphicon-shopping-cart" %></li> 
+ <li role="presentation" class="active `**clearfix**`"><%= link_to "カート", user_cart_items_path(current_user.id), class: "glyphicon glyphicon-shopping-cart" %></li>
 <%
 =end%>
   </ul>
