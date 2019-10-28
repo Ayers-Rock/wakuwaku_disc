@@ -1,33 +1,38 @@
 <div class="container">
-    <h2>ユーザー情報</h2>
-    <p></p>
-        <table class="table table-bordered" style="table-layout:fixed;">
-            <thead>
-                <tr>
-                    <th style="width:200px;">名前</th>
-                    <td><%= @user.last_name %><%= @user.first_name %></td>
-                </tr>
-            <tbody>
-                <tr>
-                    <th>住所</th>
-                    <td><%= @user.prefecture %>
-                    <%= @user.city_address %>
-                    <%= @user.building %></td>
-                </tr>
-            </tbody>
-            <tfoot>
-                <tr>
-                    <th>メールアドレス</th>
-                    <td><%= @user.email %></td>
-                </tr>
-            </tfoot>
-    </table>
-    <div class="btn-group">
-            <button><%= link_to "住所一覧", user_addresses_path(@user.id) %></button>
-            <button><%= link_to "住所入力フォーム", new_user_address_path(@user.id) %></button>
-            <button><%= link_to "ユーザー情報編集", edit_user_path(@user.id) %></button>
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <h2>ユーザー情報</h2>
+                <p></p>
+                    <table class="table table-bordered" style="table-layout:fixed;">
+                        <thead>
+                            <tr>
+                                <th style="width:100px;">名前</th>
+                                <td style="width:200px;"><%= @user.last_name %><%= @user.first_name %></td>
+                            </tr>
+                        <tbody>
+                            <tr>
+                                <th style="width:100px;">住所</th>
+                                <td style="width:200px;"><%= @user.prefecture %>
+                                <%= @user.city_address %>
+                                <%= @user.building %></td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th style="width:100px;">メールアドレス</th>
+                                <td style="width:200px;"><%= @user.email %></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                    <div class="btn-group">
+                            <button><%= link_to "住所一覧", user_addresses_path(@user.id) %></button>
+                            <button><%= link_to "住所入力フォーム", new_user_address_path(@user.id) %></button>
+                            <button><%= link_to "ユーザー情報編集", edit_user_path(@user.id) %></button>
+                    </div>
+                        <p></p>
+                        <p><%= link_to "退会する？", user_path(@user.id), method: :delete %></p>
+        </div>
     </div>
-        <p><%= link_to "退会する？", user_path(@user.id), method: :delete %></p>
 
 <h2>お気に入りリスト</h2>
     <p></p>
@@ -68,34 +73,33 @@
                     <thead>
                         <tr>
                             <th style="background-color:#CCCCCC">
-                                <%= order.created_at.strftime('%Y/%m/%d') %>ご注文
+                                <%= order.created_at.strftime('%Y/%m/%d') %>
+                                注文番号 <%= order.order_number %>
                                 <%= link_to '(詳細へ)', order_path(order.id) %>
                             </th>
                         </tr>
                         <tr>
-                            <th>ご注文番号</th>
                             <th>商品</th>
+                            <th>アーティスト</th>
                             <th>配送先</th>
                             <th>配送状況</th>
-                            <th></th>
+                            <%# <th>レビューを書く</th> %>
                         </tr>
                     </thead>
                     <tbody>
                         <% order.order_items.each do |order_item| %>
                             <tr>
-                                <td><%= order_item.item.title %></td>
-                                <td><%= order_item.item.title %></td>
+                                <td><%= order_item.with_deleted_item.title %></td>
+                                <td><%= order_item.with_deleted_item.artist.artist_name %></td>
                                 <td><%= order_item.order.delivery_last_name %><%= order_item.order.delivery_first_name %></td>
-                                <td><%= order.payment_i18n %>
-                                    <% if order.status == "配送準備中" %>
-                                <td> </td>
-                        <% else %>
-                                <td>
+                                <td><%= order.status_i18n %>
+                                <% if order.status == "delivered" %>
+                                　　<td>
                                     <%= link_to item_path(order_item.item_id) do %>
-                                        <button class="btn-sticky">レビューを書く<></button>
+                                        <button class="btn-sticky">レビューを書く</button>
                                     <% end %>
-                                </td>
-                        <% end %>
+                                　　</td>
+                                <% end %>
                             </tr>
                         <% end %>
                     </tbody>

@@ -2,7 +2,7 @@ class Admin::ItemsController < Admin::AdminApplicationsController
 
 
   def index
-    @items = Item.page(params[:page]).per(10).reverse_order
+    @items = Item.without_deleted.page(params[:page]).per(10).reverse_order
     # TODO:.orderで表示順序を変える可能性有り
   end
 

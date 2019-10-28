@@ -1,11 +1,11 @@
 class Item < ApplicationRecord
     has_many :stocks
 
-    has_many :discs, dependent: :destroy
+    has_many :discs
     accepts_nested_attributes_for :discs, allow_destroy: true
 
-    has_many :cart_items
-    has_many :reviews
+    has_many :cart_items, dependent: :destroy
+    has_many :reviews, dependent: :destroy
     has_many :favorites, dependent: :destroy
     has_many :order_items, dependent: :destroy
 
@@ -27,4 +27,8 @@ class Item < ApplicationRecord
         favorites.where(user_id: current_user.id).exists?
     end
 
+    def tax_include
+        tax_include = self.price * 1.10
+        return tax_include
+    end
 end

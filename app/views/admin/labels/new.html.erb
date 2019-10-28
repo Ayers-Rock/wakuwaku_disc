@@ -1,1 +1,37 @@
-<%= render 'admin/admins/category', category: @label, categories: @labels %>
+<div class="container label-box">
+        <div class="row">
+            <div class="col-lg-10 col-lg-offset-1">
+                <div class="form-box">
+                    <%= render 'layouts/error_message', form: @label %>
+                    <%= form_for([:admin, @label]) do |f| %>
+                        <h2>新規レーベル追加</h2>
+                        <%= f.text_field :label_name, placeholder: "レーベル名を入力して下さい" %></p>
+                        <p><%= f.submit "追加", class: "btn btn-primary" %></p>
+                    <% end %>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-10 col-lg-offset-1">
+                <table class="tableindex table-condensed">
+                    <tr>
+                        <th>id</th>
+                        <th>ジャンル</th>
+                        <th></th>
+                    </tr>
+                    <% @labels.each do |label| %>
+                        <tr>
+                            <td><%= label.id %></td>
+                            <td><%= label.label_name %></td>
+                            <td>
+                                <%= link_to "削除", admin_label_path(label.id), class: "btn btn-danger", method: :delete, "data-confirm" => "本当に削除しますか？" %>
+                            </td>
+                        </tr>
+                    <% end %>
+                </table>
+                <div class="back-text-box">
+                    <%= link_to "商品管理へ戻る", admin_items_path %>
+                </div>
+            </div>
+        </div>
+    </div>

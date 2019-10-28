@@ -16,7 +16,7 @@
                             </td>
                             <td><%= address.prefecture %><%= address.city_address %><%= address.building %>
                             </td>
-                            <td style="width:100px;"><%= link_to '編集', edit_user_address_path(address.user.id, address.id) %></td>
+                            <td style="width:100px;"><%= link_to '編集', edit_user_address_path(address.user.id, address.id), "data-confirm" => "本当に削除しますか？" %></td>
                             <td style="width:100px;"><%= link_to '削除', user_address_path(address.user.id,address.id), method: :delete %></td>
                         </tr>
                         <% end %>

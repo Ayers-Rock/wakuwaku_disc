@@ -6,4 +6,12 @@ class OrderItem < ApplicationRecord
 		#good.price * quantity
   end
   acts_as_paranoid
+
+  def with_deleted_item
+    correct_item = nil
+    Item.with_deleted.each do |item|
+      correct_item = item if item.id == self.item_id
+    end
+    correct_item
+  end
 end

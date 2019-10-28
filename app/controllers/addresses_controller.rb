@@ -29,6 +29,8 @@ class AddressesController < ApplicationController
     @address.user_id = current_user.id
     if @address.save
       redirect_to user_addresses_path(@address.user.id)
+    else
+      render :new
     end
   end
 
@@ -41,6 +43,8 @@ class AddressesController < ApplicationController
     @address = Address.find(params[:id])
     if @address.update(address_params)
       redirect_to user_addresses_path(@address.user.id)
+      else
+        render :edit
     end
   end
 
