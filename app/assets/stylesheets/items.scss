@@ -308,13 +308,14 @@
 // rankings/items
 
     #container{
-    text-align: center;
+    margin: 50px auto;
     height: 300px;
     width: 70%;
-    margin: 100px;
+    // margin: 100px;
     }
     #theTarget {
     text-align: center;
+    background-image: image-url("background_8.jpg");
     }
     .rankings-box {
         width: 180px;
@@ -322,7 +323,6 @@
         // margin-left: 45px;
         // padding: 10px;
     }
-
 
     .weekly {
         text-align: center;
