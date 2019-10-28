@@ -1,17 +1,52 @@
-<h1>ランキング</h1>
     <%# <div class="container"> %>
         <div class="col-md-1">
             <ul id="rankingTab" class="nav nav-tabs">
                 <li><a href="#weekly_rank">週間ランキング</a></li>
                 <li><a href="#monthly_rank">月間ランキング</a></li>
-                <li class="active"><a href="#favorite_rank">いいねランキング</a></li>
+                <li class="active"><a href="#favorite_rank">お気に入りランキング</a></li>
             </ul>
         </div>
             <div class="col-md-9 col-md-offset-1">
                 <div class="tab-content">
                     <div class="tab-pane" id="monthly_rank">
-                        <% @monthly_ranks.each.with_index(1) do |item, i| %>
-                            <div class="row">
+                        <div class="rank_name">
+                            <h1>月間ランキング</h1>
+                        </div>
+                            <% @monthly_ranks.each.with_index(1) do |item, i| %>
+                                <div class="row">
+                                    <div class="item_index">
+                                    <div class="col-md-2">
+                                        <%= "第#{i}位" %> &emsp; &emsp;<%= attachment_image_tag item, :jacket_image, :fill, 100, 100, format:'jpeg' %>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <p><%= link_to "#{item.title}",item_path(item.id) %></p>
+                                        <p><%= item.artist.artist_name %></p>
+                                        <p><%= item.tax_include %>円(税込)</p>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <% if user_signed_in? %>
+                                            <div class="favorite-button-<%=item.id %>">
+                                                <%= render 'favorites/favorite', item: item %>
+                                            </div>
+                                        <% end %>
+                                        <div></div>
+                                            <%= form_for @cart_item do |f| %>
+                                                <%= f.number_field :amount %>
+                                                <%= f.hidden_field :item_id, value: item.id %>
+                                                <%= f.submit 'カートに入れる' %>
+                                            <% end %>
+                                    </div>
+                                </div>
+                                </div>
+                            <% end %>
+                        </div>
+                    <div class="tab-pane" id="weekly_rank">
+                    <div class="rank_name">
+                        <h1>週間ランキング</h1>
+                    </div>
+                                <% @weekly_ranks.each.with_index(1) do |item, i| %>
+                                    <div class="row">
+                                    <div class="item_index">
                                 <div class="col-md-2">
                                     <%= "第#{i}位" %> &emsp; &emsp;<%= attachment_image_tag item, :jacket_image, :fill, 100, 100, format:'jpeg' %>
                                 </div>
@@ -32,68 +67,41 @@
                                             <%= f.hidden_field :item_id, value: item.id %>
                                             <%= f.submit 'カートに入れる' %>
                                         <% end %>
+                                        </div>
                                 </div>
                             </div>
-                        <% end %>
-                    </div>
-                    <div class="tab-pane" id="weekly_rank">
-                                <% @weekly_ranks.each.with_index(1) do |item, i| %>
-                                    <div class="col-md-3">
-                                        <%= attachment_image_tag item, :jacket_image, :fill, 100, 100, format:'jpeg' %>
-                                    </div>
-                                    <div class="col-md-9">
-                                        <p><%= link_to "#{item.title}",item_path(item.id) %></p>
-                                        <p><%= item.artist.artist_name %></p>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col-md-2 col-md-offset-4">
-                                            <p><%= item.tax_include %>(税込)</p>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <% if user_signed_in? %>
-                                                <div class="favorite-button-<%=item.id %>">
-                                                    <%= render 'favorites/favorite', item: item %>
-                                                </div>
-                                            <% end %>
-                                            <div>
-                                                <%= form_for @cart_item do |f| %>
-                                                    <%= f.number_field :amount %>
-                                                    <%= f.hidden_field :item_id, value: item.id %>
-                                                    <%= f.submit 'カートに入れる' %>
-                                                <% end %>
-                                            </div>
-                                        </div>
-                                    </div>
                                 <% end %>
                     </div>
                     <div class="tab-pane active" id="favorite_rank">
+                    <div class="rank_name">
+                        <h1>お気に入りランキング</h1>
+                    </div>
                                 <% @favorite_ranks.each.with_index(1) do |item, i| %>
-                                    <div class="col-md-3">
-                                        <%= "第#{i}位" %><%= attachment_image_tag item, :jacket_image, :fill, 100, 100, format:'jpeg' %>
-                                    </div>
-                                    <div class="col-md-9">
-                                        <p><%= link_to "#{item.title}",item_path(item.id) %></p>
-                                        <p><%= item.artist.artist_name %></p>
-                                    </div>
                                     <div class="row">
-                                        <div class="col-md-2 col-md-offset-4">
-                                            <p><%= item.tax_include %>円(税込)</p>
+                                    <div class="item_index">
+                                <div class="col-md-2">
+                                    <%= "第#{i}位" %> &emsp; &emsp;<%= attachment_image_tag item, :jacket_image, :fill, 100, 100, format:'jpeg' %>
+                                </div>
+                                <div class="col-md-3">
+                                    <p><%= link_to "#{item.title}",item_path(item.id) %></p>
+                                    <p><%= item.artist.artist_name %></p>
+                                    <p><%= item.tax_include %>円(税込)</p>
+                                </div>
+                                <div class="col-md-4">
+                                    <% if user_signed_in? %>
+                                        <div class="favorite-button-<%=item.id %>">
+                                            <%= render 'favorites/favorite', item: item %>
                                         </div>
-                                        <div class="col-md-6">
-                                            <% if user_signed_in? %>
-                                                <div class="favorite-button-<%=item.id %>">
-                                                    <%= render 'favorites/favorite', item: item %>
-                                                </div>
-                                            <% end %>
-                                            <div>
-                                                <%= form_for @cart_item do |f| %>
-                                                    <%= f.number_field :amount %>
-                                                    <%= f.hidden_field :item_id, value: item.id %>
-                                                    <%= f.submit 'カートに入れる' %>
-                                                <% end %>
-                                            </div>
+                                    <% end %>
+                                    <div></div>
+                                        <%= form_for @cart_item do |f| %>
+                                            <%= f.number_field :amount %>
+                                            <%= f.hidden_field :item_id, value: item.id %>
+                                            <%= f.submit 'カートに入れる' %>
+                                        <% end %>
                                         </div>
-                                    </div>
+                                </div>
+                            </div>
                                 <% end %>
                     </div>
                 </div>
