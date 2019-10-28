@@ -1,6 +1,9 @@
 class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
+    if @user.id != current_user.id
+      redirect_to root_path
+    end
     # binding.pry
     @orders = @user.orders.limit(3)
     @favorites = @user.favorite_items.limit(5)
