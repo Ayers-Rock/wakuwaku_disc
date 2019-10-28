@@ -15,7 +15,8 @@
     </div>
 
     <div class="row">
-        <div class="col-md-6 col-xs-offset-2">
+        <div class="col-md-8">
+
             <h2>月間ランキング</h2>
             <div class="monthly">
                 <div class="row">
@@ -23,7 +24,7 @@
                         <div class="col-md-4 rankings-box">
                             <div>
                                 <%= "第#{i}位" %><br>
-                                <%= attachment_image_tag item, :jacket_image, size: "100x100", format:'jpeg' %><br>
+                                <%= attachment_image_tag item, :jacket_image, size: "150x150", format:'jpeg' %><br>
                             <%# </div> %>
                             <%# <div class="col-md-10"> %>
                                 <%= link_to "#{item.title}",item_path(item.id) %><br>
@@ -70,7 +71,7 @@
     <%# </div> %>
 
     <%# <div class="row"> %>
-        <div class="col-md-3">
+        <div class="col-md-4">
             <div class="weekly">
                 <h3>週間ランキング</h3>
                     <% @weekly_ranks.each.with_index(1) do |item, i| %>

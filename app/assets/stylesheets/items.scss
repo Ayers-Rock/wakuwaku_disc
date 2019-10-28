@@ -316,17 +316,20 @@
     #theTarget {
     text-align: center;
     }
-
     .rankings-box {
+        width: 180px;
         border: solid 1px black;
+        // margin-left: 45px;
+        // padding: 10px;
     }
+
 
     .weekly {
         text-align: center;
         display: block;
         margin: 0 auto;
         // padding: 20px;
-        margin: 30px;
+        // margin: 30px;
         // border: 1px solid rgb(122, 122, 122);
     }
     .monthly {
