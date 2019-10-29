@@ -17,9 +17,11 @@
 						<th>購入日</th>
 						<th>購入価格総計</th>
 						<th>ステータス</th>
+						<th></th>
 					</tr>
 					<% @orders.each do |order| %>
 					<tr>
+						<td class="date"><%= order.order_number %></td>
 						<td class="date"><%= order.user.last_name + order.user.first_name %></td>
 						<td class="date"><%= order.created_at.strftime("%Y-%m-%d %H:%M") %></td>
 						<td class="date"><%= order.total_price.round(0) %>円</td>
