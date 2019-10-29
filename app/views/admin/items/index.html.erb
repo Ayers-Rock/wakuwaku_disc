@@ -18,8 +18,8 @@
             </div>
             <div class="item-search-box">
                 <%= form_tag(admin_items_path,method: :get) do %>
-                <%= button_tag '<i class="fa fa-search"></i>'.html_safe, type: 'submit', :name => nil %>
                 <%= text_field_tag :search, "", placeholder: "アーティストやタイトルで検索" %>
+                <%= button_tag '<i class="fa fa-search"></i>'.html_safe, type: 'submit', :name => nil %>
                 <% end %>
             </div>
         </div>

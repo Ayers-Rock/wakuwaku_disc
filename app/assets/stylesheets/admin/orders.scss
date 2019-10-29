@@ -3,7 +3,13 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .order-search-box{
     input[type="text"]{
-        width: 93%;
+        width: 92.49%;
+        margin:0;
+    }
+    button[type="submit"]{
+        position: relative;
+        right: 0;
+        width: 7.09%;
     }
 
 }
