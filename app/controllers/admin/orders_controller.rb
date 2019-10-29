@@ -3,6 +3,7 @@ class Admin::OrdersController < Admin::AdminApplicationsController
   PER = 9
 
   def index
+    @orders = Order.page(params[:page]).per(PER)
     unless params[:search].blank?
       u_first = Order.joins(:user).where("first_name LIKE ?", "%#{params[:search]}%")
       u_last = Order.joins(:user).where("last_name LIKE ?", "%#{params[:search]}%")
