@@ -42,15 +42,30 @@
         <div class="col-xs-10 col-xs-offset-1">
             <div class="box">
                 <h3>商品詳細</h3>
-                <div class="label_g">
-                    ジャンル・レーベル
-                </div>
-                <%= @item.title %><div>
-                <%= @item.genre.genre_name %>
-                <div class="label_g">
-                    曲名
-                </div>
+                    <div class="table">
+                        <%# <ul> %>
+                            <h4>レーベル名</h4>
+                            <p>&emsp;&emsp;<%= @item.label.label_name %></p>
+                        <%# </ul> %>
+                        <%# <ul> %>
+                            <h4>ジャンル</h4>
+                            <p>&emsp;&emsp;<%= @item.genre.genre_name %></p>
+                        <%# </ul> %>
 
+                        <%# <ul id="discs"> %>
+                            <h4><span>曲名</span></h4>
+                            <%# <li> %>
+                                <% @discs.each do |disc| %>
+                                    <div>
+                                        <p><%= "#{disc.disc_number}枚目" %></p>
+                                        <% disc.tracks.each do |track|  %>
+                                            <p><span>&emsp;&emsp;<%= "#{track.track_number}：" %></span><%= track.track_name %></p>
+                                        <% end %>
+                                    </div>
+                                <% end %>
+                            <%# </li> %>
+                        <%# </ul> %>
+                    </div>
 
                 <div class="line2">
                 </div>
@@ -99,8 +114,8 @@
                 <% end %>
             </div>
         </div>
+    </div>
         <div class="link_path1">
             <%= link_to '商品一覧へ戻る', items_path %>
         </div>
-    </div>
 </div>
