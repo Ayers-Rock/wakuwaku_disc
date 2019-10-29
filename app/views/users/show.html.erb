@@ -25,9 +25,9 @@
                         </tfoot>
                     </table>
                     <div class="btn-group">
-                            <button><%= link_to "住所一覧", user_addresses_path(@user.id) %></button>
-                            <button><%= link_to "住所入力フォーム", new_user_address_path(@user.id) %></button>
-                            <button><%= link_to "ユーザー情報編集", edit_user_path(@user.id) %></button>
+                            <p><%= link_to "住所一覧", user_addresses_path(@user.id), class:'btn btn-warning' %>
+                            <%= link_to "住所入力フォーム", new_user_address_path(@user.id), class:'btn btn-info' %>
+                            <%= link_to "ユーザー情報編集", edit_user_path(@user.id), class:'btn btn-success' %></p>
                     </div>
                         <p></p>
                         <p><%= link_to "退会する？", user_path(@user.id), method: :delete, "data-confirm" => "退会すると【お客様の情報が全て失われてしまいます】がよろしいですか？" %></p>
@@ -71,7 +71,7 @@
                 </div>
             <% end %>
             <p></p>
-            <p><%= link_to 'お気に入り一覧へ', user_favorites_path(@user.id) %>
+            <p><%= link_to 'お気に入り一覧へ', user_favorites_path(@user.id), class:'btn btn-info' %>
             </div>
         </div>
 
@@ -106,5 +106,5 @@
             </div>
         </div>
     <% end %>
-    <p><%= link_to '購入履歴へ', orders_path(@user_id) %></p>
+    <p><%= link_to '購入履歴へ', orders_path(@user_id), class:'btn btn-info' %></p>
     </div>
