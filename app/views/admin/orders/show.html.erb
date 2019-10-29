@@ -38,7 +38,7 @@
                             </p>
                             <%= form_for @order, url:admin_order_path(@order) do |f| %>
                                 <p class="status_box">
-                                    <%= f.select :status, [['配送準備中',0] ,['配送中',1],['配送完了',2]], {include_blank: '選択してください'} %>
+                                    <%= f.select :status, [['配送準備中',0] ,['配送中',1],['配送完了',2],['キャンセル',3]], {include_blank: '選択してください'} %>
                                     <%= f.submit "変更する", :class => 'btn btn-success' %>
                                 </p>
                             <% end %>
