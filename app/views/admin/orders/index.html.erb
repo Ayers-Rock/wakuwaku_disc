@@ -21,18 +21,10 @@
 					</tr>
 					<% @orders.each do |order| %>
 					<tr>
-<<<<<<< HEAD
 						<td class="date"><%= order.user.last_name + order.user.first_name %></td>
 						<td class="date"><%= order.created_at.strftime("%Y-%m-%d %H:%M") %></td>
-						<td class="date"><font size="2"><%= order.total_price.round(0) %>円</td>
-						<td class="date"><font size="2"><%= order.status_i18n %></td>
-=======
-						<td style="text-align:center;"><font size="2"><%= order.order_number %></font></td>
-						<td style="text-align:center;"><font size="2"><%= order.user.last_name + order.user.first_name %></font></td>
-						<td style="text-align:center;"><font size="2"><%= order.created_at.strftime("%Y-%m-%d %H:%M") %></font></td>
-						<td style="text-align:center;"><font size="2"><%= order.total_price.round(0) %>円</font></td>
-						<td style="text-align:center;"><font size="2"><%= order.status_i18n %></font></td>
->>>>>>> master
+						<td class="date"><%= order.total_price.round(0) %>円</td>
+						<td class="date"><%= order.status_i18n %></td>
 						<td><%= link_to "注文詳細", admin_order_path(order.id), class: "btn btn-default col-xs-12" %></td>
 					</tr>
 					<% end %>
