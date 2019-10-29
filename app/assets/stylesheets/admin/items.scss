@@ -4,13 +4,14 @@
 
 // index/items
 .ad-search-box{
-    
     input[type="text"]{
-    float: right;
+        width: 92.49%;
+        margin:0;
     }
-
     button[type="submit"]{
-        float: right;
+        position: relative;
+        right: 0;
+        width: 7.09%;
     }
 }
 .item-index-box {

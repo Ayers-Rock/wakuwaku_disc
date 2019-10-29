@@ -5,11 +5,12 @@
     // index/items
 .item-search-box{
     input[type="text"]{
-        float: right;
-        width: 70%;
+        width: 92.49%;
+        margin:0;
     }
     button[type="submit"]{
-        float: right;
+        position: relative;
+        width: 7%;
     }
 }
 
