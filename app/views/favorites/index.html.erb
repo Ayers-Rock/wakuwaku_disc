@@ -20,10 +20,18 @@
                     </div>
                     <p></p>
                     <%= form_for @cart_item do |f| %>
-                        <%= f.number_field :amount, min: 1, value: 1 %>
+                        <%= f.number_field :amount, min: 1, value: 1 %><span style="color: #fff;"> 枚</span>
                         <%= f.hidden_field :item_id, value: item.id %>
-                        <p></p>
-                        <%= f.submit 'カートに入れる' %>
+                        <% if item.status_before_type_cast == 0 %>
+                            <%= button_tag type: "submit", class: "btn btn-primary" do %>
+                                <i class="fas fa-cart-plus"></i>
+                                <p>カートに入れる</p>
+                            <% end %>
+                        <% else %>
+                            <%= button_tag type: "submit", disabled: true, class: "btn btn-primary", style: "background-color: pink; border-color: pink; padding-right: 10px;" do %>
+                                <p style="font-size: 16px; font-style: bold; padding-top: 10px; margin: 0 auto;">SOLD OUT</p>
+                            <% end %>
+                        <% end %>
                     <% end %>
                 </div>
             </div>
