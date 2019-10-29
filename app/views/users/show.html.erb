@@ -2,70 +2,81 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <h2>ユーザー情報</h2>
-                <table class="table table-bordered" style="table-layout:fixed;">
-                    <thead>
-                        <tr>
-                            <th style="width:100px;">名前</th>
-                            <td style="width:200px;"><%= @user.last_name %><%= @user.first_name %></td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <th style="width:100px;">住所</th>
-                            <td style="width:200px;"><%= @user.prefecture %>
-                            <%= @user.city_address %>
-                            <%= @user.building %></td>
-                        </tr>
-                    </tbody>
-                    <tfoot>
-                        <tr>
-                            <th style="width:100px;">メールアドレス</th>
-                            <td style="width:200px;"><%= @user.email %></td>
-                        </tr>
-                    </tfoot>
-                </table>
-                <div class="btn-group">
-                    <button><%= link_to "住所一覧", user_addresses_path(@user.id) %></button>
-                    <button><%= link_to "住所入力フォーム", new_user_address_path(@user.id) %></button>
-                    <button><%= link_to "ユーザー情報編集", edit_user_path(@user.id) %></button>
-                </div>
-            <p><%= link_to "退会する？", user_path(@user.id), method: :delete, "data-confirm" => "退会すると【お客様の情報が全て失われてしまいます】がよろしいですか？" %></p>
+                <p></p>
+                    <table class="table table-bordered" style="table-layout:fixed;">
+                        <thead>
+                            <tr>
+                                <th style="width:100px;">名前</th>
+                                <td style="width:200px;"><%= @user.last_name %><%= @user.first_name %></td>
+                            </tr>
+                        <tbody>
+                            <tr>
+                                <th style="width:100px;">住所</th>
+                                <td style="width:200px;"><%= @user.prefecture %>
+                                <%= @user.city_address %>
+                                <%= @user.building %></td>
+                            </tr>
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <th style="width:100px;">メールアドレス</th>
+                                <td style="width:200px;"><%= @user.email %></td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                    <div class="btn-group">
+                            <p><%= link_to "住所一覧", user_addresses_path(@user.id), class:'btn btn-warning' %>
+                            <%= link_to "住所入力フォーム", new_user_address_path(@user.id), class:'btn btn-info' %>
+                            <%= link_to "ユーザー情報編集", edit_user_path(@user.id), class:'btn btn-success' %></p>
+                    </div>
+                        <p></p>
+                        <p><%= link_to "退会する？", user_path(@user.id), method: :delete, "data-confirm" => "退会すると【お客様の情報が全て失われてしまいます】がよろしいですか？" %></p>
         </div>
     </div>
-</div>
-
-<h2>お気に入りリスト</h2>
-    <p></p>
-    <% @favorites.each do |item| %>
-        <div class="row">
-            <div class="favorite_items">
-                <div class="col-md-2 col-md-offset-1">
-                    <%= attachment_image_tag item, :jacket_image, :fill, 100, 100, format:'jpeg', fallback: "no_image.jpg", size: '100x100' %>
-                </div>
-                <div class="col-md-3">
-                    <p><%= link_to "#{item.title}",item_path(item.id) %></p>
-                    <p><%= item.artist.artist_name %></p>
-                    <p><%= item.price %>円(税込)</p>
-                </div>
-                <div class="col-md-3">
-                    <div id="favorite-button-<%=item.id %>">
-                        <%= render 'favorites/favorite', item: item %>
+<div class="col-md-10 col-md-offset-1">
+    <h2>お気に入りリスト</h2>
+        <p></p>
+            <% @favorites.each do |item| %>
+                <div class="row">
+                    <div class="favorite_items">
+                        <div class="col-md-2 col-md-offset-1">
+                            <%= attachment_image_tag item, :jacket_image, format:'jpeg', fallback: "no_image.jpg", size: '150x150' %>
+                        </div>
+                        <div class="col-md-3">
+                            <p><%= link_to "#{item.title}",item_path(item.id) %></p>
+                            <p><%= item.artist.artist_name %></p>
+                            <p><%= item.price %>円(税込)</p>
+                        </div>
+                        <div class="col-md-5">
+                            <div id="favorite-button-<%=item.id %>">
+                                <%= render 'favorites/favorite', item: item %>
+                            </div>
+                            <p></p>
+                            <%= form_for @cart_item do |f| %>
+                                <%= f.number_field :amount, min: 1, value: 1 %><span style="color: #fff;"> 枚</span>
+                                <%= f.hidden_field :item_id, value: item.id %>
+                                <% if item.status_before_type_cast == 0 %>
+                                    <%= button_tag type: "submit", class: "btn btn-primary" do %>
+                                        <i class="fas fa-cart-plus"></i>
+                                        <p>カートに入れる</p>
+                                    <% end %>
+                                <% else %>
+                                    <%= button_tag type: "submit", disabled: true, class: "btn btn-primary", style: "background-color: pink; border-color: pink; padding-right: 10px;" do %>
+                                        <p style="font-size: 16px; font-style: bold; padding-top: 10px; margin: 0 auto;">SOLD OUT</p>
+                                    <% end %>
+                                <% end %>
+                            <% end %>
+                        </div>
                     </div>
-                    <p></p>
-                    <%= form_for @cart_item do |f| %>
-                        <%= f.number_field :amount, min: 1, value: 1 %>
-                        <%= f.hidden_field :item_id, value: item.id %>
-                        <p></p>
-                        <%= f.submit 'カートに入れる' %>
-                    <% end %>
                 </div>
+            <% end %>
+            <p></p>
+            <p><%= link_to 'お気に入り一覧へ', user_favorites_path(@user.id), class:'btn btn-info' %>
             </div>
         </div>
-    <% end %>
-    <p></p>
-    <p><%= link_to 'お気に入り一覧へ', user_favorites_path(@user.id) %>
 
-<h2>購入履歴</h2>
+<div class="container">
+    <h2>購入履歴</h2>
     <% @orders.each do |order| %>
         <div class="row">
             <div class="order_history">
@@ -95,5 +106,5 @@
             </div>
         </div>
     <% end %>
-    <p><%= link_to '購入履歴へ', orders_path(@user_id) %></p>
+    <p><%= link_to '購入履歴へ', orders_path(@user_id), class:'btn btn-info' %></p>
     </div>
