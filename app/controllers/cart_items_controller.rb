@@ -1,4 +1,5 @@
 class CartItemsController < ApplicationController
+  before_action :authenticate_user!, only: [:index, :create, :destroy, :update]
   def create
     user_cart_item = current_user.cart_items.where(item_id: params[:cart_item][:item_id].to_i).first
     if user_cart_item
@@ -49,7 +50,7 @@ class CartItemsController < ApplicationController
     redirect_to new_order_path
   end
 
-  def show
+  def index
     @cart_items = CartItem.where(user_id: current_user.id)
     if @cart_items.empty?
       redirect_to root_path

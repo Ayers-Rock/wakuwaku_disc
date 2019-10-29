@@ -7,7 +7,7 @@
 				<%= form_for(:number, url: user_cart_items_path(current_user.id), method: :PATCH) do |f| %>
 					<% @cart_items.each_with_index do |cart_item, i| %>
 
-						<table class="table_index table-condensed" width="100%">
+						<table class="table_index_front table-condensed" width="100%">
 							<tr>
 								<th>商品画像</th>
 								<th>商品</th>
