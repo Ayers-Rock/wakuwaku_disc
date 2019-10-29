@@ -32,8 +32,10 @@
                                     <% end %>
                                 <%# </div> %>
                                 <%# <div class="col-md-10"> %>
-                                    <%= link_to "#{item.title}",item_path(item.id) %><br>
-                                    <p><%= link_to "#{item.artist.artist_name}", artist_path(item.artist.id) %></p>
+                                    <div class="rankings-new-text-box">
+                                        <%= link_to "#{item.title}",item_path(item.id) %><br>
+                                        <%= link_to "#{item.artist.artist_name}", artist_path(item.artist.id) %>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -43,7 +45,7 @@
                 <%# <%= link_to '月間ランキングへ', ranking_items_path %>
 
             <div class="favorite">
-                <div class="row">
+                <div class="row" style="margin-top: 60px;">
                     <h2 class="rankings-title"><%=link_to "お気に入りランキング", ranking_items_path %></h2>
                     <% @favorite_ranks.each.with_index(1) do |item, i| %>
                         <div class="col-md-4">
@@ -55,8 +57,10 @@
                                     <%= link_to item_path(item.id) do %>
                                         <%= attachment_image_tag item, :jacket_image, size: "150x150", format:'jpeg', style: "box-shadow: 0 0 7px grey;" %>
                                     <% end %>
-                                    <p><%= link_to "#{item.title}",item_path(item.id) %></p>
-                                    <p><%= link_to "#{item.artist.artist_name}", artist_path(item.artist.id) %></p>
+                                    <div class="rankings-new-text-box">
+                                        <%= link_to "#{item.title}",item_path(item.id) %><br>
+                                        <%= link_to "#{item.artist.artist_name}", artist_path(item.artist.id) %>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -66,7 +70,7 @@
             <%# <%= link_to '各ランキングへ', ranking_items_path %>
 
             <div class="newcd">
-                <div class="row">
+                <div class="row" style="margin-top: 60px;">
                     <h2 class="rankings-title"><%=link_to "最新作", items_path %></h2>
                     <% @new_cd.each.with_index(1) do |item, i| %>
                         <%# <div class="rankings-new-box"> %>
@@ -75,15 +79,19 @@
                                 <%= link_to item_path(item.id) do %>
                                     <%= attachment_image_tag item, :jacket_image, size: "200x200", format:'jpeg',　style: "box-shadow: 0 15px 15px grey;" %>
                                 <% end %>
-                                <p><%= link_to "#{item.title}",item_path(item.id), class: "rankings-new-text" %></p>
-                                <p><%= link_to "#{item.artist.artist_name}", artist_path(item.artist.id), class: "rankings-new-text" %></p>
+                                <div class="rankings-new-text-box">
+                                    <%= link_to "#{item.title}",item_path(item.id), class: "rankings-new-text" %><br>
+                                    <%= link_to "#{item.artist.artist_name}", artist_path(item.artist.id), class: "rankings-new-text" %>
+                                </div>
                                 <%# </div> %>
                             </div>
                         <%# </div> %>
                     <% end %>
                 </div>
             </div>
-            <%= link_to '商品一覧へ', items_path %>
+            <div style="text-align: right;">
+                <%= link_to '商品一覧へ', items_path, style: "font-size: 18px; text-decoration: underline;" %>
+            </div>
         </div>
         <%# </div> %>
 
@@ -98,9 +106,9 @@
                                 <%= attachment_image_tag item, :jacket_image, size: "140x140", format:'jpeg', style: "margin: 0 auto; box-shadow: 0 0 7px grey;" %>
                             <% end %></p>
                             <div>
-                                <strong><%= link_to "#{item.title}",item_path(item.id), style: "color: #fff; padding-top: 7px;" %></strong><br>
+                                <strong><%= link_to "#{item.title}",item_path(item.id), style: "color: #000; padding-top: 15px;" %></strong><br>
                                 <hr class="rankings-side-box-bar">
-                                <strong><%=link_to "#{item.artist.artist_name}", artist_path(item.artist.id), style: "color: #fff;" %></strong>
+                                <strong><%=link_to "#{item.artist.artist_name}", artist_path(item.artist.id), style: "color: #000;" %></strong>
                             </div>
                         </div>
                     <% end %>

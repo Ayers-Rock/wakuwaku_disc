@@ -339,6 +339,7 @@
     .rankings-box-1 {
         background: #f66;
         border-radius: 50% 50% 50% 70%/50% 50% 70% 60%;
+        // animation: border-animation 6s infinite linear;
     }
     .rankings-box-2 {
         background: #f92;
@@ -380,6 +381,7 @@
         width: 350px;
         height: 300px;
         display: inline-block;
+        padding-top: 20px;
     }
     .rankings-box2-2 {
         border-radius: 50% 50% 50% 0;
@@ -387,7 +389,9 @@
         width: 350px;
         height: 300px;
         display: inline-block;
-        margin-left: -10px;
+        // margin-left: -10px;
+        margin: 10px 0 0 10px;
+        padding-top: 20px;
     }
     .rankings-box2-3 {
         border-radius: 50% 0 50% 50%;
@@ -395,6 +399,7 @@
         width: 350px;
         height: 300px;
         display: inline-block;
+        padding-top: 20px;
     }
     .rankings-box2-4 {
         border-radius: 0 50% 50% 50%;
@@ -402,18 +407,26 @@
         width: 350px;
         height: 300px;
         display: inline-block;
-        margin-left: -10px;
+        // margin-left: -10px;
+        margin: 10px 0 0 10px;
+        padding-top: 20px;
+    }
+    .rankings-new-text-box {
+        padding-top: 10px;
     }
     .rankings-new-text {
         color: #fff;
-        text-decoration: underline;
+        font-styel: bold;
+        text-decoration: underline #fff;
+        text-stroke: 0.2px #000;
+        -webkit-text-stroke: 0.4px #000;
         }
 
     .rankings-title {
         position: relative;
         padding: 0.25em 0;
         width: 350px;
-        margin: 20px auto 20px auto;
+        margin: 20px auto 40px auto;
         font-family: 'Arial Black','メイリオ', Meiryo,'ヒラギノ角ゴ StdN','Hiragino Kaku Gothic StdN','Arial Rounded MT Bold','ヒラギノ角ゴシック','Hiragino Sans';
         }
         .rankings-title:after {
@@ -479,16 +492,35 @@
             margin: 0;
             padding: 0;
 
-            padding: 10px;
+            position: relative;
+            padding: 0.25em 1em;
             margin: 1em 0;
-            color: #FFF;
-            background: #6eb7ff;
-            border-bottom: solid 6px #3f87ce;
-            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.25);
-            border-radius: 9px;
+            top: 0;
+            background: #efefef;
             a:link {
-                color: #fff;
+                color: #000;
             }
+        }
+        rankings-side-box div:before, rankings-side-box div:after{
+            position: absolute;
+            top: 0;
+            content:'';
+            width: 10px;
+            height: 100%;
+            display: inline-block;
+            box-sizing: border-box;
+        }
+        rankings-side-box div:before{
+            border-left: dotted 2px #15adc1;
+            border-top: dotted 2px #15adc1;
+            border-bottom: dotted 2px #15adc1;
+            left: 0;
+        }
+        rankings-side-box div:after{
+            border-top: dotted 2px #15adc1;
+            border-right: dotted 2px #15adc1;
+            border-bottom: dotted 2px #15adc1;
+            right: 0;
         }
 
 
@@ -514,6 +546,15 @@
         // margin: 30px;
         // border: 1px solid rgb(122, 122, 122);
     }
+
+    .weekly2 {
+        text-align: center;
+        display: block;
+        margin: 0 auto;
+        // padding: 20px;
+        margin: 30px;
+        // animation: border-animation 6s infinite linear;
+    }
     .monthly {
         text-align: center;
         display: block;
@@ -536,6 +577,7 @@
         margin: 0 auto;
         padding: 20px;
         margin: 30px;
+        // animation: border-animation 6s infinite linear;
         // border: 1px solid rgb(122, 122, 122);
     }
     .row-index {
@@ -644,3 +686,5 @@
     text-align: center;
 
 }
+
+
