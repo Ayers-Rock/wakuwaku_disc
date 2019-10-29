@@ -6,15 +6,15 @@
                 <% @favorites.each do |item| %>
                     <div class="row" id="row2">
                         <div class="favorite_items">
-                            <div class="col-md-2 col-md-offset-1">
+                            <div class="col-md-2">
                                 <%= attachment_image_tag item, :jacket_image, format:'jpeg', fallback: "no_image.jpg", size: '150x150' %>
                             </div>
-                            <div class="col-md-3">
+                            <div class="col-md-5">
                                 <p><%= link_to "#{item.title}",item_path(item.id), style: "color: white;" %></p>
-                                <p><%= item.artist.artist_name %></p>
+                                <p><%= link_to "#{item.artist.artist_name}", artist_path(item.artist.id), style: "color: white;" %></p>
                                 <p><%= item.price %>円(税込)</p>
                             </div>
-                            <div class="col-md-5">
+                            <div class="col-md-4">
                                 <div id="favorite-button-<%=item.id %>">
                                     <%= render 'favorites/favorite', item: item %>
                                 </div>
