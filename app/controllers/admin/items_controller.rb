@@ -8,7 +8,7 @@ class Admin::ItemsController < Admin::AdminApplicationsController
       title = Item.where("title LIKE ?", "%#{params[:search]}%")
       merged_result = artist | title
       @items = (merged_result | track)
-      @items = Kaminari.paginate_array(@items).page(params[:page]).per(10).reverse_order
+      @items = Kaminari.paginate_array(@items).page(params[:page]).per(10)
     else
       @items = Item.page(params[:page]).per(10).reverse_order
     end

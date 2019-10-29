@@ -9,6 +9,7 @@ class ReviewsController < ApplicationController
     else
       @cart_item = CartItem.new
       @reviews = Review.where(item_id: @item.id)
+      @discs = Disc.where(item_id: @item.id)
       render template: 'items/show'
     end
   end
