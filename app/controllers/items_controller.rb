@@ -8,7 +8,7 @@ class ItemsController < ApplicationController
     @favorite_ranks = Item.find(Favorite.group(:item_id).order('count(item_id) desc').limit(3).pluck(:item_id))
     @monthly_ranks = Item.find(OrderItem.where(created_at: 1.months.ago.beginning_of_day..Time.zone.now.end_of_day).group(:item_id).order('sum(amount) desc').limit(3).pluck(:item_id))
     @weekly_ranks = Item.find(OrderItem.where(created_at: 1.weeks.ago.beginning_of_day..Time.zone.now.end_of_day).group(:item_id).order('sum(amount) desc').limit(5).pluck(:item_id))
-    @new_cd =Item.order(created_at: :desc).limit(6)
+    @new_cd =Item.order(created_at: :desc).limit(4)
   end
 
   def ranking
@@ -21,6 +21,7 @@ class ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
+    @discs = Disc.where(item_id: @item.id)
     # @user = User.find(params[:id])
     @cart_item = CartItem.new
     @reviews = Review.where(item_id: @item.id)
@@ -33,7 +34,8 @@ class ItemsController < ApplicationController
       track =  Item.joins(discs: :tracks).where("track_name LIKE ?", "%#{params[:search]}%")
       title = Item.where("title LIKE ?", "%#{params[:search]}%")
       merged_result = artist | title
-      @items = merged_result | track
+      @items = (merged_result | track)
+      @items = Kaminari.paginate_array(@items).page(params[:page]).per(20)
     else
       @items = Item.page(params[:page]).per(PER)
     end

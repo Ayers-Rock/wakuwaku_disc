@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-class Admins::SessionsController < Devise::SessionsController
-  # before_action :configure_sign_in_params, only: [:create]
-  before_action :check_user, only: [:new]
-  layout "admin_application"
+class Users::SessionsController < Devise::SessionsController
+  # before_action :configure_sign_in_params, only: [:create
+  before_action :check_admin, only: [:new]
+
 
   # GET /resource/sign_in
   def new
@@ -26,9 +26,9 @@ class Admins::SessionsController < Devise::SessionsController
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
-  def check_user
-    if user_signed_in?
-      redirect_to new_user_session_path
+  def check_admin
+    if admin_signed_in?
+      redirect_to new_admin_session_path
     end
   end
 end
