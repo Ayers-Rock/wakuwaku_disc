@@ -41,37 +41,31 @@
         <div class="col-md-10 col-md-offset-1">
             <div class="box">
                 <h3>商品詳細</h3>
-                <%# <div class="label_g">
-                    ジャンル・レーベル
-                </div> %>
-                <table>
-                    <tr>
-                        <th>レーベル名</th>
-                        <td><%= @item.label.label_name %></td>
-                    </tr>
-                    <tr>
-                        <th>ジャンル</th>
-                        <td><%= @item.genre.genre_name %></td>
-                    </tr>
+                    <table class="table">
+                        <tr>
+                            <th>レーベル名</th>
+                            <td><%= @item.label.label_name %></td>
+                        </tr>
+                        <tr>
+                            <th>ジャンル</th>
+                            <td><%= @item.genre.genre_name %></td>
+                        </tr>
 
-                    <tr id="discs">
-                        <th><span>曲名</span></th>
-                        <td>
-                            <% @discs.each do |disc| %>
-                                <div>
-                                    <p><%= "#{disc.disc_number}枚目" %></p>
-                                    <% disc.tracks.each do |track|  %>
-                                        <%# <% track = track.order_by(track_number: "DESC") %>
-                                        <p><span><%= "#{track.track_number}：" %></span><%= track.track_name %></p>
-                                    <% end %>
-                                </div>
-                            <% end %>
-                        </td>
-                    </tr>
-                </table>
-
-                <%# <%= item.disc.disc_number %>
-                <%# <%= item.disc.track_name %>
+                        <tr id="discs">
+                            <th><span>曲名</span></th>
+                            <td>
+                                <% @discs.each do |disc| %>
+                                    <div>
+                                        <p><%= "#{disc.disc_number}枚目" %></p>
+                                        <% disc.tracks.each do |track|  %>
+                                            <%# <% track = track.order_by(track_number: "DESC") %>
+                                            <p><span><%= "#{track.track_number}：" %></span><%= track.track_name %></p>
+                                        <% end %>
+                                    </div>
+                                <% end %>
+                            </td>
+                        </tr>
+                    </table>
 
                 <div class="line2">
                 </div>
