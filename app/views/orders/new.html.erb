@@ -42,11 +42,10 @@
             <td><%= current_user.cart_sum.round(0) %>円　(税込)</td>
           </tr>
         </table>
-        <br>
-        <br>
+
+        <%= form_tag new_orders_path do %>
 
         <table class="ordernew2">
-          <%= form_tag new_orders_path do %>
           <tr>
             <th>商品配送先選択<span class="required">必須</span></th>
             <td><%= radio_button_tag "address", 0, checked: "checked" %>
@@ -69,11 +68,11 @@
         </table>
 
           <div class="link_path1">
-             <div class="row">
+            <div class="row">
               <%= submit_tag '購入を確定する', :class => "btn btn-danger col-xs-6 col-xs-offset-3"%>
-              <% end %>
             </div>
           </div>
+          <% end %>
 
             <div class="link_path1">
               <div class="row">

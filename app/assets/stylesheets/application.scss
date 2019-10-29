@@ -20,14 +20,14 @@
 
 
 
- .clearfix::after {
+.clearfix::after {
   content: "";
   display: block;
   clear: both;
 }
 
 
- .header-top{
+.header-top{
   height: 200px;
   width: 100%;
 
@@ -91,7 +91,6 @@
           opacity: 0.6;
           font-size: 60px;
           font-family: 'TsukuARdGothic-Regular','ヒラギノ角ゴシック','Hiragino Sans','ヒラギノ丸ゴ ProN','Hiragino Maru Gothic ProN','klee','Osaka',sans-serif;
-
         }
             input[type="text"]::placeholder {
                 color: black;

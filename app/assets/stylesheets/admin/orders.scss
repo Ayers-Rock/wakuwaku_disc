@@ -63,20 +63,29 @@ th,td {
     text-align: center;
 }
 
-.table_index_front{
-    background: -moz-linear-gradient( #FF2525, #FAD961);
-    background: -webkit-linear-gradient(#FF2525, #FAD961);
-    background: linear-gradient(to right, #FF2525, #FAD961);
-    font-weight: normal;
-    white-space: nowrap;
-    text-align: center;
-}
-
 .table_index td{
     font-weight: normal;
     white-space: nowrap;
     text-align: center;
+    font-size: 13px;
 }
+
+// .table_index_front th{
+//     background: -moz-linear-gradient( #FF2525, #FAD961);
+//     background: -webkit-linear-gradient(#FF2525, #FAD961);
+//     background: linear-gradient(to right, #FF2525, #FAD961);
+//     font-weight: normal;
+//     white-space: nowrap;
+//     text-align: center;
+// }
+
+// .table_index_front td{
+//     font-weight: normal;
+//     white-space: nowrap;
+//     text-align: center;
+// }
+
+
 
 .ordernew th{
     background: #e6e6e6;

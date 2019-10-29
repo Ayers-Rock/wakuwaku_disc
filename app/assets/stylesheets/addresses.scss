@@ -6,5 +6,18 @@
   margin: 20px;
   border: 1px solid #333333;
   border-radius: 10px;
-  background-image: url(onnpu.jpg);
+  background-image: url(log_in.jpg);
+  background-size: contain;
+}
+
+.box_sign_up{
+  margin: 20px;
+  border: 1px solid #333333;
+  border-radius: 10px;
+  background-image: url(butterfly.jpg);
+  background-size: cover;
+}
+
+.field{
+  margin-bottom: 20px;
 }

@@ -15,8 +15,8 @@
                 padding: 10px 0;
                 text-align: center;
                 margin: 1.5em 0;
-              }
-              h2:before {
+            }
+            h2:before {
                 content: "";
                 position: absolute;
                 top: -8px;
@@ -370,7 +370,7 @@
         background: -moz-linear-gradient( #00b5fc, #FAD961);
         background: -webkit-linear-gradient(#00b5fc, #FAD961);
         background: linear-gradient(to right, #00b5fc, #FAD961);
-        color: #FFF;
+        color: #333333;
         box-shadow: 0 0 7px grey;
     }
 
