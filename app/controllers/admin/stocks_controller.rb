@@ -6,7 +6,16 @@ class Admin::StocksController < Admin::AdminApplicationsController
   end
 
   def index
-    @stocks = Stock.page(params[:page]).per(10).reverse_order
+    unless params[:search].blank?
+      title = Stock.joins(:item).where("title LIKE ?", "%#{params[:search]}%")
+      artist =  Stock.joins(item: :artist).where("artist_name LIKE ?", "%#{params[:search]}%")
+      label =  Stock.joins(item: :label).where("label_name LIKE ?", "%#{params[:search]}%")
+      merged_result = title | artist
+      a = (merged_result | label )
+      @stocks = Kaminari.paginate_array(a).page(params[:page]).per(10)
+    else
+      @stocks = Stock.page(params[:page]).per(10).reverse_order
+    end
   end
 
   def edit

@@ -1,5 +1,11 @@
 <h2>ユーザー一覧</h2>
     <div class="container">
+        <div class="user-search-box">
+            <%= form_tag(admin_users_path,method: :get) do %>
+                <%= text_field_tag :search, "", placeholder: "ユーザー名、メールアドレスで検索" %>
+                <%= button_tag '<i class="fa fa-search"></i>'.html_safe, type: 'submit', :name => nil %>
+            <% end %>
+        </div>
         <table class="table table-bordered" style="text-align: center;">
                 <thead>
                     <tr>
