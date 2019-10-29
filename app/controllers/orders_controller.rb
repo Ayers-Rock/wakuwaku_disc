@@ -89,6 +89,6 @@ class OrdersController < ApplicationController
   end
 
   def status
-    
+
   end
 end
