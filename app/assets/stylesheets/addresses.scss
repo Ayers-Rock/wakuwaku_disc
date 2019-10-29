@@ -1,3 +1,23 @@
 // Place all the styles related to the addresses controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.box_sign_in{
+  margin: 20px;
+  border: 1px solid #333333;
+  border-radius: 10px;
+  background-image: url(log_in.jpg);
+  background-size: contain;
+}
+
+.box_sign_up{
+  margin: 20px;
+  border: 1px solid #333333;
+  border-radius: 10px;
+  background-image: url(butterfly.jpg);
+  background-size: cover;
+}
+
+.field{
+  margin-bottom: 20px;
+}
