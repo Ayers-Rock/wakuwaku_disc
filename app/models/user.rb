@@ -14,8 +14,8 @@ class User < ApplicationRecord
   validates :last_kana_name, format: { with: /\A^([ァ-ン]|ー)+$\z/ }, length: { minimum: 1, maximum: 10 },
     presence: true
 
-#tel_numberは、ハイフンなしの数字11桁
-  validates :tel_number, format: { with: /\A\d{11}\z/ },
+#tel_numberは、ハイフンなしの数字10桁or11桁
+  validates :tel_number, format: { with: /\A\d{10,11}\z/ },
     presence: true
 #emailは、30文字まで
   validates :email, format: { with: /\A\S+@\S+\.\S+\z/ }, length: { maximum: 40 },

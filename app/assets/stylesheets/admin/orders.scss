@@ -2,14 +2,15 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 .order-search-box{
+    margin-bottom: 10px;
     input[type="text"]{
-        width: 92.49%;
+        width: 92.5%;
         margin:0;
     }
     button[type="submit"]{
         position: relative;
         right: 0;
-        width: 7.09%;
+        width: 7%;
     }
 
 }
@@ -79,7 +80,25 @@ th,td {
     font-weight: normal;
     white-space: nowrap;
     text-align: center;
+    font-size: 13px;
 }
+
+// .table_index_front th{
+//     background: -moz-linear-gradient( #FF2525, #FAD961);
+//     background: -webkit-linear-gradient(#FF2525, #FAD961);
+//     background: linear-gradient(to right, #FF2525, #FAD961);
+//     font-weight: normal;
+//     white-space: nowrap;
+//     text-align: center;
+// }
+
+// .table_index_front td{
+//     font-weight: normal;
+//     white-space: nowrap;
+//     text-align: center;
+// }
+
+
 
 .ordernew th{
     background: #e6e6e6;
@@ -117,12 +136,12 @@ th,td {
 
 .link_path{
     text-align: center;
-    margin: 200px;
+    margin: 100px 0 20px 0;
 }
 
 .link_path1{
     text-align: center;
-    margin-top: 60px;
+    margin: 40px 0 10px 0;
 }
 
 .link_path2{
@@ -140,6 +159,7 @@ th,td {
 }
 
 .date{
+    text-align: center;
     font-size: 13px;
 }
 
@@ -148,6 +168,12 @@ th,td {
     margin: 20px 20px 20px 0;
 }
 
+.date_2{
+    text-align: left;
+    font-size: 13px;
+}
+
 .status_box{
     display: inline-block;
 }
+
