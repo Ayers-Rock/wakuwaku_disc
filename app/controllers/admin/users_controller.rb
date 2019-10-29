@@ -10,7 +10,7 @@ class Admin::UsersController < Admin::AdminApplicationsController
       b = ( a | email )
       c = ( b | u_k_first )
       d = ( c | u_k_last )
-      @users = Kaminari.paginate_array(d).page(params[:page]).per(PER)
+      @users = Kaminari.paginate_array(d).page(params[:page]).per(10)
     else
       @users = User.page(params[:page]).per(10).reverse_order
     end
