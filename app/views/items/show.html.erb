@@ -41,7 +41,7 @@
         <div class="col-md-10 col-md-offset-1">
             <div class="box">
                 <h3>商品詳細</h3>
-                    <table class="table">
+                    <ul class="table">
                         <tr>
                             <th>レーベル名</th>
                             <td><%= @item.label.label_name %></td>
@@ -58,14 +58,13 @@
                                     <div>
                                         <p><%= "#{disc.disc_number}枚目" %></p>
                                         <% disc.tracks.each do |track|  %>
-                                            <%# <% track = track.order_by(track_number: "DESC") %>
                                             <p><span><%= "#{track.track_number}：" %></span><%= track.track_name %></p>
                                         <% end %>
                                     </div>
                                 <% end %>
                             </td>
                         </tr>
-                    </table>
+                    </ul>
 
                 <div class="line2">
                 </div>
