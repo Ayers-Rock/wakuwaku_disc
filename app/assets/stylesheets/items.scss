@@ -344,7 +344,7 @@
     .rankings-box-1,
     .rankings-box-2,
     .rankings-box-3 {
-        color: #fff;
+        color: black;
         padding: 5%;
         width: 180px;
         height: 180px;
@@ -354,6 +354,7 @@
     .rankings-box-1 {
         background: #f66;
         border-radius: 50% 50% 50% 70%/50% 50% 70% 60%;
+        // animation: border-animation 6s infinite linear;
     }
     .rankings-box-2 {
         background: #f92;
@@ -368,7 +369,7 @@
     .rankings-box1-1,
     .rankings-box1-2,
     .rankings-box1-3 {
-        color: #fff;
+        color: black;
         padding: 5%;
         width: 180px;
         height: 180px;
@@ -389,34 +390,154 @@
     }
 
     // 新着CD/topページ
-    .rankings-new-box {
-        // display: flex;
-        width: 600px;
-    }
     .rankings-box2-1 {
         border-radius: 50% 50% 0 50%;
         background: #000000;
-        width: 300px;
+        width: 350px;
+        height: 300px;
         display: inline-block;
-      }
+        padding-top: 20px;
+    }
     .rankings-box2-2 {
         border-radius: 50% 50% 50% 0;
         background: #000000;
-        width: 300px;
+        width: 350px;
+        height: 300px;
         display: inline-block;
-      }
+        // margin-left: -10px;
+        margin: 10px 0 0 10px;
+        padding-top: 20px;
+    }
     .rankings-box2-3 {
         border-radius: 50% 0 50% 50%;
         background: #000000;
-        width: 300px;
+        width: 350px;
+        height: 300px;
         display: inline-block;
-      }
+        padding-top: 20px;
+    }
     .rankings-box2-4 {
         border-radius: 0 50% 50% 50%;
         background: #000000;
-        width: 300px;
+        width: 350px;
+        height: 300px;
         display: inline-block;
-      }
+        // margin-left: -10px;
+        margin: 10px 0 0 10px;
+        padding-top: 20px;
+    }
+    .rankings-new-text-box {
+        padding-top: 10px;
+    }
+    .rankings-new-text {
+        color: #fff;
+        font-styel: bold;
+        text-decoration: underline #fff;
+        text-stroke: 0.2px #000;
+        -webkit-text-stroke: 0.4px #000;
+        }
+
+    .rankings-title {
+        position: relative;
+        padding: 0.25em 0;
+        width: 350px;
+        margin: 20px auto 40px auto;
+        font-family: 'Arial Black','メイリオ', Meiryo,'ヒラギノ角ゴ StdN','Hiragino Kaku Gothic StdN','Arial Rounded MT Bold','ヒラギノ角ゴシック','Hiragino Sans';
+        }
+        .rankings-title:after {
+        content: "";
+        display: block;
+        height: 4px;
+        background: -webkit-linear-gradient(to right, rgb(255, 115, 243), #09c7e9);
+        background: linear-gradient(to right, rgb(255, 115, 243), #09c7e9);
+        }
+    .rankings-title2 {
+        position: relative;
+        padding: 0.25em 0;
+        width: 200px;
+        margin: 20px auto 20px auto;
+        font-family: 'Arial Black','メイリオ', Meiryo,'ヒラギノ角ゴ StdN','Hiragino Kaku Gothic StdN','Arial Rounded MT Bold','ヒラギノ角ゴシック','Hiragino Sans';
+        }
+        .rankings-title2:after {
+        content: "";
+        display: block;
+        height: 4px;
+        background: -webkit-linear-gradient(to right, rgb(255, 115, 243), #09c7e9);
+        background: linear-gradient(to right, rgb(255, 115, 243), #09c7e9);
+        }
+        // 使用は保留
+        .rankings-side-box {
+            position: relative;
+            margin: 2em 0;
+            padding: 0.5em 1em;
+            border: solid 3px #62c1ce;
+        }
+        .rankings-side-box .rankings-side-box-title {
+            position: absolute;
+            display: inline-block;
+            top: -27px;
+            left: -3px;
+            padding: 0 9px;
+            height: 25px;
+            line-height: 25px;
+            font-size: 17px;
+            background: #62c1ce;
+            color: #ffffff;
+            font-weight: bold;
+            border-radius: 5px 5px 0 0;
+            .fa-crown {
+                margin-right: 5px;
+            }
+        }
+        .rankings-side-box p {
+            margin: 0;
+            padding: 10px 0;
+            a:link {
+                color: #fff;
+            }
+        }
+        .rankings-side-box-bar {
+            display:block;
+            width: 100%;
+            height: 1px;
+            border: 0;
+            border-top: 1px dashed #cccccc;
+        }
+        .rankings-side-box div {
+            margin: 0;
+            padding: 0;
+
+            position: relative;
+            padding: 0.25em 1em;
+            margin: 1em 0;
+            top: 0;
+            background: #efefef;
+            a:link {
+                color: #000;
+            }
+        }
+        rankings-side-box div:before, rankings-side-box div:after{
+            position: absolute;
+            top: 0;
+            content:'';
+            width: 10px;
+            height: 100%;
+            display: inline-block;
+            box-sizing: border-box;
+        }
+        rankings-side-box div:before{
+            border-left: dotted 2px #15adc1;
+            border-top: dotted 2px #15adc1;
+            border-bottom: dotted 2px #15adc1;
+            left: 0;
+        }
+        rankings-side-box div:after{
+            border-top: dotted 2px #15adc1;
+            border-right: dotted 2px #15adc1;
+            border-bottom: dotted 2px #15adc1;
+            right: 0;
+        }
+
 
 
     .rankings-box{
@@ -431,7 +552,7 @@
         text-align: center;
         display: block;
         margin: 0 auto;
-        padding: 20px;
+        // padding: 20px;
         margin: 30px;
         // text-align: center;
         // display: block;
@@ -439,6 +560,15 @@
         // padding: 20px;
         // margin: 30px;
         // border: 1px solid rgb(122, 122, 122);
+    }
+
+    .weekly2 {
+        text-align: center;
+        display: block;
+        margin: 0 auto;
+        // padding: 20px;
+        margin: 30px;
+        // animation: border-animation 6s infinite linear;
     }
     .monthly {
         text-align: center;
@@ -462,6 +592,7 @@
         margin: 0 auto;
         padding: 20px;
         margin: 30px;
+        // animation: border-animation 6s infinite linear;
         // border: 1px solid rgb(122, 122, 122);
     }
     .row-index {
