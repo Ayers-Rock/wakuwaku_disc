@@ -163,11 +163,16 @@
   background: linear-gradient(to bottom, #5a5a5a, #232222);
   font-family: "ヒラギノ角ゴ Pro W3","Hiragino Kaku Gothic Pro",Meiryo,"メイリオ",Helvetica,Sans-Serif;
 
+  .p{
+    padding-bottom: 10px;
+  }
+
   .copy{
     width: 100%;
     color: white;
     font-size: 30px;
     text-align: center;
+    margin-left: 13%;
 
   }
 

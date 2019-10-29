@@ -2,7 +2,16 @@ class Admin::ItemsController < Admin::AdminApplicationsController
 
 
   def index
-    @items = Item.without_deleted.page(params[:page]).per(10).reverse_order
+    unless params[:search].blank?
+      artist = Item.joins(:artist).where("artist_name LIKE ?", "%#{params[:search]}%")
+      track =  Item.joins(discs: :tracks).where("track_name LIKE ?", "%#{params[:search]}%")
+      title = Item.where("title LIKE ?", "%#{params[:search]}%")
+      merged_result = artist | title
+      @items = (merged_result | track)
+      @items = Kaminari.paginate_array(@items).page(params[:page]).per(10).reverse_order
+    else
+      @items = Item.page(params[:page]).per(10).reverse_order
+    end
     # TODO:.orderで表示順序を変える可能性有り
   end
 

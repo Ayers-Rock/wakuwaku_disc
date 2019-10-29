@@ -3,6 +3,16 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 // index/items
+.ad-search-box{
+    
+    input[type="text"]{
+    float: right;
+    }
+
+    button[type="submit"]{
+        float: right;
+    }
+}
 .item-index-box {
     font-size: 16px;
 

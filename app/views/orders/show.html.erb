@@ -42,9 +42,9 @@
             <table class="table3 table-condensed, width=100%">
                 <tr>
                     <th>商品</th>
-                    <% if @order.status == "delivered" && order.deleted_at != nill %>
+                    <% if @order.status == "delivered" && @order.deleted_at != nil %>
                         <th>レビュー</th>
-                    <% end %>
+                    <% end %> 
                     <th>単価（税込み）</th>
                     <th>個数</th>
                     <th>小計</th>
@@ -52,7 +52,7 @@
 
                 <% @order_items.each do |order_item| %>
                 <tr>
-                <% if order_item.order.status == "delivered" && order_item.order.deleted_at != nill %>
+                    <% if order_item.order.status == "delivered" && order_item.order.deleted_at != nil %>
                     <td width="45%", style="text-align:left;"><%= order_item.with_deleted_item.title %></td>
                     <td width="15%", style="text-align:center;">
                         <%= link_to item_path(order_item.item_id) do %>
