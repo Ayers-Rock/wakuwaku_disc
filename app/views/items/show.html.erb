@@ -7,7 +7,7 @@
                 </div>
                 <div class="item_show">
                     <p><%= @item.title %></p>
-                    <p><%= @item.artist.artist_name %></p>
+                    <p><%= link_to "#{@item.artist.artist_name}", artist_path(@item.artist.id) %></p>
                 </div>
                 <div class="item_show1">
                     <p><%= @item.tax_include.round(0) %>円(税込)</p>
@@ -44,11 +44,11 @@
                     <table class="table">
                         <tr>
                             <th>レーベル名</th>
-                            <td><%= @item.label.label_name %></td>
+                            <td><%= link_to "#{@item.label.label_name}", label_path(@item.label.id) %></td>
                         </tr>
                         <tr>
                             <th>ジャンル</th>
-                            <td><%= @item.genre.genre_name %></td>
+                            <td><%= link_to "#{@item.genre.genre_name}", genre_path(@item.genre.id) %></td>
                         </tr>
 
                         <tr id="discs">
