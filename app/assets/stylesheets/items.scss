@@ -26,8 +26,8 @@
                 padding: 10px 0;
                 text-align: center;
                 margin: 1.5em 0;
-              }
-              h2:before {
+            }
+            h2:before {
                 content: "";
                 position: absolute;
                 top: -8px;
@@ -40,33 +40,33 @@
                 border-right-color: transparent;
                 -webkit-transform: translateX(-50%);
                 transform: translateX(-50%);
-              }
+            }
             ul {
                 border: dashed 2px #a6ddb0;/*破線*/
 
                 background: whitesmoke;
                 padding: 0 0.5em;
                 position: relative;
-              }
+            }
 
-              ul li {
+            ul li {
                 line-height: 1.5;
                 padding: 0.5em 0 0.5em 1.5em;
                 border-bottom: 2px solid white;
                 list-style-type: none!important;
-              }
+            }
 
-              ul li:before {
+            ul li:before {
                 // font-family: "Font Awesome 5 free";
                 // content: '\f58f';/*アイコン種類*/
                 position: absolute;
                 left : 0.5em; /*左端からのアイコンまで*/
                 color: #668ad8; /*アイコン色*/
-              }
+            }
 
-              ul li:last-of-type {
+            ul li:last-of-type {
                 border-bottom: none;/*最後の線だけ消す*/
-              }
+            }
         }
         .box:last-child {
             border: none;
@@ -79,8 +79,8 @@
                 padding: 10px 0;
                 text-align: center;
                 margin: 1.5em 0;
-              }
-              h2:before {
+            }
+            h2:before {
                 content: "";
                 position: absolute;
                 top: -8px;
@@ -93,32 +93,32 @@
                 border-right-color: transparent;
                 -webkit-transform: translateX(-50%);
                 transform: translateX(-50%);
-              }
-              ul {
+            }
+            ul {
                 border: dashed 2px #ffb03f;/*破線*/
                 background: whitesmoke;
                 padding: 0 0.5em;
                 position: relative;
-              }
+            }
 
-              ul li {
+            ul li {
                 line-height: 1.5;
                 padding: 0.5em 0 0.5em 1.5em;
                 border-bottom: 2px solid white;
                 list-style-type: none!important;
-              }
+            }
 
-              ul li:before {
+            ul li:before {
                 // font-family: "Font Awesome 5 free";
                 // content: '\f58f';/*アイコン種類*/
                 position: absolute;
                 left : 0.5em; /*左端からのアイコンまで*/
                 color: #668ad8; /*アイコン色*/
-              }
+            }
 
-              ul li:last-of-type {
+            ul li:last-of-type {
                 border-bottom: none;/*最後の線だけ消す*/
-              }
+            }
         }
         .col-md-8 {
             font-family: 'Arial Black','メイリオ', Meiryo,'ヒラギノ角ゴ StdN','Hiragino Kaku Gothic StdN','Arial Rounded MT Bold','ヒラギノ角ゴシック','Hiragino Sans',sans-serif;
@@ -548,7 +548,6 @@
         // padding: 10px;
     }
 
-
     .weekly {
         text-align: center;
         display: block;
@@ -603,8 +602,21 @@
     .box{
         padding: 10px;
         margin-bottom: 20px;
-        border: 1px solid #333333;
+        // border: 1px solid #333333;
         padding-bottom: 30px;
+        border-radius: 10px;
+        padding: 0.5em 1em;
+        background: -moz-linear-gradient( #00b5fc, #FAD961);
+        background: -webkit-linear-gradient(#00b5fc, #FAD961);
+        background: linear-gradient(to right, #00b5fc, #FAD961);
+        color: #333333;
+        box-shadow: 0 0 7px grey;
+    }
+
+    .box_admin{
+        margin: 20px;
+        border: 1px solid #333333;
+        border-radius: 10px;
     }
 
     .item_img{
@@ -655,6 +667,15 @@
         // background-color: #3FA5FE;
 }
 
+.line3{
+    width: 100%;
+    // height: 8px;
+    border-bottom: 1px solid #CCCCCC;
+    margin: 30px 0;
+    // padding: 1px 10px;
+    // background-color: #3FA5FE;
+}
+
 .review_head{
     width: 70px;
     text-align: center;
@@ -686,15 +707,13 @@
 .review_do3{
     display: inline-block;
     width: 100%;
+    margin-top: 20px;
 }
 
 .review_do{
     margin: 30px;
 }
 
-.link_path1{
-    margin-bottom: 60px;
-}
 .rank_name {
     margin-bottom: 30px;
 }

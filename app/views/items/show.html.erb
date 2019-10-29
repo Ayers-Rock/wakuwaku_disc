@@ -1,9 +1,9 @@
 <div class="container">
     <div class="row">
-        <div class="col-md-10 col-md-offset-1">
+        <div class="col-xs-10 col-xs-offset-1">
             <div class="box clearfix">
                 <div class="item_img">
-                    <%= attachment_image_tag @item, :jacket_image, size: '100x100', fallback: 'no_image.jpg' %>
+                    <%= attachment_image_tag @item, :jacket_image, size: '300x300', fallback: 'no_image.jpg' %>
                 </div>
                 <div class="item_show">
                     <p><%= @item.title %></p>
@@ -13,11 +13,12 @@
                     <p><%= @item.tax_include.round(0) %>円(税込)</p>
                 </div>
                 <div class="item_show2">
-                    <div class="favorite-button-<%=@item.id %>">
-                        <%= render 'favorites/favorite', item: @item %>
+                    <div class="favorite_btn">
+                        <div class="favorite-button-<%=@item.id %>">
+                            <%= render 'favorites/favorite', item: @item %>
+                        </div>
                     </div>
                 </div>
-                        <%# <button><%= link_to 'お気に入り', favorite_path %>
                 <div class="item_show3">
                     <%= form_for @cart_item do |f| %>
                         <%= f.number_field :amount, min: 1, value: 1 %><span style="color: #fff;"> 枚</span>
@@ -38,39 +39,40 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-10 col-md-offset-1">
+        <div class="col-xs-10 col-xs-offset-1">
             <div class="box">
                 <h3>商品詳細</h3>
-                    <table class="table">
-                        <tr>
-                            <th>レーベル名</th>
-                            <td><%= @item.label.label_name %></td>
-                        </tr>
-                        <tr>
-                            <th>ジャンル</th>
-                            <td><%= @item.genre.genre_name %></td>
-                        </tr>
+                    <div class="table">
+                        <%# <ul> %>
+                            <h4>レーベル名</h4>
+                            <p>&emsp;&emsp;<%= @item.label.label_name %></p>
+                        <%# </ul> %>
+                        <%# <ul> %>
+                            <h4>ジャンル</h4>
+                            <p>&emsp;&emsp;<%= @item.genre.genre_name %></p>
+                        <%# </ul> %>
 
-                        <tr id="discs">
-                            <th><span>曲名</span></th>
-                            <td>
+                        <%# <ul id="discs"> %>
+                            <h4><span>曲名</span></h4>
+                            <%# <li> %>
                                 <% @discs.each do |disc| %>
                                     <div>
                                         <p><%= "#{disc.disc_number}枚目" %></p>
                                         <% disc.tracks.each do |track|  %>
-                                            <%# <% track = track.order_by(track_number: "DESC") %>
-                                            <p><span><%= "#{track.track_number}：" %></span><%= track.track_name %></p>
+                                            <p><span>&emsp;&emsp;<%= "#{track.track_number}：" %></span><%= track.track_name %></p>
                                         <% end %>
                                     </div>
                                 <% end %>
-                            </td>
-                        </tr>
-                    </table>
+                            <%# </li> %>
+                        <%# </ul> %>
+                    </div>
 
                 <div class="line2">
                 </div>
 
                 <h3>投稿レビュー</h3>
+                <div class="line3">
+                </div>
                     <% @reviews.each do |review| %>
                         <div class="review_box clearfix">
                             <div class="review_do1">
@@ -86,6 +88,9 @@
                             <div class="review_do3">
                             <%= review.body %>
                             </div>
+
+                            <div class="line3"</div>
+                            </div>
                         </div>
                     <% end %>
 
@@ -97,18 +102,20 @@
                     <div>
                         <%= render 'layouts/error_message', form: @review %>
                     </div>
-                        <div class="review_do">
+                    <div class="review_do">
+                        <div class="row">
                             <%= form_for([@item, @review]) do |f| %>
-                                <p class="review_form"><span class="review_head">タイトル</span><%= f.text_field :title, :size => "60" %></p>
-                                <p><span class="review_form"><span class="review_head">本文</span><%= f.text_area :body, :size => "110x10" %></p>
-                                <%= f.submit "投稿する", :class => "btn btn-info col-xs-6 col-xs-offset-3" %>
+                            <p class="review_form"><span class="review_head">タイトル</span><%= f.text_field :title, :size => "60" %></p>
+                            <p><span class="review_form"><span class="review_head">本文</span><%= f.text_area :body, :size => "110x10" %></p>
+                            <%= f.submit "投稿する", :class => "btn btn-info col-xs-6 col-xs-offset-3" %>
                             <% end %>
                         </div>
+                    </div>
                 <% end %>
             </div>
         </div>
     </div>
         <div class="link_path1">
-                <%= link_to '商品一覧へ戻る', items_path %>
+            <%= link_to '商品一覧へ戻る', items_path %>
         </div>
 </div>

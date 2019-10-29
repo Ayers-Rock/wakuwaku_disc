@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+  before_action :authenticate_user!, only: [:index, :show, :new, :edit, :create, :destroy, :update, :thanks]
   def new
     # @cart_items = current_user.cart_items
     @cart_items = CartItem.where(user_id: current_user.id)
