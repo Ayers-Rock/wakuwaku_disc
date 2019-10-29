@@ -1,11 +1,15 @@
 <div class="body">
         <div class="row">
             <div class="col-xs-10 col-xs-offset-1">
-        <div class="button" href="#"><span>Thank you for comming to WAKUWAKUDISC </span><span>ご注文ありがとうございました！</span></div>
-                <div class="box">
-                    <table class="">
+        <div class="button" href="#"><span>Thank you for comming to WAKUWAKUDISC </span><span>ご注文ありがとうございました</span></div>
+                <div class="o-box">
+                    <table class="table3 table-condensed">
                         <tr>
-                            <th style="background-color:#CCCCCC">ご注文番号 <%= @order.order_number %></"background-color:#CCCCCC>
+                            <th>ご注文番号 <%= @order.order_number %></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
+                            <th></th>
                         </tr>
                         <tr style="background-color:#CCCCCC">
                             <th>商品画像</th>
@@ -16,7 +20,7 @@
                         </tr>
                         <% @order_items.each do |order_item| %>
                             <tr>
-                                <td class="thanks-data"><%= attachment_image_tag order_item.with_deleted_item, :jacket_image, :fill, 60, 60, format: 'jpeg', fallback: 'no_image.jpg', size: '100x100' %></td>
+                                <td class="thanks-data figure"><figure><%= attachment_image_tag order_item.with_deleted_item, :jacket_image, :fill, 60, 60, format: 'jpeg', fallback: 'no_image.jpg', size: '100x100' %></figure></td>
                                 <td class="thanks-data"><%= order_item.with_deleted_item.artist.artist_name %></td>
                                 <td class="thanks-data"><%= order_item.with_deleted_item.title %></td>
                                 <td class="thanks-data"><%= order_item.amount %></td>

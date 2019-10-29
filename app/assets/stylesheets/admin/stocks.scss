@@ -20,3 +20,15 @@
 .stock-count{
     text-align: center;
 }
+
+.stock-search-box{
+
+    input[type="text"]{
+        width: 93%;
+    }
+
+    button[type="submit"]{
+        position: relative;
+    right: 0;
+    }
+}
