@@ -42,7 +42,7 @@ Admin.create!(email: "admin@gmail.com", password: 123456)
 10.times do |n|
     Stock.create!(
         item_id:       n + 1,
-        arrival_count: "#{n}",
+        arrival_count: "#{n + 1}",
         arrival_date:  '2019-10-20'
     )
 end
@@ -57,7 +57,7 @@ end
 10.times do |n|
     Track.create!(
         disc_id:      n + 1,
-        track_number: "#{n}",
+        track_number: "#{n + 1}",
         track_name:   "#{n}丁目のおじさん"
     )
 end
@@ -80,7 +80,7 @@ end
     CartItem.create!(
         user_id: 1,
         item_id: n + 1,
-        amount:  "#{n}"
+        amount:  "#{n + 1}"
     )
 end
 

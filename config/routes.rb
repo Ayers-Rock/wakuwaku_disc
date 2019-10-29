@@ -5,7 +5,11 @@ Rails.application.routes.draw do
     passwords:     'admins/passwords',
     registrations: 'admins/registrations'
   }
-  devise_for :users
+  devise_for :users, controllers: {
+    sessions:      'users/sessions',
+    passwords:     'users/passwords',
+    registrations: 'users/registrations'
+  }
   namespace :admin do
 
     get '' => 'admins#top'
@@ -69,7 +73,7 @@ Rails.application.routes.draw do
 
 
 
-
+  # get '*path', controller: 'application', action: 'render_404'
   # get 'users/show'
   # get 'users/edit'
   # get 'users/update'

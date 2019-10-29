@@ -3,9 +3,11 @@
 <head>
   <title>The page you were looking for doesn't exist (404)</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="error.css">
   <style>
+
   .rails-default-error-page {
-    background-color: #EFEFEF;
+    background-color: rgb(197, 218, 228);
     color: #2E2F30;
     text-align: center;
     font-family: arial, sans-serif;
@@ -51,17 +53,21 @@
     color: #666;
     box-shadow: 0 3px 8px rgba(50, 50, 50, 0.17);
   }
+
+
   </style>
 </head>
 
 <body class="rails-default-error-page">
   <!-- This file lives in public/404.html -->
+  <img class="blog-image" src="404-cd.jpg">
   <div class="dialog">
-    <div>
-      <h1>The page you were looking for doesn't exist.</h1>
-      <p>You may have mistyped the address or the page may have moved.</p>
+    <!-- <div class="404_image"></div> -->
+      <h1>お探しのページは表示できません。</h1>
+        <p>ご指定のページは削除されたか、移動した可能性がございます。</p>
+        <p><a href="../items/rankings">トップページへ戻る</a></p>
     </div>
-    <p>If you are the application owner check the logs for more information.</p>
+    <p></p>
   </div>
 </body>
 </html>
