@@ -1,7 +1,7 @@
 class Admin::UsersController < Admin::AdminApplicationsController
   def index
     # binding.pry
-    @users = User.all
+    @users = User.page(params[:page]).per(10).reverse_order
   end
 
   def edit

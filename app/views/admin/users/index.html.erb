@@ -1,15 +1,15 @@
 <h2>ユーザー一覧</h2>
     <div class="container">
-        <table class="table table-bordered">
+        <table class="table table-bordered" style="text-align: center;">
                 <thead>
                     <tr>
-                        <th>名前</th>
-                        <th>名前(カナ)</th>
-                        <th>郵便番号</th>
-                        <th>住所</th>
-                        <th>電話番号</th>
-                        <th>メールアドレス</th>
-                        <th>/</th>
+                        <th style="text-align: center;">名前</th>
+                        <th style="text-align: center;">名前(カナ)</th>
+                        <th style="text-align: center;">郵便番号</th>
+                        <th style="text-align: center;">住所</th>
+                        <th style="text-align: center;">電話番号</th>
+                        <th style="text-align: center;">メールアドレス</th>
+                        <th style="text-align: center;">/</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -26,4 +26,7 @@
                     <% end %>
                 </tbody>
         </table>
+         <div style="text-align: center;">
+            <%= paginate @users %>
+        </div>
     </div>
