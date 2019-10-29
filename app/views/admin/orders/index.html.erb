@@ -4,8 +4,15 @@
 			<div class="col-xs-10 col-xs-offset-1">
 				<h2 class="title">受注履歴</h2>
 				<br>
+				<div class="order-search-box">
+					<%= form_tag(admin_orders_path,method: :get) do %>
+						<%= text_field_tag :search, "", placeholder: "注文者、配送先の氏名、注文番号で検索" %>
+						<%= button_tag '<i class="fa fa-search"></i>'.html_safe, type: 'submit', :name => nil %>
+					<% end %>
+				</div>
 				<table class="table_index table-condensed">
 					<tr>
+						<th>注文番号</th>
 						<th>購入者</th>
 						<th>購入日</th>
 						<th>購入価格総計</th>
@@ -14,6 +21,7 @@
 					</tr>
 					<% @orders.each do |order| %>
 					<tr>
+						<td style="text-align:center;"><font size="2"><%= order.order_number %></font></td>
 						<td style="text-align:center;"><font size="2"><%= order.user.last_name + order.user.first_name %></font></td>
 						<td style="text-align:center;"><font size="2"><%= order.created_at.strftime("%Y-%m-%d %H:%M") %></font></td>
 						<td style="text-align:center;"><font size="2"><%= order.total_price.round(0) %>円</font></td>

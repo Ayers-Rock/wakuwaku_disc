@@ -1,6 +1,12 @@
 // Place all the styles related to the admin/orders controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.order-search-box{
+    input[type="text"]{
+        width: 93%;
+    }
+
+}
 
 table {
     border-collapse: collapse;
