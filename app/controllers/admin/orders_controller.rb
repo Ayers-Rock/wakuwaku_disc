@@ -23,7 +23,7 @@ class Admin::OrdersController < Admin::AdminApplicationsController
   end
 
   def show
-    @order = Order.find(params[:id])
+    @order = Order.with_deleted.find(params[:id])
   end
 
   def update
