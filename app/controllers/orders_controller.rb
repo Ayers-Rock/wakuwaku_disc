@@ -66,7 +66,7 @@ class OrdersController < ApplicationController
 #       end
 #     end
     order.destroy
-    flash[:notice] = "注文のキャンセルを承りました。またのご利用をお待ちしております。"
+    flash[:cancel] = "注文のキャンセルを承りました。またのご利用をお待ちしております。"
     redirect_to orders_path
   end
 
