@@ -5,7 +5,7 @@
             <div class="admin-edit-form-box">
                 <h2>商品詳細</h2>
                 <div class="jacket-box">
-                    <p class="col-lg-4"><%= attachment_image_tag @item, :jacket_image, :fill, 150, 150, class: "jacket-image-box" %></p>
+                    <p class="col-lg-4"><%= attachment_image_tag @item, :jacket_image, :fill, 150, 150, class: "jacket-image-box", size: "150x150" %></p>
                     <div class="col-lg-8 jacket-attachment-field">
                         <h3>タイトル :</h3>
                         <p><%= @item.title %></p>
