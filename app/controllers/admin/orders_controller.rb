@@ -36,6 +36,7 @@ class Admin::OrdersController < Admin::AdminApplicationsController
       render :show
     end
   end
+
   def search_status
     if params[:search] == "配送準備中" || params[:search] == "準備中"
       params[:search] = 0
