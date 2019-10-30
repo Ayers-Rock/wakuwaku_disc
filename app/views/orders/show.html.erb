@@ -97,7 +97,7 @@
                 </tr>
                 <tr>
                     <th>住所</th>
-                    <td><%= @order.connected_address %></td>
+                    <td><%= current_user.postal_code %><%= current_user.prefecture %><%= current_user.city_address %><%= current_user.building %></td>
                 </tr>
                 <tr>
                     <th>電話番号</th>

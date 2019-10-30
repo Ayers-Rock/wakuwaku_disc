@@ -2,7 +2,7 @@ class Order < ApplicationRecord
     belongs_to :user
     has_many :order_items
     after_save { self.order_number = self.id.to_s + SecureRandom.hex(3).to_s }
-    enum status: { preparing: 0, in_delivery: 1, delivered: 2 }
+    enum status: { preparing: 0, in_delivery: 1, delivered: 2, cancell:3 }
     enum payment: { cod: 0, transfer: 1, credit_card: 2 }
 
     validates :postal_code, presence: true
@@ -35,5 +35,7 @@ class Order < ApplicationRecord
         end
         return sum - 1
       end
+
+      
 
 end

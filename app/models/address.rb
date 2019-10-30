@@ -6,7 +6,7 @@ class Address < ApplicationRecord
         return address
     end
     def delivery_destination
-        self.last_name + " " + self.first_name + " " + connected_address
+        self.last_name + " " + self.first_name + " " + self.last_kana_name + " " + self.first_kana_name + " " + connected_address
       end
     # before_save { self.email = email.downcase }
   # nameの文字数は、1文字から10文字まで

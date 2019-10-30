@@ -27,7 +27,7 @@ class Admin::OrdersController < Admin::AdminApplicationsController
   end
 
   def update
-    order = Order.find(params[:id])
+    order = Order.with_deleted.find(params[:id])
     order.status = params[:order][:status].to_i
     if order.save
       redirect_to admin_order_path(order.id)
