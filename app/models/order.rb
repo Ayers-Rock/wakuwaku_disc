@@ -36,13 +36,4 @@ class Order < ApplicationRecord
         return sum - 1
       end
 
-      def stock_status
-        stocks_sum = 0
-        order = self.find(params[:id])
-        order.order_items.with_deleted.each do |order_item|
-          stocks_sum = (order_item.item.stock.stock_number - order_item.amount)
-        end
-        return stocks_sum
-      end
-
 end
