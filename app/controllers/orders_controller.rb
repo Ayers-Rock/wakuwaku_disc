@@ -60,11 +60,11 @@ class OrdersController < ApplicationController
   def destroy
     order = Order.find(params[:id])
     # binding.pry
-    order.order_items.each do |item|
-      if item.stock.stock_number - item.order_item.amount != 0
-         item.status == 0
-      end
-    end
+#     order.order_items.each do |item|
+#       if item.stock.stock_number - item.order_item.amount != 0
+#          item.status == 0
+#       end
+#     end
     order.destroy
     flash[:notice] = "注文のキャンセルを承りました。またのご利用をお待ちしております。"
     redirect_to orders_path

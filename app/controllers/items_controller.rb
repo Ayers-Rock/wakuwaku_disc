@@ -44,10 +44,4 @@ class ItemsController < ApplicationController
     @labels = Label.all
     @genres = Genre.all
   end
-
-  def destroy
-    item = Item.find(params[:id])
-    item.destroy
-    redirect_to order_path
-  end
 end
