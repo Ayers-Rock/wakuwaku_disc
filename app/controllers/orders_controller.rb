@@ -59,6 +59,12 @@ class OrdersController < ApplicationController
 
   def destroy
     order = Order.find(params[:id])
+    # binding.pry
+    order.order_items.each do |item|
+      if item.stock.stock_number - item.order_item.amount != 0
+         item.status == 0
+      end
+    end
     order.destroy
     flash[:notice] = "注文のキャンセルを承りました。またのご利用をお待ちしております。"
     redirect_to orders_path
@@ -89,7 +95,12 @@ class OrdersController < ApplicationController
     params.require(:order).permit(:delivery_last_name, :delivery_first_name, :delivery_last_kana_name, :delivery_first_kana_name, :postal_code, :city_address, :prefecture, :building)
   end
 
-  def status
-    
-  end
+  # def stock_status
+  #   order = Order.find(params[:id])
+  #   stocks_sum = 0
+  #   order.order_items.with_deleted.each do |order_item|
+  #     stocks_sum = (order_item.item.stock.stock_number - order_item.amount)
+  #   end
+  #   return stocks_sum
+  # end
 end

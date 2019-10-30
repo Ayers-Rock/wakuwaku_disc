@@ -5,6 +5,7 @@ class OrderItem < ApplicationRecord
       order_item.item.update(status: 2) if order_item.item.stock <= 0
     end
 
+
     def total_price
 		#good.price * quantity
   end

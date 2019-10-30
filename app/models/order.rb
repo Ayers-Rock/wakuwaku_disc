@@ -36,4 +36,6 @@ class Order < ApplicationRecord
         return sum - 1
       end
 
+      
+
 end
