@@ -45,9 +45,9 @@ class ItemsController < ApplicationController
     @genres = Genre.all
   end
 
-  def destroy
-    item = Item.find(params[:id])
-    item.destroy
-    redirect_to order_path
-  end
+  # def destroy
+  #   item = Item.find(params[:id])
+  #   item.destroy
+  #   redirect_to order_path
+  # end
 end

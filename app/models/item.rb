@@ -23,6 +23,9 @@ class Item < ApplicationRecord
 
     acts_as_paranoid
 
+    # after_save do |order_item|
+    #     order_item.item.update(status: 0) if order_item.item.stock <= 1
+
     def favorited_by?(current_user)
         favorites.where(user_id: current_user.id).exists?
     end
