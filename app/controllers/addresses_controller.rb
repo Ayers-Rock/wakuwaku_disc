@@ -9,7 +9,7 @@ class AddressesController < ApplicationController
 
   def index
     @user = User.find(params[:user_id])
-    @addresses = Address.all
+    @addresses = @user.addresses.all
     # @address = Address.find(params[:id])
   end
 

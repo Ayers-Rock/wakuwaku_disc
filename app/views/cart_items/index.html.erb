@@ -16,13 +16,13 @@
 						</tr>
 
 						<% @cart_items.each_with_index do |cart_item, i| %>
-						<tr>
-							<td width="20%"><%= attachment_image_tag cart_item.item, :jacket_image, size: '100x100', fallback: 'no_image.jpg' %></td>
-							<td width="50%"><%= cart_item.item.title %></td>
-							<td width="10%"><%= number_field :amount, name=i, value: cart_item.amount, min: "1", max: "999"%></td>
-							<td width="10%"><%= cart_item.item.price %>円</td>
-							<td width="10%"><%= link_to "削除", cart_item_path(cart_item.id), method: :delete, "data-confirm" => "本当に削除しますか？", :class => 'btn btn-default' %></td>
-						</tr>
+							<tr>
+								<td width="20%"><%= attachment_image_tag cart_item.item, :jacket_image, size: '100x100', fallback: 'no_image.jpg' %></td>
+								<td width="50%"><%= cart_item.item.title %></td>
+								<td width="10%"><%= number_field :amount, name=i, value: cart_item.amount, min: "1", max: "99" %></td>
+								<td width="10%"><%= cart_item.item.price %>円</td>
+								<td width="10%"><%= link_to "削除", cart_item_path(cart_item.id), method: :delete, "data-confirm" => "本当に削除しますか？", :class => 'btn btn-default' %></td>
+							</tr>
 						<% end %>
 					</table>
 

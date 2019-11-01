@@ -1,5 +1,10 @@
 <h2>購入履歴</h2>
 
+<% if flash[:cancel] %>
+  <div class="flash">
+    <%= flash[:cancel] %>
+  </div>
+<% end %>
 <div class="container">
 <% @orders.each do |order| %>
         <div class="row">

@@ -7,7 +7,7 @@
                         <%# <li><%= link_to "#{artist.artist_name}", artist_path(artist.id) %>
                     <%# <% end %>
                 <%# </ul> %>
-                <div class="box">
+                <div class="box2">
                     <h2>ジャンル</h2>
                     <ul>
                         <% @genres.each do |genre| %>
@@ -16,7 +16,7 @@
                     </ul>
                 </div>
 
-                <div class="box">
+                <div class="box2">
                     <h2>レーベル</h2>
                     <ul>
                         <% @labels.each do |label| %>
@@ -49,7 +49,7 @@
                                     <% end %>
                                     <p></p>
                                     <%= form_for @cart_item do |f| %>
-                                        <%= f.number_field :amount, min: 1, value: 1 %><span style="color: #fff;"> 枚</span>
+                                        <%= f.number_field :amount, min: "1", max: "99", value: 1 %><span style="color: #fff;"> 枚</span>
                                         <%= f.hidden_field :item_id, value: item.id %>
                                         <% if item.status_before_type_cast == 0 %>
                                             <%= button_tag type: "submit", class: "btn btn-primary" do %>

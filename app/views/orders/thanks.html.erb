@@ -21,8 +21,8 @@
                         <% @order_items.each do |order_item| %>
                             <tr>
                                 <td class="thanks-data figure"><figure><%= attachment_image_tag order_item.with_deleted_item, :jacket_image, :fill, 60, 60, format: 'jpeg', fallback: 'no_image.jpg', size: '100x100' %></figure></td>
-                                <td class="thanks-data"><%= order_item.with_deleted_item.artist.artist_name %></td>
                                 <td class="thanks-data"><%= order_item.with_deleted_item.title %></td>
+                                <td class="thanks-data"><%= order_item.with_deleted_item.artist.artist_name %></td>
                                 <td class="thanks-data"><%= order_item.amount %></td>
                                     <% subtotal = order_item.with_deleted_item.price * order_item.amount * 1.10 %>
                                 <td class="thanks-data"><%= subtotal.round(0) %>円</td>
